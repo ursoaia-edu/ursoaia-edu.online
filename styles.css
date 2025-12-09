@@ -1,3 +1,23 @@
 body {
     background-color: #e3f2fd;
 }
+
+.pb64 {
+    padding-bottom: 64px !important;
+}
+
+.pt40 {
+    padding-top: 40px !important;
+}
+
+.pt16 {
+    padding-top: 16px !important;
+}
+
+.pb0 {
+    padding-bottom: 0px !important;
+}
+
+[class^="col-lg-"] {
+    min-height: 24px;
+}
