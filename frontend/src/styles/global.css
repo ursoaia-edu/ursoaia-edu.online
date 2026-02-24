@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-dark: #2b2d42;
+    --primary-light: #8d99ae;
+    --accent: #ef233c;
+    --accent-secondary: #ff6b35;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.btn-gradient {
+    @apply bg-gradient-to-r from-accent to-accent-secondary text-white border-none transition-all duration-300;
+}
+
+.btn-gradient:hover {
+    @apply from-accent-secondary to-accent transform -translate-y-0.5 shadow-lg;
+}
+
+.card-gradient {
+    @apply bg-gradient-to-br from-primary-dark/90 to-primary-light/10;
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1a1b2e 50%, var(--primary-dark) 100%);
+}
+
+.text-gradient {
+    @apply bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent;
+}
+
+/* Prose styles for article content */
+.prose {
+    @apply text-gray-300;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply text-white font-bold;
+}
+
+.prose a {
+    @apply text-accent hover:text-accent-secondary transition-colors;
+}
+
+.prose code {
+    @apply bg-base-300 px-1 py-0.5 rounded text-sm;
+}
+
+.prose pre {
+    @apply bg-base-300 rounded-lg overflow-x-auto;
+}
+
+.prose blockquote {
+    @apply border-l-4 border-accent pl-4 italic;
+}
+
+.prose img {
+    @apply rounded-lg shadow-lg;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-base-300;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary-light rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent;
+}

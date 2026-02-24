@@ -1,0 +1,103 @@
+---
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description = "Ursoaia Educational Portal - Learning resources for students" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | Ursoaia Edu</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.0/dist/full.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style is:global>
+        @import '../styles/global.css';
+    </style>
+</head>
+<body class="bg-base-300 min-h-screen flex flex-col">
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-base-300/80 border-b border-base-100/10">
+        <nav class="navbar max-w-7xl mx-auto px-4">
+            <div class="flex-1">
+                <a href="/" class="flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-xl text-white hidden sm:inline">Ursoaia Edu</span>
+                </a>
+            </div>
+            
+            <div class="flex-none">
+                <ul class="menu menu-horizontal px-1 gap-1">
+                    <li><a href="/" class="hover:text-accent transition-colors">Acasă</a></li>
+                    <li><a href="/articles" class="hover:text-accent transition-colors">Articole</a></li>
+                    <li><a href="/search" class="hover:text-accent transition-colors">Căutare</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-1">
+        <slot />
+    </main>
+
+    <footer class="bg-base-300 border-t border-base-100/10 mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <span class="font-bold text-lg text-white">Ursoaia Edu</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Portal educațional pentru elevi și studenți. Resurse de învățare și materiale didactice.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Navigare</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/" class="text-gray-400 hover:text-accent transition-colors">Acasă</a></li>
+                        <li><a href="/articles" class="text-gray-400 hover:text-accent transition-colors">Articole</a></li>
+                        <li><a href="/categories" class="text-gray-400 hover:text-accent transition-colors">Categorii</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Resurse</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/tags" class="text-gray-400 hover:text-accent transition-colors">Tag-uri</a></li>
+                        <li><a href="/search" class="text-gray-400 hover:text-accent transition-colors">Căutare</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Email: contact@ursoaia-edu.online</li>
+                        <li>Program: Luni - Vineri, 9:00 - 17:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-base-100/10 mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; {new Date().getFullYear()} Ursoaia Edu. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

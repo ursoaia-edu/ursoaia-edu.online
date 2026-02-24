@@ -1,0 +1,92 @@
+---
+interface Props {
+    id: number;
+    title: string;
+    slug: string;
+    excerpt: string;
+    coverImage?: string;
+    publishedAt?: string;
+    categories?: Array<{ id: number; name: string; slug: string; color: string }>;
+    tags?: Array<{ id: number; name: string; slug: string; color: string }>;
+    viewsCount?: number;
+    readingTime?: number;
+}
+
+const { 
+    title, 
+    slug, 
+    excerpt, 
+    coverImage, 
+    publishedAt,
+    categories = [],
+    tags = [],
+    viewsCount = 0,
+    readingTime = 0
+} = Astro.props;
+
+const formattedDate = publishedAt 
+    ? new Date(publishedAt).toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' })
+    : '';
+---
+
+<article class="card bg-base-100 shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 group">
+    <a href={`/articles/${slug}`} class="block">
+        {coverImage ? (
+            <figure class="aspect-video overflow-hidden">
+                <img 
+                    src={coverImage} 
+                    alt={title} 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+            </figure>
+        ) : (
+            <figure class="aspect-video bg-gradient-to-br from-primary-dark to-primary-light/20 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+            </figure>
+        )}
+    </a>
+    
+    <div class="card-body">
+        {categories.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-2">
+                {categories.map((category) => (
+                    <a 
+                        href={`/categories/${category.slug}`}
+                        class="badge text-xs"
+                        style={`background-color: ${category.color}; color: white;`}
+                    >
+                        {category.name}
+                    </a>
+                ))}
+            </div>
+        )}
+        
+        <h3 class="card-title text-white group-hover:text-accent transition-colors">
+            <a href={`/articles/${slug}`}>{title}</a>
+        </h3>
+        
+        <p class="text-gray-400 text-sm line-clamp-2">{excerpt}</p>
+        
+        <div class="card-actions justify-between items-center mt-4 pt-4 border-t border-base-100/10">
+            <div class="text-xs text-gray-500">
+                {formattedDate && <span>{formattedDate}</span>}
+                {readingTime > 0 && <span> · {readingTime} min citire</span>}
+            </div>
+            
+            {tags.length > 0 && (
+                <div class="flex gap-1">
+                    {tags.slice(0, 2).map((tag) => (
+                        <span 
+                            class="text-xs px-2 py-0.5 rounded-full"
+                            style={`background-color: ${tag.color}20; color: ${tag.color};`}
+                        >
+                            #{tag.name}
+                        </span>
+                    ))}
+                </div>
+            )}
+        </div>
+    </div>
+</article>

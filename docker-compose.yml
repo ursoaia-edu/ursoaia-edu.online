@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ursoaia-postgres
+    environment:
+      POSTGRES_DB: ursoaia
+      POSTGRES_USER: ${DB_USER:-ursoaia}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-ursoaia123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-ursoaia}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+    networks:
+      - ursoaia-network
+
+  backend:
+    build: ./backend
+    container_name: ursoaia-backend
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${DB_USER:-ursoaia}:${DB_PASSWORD:-ursoaia123}@postgres/ursoaia
+      SECRET_KEY: ${SECRET_KEY:-your-secret-key-change-in-production}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@ursoaia-edu.online}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
+      DEBUG: ${DEBUG:-false}
+      FRONTEND_URL: ${FRONTEND_URL:-https://ursoaia-edu.online}
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+    networks:
+      - ursoaia-network
+
+  frontend:
+    build: 
+      context: ./frontend
+      args:
+        API_URL: http://backend:8000/api
+    container_name: ursoaia-frontend
+    depends_on:
+      - backend
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+    networks:
+      - ursoaia-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: ursoaia-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - uploads_data:/var/www/uploads:ro
+      - ./certbot/conf:/etc/letsencrypt:ro
+      - ./certbot/www:/var/www/certbot:ro
+    depends_on:
+      - backend
+      - frontend
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+    networks:
+      - ursoaia-network
+
+volumes:
+  postgres_data:
+  uploads_data:
+
+networks:
+  ursoaia-network:
+    driver: bridge
