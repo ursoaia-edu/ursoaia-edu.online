@@ -2,42 +2,26 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import Pagination from '../../components/Pagination.astro';
+import { fetchApi } from '../../lib/api';
+import type { Tag, ArticleListResponse } from '../../types/api';
 
 const { slug } = Astro.params;
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
 const perPage = 12;
 
-let tag = null;
-let articles = [];
-let total = 0;
-let pages = 0;
+const [allTags, articlesData] = await Promise.all([
+    fetchApi<Tag[]>('/tags'),
+    fetchApi<ArticleListResponse>(`/articles?tag=${slug}&page=${page}&per_page=${perPage}`)
+]);
 
-try {
-    const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
-    
-    const [tagsRes, articlesRes] = await Promise.all([
-        fetch(`${apiUrl}/tags`),
-        fetch(`${apiUrl}/articles?tag=${slug}&page=${page}&per_page=${perPage}`)
-    ]);
-    
-    if (tagsRes.ok) {
-        const tags = await tagsRes.json();
-        tag = tags.find((t: any) => t.slug === slug);
-    }
-    
-    if (articlesRes.ok) {
-        const data = await articlesRes.json();
-        articles = data.items || [];
-        total = data.total || 0;
-        pages = data.pages || 0;
-    }
-} catch (error) {
-    console.error('Failed to fetch data:', error);
-}
+const tag = allTags?.find((t) => t.slug === slug);
 
 if (!tag) {
     return Astro.redirect('/404');
 }
+
+const articles = articlesData?.items || [];
+const pages = articlesData?.pages || 0;
 ---
 
 <BaseLayout title={`#${tag.name}`} description={`Articole cu tag-ul ${tag.name}`}>
@@ -55,7 +39,7 @@ if (!tag) {
         {articles.length > 0 ? (
             <>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {articles.map((article: any) => (
+                    {articles.map((article) => (
                         <ArticleCard 
                             id={article.id}
                             title={article.title}

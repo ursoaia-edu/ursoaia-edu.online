@@ -33,29 +33,21 @@ body {
     @apply bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent;
 }
 
-/* Prose styles for article content */
-.prose {
-    @apply text-gray-300;
-}
-
-.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-    @apply text-white font-bold;
-}
-
+/* Prose overrides for dark theme (extends @tailwindcss/typography) */
 .prose a {
     @apply text-accent hover:text-accent-secondary transition-colors;
 }
 
 .prose code {
-    @apply bg-base-300 px-1 py-0.5 rounded text-sm;
+    @apply bg-base-300;
 }
 
 .prose pre {
-    @apply bg-base-300 rounded-lg overflow-x-auto;
+    @apply bg-base-300;
 }
 
 .prose blockquote {
-    @apply border-l-4 border-accent pl-4 italic;
+    @apply border-accent;
 }
 
 .prose img {

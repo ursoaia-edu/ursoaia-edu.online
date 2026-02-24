@@ -1,24 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import { fetchApi } from '../lib/api';
+import type { ArticleListResponse } from '../types/api';
 
 const query = Astro.url.searchParams.get('q') || '';
-let articles = [];
+let articles: ArticleListResponse['items'] = [];
 let total = 0;
 
 if (query) {
-    try {
-        const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
-        const res = await fetch(`${apiUrl}/search?q=${encodeURIComponent(query)}`);
-        
-        if (res.ok) {
-            const data = await res.json();
-            articles = data.items || [];
-            total = data.total || 0;
-        }
-    } catch (error) {
-        console.error('Failed to search:', error);
-    }
+    const data = await fetchApi<ArticleListResponse>(`/search?q=${encodeURIComponent(query)}`);
+    articles = data?.items || [];
+    total = data?.total || 0;
 }
 ---
 
@@ -54,7 +47,7 @@ if (query) {
         
         {articles.length > 0 && (
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {articles.map((article: any) => (
+                {articles.map((article) => (
                     <ArticleCard 
                         id={article.id}
                         title={article.title}

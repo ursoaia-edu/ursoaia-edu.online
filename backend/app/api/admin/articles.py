@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from sqlalchemy.orm import selectinload
 from typing import Optional
-from datetime import datetime
+from datetime import datetime, timezone
 from app.database import get_db
 from app.models import Article, Category, Tag, User
 from app.schemas.article import (
@@ -88,7 +88,7 @@ async def create_article(
     
     if article_data.is_published:
         article.is_published = True
-        article.published_at = datetime.utcnow()
+        article.published_at = datetime.now(timezone.utc)
     
     db.add(article)
     await db.commit()
@@ -154,13 +154,14 @@ async def update_article(
             article.tags = list(result.scalars().all())
     
     # Update other fields
+    was_published = article.is_published
     for field, value in update_data.items():
         setattr(article, field, value)
     
     # Handle publishing
-    if article_data.is_published and not article.is_published:
+    if article_data.is_published and not was_published:
         article.is_published = True
-        article.published_at = datetime.utcnow()
+        article.published_at = datetime.now(timezone.utc)
     
     await db.commit()
     await db.refresh(article)

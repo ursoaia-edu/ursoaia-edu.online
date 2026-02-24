@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
+from sqlalchemy.orm import selectinload
 from typing import Optional
 from app.database import get_db
 from app.models import Article, Category, Tag
@@ -17,7 +18,10 @@ async def get_articles(
     tag: Optional[str] = None,
     db: AsyncSession = Depends(get_db)
 ):
-    query = select(Article).where(Article.is_published == True)
+    query = select(Article).options(
+        selectinload(Article.categories),
+        selectinload(Article.tags)
+    ).where(Article.is_published == True)
     
     if category:
         query = query.join(Article.categories).where(Category.slug == category)
@@ -48,7 +52,9 @@ async def get_articles(
 @router.get("/{slug}", response_model=ArticleResponse)
 async def get_article(slug: str, db: AsyncSession = Depends(get_db)):
     result = await db.execute(
-        select(Article).where(Article.slug == slug, Article.is_published == True)
+        select(Article)
+        .options(selectinload(Article.categories), selectinload(Article.tags))
+        .where(Article.slug == slug, Article.is_published == True)
     )
     article = result.scalar_one_or_none()
     

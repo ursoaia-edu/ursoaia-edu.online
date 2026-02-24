@@ -29,9 +29,9 @@ def sanitize_tiptap_content(content: Dict[str, Any]) -> Dict[str, Any]:
     def sanitize_node(node: Dict[str, Any]) -> Dict[str, Any]:
         if node.get('type') == 'text' and 'text' in node:
             node['text'] = bleach.clean(node['text'], tags=[], strip=True)
-        elif 'content' in node and isinstance(node['content'], list):
+        if 'content' in node and isinstance(node['content'], list):
             node['content'] = [sanitize_node(child) for child in node['content']]
-        elif 'marks' in node and isinstance(node['marks'], list):
+        if 'marks' in node and isinstance(node['marks'], list):
             for mark in node['marks']:
                 if mark.get('type') == 'link' and 'attrs' in mark:
                     href = mark['attrs'].get('href', '')

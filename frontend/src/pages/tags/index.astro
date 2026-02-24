@@ -1,18 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fetchApi } from '../../lib/api';
+import type { Tag } from '../../types/api';
 
-let tags = [];
-
-try {
-    const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
-    const res = await fetch(`${apiUrl}/tags`);
-    
-    if (res.ok) {
-        tags = await res.json();
-    }
-} catch (error) {
-    console.error('Failed to fetch tags:', error);
-}
+const tags = await fetchApi<Tag[]>('/tags') || [];
 ---
 
 <BaseLayout title="Tag-uri" description="Toate tag-urile disponibile">
@@ -21,7 +12,7 @@ try {
         
         {tags.length > 0 ? (
             <div class="flex flex-wrap gap-3">
-                {tags.map((tag: any) => (
+                {tags.map((tag) => (
                     <a 
                         href={`/tags/${tag.slug}`}
                         class="badge badge-lg hover:scale-105 transition-transform cursor-pointer"

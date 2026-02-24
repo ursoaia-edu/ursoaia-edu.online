@@ -2,41 +2,24 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import Pagination from '../../components/Pagination.astro';
+import { fetchApi } from '../../lib/api';
+import type { Category, ArticleListResponse } from '../../types/api';
 
 const { slug } = Astro.params;
 const page = parseInt(Astro.url.searchParams.get('page') || '1');
 const perPage = 12;
 
-let category = null;
-let articles = [];
-let total = 0;
-let pages = 0;
-
-try {
-    const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
-    
-    const [categoryRes, articlesRes] = await Promise.all([
-        fetch(`${apiUrl}/categories/${slug}`),
-        fetch(`${apiUrl}/articles?category=${slug}&page=${page}&per_page=${perPage}`)
-    ]);
-    
-    if (categoryRes.ok) {
-        category = await categoryRes.json();
-    }
-    
-    if (articlesRes.ok) {
-        const data = await articlesRes.json();
-        articles = data.items || [];
-        total = data.total || 0;
-        pages = data.pages || 0;
-    }
-} catch (error) {
-    console.error('Failed to fetch data:', error);
-}
+const [category, articlesData] = await Promise.all([
+    fetchApi<Category>(`/categories/${slug}`),
+    fetchApi<ArticleListResponse>(`/articles?category=${slug}&page=${page}&per_page=${perPage}`)
+]);
 
 if (!category) {
     return Astro.redirect('/404');
 }
+
+const articles = articlesData?.items || [];
+const pages = articlesData?.pages || 0;
 ---
 
 <BaseLayout title={category.name} description={category.description || `Articole din categoria ${category.name}`}>
@@ -58,7 +41,7 @@ if (!category) {
         {articles.length > 0 ? (
             <>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {articles.map((article: any) => (
+                    {articles.map((article) => (
                         <ArticleCard 
                             id={article.id}
                             title={article.title}

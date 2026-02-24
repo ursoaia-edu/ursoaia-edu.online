@@ -57,6 +57,7 @@ app.add_middleware(
 
 # Static files
 os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+os.makedirs("app/static", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 

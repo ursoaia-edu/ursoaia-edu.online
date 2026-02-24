@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, or_
+from sqlalchemy.orm import selectinload
 from app.database import get_db
 from app.models import Article
 from app.schemas.article import ArticlePreview, ArticleListResponse
@@ -16,9 +17,13 @@ async def search_articles(
     per_page: int = Query(10, ge=1, le=100),
     db: AsyncSession = Depends(get_db)
 ):
-    search_term = f"%{q}%"
+    escaped = q.replace('%', '\\%').replace('_', '\\_')
+    search_term = f"%{escaped}%"
     
-    query = select(Article).where(
+    query = select(Article).options(
+        selectinload(Article.categories),
+        selectinload(Article.tags)
+    ).where(
         Article.is_published == True,
         or_(
             Article.title.ilike(search_term),

@@ -56,7 +56,7 @@ cp .env.example .env
 
 3. Start development servers:
 ```bash
-docker-compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.dev.yml up -d
 ```
 
 4. Access the application:
@@ -69,12 +69,12 @@ docker-compose -f docker-compose.dev.yml up -d
 1. Configure environment variables in `.env`
 2. Run database migrations:
 ```bash
-docker-compose run backend alembic upgrade head
+docker compose run backend alembic upgrade head
 ```
 
 3. Start services:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ## Project Structure

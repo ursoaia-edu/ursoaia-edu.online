@@ -3,30 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import { fetchApi } from '../lib/api';
+import type { ArticleListResponse, Category } from '../types/api';
 
-// Fetch articles from API
-let articles = [];
-let categories = [];
+const [articlesData, categories] = await Promise.all([
+    fetchApi<ArticleListResponse>('/articles?per_page=6'),
+    fetchApi<Category[]>('/categories')
+]);
 
-try {
-    const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
-    
-    const [articlesRes, categoriesRes] = await Promise.all([
-        fetch(`${apiUrl}/articles?per_page=6`),
-        fetch(`${apiUrl}/categories`)
-    ]);
-    
-    if (articlesRes.ok) {
-        const data = await articlesRes.json();
-        articles = data.items || [];
-    }
-    
-    if (categoriesRes.ok) {
-        categories = await categoriesRes.json();
-    }
-} catch (error) {
-    console.error('Failed to fetch data:', error);
-}
+const articles = articlesData?.items || [];
 ---
 
 <BaseLayout title="Acasă" description="Ursoaia Educational Portal - Resurse educaționale pentru elevi și studenți">
@@ -37,11 +22,11 @@ try {
     
     <main class="max-w-7xl mx-auto px-4 py-12">
         {/* Categories */}
-        {categories.length > 0 && (
+        {categories && categories.length > 0 && (
             <section class="mb-12">
                 <h2 class="text-2xl font-bold text-white mb-6">Categorii</h2>
                 <div class="flex flex-wrap gap-3">
-                    {categories.map((category: any) => (
+                    {categories.map((category) => (
                         <a 
                             href={`/categories/${category.slug}`}
                             class="badge badge-lg hover:scale-105 transition-transform cursor-pointer"
@@ -65,7 +50,7 @@ try {
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {articles.map((article: any) => (
+                    {articles.map((article) => (
                         <ArticleCard 
                             id={article.id}
                             title={article.title}

@@ -6,7 +6,7 @@ from sqlalchemy import select, func
 from sqlalchemy.orm import selectinload
 from app.database import get_db
 from app.models import User, Article, Category, Tag, Media
-from app.api.admin.auth import get_current_user
+from app.utils.security import verify_token
 from app.config import settings
 from datetime import datetime
 
@@ -15,7 +15,18 @@ templates = Jinja2Templates(directory="app/admin/templates")
 
 
 def is_authenticated(request: Request) -> bool:
-    return "access_token" in request.cookies
+    token = request.cookies.get("access_token")
+    if not token:
+        return False
+    return verify_token(token) is not None
+
+
+async def require_admin(request: Request, db: AsyncSession = Depends(get_db)) -> User:
+    from app.api.admin.auth import get_current_user
+    try:
+        return await get_current_user(request, db)
+    except HTTPException:
+        raise HTTPException(status_code=302, headers={"Location": "/admin/login"})
 
 
 @router.get("/login", response_class=HTMLResponse)
@@ -29,7 +40,7 @@ async def login_page(request: Request):
 async def dashboard(
     request: Request,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user)
+    user: User = Depends(require_admin)
 ):
     # Get stats
     articles_count = await db.scalar(
@@ -73,7 +84,7 @@ async def articles_list(
     request: Request,
     page: int = 1,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user)
+    user: User = Depends(require_admin)
 ):
     per_page = 20
     offset = (page - 1) * per_page
@@ -103,7 +114,7 @@ async def articles_list(
 async def create_article_page(
     request: Request,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user)
+    user: User = Depends(require_admin)
 ):
     categories = (await db.execute(select(Category))).scalars().all()
     tags = (await db.execute(select(Tag))).scalars().all()
@@ -121,7 +132,7 @@ async def edit_article_page(
     request: Request,
     article_id: int,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user)
+    user: User = Depends(require_admin)
 ):
     result = await db.execute(
         select(Article)
@@ -152,7 +163,7 @@ async def edit_article_page(
 async def categories_list(
     request: Request,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user)
+    user: User = Depends(require_admin)
 ):
     categories = (await db.execute(select(Category).order_by(Category.name))).scalars().all()
     return templates.TemplateResponse("categories/list.html", {
@@ -167,7 +178,7 @@ async def categories_list(
 async def tags_list(
     request: Request,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user)
+    user: User = Depends(require_admin)
 ):
     tags = (await db.execute(select(Tag).order_by(Tag.name))).scalars().all()
     return templates.TemplateResponse("tags/list.html", {
@@ -183,7 +194,7 @@ async def media_page(
     request: Request,
     page: int = 1,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user)
+    user: User = Depends(require_admin)
 ):
     per_page = 30
     offset = (page - 1) * per_page

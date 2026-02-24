@@ -1,18 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fetchApi } from '../../lib/api';
+import type { Category } from '../../types/api';
 
-let categories = [];
-
-try {
-    const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
-    const res = await fetch(`${apiUrl}/categories`);
-    
-    if (res.ok) {
-        categories = await res.json();
-    }
-} catch (error) {
-    console.error('Failed to fetch categories:', error);
-}
+const categories = await fetchApi<Category[]>('/categories') || [];
 ---
 
 <BaseLayout title="Categorii" description="Toate categoriile de articole">
@@ -21,7 +12,7 @@ try {
         
         {categories.length > 0 ? (
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {categories.map((category: any) => (
+                {categories.map((category) => (
                     <a 
                         href={`/categories/${category.slug}`}
                         class="card bg-base-100 shadow-xl rounded-xl p-6 hover:shadow-2xl transition-shadow group"

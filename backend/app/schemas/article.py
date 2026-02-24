@@ -37,6 +37,7 @@ class ArticlePreview(BaseModel):
     excerpt: str
     cover_image: Optional[str]
     is_featured: bool
+    is_published: bool
     views_count: int
     reading_time: int
     published_at: Optional[datetime]
