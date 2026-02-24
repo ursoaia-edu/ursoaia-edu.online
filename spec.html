@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Specificații tehnice detaliate pentru platforma de blog Ursoaia EDU — arhitectură, stack tehnologic, schema DB, plan de deployment." />
+  <title>Specificații Tehnice — Ursoaia EDU</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="nav.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+  <header>
+    <nav class="site-nav" role="navigation" aria-label="Navigare principală">
+      <a href="home.html" class="nav-logo">Ursoaia<span>EDU</span></a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="home.html">Acasă</a></li>
+        <li><a href="reference.html">Referințe</a></li>
+        <li><a href="base_of_html.html">Curs Web</a></li>
+        <li><a href="spec.html" aria-current="page">Specificații</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Schimbă tema">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Meniu" aria-expanded="false" aria-controls="nav-links">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════ SPEC PAGE ═════════════════════ -->
+  <main>
+    <div class="spec-layout fade-in-up">
+
+      <!-- Header -->
+      <div class="spec-header">
+        <div class="spec-badge">Documentație Tehnică v1.0</div>
+        <h1 class="spec-main-title">Specificații Tehnice<br>Platformă Blog</h1>
+        <div class="spec-meta">
+          Ursoaia EDU &nbsp;·&nbsp; Creat: 24 Feb 2026 &nbsp;·&nbsp; Status: <strong style="color:var(--accent)">Draft final</strong>
+        </div>
+      </div>
+
+      <!-- ─── 1. Obiective ─── -->
+      <section class="spec-section" id="objectives">
+        <h2 class="spec-section-title">1. Obiective &amp; Cerințe</h2>
+        <div class="spec-body">
+          <p>Platforma trebuie să funcționeze ca un blog / site de știri modern, similar cu Medium.com, cu următoarele cerințe de bază:</p>
+
+          <table class="requirements-table">
+            <thead>
+              <tr>
+                <th>Cerință</th>
+                <th>Detalii</th>
+                <th>Prioritate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Blog / News site</strong></td>
+                <td>Publicare articole cu rich-text, imagini, video embed, categorii, tags, autor</td>
+                <td><span class="status-badge high">Critică</span></td>
+              </tr>
+              <tr>
+                <td><strong>Design modern</strong></td>
+                <td>Temă dark/light, tipografie curată, responsive (mobile-first), fluid animations</td>
+                <td><span class="status-badge high">Critică</span></td>
+              </tr>
+              <tr>
+                <td><strong>Admin panel</strong></td>
+                <td>Interfață de administrare intuitivă pentru creare/editare/publicare articole</td>
+                <td><span class="status-badge high">Critică</span></td>
+              </tr>
+              <tr>
+                <td><strong>Înregistrare închisă</strong></td>
+                <td>Accesul la admin doar prin invitație sau activare manuală de superuser</td>
+                <td><span class="status-badge high">Critică</span></td>
+              </tr>
+              <tr>
+                <td><strong>Performanță</strong></td>
+                <td>TTFB &lt; 200ms, First Contentful Paint &lt; 1.5s, Lighthouse score &gt; 90</td>
+                <td><span class="status-badge high">Critică</span></td>
+              </tr>
+              <tr>
+                <td><strong>Consum redus resurse</strong></td>
+                <td>Funcționare stabilă pe 2 CPU, 1 GB RAM, 30 GB SSD</td>
+                <td><span class="status-badge high">Critică</span></td>
+              </tr>
+              <tr>
+                <td><strong>Comentarii</strong></td>
+                <td>Sistem simplu de comentarii (fără cont sau cu cont) sau integrare Disqus</td>
+                <td><span class="status-badge medium">Medie</span></td>
+              </tr>
+              <tr>
+                <td><strong>Căutare</strong></td>
+                <td>Căutare full-text în titlu și conținut articole (PostgreSQL FTS)</td>
+                <td><span class="status-badge medium">Medie</span></td>
+              </tr>
+              <tr>
+                <td><strong>RSS Feed</strong></td>
+                <td>Feed RSS/Atom pentru abonament la articole noi</td>
+                <td><span class="status-badge low">Scăzută</span></td>
+              </tr>
+              <tr>
+                <td><strong>Newsletter</strong></td>
+                <td>Integrare opțională Mailchimp / Listmonk pentru notificări</td>
+                <td><span class="status-badge low">Scăzută</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ─── 2. Stack Tehnologic ─── -->
+      <section class="spec-section" id="stack">
+        <h2 class="spec-section-title">2. Stack Tehnologic</h2>
+        <div class="spec-body">
+          <p>Am evaluat mai multe opțiuni și am ales <strong>Django + Wagtail CMS</strong> ca soluție optimă pentru balanța dintre flexibilitate, performanță și consum redus de resurse.</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-icon">🐍</div>
+            <div class="tech-name">Python 3.12</div>
+            <div class="tech-role">Limbaj backend</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🎸</div>
+            <div class="tech-name">Django 5.x</div>
+            <div class="tech-role">Web framework</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🦜</div>
+            <div class="tech-name">Wagtail 6.x</div>
+            <div class="tech-role">CMS &amp; Admin panel</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🐘</div>
+            <div class="tech-name">PostgreSQL 16</div>
+            <div class="tech-role">Baza de date</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🟢</div>
+            <div class="tech-name">Nginx 1.24</div>
+            <div class="tech-role">Reverse proxy + static</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🦄</div>
+            <div class="tech-name">Gunicorn</div>
+            <div class="tech-role">WSGI application server</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🐳</div>
+            <div class="tech-name">Docker Compose</div>
+            <div class="tech-role">Container orchestration</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🔒</div>
+            <div class="tech-name">Let's Encrypt</div>
+            <div class="tech-role">SSL/TLS automat</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🎨</div>
+            <div class="tech-name">CSS Variables</div>
+            <div class="tech-role">Tema dark/light</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">📦</div>
+            <div class="tech-name">Whitenoise</div>
+            <div class="tech-role">Static files serving</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">💾</div>
+            <div class="tech-name">Redis (opțional)</div>
+            <div class="tech-role">Cache &amp; sessions</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">📊</div>
+            <div class="tech-name">Sentry (opțional)</div>
+            <div class="tech-role">Error monitoring</div>
+          </div>
+        </div>
+
+        <div class="spec-body">
+          <h3 style="margin-top:32px; margin-bottom:12px; font-size:18px; color:var(--text-primary);">De ce NU alte opțiuni:</h3>
+          <ul>
+            <li><strong>WordPress</strong> — securitate slabă, performanță necesită cache complex, design datat</li>
+            <li><strong>Ghost CMS</strong> — Node.js, consum RAM mai mare (~300-400 MB), customizare limitată</li>
+            <li><strong>Next.js + Strapi</strong> — Strapi singur consumă 400-600 MB RAM; nu se încadrează în 1 GB total</li>
+            <li><strong>Hugo/Jekyll (static)</strong> — nu are admin panel, editare conținut dificilă</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ─── 3. Arhitectura sistemului ─── -->
+      <section class="spec-section" id="architecture">
+        <h2 class="spec-section-title">3. Arhitectura Sistemului</h2>
+        <div class="spec-body">
+          <p>Toate componentele rulează în containere Docker pe același VPS Ubuntu 22.04 LTS.</p>
+        </div>
+
+        <div class="arch-diagram" role="figure" aria-label="Diagrama arhitecturii sistemului">
+<pre>
+Internet (HTTPS 443 / HTTP 80)
+          │
+          ▼
+┌─────────────────────────────────────────────┐
+│                  NGINX                       │
+│  • Reverse proxy → Gunicorn (port 8000)      │
+│  • Serve static files (/static/, /media/)    │
+│  • SSL termination (Let's Encrypt)           │
+│  • Gzip compression                          │
+│  • Rate limiting                             │
+│  • HTTP → HTTPS redirect                     │
+└───────────────────┬─────────────────────────┘
+                    │ HTTP (internal)
+                    ▼
+┌─────────────────────────────────────────────┐
+│             GUNICORN (3 workers)             │
+│                  │                           │
+│           DJANGO 5.x + WAGTAIL 6.x           │
+│  • Blog article views                        │
+│  • /admin/ — Wagtail admin panel             │
+│  • REST-like search endpoint                 │
+│  • RSS feed generation                       │
+│  • User management (invite-only)             │
+└──────────────┬──────────────────────────────┘
+               │
+       ┌───────┴────────┐
+       │                │
+       ▼                ▼
+┌────────────┐   ┌────────────────┐
+│ PostgreSQL │   │  File System   │
+│    16      │   │  /media/       │
+│            │   │  (uploads)     │
+│ • Articles │   └────────────────┘
+│ • Users    │
+│ • Tags     │
+│ • Comments │
+│ • FTS index│
+└────────────┘
+
+RAM estimate:  Nginx ~20 MB
+               Gunicorn×3 ~180 MB
+               PostgreSQL ~120 MB
+               OS + buffer ~200 MB
+               Total:      ~520 MB / 1024 MB ✓
+</pre>
+        </div>
+      </section>
+
+      <!-- ─── 4. Schema DB ─── -->
+      <section class="spec-section" id="database">
+        <h2 class="spec-section-title">4. Schema Bazei de Date</h2>
+        <div class="spec-body">
+          <p>Modelele principale Django/Wagtail. Wagtail extinde sistemul de pagini Django cu un model <code>Page</code> de bază.</p>
+        </div>
+
+        <div class="arch-diagram" role="figure" aria-label="Schema bazei de date">
+<pre>
+CustomUser (AbstractUser)
+├── id             UUID PK
+├── username       VARCHAR(150) UNIQUE
+├── email          VARCHAR(254) UNIQUE
+├── is_active      BOOLEAN (false by default — invite system)
+├── invite_token   UUID NULL
+├── date_joined    TIMESTAMP
+└── bio            TEXT NULL
+
+BlogIndexPage (Wagtail Page)
+├── [moștenire din wagtail.Page]
+├── intro_text     RichTextField
+└── [parent: RootPage]
+
+BlogPost (Wagtail Page)
+├── [moștenire din wagtail.Page — include: title, slug, date]
+├── subtitle       CharField(500)
+├── body           StreamField  ← rich blocks: text, image, code, embed
+├── cover_image    ForeignKey → Image (Wagtail)
+├── author         ForeignKey → CustomUser
+├── excerpt        TextField(500)
+├── reading_time   PositiveSmallInt (calculat auto)
+├── is_featured    BooleanField
+├── claps          PositiveIntegerField
+└── [many-to-many → Tag]
+
+Tag
+├── id             INTEGER PK
+├── name           VARCHAR(100) UNIQUE
+└── slug           SlugField UNIQUE
+
+Comment
+├── id             UUID PK
+├── post           ForeignKey → BlogPost
+├── author_name    VARCHAR(100)
+├── author_email   EmailField
+├── body           TextField
+├── is_approved    BooleanField (default: false)
+├── created_at     TIMESTAMP
+└── parent         ForeignKey(self, null=True) ← replies
+</pre>
+        </div>
+      </section>
+
+      <!-- ─── 5. Securitate ─── -->
+      <section class="spec-section" id="security">
+        <h2 class="spec-section-title">5. Securitate</h2>
+        <div class="spec-body">
+          <h3 style="font-size:18px; color:var(--text-primary); margin-bottom:12px;">5.1 Înregistrare închisă (invite-only)</h3>
+          <p>
+            Modelul <code>CustomUser</code> are câmpul <code>is_active = False</code> implicit. Un nou utilizator poate fi creat doar în două moduri:
+          </p>
+          <ol>
+            <li><strong>Superuser activează manual</strong> din panoul de administrare Wagtail</li>
+            <li><strong>Link de invitație</strong> — superuser generează un <code>invite_token</code> UUID unic; utilizatorul accesează <code>/register/&lt;token&gt;/</code> și completează formularul de înregistrare</li>
+          </ol>
+          <p>Înregistrarea publică la <code>/register/</code> <strong>nu există</strong>.</p>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-top:24px; margin-bottom:12px;">5.2 Configurări Django obligatorii în producție</h3>
+          <pre><code>SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+DEBUG = False
+ALLOWED_HOSTS = ['ursoaia-edu.online', 'www.ursoaia-edu.online']</code></pre>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-top:24px; margin-bottom:12px;">5.3 Nginx rate limiting</h3>
+          <pre><code>limit_req_zone $binary_remote_addr zone=login:10m rate=5r/m;
+limit_req_zone $binary_remote_addr zone=api:10m rate=30r/m;
+
+location /admin/login/ {
+    limit_req zone=login burst=3 nodelay;
+}</code></pre>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-top:24px; margin-bottom:12px;">5.4 Alte măsuri</h3>
+          <ul>
+            <li>Backup automat zilnic al bazei de date (<code>pg_dump</code>) — retenție 7 zile</li>
+            <li><code>fail2ban</code> pentru protecție brute-force SSH și Nginx</li>
+            <li>Utilizator de sistem non-root pentru procesele Docker</li>
+            <li>Secretele (DB password, Django SECRET_KEY) în fișier <code>.env</code> — nu în repository</li>
+            <li>Dependențe Python actualizate regulat (<code>pip-audit</code>)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ─── 6. Performanță ─── -->
+      <section class="spec-section" id="performance">
+        <h2 class="spec-section-title">6. Strategie de Performanță</h2>
+        <div class="spec-body">
+          <p>Pe 1 GB RAM, caching-ul corect este esențial. Abordare în trei nivele:</p>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-bottom:12px;">Nivelul 1: Cache Django (per-view)</h3>
+          <pre><code># settings/production.py
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        # sau Redis dacă RAM permite
+    }
+}
+
+# În view:
+@cache_page(60 * 15)  # 15 minute cache
+def blog_index(request): ...</code></pre>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-top:24px; margin-bottom:12px;">Nivelul 2: Nginx static file caching</h3>
+          <pre><code>location /static/ {
+    alias /app/staticfiles/;
+    expires 30d;
+    add_header Cache-Control "public, immutable";
+}
+
+location /media/ {
+    alias /app/media/;
+    expires 7d;
+}</code></pre>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-top:24px; margin-bottom:12px;">Nivelul 3: Optimizări PostgreSQL</h3>
+          <pre><code># postgresql.conf (tuning pentru 1 GB RAM)
+shared_buffers = 256MB
+work_mem = 4MB
+maintenance_work_mem = 64MB
+effective_cache_size = 768MB
+max_connections = 20</code></pre>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-top:24px; margin-bottom:12px;">Nivelul 4: Frontend</h3>
+          <ul>
+            <li>CSS custom properties — zero JavaScript framework, theme switch nativ</li>
+            <li>Font Awesome prin CDN cu <code>loading="lazy"</code> pentru imagini</li>
+            <li>CSS și JS minificate în producție (<code>django-compressor</code> sau <code>whitenoise</code>)</li>
+            <li><code>prefers-color-scheme</code> media query — temă setată înainte de render (no FOUC)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ─── 7. Structura proiect ─── -->
+      <section class="spec-section" id="project-structure">
+        <h2 class="spec-section-title">7. Structura Proiectului</h2>
+        <div class="spec-body">
+          <pre><code>ursoaia-blog/
+├── .env                    # Secretele — NU în git!
+├── .env.example            # Template variabile de mediu
+├── .gitignore
+├── docker-compose.yml      # Orchestrare: web, db, nginx
+├── Dockerfile
+├── requirements.txt
+├── manage.py
+│
+├── config/                 # Django project root
+│   ├── settings/
+│   │   ├── base.py        # Setări comune
+│   │   ├── development.py # Debug=True, SQLite local
+│   │   └── production.py  # Debug=False, PostgreSQL, SSL
+│   ├── urls.py
+│   └── wsgi.py
+│
+├── apps/
+│   ├── home/              # Wagtail HomePage
+│   │   ├── models.py
+│   │   └── templates/home/
+│   │
+│   ├── blog/              # Articole principale
+│   │   ├── models.py      # BlogIndexPage, BlogPost
+│   │   ├── views.py       # Search, RSS feed
+│   │   ├── feeds.py       # RSS/Atom
+│   │   ├── migrations/
+│   │   └── templates/blog/
+│   │       ├── blog_index_page.html
+│   │       └── blog_post_page.html
+│   │
+│   └── users/             # Utilizatori custom + invite
+│       ├── models.py      # CustomUser
+│       ├── views.py       # Invite register flow
+│       ├── forms.py
+│       └── migrations/
+│
+├── templates/             # Template-uri globale
+│   ├── base.html          # HTML base cu nav, footer, theme
+│   ├── 404.html
+│   └── 500.html
+│
+├── static/                # Sursă statică (dev)
+│   ├── css/
+│   │   └── styles.css
+│   └── js/
+│       └── theme.js
+│
+├── staticfiles/           # Colectat de collectstatic (prod)
+├── media/                 # Upload-uri utilizatori (prod)
+│
+└── nginx/
+    └── nginx.conf         # Config Nginx producție</code></pre>
+        </div>
+      </section>
+
+      <!-- ─── 8. Docker Compose ─── -->
+      <section class="spec-section" id="deployment">
+        <h2 class="spec-section-title">8. Docker Compose &amp; Deployment</h2>
+        <div class="spec-body">
+          <pre><code># docker-compose.yml
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+  web:
+    build: .
+    restart: unless-stopped
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --no-input &&
+             gunicorn config.wsgi:application
+               --bind 0.0.0.0:8000
+               --workers 3
+               --timeout 120"
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    env_file: .env
+    depends_on: [db]
+
+  nginx:
+    image: nginx:1.24-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/app/staticfiles:ro
+      - media_volume:/app/media:ro
+      - certbot_conf:/etc/letsencrypt:ro
+    depends_on: [web]
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+    entrypoint: >
+      /bin/sh -c "trap exit TERM;
+        while :; do
+          certbot renew;
+          sleep 12h & wait $${!};
+        done;"
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  certbot_conf:
+  certbot_www:</code></pre>
+
+          <h3 style="font-size:18px; color:var(--text-primary); margin-top:24px; margin-bottom:12px;">Comenzi de deployment:</h3>
+          <pre><code># Prima instalare pe VPS:
+git clone https://github.com/ursoaia-edu/blog.git
+cd blog
+cp .env.example .env
+# editează .env cu secretele tale
+docker compose up -d --build
+docker compose exec web python manage.py createsuperuser
+
+# Update:
+git pull origin main
+docker compose up -d --build --no-deps web
+docker compose exec web python manage.py migrate</code></pre>
+        </div>
+      </section>
+
+      <!-- ─── 9. Plan de dezvoltare ─── -->
+      <section class="spec-section" id="roadmap">
+        <h2 class="spec-section-title">9. Plan de Dezvoltare</h2>
+
+        <div class="phase-card">
+          <div class="phase-num">Faza 1 — Săptămânile 1-2</div>
+          <div class="phase-title">Infrastructură &amp; Setup de bază</div>
+          <p class="phase-desc">
+            Inițializare proiect Django + Wagtail, configurare Docker Compose, setup PostgreSQL, deploy pe VPS, configurare SSL Let's Encrypt, model CustomUser cu sistem invite, template base.html cu dark/light theme.
+          </p>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Faza 2 — Săptămânile 3-4</div>
+          <div class="phase-title">Modele de conținut &amp; Admin</div>
+          <p class="phase-desc">
+            Modele Wagtail: BlogIndexPage, BlogPost cu StreamField (text, imagine, cod, video embed), sistem Tags, câmp reading_time calculat automat, pagini de categorie, paginare articole.
+          </p>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Faza 3 — Săptămânile 5-6</div>
+          <div class="phase-title">Frontend &amp; Design</div>
+          <p class="phase-desc">
+            Templates Django cu design Medium-like: pagina principală (feed), pagina articol, sidebar cu trending, topicuri, responsive mobile, animații CSS, dark/light theme complet, optimizare Lighthouse score.
+          </p>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Faza 4 — Săptămânile 7-8</div>
+          <div class="phase-title">Features avansate</div>
+          <p class="phase-desc">
+            Căutare full-text PostgreSQL, RSS/Atom feed, sistem comentarii cu aprobare moderator, clap/like sistem, pagina profil autor, sitemap.xml, meta tags Open Graph pentru social sharing.
+          </p>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Faza 5 — Ongoing</div>
+          <div class="phase-title">Monitoring &amp; Optimizare</div>
+          <p class="phase-desc">
+            Integrare Sentry pentru error tracking, backup automat PostgreSQL, monitoring uptime, optimizare query-uri N+1 cu django-debug-toolbar, documentare pentru autori, ghid de contribuție.
+          </p>
+        </div>
+      </section>
+
+      <!-- ─── 10. Estimare resurse ─── -->
+      <section class="spec-section" id="resources">
+        <h2 class="spec-section-title">10. Estimare Resurse Server</h2>
+        <div class="spec-body">
+          <table class="requirements-table">
+            <thead>
+              <tr>
+                <th>Componentă</th>
+                <th>RAM estimat</th>
+                <th>Stocare estimată</th>
+                <th>CPU (idle)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ubuntu 22.04 OS</td>
+                <td>~150 MB</td>
+                <td>~4 GB</td>
+                <td>&lt;1%</td>
+              </tr>
+              <tr>
+                <td>Nginx 1.24</td>
+                <td>~20 MB</td>
+                <td>~50 MB</td>
+                <td>&lt;1%</td>
+              </tr>
+              <tr>
+                <td>Gunicorn × 3 workers</td>
+                <td>~180 MB</td>
+                <td>—</td>
+                <td>1-5%</td>
+              </tr>
+              <tr>
+                <td>PostgreSQL 16</td>
+                <td>~120 MB</td>
+                <td>~500 MB (10k articole)</td>
+                <td>&lt;2%</td>
+              </tr>
+              <tr>
+                <td>Docker daemon</td>
+                <td>~50 MB</td>
+                <td>~2 GB (imagini)</td>
+                <td>&lt;1%</td>
+              </tr>
+              <tr>
+                <td>Media files (imagini articole)</td>
+                <td>—</td>
+                <td>~5-15 GB</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td><strong>TOTAL</strong></td>
+                <td><strong>~520 MB</strong> ✓</td>
+                <td><strong>~22 GB</strong> ✓</td>
+                <td><strong>&lt;10%</strong> ✓</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            <strong>Concluzie:</strong> Stack-ul ales se încadrează confortabil în limitele serverului (1 GB RAM, 30 GB SSD), lăsând ~480 MB buffer RAM și ~8 GB spațiu liber pe disc.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════ FOOTER ════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Ursoaia<span>EDU</span></div>
+        <p class="footer-tagline">Blog educațional despre programare și tehnologie pentru studenții Odoo School.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigare</div>
+        <ul class="footer-links">
+          <li><a href="home.html">Acasă</a></li>
+          <li><a href="reference.html">Referințe</a></li>
+          <li><a href="base_of_html.html">Curs Web</a></li>
+          <li><a href="spec.html">Specificații</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Secțiuni spec</div>
+        <ul class="footer-links">
+          <li><a href="#objectives">Obiective</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#architecture">Arhitectură</a></li>
+          <li><a href="#security">Securitate</a></li>
+          <li><a href="#roadmap">Plan</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@ursoaia-edu.online">info@ursoaia-edu.online</a></li>
+          <li><a href="https://github.com/ursoaia-edu" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ursoaia-edu.online</span>
+      <span>Specificații tehnice v1.0</span>
+    </div>
+  </footer>
+
+</body>
+</html>

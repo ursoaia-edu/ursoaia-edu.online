@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cum construim un blog performant și sigur cu Django + Wagtail CMS pe un server cu resurse limitate." />
+  <title>Arhitectura unui blog modern — Ursoaia EDU</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="nav.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+  <header>
+    <nav class="site-nav" role="navigation" aria-label="Navigare principală">
+      <a href="home.html" class="nav-logo">Ursoaia<span>EDU</span></a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="home.html">Acasă</a></li>
+        <li><a href="reference.html">Referințe</a></li>
+        <li><a href="base_of_html.html">Curs Web</a></li>
+        <li><a href="spec.html">Specificații</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Schimbă tema">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Meniu" aria-expanded="false" aria-controls="nav-links">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════ ARTICLE ═══════════════════════ -->
+  <main>
+    <article class="article-layout fade-in-up">
+
+      <!-- Tag -->
+      <div class="article-tag-line">
+        <a href="#" class="post-tag">Arhitectură</a>
+      </div>
+
+      <!-- Title -->
+      <h1 class="article-title">Arhitectura unui blog modern: de la zero la producție pe 1 GB RAM</h1>
+      <p class="article-subtitle">Cum construim un blog performant, sigur și cu design modern cu Django + Wagtail CMS, Nginx și PostgreSQL — fără a depăși 512 MB RAM în producție.</p>
+
+      <!-- Author bar -->
+      <div class="article-author-bar">
+        <div class="author-avatar-lg">A</div>
+        <div>
+          <div class="author-info-name">Admin</div>
+          <div class="author-info-meta">24 Feb 2026 &middot; 8 min citire &middot; <i class="fa-regular fa-eye" aria-hidden="true"></i> 142 vizualizări</div>
+        </div>
+        <div class="article-actions">
+          <button class="action-btn" aria-label="Distribuie articolul">
+            <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+            <span>Distribuie</span>
+          </button>
+          <button class="action-btn" aria-label="Salvează articolul">
+            <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cover image -->
+      <div class="article-cover" role="img" aria-label="Imagine de copertă articol">🏗️</div>
+
+      <!-- Article body -->
+      <div class="article-body">
+
+        <p>
+          Când vine vorba de a construi un blog sau o platformă de publicare de conținut în 2026, suntem bombardați cu opțiuni: WordPress, Ghost, Next.js + headless CMS, Hugo, Jekyll... Fiecare are avantajele și dezavantajele ei. Dar ce faci când ai un buget limitat și un server cu 2 CPU și 1 GB RAM?
+        </p>
+
+        <p>
+          În acest articol îți voi prezenta arhitectura pe care am ales-o pentru <strong>Ursoaia EDU</strong> — un stack complet, modern, performant și care se încadrează confortabil în limitele unui VPS de categorie mică.
+        </p>
+
+        <h2>De ce nu WordPress</h2>
+
+        <p>
+          WordPress este soluția implicită pentru mulți, și există motive bune pentru asta. Are o comunitate uriașă, mii de plugin-uri și teme, și este foarte ușor de folosit. Dar are un cost:
+        </p>
+
+        <ul>
+          <li>PHP + MySQL + Apache/Nginx + cache plugin = complicat de configurat corect</li>
+          <li>Securitate: actualizări constante, vulnerabilități frecvente în plugin-uri</li>
+          <li>Performanță slabă fără cache agresiv (WP Super Cache, Redis, etc.)</li>
+          <li>Design datat — necesită teme premium sau dezvoltare custom</li>
+        </ul>
+
+        <blockquote>
+          "Cel mai bun tool este cel pe care îl cunoști — dar dacă înveți ceva nou, asigură-te că merită investiția."
+        </blockquote>
+
+        <h2>Stack-ul ales: Django + Wagtail</h2>
+
+        <p>
+          Am ales <strong>Django</strong> ca framework backend și <strong>Wagtail CMS</strong> ca sistem de gestionare a conținutului. Iată de ce:
+        </p>
+
+        <h3>1. Wagtail CMS</h3>
+        <p>
+          Wagtail este unul dintre cele mai bune CMS open-source disponibile în 2026. Construit pe Django, are o interfață de administrare modernă, sistem flexibil de tipuri de pagini (<em>page models</em>), editor rich-text și suport nativ pentru imagini și media.
+        </p>
+
+        <h3>2. Consum redus de resurse</h3>
+        <p>
+          Un server Gunicorn cu 2-3 workers rulând o aplicație Django + Wagtail consumă în jur de <strong>150-250 MB RAM</strong> — lăsând suficient spațiu pentru PostgreSQL (~100 MB) și Nginx (~20 MB).
+        </p>
+
+        <h3>3. Securitate</h3>
+        <p>
+          Django are securitate solidă din cutie: protecție CSRF, prevenire SQL injection prin ORM, XSS protection, click-jacking protection. Înregistrarea închisă (invite-only) se implementează simplu prin customizarea modelului de utilizator.
+        </p>
+
+        <h2>Arhitectura sistemului</h2>
+
+        <pre><code>┌──────────────────────────────────────────────────────┐
+│                     Internet                          │
+└─────────────────────┬────────────────────────────────┘
+                      │ HTTPS (port 443)
+┌─────────────────────▼────────────────────────────────┐
+│                    Nginx                              │
+│          (reverse proxy + static files + SSL)         │
+│                  Certbot / Let's Encrypt              │
+└──────────┬───────────────────────────────────────────┘
+           │ HTTP (intern, port 8000)
+┌──────────▼───────────────────────────────────────────┐
+│              Gunicorn (WSGI server)                   │
+│              2-3 workers × Django app                 │
+│              Wagtail CMS (admin panel)                │
+└──────────┬───────────────────────────────────────────┘
+           │
+┌──────────▼───────────────────────────────────────────┐
+│              PostgreSQL 16                            │
+│              (baza de date principală)                │
+└──────────────────────────────────────────────────────┘
+
+Deploy: Docker Compose pe Ubuntu 22.04 LTS
+SSL:    Let's Encrypt (auto-renewal)
+RAM:    ~350-450 MB total în producție</code></pre>
+
+        <h2>Structura proiectului Django</h2>
+
+        <pre><code>blog/
+├── blog/               # Django project settings
+│   ├── settings/
+│   │   ├── base.py
+│   │   ├── production.py
+│   │   └── development.py
+│   ├── urls.py
+│   └── wsgi.py
+├── home/               # Wagtail home app
+├── blog_posts/         # App pentru articole
+│   ├── models.py       # BlogPage, BlogIndexPage
+│   ├── templates/
+│   └── migrations/
+├── users/              # App custom utilizatori
+│   ├── models.py       # CustomUser (invite-only)
+│   └── views.py
+├── static/             # CSS, JS, imagini
+├── templates/          # Template-uri globale
+├── media/              # Fișiere uploadate
+├── docker-compose.yml
+├── Dockerfile
+├── nginx.conf
+└── requirements.txt</code></pre>
+
+        <h2>Tema dark/light</h2>
+        <p>
+          Tema se implementează cu <strong>CSS custom properties</strong> (variabile CSS) la nivel de <code>:root</code> și <code>[data-theme="dark"]</code>. JavaScript salvează preferința în <code>localStorage</code> și respectă <code>prefers-color-scheme</code> al sistemului de operare. Zero JavaScript frameworks necesar.
+        </p>
+
+        <h2>Concluzie</h2>
+        <p>
+          Django + Wagtail este, în opinia mea, cel mai bun compromis pentru un blog modern în 2026: performant, sigur, cu o admin panel frumoasă și un consum de resurse redus. Nu e cel mai simplu de instalat inițial, dar odată configurat, este o plăcere de folosit.
+        </p>
+        <p>
+          Specificațiile complete ale arhitecturii, inclusiv schema bazei de date, planul de deployment și planul de dezvoltare le găsești pe pagina <a href="spec.html">Specificații</a>.
+        </p>
+
+      </div>
+
+      <!-- Clap / like -->
+      <div class="clap-section">
+        <button class="clap-btn" id="clap-btn" aria-label="Apreciază articolul">👏</button>
+        <span class="clap-count" id="clap-count">142 aprecieri</span>
+        <div style="margin-left:auto; display:flex; gap:12px;">
+          <button class="action-btn" aria-label="Distribuie">
+            <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+            <span>Distribuie</span>
+          </button>
+          <button class="action-btn" aria-label="Salvează">
+            <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="article-tags" aria-label="Tag-uri articol">
+        <a href="#" class="article-tag">Arhitectură</a>
+        <a href="#" class="article-tag">Django</a>
+        <a href="#" class="article-tag">Wagtail</a>
+        <a href="#" class="article-tag">Python</a>
+        <a href="#" class="article-tag">DevOps</a>
+        <a href="#" class="article-tag">Docker</a>
+      </div>
+
+      <!-- Author bio -->
+      <div class="author-bio-card">
+        <div class="author-bio-avatar">A</div>
+        <div>
+          <div class="author-bio-name">Admin — Ursoaia EDU</div>
+          <p class="author-bio-text">
+            Educator și developer web la Odoo School. Public tutoriale despre programare, arhitecturi software și hardware open-source. Contact: <a href="mailto:info@ursoaia-edu.online">info@ursoaia-edu.online</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- More posts -->
+      <section class="more-posts-section" aria-label="Mai multe articole">
+        <h2 class="more-posts-title">Mai multe articole</h2>
+        <div class="more-posts-grid">
+          <article class="mini-post-card">
+            <div class="mini-post-thumb" aria-hidden="true">📄</div>
+            <div class="mini-post-body">
+              <h3 class="mini-post-title"><a href="article.html">Bazele HTML5: semantic markup</a></h3>
+              <div class="mini-post-meta">Ion Popescu · 5 min</div>
+            </div>
+          </article>
+          <article class="mini-post-card">
+            <div class="mini-post-thumb" style="background:linear-gradient(135deg,#4facfe,#00f2fe);" aria-hidden="true">🔌</div>
+            <div class="mini-post-body">
+              <h3 class="mini-post-title"><a href="article.html">ESP32 cu MicroPython</a></h3>
+              <div class="mini-post-meta">Maria Ionescu · 7 min</div>
+            </div>
+          </article>
+          <article class="mini-post-card">
+            <div class="mini-post-thumb" style="background:linear-gradient(135deg,#43e97b,#38f9d7);" aria-hidden="true">🐍</div>
+            <div class="mini-post-body">
+              <h3 class="mini-post-title"><a href="article.html">Python în 2026</a></h3>
+              <div class="mini-post-meta">Vlad Rusu · 6 min</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- ═══════════════════════════ FOOTER ════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Ursoaia<span>EDU</span></div>
+        <p class="footer-tagline">Blog educațional despre programare și tehnologie pentru studenții Odoo School.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigare</div>
+        <ul class="footer-links">
+          <li><a href="home.html">Acasă</a></li>
+          <li><a href="reference.html">Referințe</a></li>
+          <li><a href="base_of_html.html">Curs Web</a></li>
+          <li><a href="spec.html">Specificații</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Teme</div>
+        <ul class="footer-links">
+          <li><a href="#">HTML &amp; CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">Python</a></li>
+          <li><a href="#">ESP32</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@ursoaia-edu.online">info@ursoaia-edu.online</a></li>
+          <li><a href="https://github.com/ursoaia-edu" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ursoaia-edu.online</span>
+      <span>Designed for Odoo School</span>
+    </div>
+  </footer>
+
+  <script>
+    const clapBtn = document.getElementById('clap-btn');
+    const clapCount = document.getElementById('clap-count');
+    let count = 142;
+    let clapped = false;
+    if (clapBtn) {
+      clapBtn.addEventListener('click', function () {
+        count++;
+        clapped = !clapped;
+        clapBtn.classList.toggle('clapped', clapped);
+        clapCount.textContent = count + ' aprecieri';
+      });
+    }
+  </script>
+
+</body>
+</html>

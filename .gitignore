@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files (secrets)
+.env
+.env.local
+.env.production
+
+# Node (if ever used)
+node_modules/
+npm-debug.log
+
+# Python (if ever used)
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+
+# Playwright test artifacts
+.playwright-cli/

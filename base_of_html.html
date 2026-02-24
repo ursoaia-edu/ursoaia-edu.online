@@ -1,38 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ro" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bazele HTML</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Curs Web — bazele HTML, CSS și JavaScript prin tutoriale video în limba română pentru studenții Odoo School." />
+  <title>Curs Web — Bazele HTML — Ursoaia EDU</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="nav.js" defer></script>
+  <style>
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s, background-color 0.3s;
+    }
+    .video-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-card-body {
+      padding: 16px;
+    }
+    .video-card-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 6px;
+      line-height: 1.4;
+    }
+    .video-card-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .lesson-number {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-family: -apple-system, sans-serif;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/home.html"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/home.html">Home</a>
-                        <a class="nav-link active" href="/reference.html">Referințe</a>
-                        <a class="nav-link active" href="/base_of_html.html">Curs Web</a>
-                    </div>
-                </div>
+
+  <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+  <header>
+    <nav class="site-nav" role="navigation" aria-label="Navigare principală">
+      <a href="home.html" class="nav-logo">Ursoaia<span>EDU</span></a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="home.html">Acasă</a></li>
+        <li><a href="reference.html">Referințe</a></li>
+        <li><a href="base_of_html.html" aria-current="page">Curs Web</a></li>
+        <li><a href="spec.html">Specificații</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Schimbă tema">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Meniu" aria-expanded="false" aria-controls="nav-links">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════ CONTENT ═══════════════════════ -->
+  <main>
+    <div class="article-layout fade-in-up">
+
+      <div class="article-tag-line">
+        <span class="post-tag">Curs Web</span>
+      </div>
+
+      <h1 class="article-title" style="font-size:clamp(28px,4vw,42px);">Curs Web — Bazele HTML</h1>
+      <p style="font-family:-apple-system,sans-serif; font-size:17px; color:var(--text-secondary); margin-bottom:32px; line-height:1.6;">
+        Tutoriale video în limba română despre HTML, CSS și JavaScript — fundamentele dezvoltării web moderne. Ideale pentru absolut începători.
+      </p>
+
+      <hr class="divider" />
+
+      <!-- Topics covered -->
+      <div class="spec-body" style="margin-bottom:40px;">
+        <h2 style="font-size:20px; color:var(--text-primary); margin-bottom:16px;">Ce vei învăța:</h2>
+        <ul style="columns:2; column-gap:32px;">
+          <li>Structura unui document HTML5</li>
+          <li>Taguri semantice (header, main, footer)</li>
+          <li>Formulare și input-uri</li>
+          <li>CSS: selectori, culori, fonturi</li>
+          <li>CSS Flexbox și Grid</li>
+          <li>Media queries (responsive)</li>
+          <li>JavaScript de bază</li>
+          <li>DOM manipulation</li>
+        </ul>
+      </div>
+
+      <!-- Video grid -->
+      <section aria-label="Lecții video">
+        <h2 style="font-family:'Georgia',serif; font-size:22px; font-weight:700; color:var(--text-primary); margin-bottom:24px;">
+          Lecții video
+        </h2>
+
+        <div class="video-grid">
+
+          <div class="video-card">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/qYJovgTz9SI?si=Gb4m0MS31PT1QHbn"
+                title="Bazele HTML — Lecția 1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
             </div>
-        </nav>
+            <div class="video-card-body">
+              <div class="lesson-number">Lecția 1</div>
+              <div class="video-card-title">Introducere în HTML5 — Structura de bază</div>
+              <div class="video-card-meta"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube &middot; Română</div>
+            </div>
+          </div>
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/qYJovgTz9SI?si=Gb4m0MS31PT1QHbn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="video-card" style="opacity:0.6;">
+            <div style="height:169px; background:var(--bg-secondary); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
+              <i class="fa-regular fa-clock" style="font-size:32px; color:var(--text-muted);" aria-hidden="true"></i>
+              <span style="font-family:-apple-system,sans-serif; font-size:13px; color:var(--text-muted);">În curând</span>
+            </div>
+            <div class="video-card-body">
+              <div class="lesson-number" style="background:var(--text-muted);">Lecția 2</div>
+              <div class="video-card-title">CSS — Stilizare și selectori</div>
+              <div class="video-card-meta">Disponibil în curând</div>
+            </div>
+          </div>
+
+          <div class="video-card" style="opacity:0.6;">
+            <div style="height:169px; background:var(--bg-secondary); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
+              <i class="fa-regular fa-clock" style="font-size:32px; color:var(--text-muted);" aria-hidden="true"></i>
+              <span style="font-family:-apple-system,sans-serif; font-size:13px; color:var(--text-muted);">În curând</span>
+            </div>
+            <div class="video-card-body">
+              <div class="lesson-number" style="background:var(--text-muted);">Lecția 3</div>
+              <div class="video-card-title">JavaScript — Bazele limbajului</div>
+              <div class="video-card-meta">Disponibil în curând</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Additional resources -->
+      <section style="margin-top:48px;" aria-label="Resurse adiționale">
+        <h2 style="font-family:'Georgia',serif; font-size:22px; font-weight:700; color:var(--text-primary); margin-bottom:16px;">
+          Resurse adiționale
+        </h2>
+        <div class="spec-body">
+          <ul>
+            <li><a href="https://developer.mozilla.org/ro/docs/Learn" target="_blank" rel="noopener">MDN Web Docs — Ghid complet HTML/CSS/JS (română)</a></li>
+            <li><a href="https://www.w3schools.com/" target="_blank" rel="noopener">W3Schools — Tutoriale interactive</a></li>
+            <li><a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C HTML Validator — validează codul tău HTML</a></li>
+            <li><a href="reference.html">Materiale suplimentare Google Drive →</a></li>
+          </ul>
+        </div>
+      </section>
+
     </div>
-</body>
+  </main>
 
+  <!-- ═══════════════════════════ FOOTER ════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Ursoaia<span>EDU</span></div>
+        <p class="footer-tagline">Blog educațional despre programare și tehnologie pentru studenții Odoo School.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigare</div>
+        <ul class="footer-links">
+          <li><a href="home.html">Acasă</a></li>
+          <li><a href="reference.html">Referințe</a></li>
+          <li><a href="base_of_html.html">Curs Web</a></li>
+          <li><a href="spec.html">Specificații</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Lecții</div>
+        <ul class="footer-links">
+          <li><a href="base_of_html.html">Lecția 1 — HTML5</a></li>
+          <li><a href="base_of_html.html">Lecția 2 — CSS (curând)</a></li>
+          <li><a href="base_of_html.html">Lecția 3 — JS (curând)</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@ursoaia-edu.online">info@ursoaia-edu.online</a></li>
+          <li><a href="https://github.com/ursoaia-edu" target="_blank" rel="noopener">GitHub</a></li>
+          <li><span style="font-size:13px;">Program: 08:15–11:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ursoaia-edu.online</span>
+      <span>Designed for Odoo School</span>
+    </div>
+  </footer>
+
+</body>
 </html>

@@ -1,106 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ro" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ursoaia-edu.online</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ursoaia EDU — blog educațional cu resurse, tutoriale și articole despre programare și dezvoltare web." />
+  <title>Ursoaia EDU — Blog &amp; Resurse</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="nav.js" defer></script>
 </head>
-
 <body>
-    <div class="container">
-        <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/home.html"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/home.html">Home</a>
-                        <a class="nav-link active" href="/reference.html">Referințe</a>
-                        <a class="nav-link active" href="/base_of_html.html">Curs Web</a>
-                    </div>
-                </div>
-            </div>
+
+  <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+  <header>
+    <nav class="site-nav" role="navigation" aria-label="Navigare principală">
+      <a href="home.html" class="nav-logo">Ursoaia<span>EDU</span></a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="home.html" aria-current="page">Acasă</a></li>
+        <li><a href="reference.html">Referințe</a></li>
+        <li><a href="base_of_html.html">Curs Web</a></li>
+        <li><a href="spec.html">Specificații</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Schimbă tema">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Meniu" aria-expanded="false" aria-controls="nav-links">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════ HERO ══════════════════════════ -->
+  <section class="hero" aria-label="Banner principal">
+    <h1 class="hero-title">Ursoaia<span class="text-accent">EDU</span></h1>
+    <p class="hero-subtitle">Blog educațional despre programare, web development și tehnologie — pentru studenții Odoo School.</p>
+    <a href="spec.html" class="btn-accent">Arhitectura proiectului &rarr;</a>
+  </section>
+
+  <!-- ═══════════════════════════ FEED ══════════════════════════ -->
+  <main class="page-wrapper">
+    <div class="feed-layout">
+
+      <!-- ─── Left: Article Feed ─── -->
+      <div>
+        <!-- Topics bar -->
+        <nav class="topics-bar" aria-label="Categorii">
+          <a href="#" class="topic-tab active">Toate</a>
+          <a href="#" class="topic-tab">HTML &amp; CSS</a>
+          <a href="#" class="topic-tab">JavaScript</a>
+          <a href="#" class="topic-tab">Python</a>
+          <a href="#" class="topic-tab">ESP32</a>
+          <a href="#" class="topic-tab">Tutoriale</a>
+          <a href="#" class="topic-tab">Resurse</a>
         </nav>
-        <div class="row">
-            <div class="col">
-                <h1>Welcome to Ursoaia-edu.online</h1>
-                <p>This is the homepage of Ursoaia-edu.online. Explore our resources and references!</p>
+
+        <!-- Featured post -->
+        <article class="featured-post fade-in-up" aria-label="Articol recomandat">
+          <div class="featured-post-image" role="img" aria-label="Imagine articol recomandat">🌐</div>
+          <div class="featured-post-body">
+            <div class="featured-label">✦ Recomandat</div>
+            <h2 class="featured-post-title">
+              <a href="article.html">Arhitectura unui blog modern: de la zero la producție pe 1 GB RAM</a>
+            </h2>
+            <p class="featured-post-excerpt">
+              Cum construim un blog performant și sigur cu Django + Wagtail CMS, Nginx și PostgreSQL pe un server cu resurse limitate. Ghid complet cu Docker Compose, SSL automat și strategie de caching.
+            </p>
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <div class="post-card-meta" style="margin:0;">
+                <div class="author-avatar">A</div>
+                <span class="author-name">Admin</span>
+                <span class="post-date">· 24 Feb 2026</span>
+              </div>
+              <span class="post-read-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 8 min citire</span>
+              <a href="#" class="post-tag">Arhitectură</a>
             </div>
+          </div>
+        </article>
+
+        <!-- Post list -->
+        <section aria-label="Lista articole">
+
+          <article class="post-card fade-in-up">
+            <div>
+              <div class="post-card-meta">
+                <div class="author-avatar" style="background-color:#7c3aed;">I</div>
+                <span class="author-name">Ion Popescu</span>
+                <span class="post-date">· 20 Feb 2026</span>
+              </div>
+              <h3 class="post-card-title">
+                <a href="article.html">Bazele HTML5: de la structură la semantic markup</a>
+              </h3>
+              <p class="post-card-excerpt">
+                Tot ce trebuie să știi despre tagurile HTML5 semantice, accesibilitate și bune practici pentru un cod curat și ușor de menținut.
+              </p>
+              <div class="post-card-footer">
+                <a href="#" class="post-tag">HTML &amp; CSS</a>
+                <span class="post-read-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 5 min</span>
+              </div>
+            </div>
+            <div class="post-thumbnail-placeholder" aria-hidden="true">📄</div>
+          </article>
+
+          <article class="post-card fade-in-up">
+            <div>
+              <div class="post-card-meta">
+                <div class="author-avatar" style="background-color:#dc2626;">M</div>
+                <span class="author-name">Maria Ionescu</span>
+                <span class="post-date">· 17 Feb 2026</span>
+              </div>
+              <h3 class="post-card-title">
+                <a href="article.html">ESP32 pentru începători: primul proiect cu MicroPython</a>
+              </h3>
+              <p class="post-card-excerpt">
+                Programarea microcontrolerului ESP32 cu MicroPython — instalare, GPIO, conectare WiFi și un server web simplu în mai puțin de 50 de linii de cod.
+              </p>
+              <div class="post-card-footer">
+                <a href="#" class="post-tag">ESP32</a>
+                <span class="post-read-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 7 min</span>
+              </div>
+            </div>
+            <div class="post-thumbnail-placeholder" aria-hidden="true">🔌</div>
+          </article>
+
+          <article class="post-card fade-in-up">
+            <div>
+              <div class="post-card-meta">
+                <div class="author-avatar" style="background-color:#0891b2;">V</div>
+                <span class="author-name">Vlad Rusu</span>
+                <span class="post-date">· 14 Feb 2026</span>
+              </div>
+              <h3 class="post-card-title">
+                <a href="article.html">Python în 2026: de ce este încă cel mai bun limbaj pentru educație</a>
+              </h3>
+              <p class="post-card-excerpt">
+                Analiza ecosistemului Python în contextul educației — de la scripting și automatizare la machine learning și web development cu Django.
+              </p>
+              <div class="post-card-footer">
+                <a href="#" class="post-tag">Python</a>
+                <span class="post-read-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 6 min</span>
+              </div>
+            </div>
+            <div class="post-thumbnail-placeholder" aria-hidden="true">🐍</div>
+          </article>
+
+          <article class="post-card fade-in-up">
+            <div>
+              <div class="post-card-meta">
+                <div class="author-avatar">A</div>
+                <span class="author-name">Admin</span>
+                <span class="post-date">· 10 Feb 2026</span>
+              </div>
+              <h3 class="post-card-title">
+                <a href="article.html">CSS Grid vs Flexbox: când și cum să le folosești</a>
+              </h3>
+              <p class="post-card-excerpt">
+                Ghid practic pentru alegerea corectă între CSS Grid și Flexbox, cu exemple reale și cazuri de utilizare pentru fiecare layout.
+              </p>
+              <div class="post-card-footer">
+                <a href="#" class="post-tag">HTML &amp; CSS</a>
+                <span class="post-read-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 4 min</span>
+              </div>
+            </div>
+            <div class="post-thumbnail-placeholder" aria-hidden="true">🎨</div>
+          </article>
+
+          <article class="post-card fade-in-up">
+            <div>
+              <div class="post-card-meta">
+                <div class="author-avatar" style="background-color:#7c3aed;">I</div>
+                <span class="author-name">Ion Popescu</span>
+                <span class="post-date">· 5 Feb 2026</span>
+              </div>
+              <h3 class="post-card-title">
+                <a href="article.html">JavaScript async/await explicat simplu cu exemple reale</a>
+              </h3>
+              <p class="post-card-excerpt">
+                Înțelege programarea asincronă în JavaScript — de la callbacks la Promises și async/await, cu exemple practice și erori comune de evitat.
+              </p>
+              <div class="post-card-footer">
+                <a href="#" class="post-tag">JavaScript</a>
+                <span class="post-read-time"><i class="fa-regular fa-clock" aria-hidden="true"></i> 9 min</span>
+              </div>
+            </div>
+            <div class="post-thumbnail-placeholder" aria-hidden="true">⚡</div>
+          </article>
+
+        </section>
+      </div>
+
+      <!-- ─── Right: Sidebar ─── -->
+      <aside class="sidebar" aria-label="Sidebar">
+
+        <div class="sidebar-section">
+          <h2 class="sidebar-title">Trending această săptămână</h2>
+          <div>
+            <div class="recommended-post">
+              <div class="rec-post-num">01</div>
+              <div>
+                <div class="rec-post-title"><a href="article.html">Arhitectura unui blog modern pe 1 GB RAM</a></div>
+                <div class="rec-post-meta">Admin · 8 min citire</div>
+              </div>
+            </div>
+            <div class="recommended-post">
+              <div class="rec-post-num">02</div>
+              <div>
+                <div class="rec-post-title"><a href="article.html">Python în 2026: cel mai bun limbaj pentru educație</a></div>
+                <div class="rec-post-meta">Vlad Rusu · 6 min citire</div>
+              </div>
+            </div>
+            <div class="recommended-post">
+              <div class="rec-post-num">03</div>
+              <div>
+                <div class="rec-post-title"><a href="article.html">ESP32 pentru începători: primul proiect</a></div>
+                <div class="rec-post-meta">Maria Ionescu · 7 min citire</div>
+              </div>
+            </div>
+            <div class="recommended-post">
+              <div class="rec-post-num">04</div>
+              <div>
+                <div class="rec-post-title"><a href="article.html">CSS Grid vs Flexbox: ghid practic</a></div>
+                <div class="rec-post-meta">Admin · 4 min citire</div>
+              </div>
+            </div>
+            <div class="recommended-post">
+              <div class="rec-post-num">05</div>
+              <div>
+                <div class="rec-post-title"><a href="article.html">JavaScript async/await pentru începători</a></div>
+                <div class="rec-post-meta">Ion Popescu · 9 min citire</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <footer id="bottom" data-anchor="true" data-name="Footer" class="o_footer o_colored_level o_cc ">
-            <div id="footer" class="oe_structure oe_structure_solo">
-                <section class="s_text_block pt40 pb16" data-snippet="s_text_block" data-name="Text">
-                    <div class="container">
-                        <div class="row">
+        <div class="sidebar-section">
+          <h2 class="sidebar-title">Teme populare</h2>
+          <div class="topics-cloud">
+            <a href="#" class="topic-pill">HTML &amp; CSS</a>
+            <a href="#" class="topic-pill">JavaScript</a>
+            <a href="#" class="topic-pill">Python</a>
+            <a href="#" class="topic-pill">ESP32</a>
+            <a href="#" class="topic-pill">Django</a>
+            <a href="#" class="topic-pill">Tutoriale</a>
+            <a href="#" class="topic-pill">Web Design</a>
+            <a href="#" class="topic-pill">Resurse</a>
+            <a href="#" class="topic-pill">MicroPython</a>
+            <a href="#" class="topic-pill">Linux</a>
+          </div>
+        </div>
 
-                            <section class="s_text_image pb64 o_colored_level pt40" data-snippet="s_text_image" data-name="Text - Image">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="pt16 pb16 o_colored_level col-lg-5">
-                                            <h2>New Web Development</h2>
+        <div class="sidebar-section">
+          <h2 class="sidebar-title">Info</h2>
+          <p style="font-family:-apple-system,sans-serif; font-size:14px; color:var(--text-secondary); line-height:1.6;">
+            <strong>Ursoaia EDU</strong> este un blog educațional creat pentru studenții Odoo School. Publicăm tutoriale, resurse și ghiduri despre programare și dezvoltare web.
+          </p>
+          <p style="font-family:-apple-system,sans-serif; font-size:14px; color:var(--text-muted);">
+            <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:info@ursoaia-edu.online">info@ursoaia-edu.online</a>
+          </p>
+        </div>
 
-                                        </div>
-                                        <div class="col-lg-6 offset-lg-1 pt16 o_colored_level pb0">
-                                            <img src="https://uc5ccad27479b583f02c6cc162c1.dl.dropboxusercontent.com/cd/0/inline/C22woGen2Zg8eRWl1Ea-fvQc9WHiId_-JeSdVTLGwVE9tzfv75zBRHshSGNL2c8rLPGuJSHApb6SkkRo1BW4MOrRY2ZT_1i7hsSoDAFtPUEwtWycSwXx4UHH6iKMTcPKn-P_4dd4q2UD3lmW5yJ-PIko/file" alt="" class="img img-fluid mx-auto o_we_custom_image" data-mimetype="image/webp" data-original-id="3885" data-original-src="/web/image/3885-e130ed10/development.png" data-mimetype-before-conversion="image/png" data-resize-width="NaN" loading="lazy" style="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-
-                            <div class="col-lg-2 pt24 pb24 o_colored_level">
-                                <h5 class="mb-3">Some&nbsp;Links</h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="/home.html">Home</a></li>
-                                    <li><a href="/reference.html">Referințe</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-5 pt24 pb24 o_colored_level">
-                                <h5 class="mb-3">Designed for Odoo School</h5>
-                                <p class="mb-0">Ursoaia-edu.online is developed to provide quality educational resources and references for learners worldwide. Our mission is to empower individuals through accessible learning materials.</p>
-                            </div>
-                            <div id="connect" class="col-lg-4 offset-lg-1 pt24 pb24 o_colored_level">
-                                <h5 class="mb-3">Connect with us</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="fa fa-envelope fa-fw me-2" contenteditable="false">&ZeroWidthSpace;</i><a href="mailto:info@ursoaia-edu.online">info@ursoaia-edu.online</a></li>
-                                    <li><i class="fa fa-building fa-fw me-2" contenteditable="false">&ZeroWidthSpace;</i>
-                                        <font class="text-o-color-2">Work hours: 08:15 - 11:00</font>
-                                    </li>
-                                </ul>
-                                <div class="s_social_media text-start o_not_editable" data-snippet="s_social_media" data-name="Social Media">
-                                    <h5 class="s_social_media_title d-none">Follow us</h5>
-                                    <a href="https://github.com/ursoaia-edu" class="s_social_media_github" target="_blank" aria-label="GitHub">
-                                        <i class="fa rounded-circle shadow-sm o_editable_media fa-brands fa-github" contenteditable="false">&ZeroWidthSpace;</i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="o_footer_copyright o_colored_level o_cc" data-name="Copyright">
-                <div class="container py-3">
-                    <div class="row">
-                        <div class="col-sm text-center text-sm-start text-muted">
-                            <span class="o_footer_copyright_name me-2">Copyright ©&nbsp;Ursoaia-edu.online</span>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+      </aside>
     </div>
-</body>
+  </main>
 
+  <!-- ═══════════════════════════ FOOTER ════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Ursoaia<span>EDU</span></div>
+        <p class="footer-tagline">Blog educațional despre programare și tehnologie pentru studenții Odoo School.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigare</div>
+        <ul class="footer-links">
+          <li><a href="home.html">Acasă</a></li>
+          <li><a href="reference.html">Referințe</a></li>
+          <li><a href="base_of_html.html">Curs Web</a></li>
+          <li><a href="spec.html">Specificații</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Teme</div>
+        <ul class="footer-links">
+          <li><a href="#">HTML &amp; CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">Python</a></li>
+          <li><a href="#">ESP32</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@ursoaia-edu.online">info@ursoaia-edu.online</a></li>
+          <li><a href="https://github.com/ursoaia-edu" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="#">Program: 08:15–11:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ursoaia-edu.online</span>
+      <span>Designed for Odoo School</span>
+    </div>
+  </footer>
+
+</body>
 </html>
