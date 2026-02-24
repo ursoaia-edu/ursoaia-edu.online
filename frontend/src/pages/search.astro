@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+const query = Astro.url.searchParams.get('q') || '';
+let articles = [];
+let total = 0;
+
+if (query) {
+    try {
+        const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
+        const res = await fetch(`${apiUrl}/search?q=${encodeURIComponent(query)}`);
+        
+        if (res.ok) {
+            const data = await res.json();
+            articles = data.items || [];
+            total = data.total || 0;
+        }
+    } catch (error) {
+        console.error('Failed to search:', error);
+    }
+}
+---
+
+<BaseLayout title="Căutare" description="Caută articole pe Ursoaia Edu">
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-white mb-8">Căutare</h1>
+        
+        <form class="mb-8">
+            <div class="join w-full max-w-xl">
+                <input 
+                    type="text" 
+                    name="q" 
+                    value={query}
+                    placeholder="Caută articole..."
+                    class="input input-bordered join-item flex-1"
+                />
+                <button type="submit" class="btn btn-gradient join-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+        </form>
+        
+        {query && (
+            <p class="text-gray-400 mb-6">
+                {total > 0 
+                    ? `${total} rezultat${total > 1 ? 'e' : ''} pentru "${query}"`
+                    : `Nu s-au găsit rezultate pentru "${query}"`
+                }
+            </p>
+        )}
+        
+        {articles.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {articles.map((article: any) => (
+                    <ArticleCard 
+                        id={article.id}
+                        title={article.title}
+                        slug={article.slug}
+                        excerpt={article.excerpt}
+                        coverImage={article.cover_image}
+                        publishedAt={article.published_at}
+                        categories={article.categories}
+                        tags={article.tags}
+                        viewsCount={article.views_count}
+                        readingTime={article.reading_time}
+                    />
+                ))}
+            </div>
+        )}
+        
+        {!query && (
+            <div class="text-center py-16">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <h3 class="text-lg font-semibold text-gray-400">Caută articole</h3>
+                <p class="text-gray-500">Introdu un termen de căutare pentru a găsi articole.</p>
+            </div>
+        )}
+    </main>
+</BaseLayout>

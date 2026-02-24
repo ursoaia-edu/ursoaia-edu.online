@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ursoaia-postgres-dev
+    environment:
+      POSTGRES_DB: ursoaia
+      POSTGRES_USER: ursoaia
+      POSTGRES_PASSWORD: ursoaia123
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ursoaia"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ursoaia-dev-network
+
+  backend:
+    build: ./backend
+    container_name: ursoaia-backend-dev
+    environment:
+      DATABASE_URL: postgresql+asyncpg://ursoaia:ursoaia123@postgres/ursoaia
+      SECRET_KEY: dev-secret-key-not-for-production
+      ADMIN_EMAIL: admin@ursoaia-edu.online
+      ADMIN_PASSWORD: admin123
+      DEBUG: "true"
+      FRONTEND_URL: http://localhost:4321
+    volumes:
+      - ./backend/app:/app/app
+      - uploads_dev_data:/app/uploads
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - ursoaia-dev-network
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  postgres_dev_data:
+  uploads_dev_data:
+
+networks:
+  ursoaia-dev-network:
+    driver: bridge

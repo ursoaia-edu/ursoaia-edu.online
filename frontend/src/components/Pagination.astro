@@ -1,0 +1,53 @@
+---
+interface Props {
+    currentPage: number;
+    totalPages: number;
+    baseUrl: string;
+}
+
+const { currentPage, totalPages, baseUrl } = Astro.props;
+
+const pages = [];
+for (let i = 1; i <= totalPages; i++) {
+    if (i <= 3 || i > totalPages - 3 || (i >= currentPage - 2 && i <= currentPage + 2)) {
+        pages.push(i);
+    } else if (pages[pages.length - 1] !== -1) {
+        pages.push(-1); // -1 represents ellipsis
+    }
+}
+---
+
+{totalPages > 1 && (
+    <div class="flex justify-center gap-2 mt-8">
+        {currentPage > 1 && (
+            <a 
+                href={`${baseUrl}?page=${currentPage - 1}`}
+                class="btn btn-ghost btn-sm"
+            >
+                «
+            </a>
+        )}
+        
+        {pages.map((page) => (
+            page === -1 ? (
+                <span class="btn btn-ghost btn-sm btn-disabled">...</span>
+            ) : (
+                <a 
+                    href={`${baseUrl}?page=${page}`}
+                    class={`btn btn-sm ${page === currentPage ? 'btn-gradient' : 'btn-ghost'}`}
+                >
+                    {page}
+                </a>
+            )
+        ))}
+        
+        {currentPage < totalPages && (
+            <a 
+                href={`${baseUrl}?page=${currentPage + 1}`}
+                class="btn btn-ghost btn-sm"
+            >
+                »
+            </a>
+        )}
+    </div>
+)}

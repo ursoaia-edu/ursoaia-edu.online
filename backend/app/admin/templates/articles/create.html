@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block title %}Create Article{% endblock %}
+{% block page_title %}Create Article{% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/@tiptap/core@2.1.12/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tiptap/starter-kit@2.1.12/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tiptap/extension-image@2.1.12/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tiptap/extension-link@2.1.12/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tiptap/extension-placeholder@2.1.12/dist/index.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <div class="card bg-base-100 shadow-xl rounded-2xl">
+        <div class="card-body">
+            <form id="article-form" class="space-y-6">
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold">Title</span>
+                    </label>
+                    <input type="text" id="title" name="title" placeholder="Enter article title" class="input input-bordered text-lg" required />
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold">Excerpt</span>
+                    </label>
+                    <textarea id="excerpt" name="excerpt" placeholder="Brief description for SEO and previews" class="textarea textarea-bordered" rows="2"></textarea>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Categories</span>
+                        </label>
+                        <select name="category_ids" multiple class="select select-bordered h-auto" size="3">
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label class="label">
+                            <span class="label-text-alt">Hold Ctrl/Cmd to select multiple</span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Tags</span>
+                        </label>
+                        <select name="tag_ids" multiple class="select select-bordered h-auto" size="3">
+                            {% for tag in tags %}
+                            <option value="{{ tag.id }}">{{ tag.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label class="label">
+                            <span class="label-text-alt">Hold Ctrl/Cmd to select multiple</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold">Cover Image URL</span>
+                    </label>
+                    <input type="url" id="cover_image" name="cover_image" placeholder="https://example.com/image.jpg" class="input input-bordered" />
+                </div>
+                
+                <!-- TipTap Editor -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold">Content</span>
+                    </label>
+                    
+                    <div class="border border-base-300 rounded-lg overflow-hidden">
+                        <!-- Toolbar -->
+                        <div class="editor-toolbar bg-base-200 p-2 border-b border-base-300 flex flex-wrap gap-1">
+                            <button type="button" data-action="bold" class="btn btn-ghost btn-sm" title="Bold">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"></path>
+                                </svg>
+                            </button>
+                            <button type="button" data-action="italic" class="btn btn-ghost btn-sm" title="Italic">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4h4m-2 0v16m-4 0h8" transform="skewX(-10)"></path>
+                                </svg>
+                            </button>
+                            <button type="button" data-action="strike" class="btn btn-ghost btn-sm" title="Strike">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.5 10H19a2 2 0 012 2v0a2 2 0 01-2 2h-1.5M6.5 14H5a2 2 0 00-2 2v0a2 2 0 002 2h1.5M4 12h16"></path>
+                                </svg>
+                            </button>
+                            <div class="divider divider-horizontal mx-1"></div>
+                            <button type="button" data-action="heading1" class="btn btn-ghost btn-sm" title="Heading 1">H1</button>
+                            <button type="button" data-action="heading2" class="btn btn-ghost btn-sm" title="Heading 2">H2</button>
+                            <button type="button" data-action="heading3" class="btn btn-ghost btn-sm" title="Heading 3">H3</button>
+                            <div class="divider divider-horizontal mx-1"></div>
+                            <button type="button" data-action="bulletList" class="btn btn-ghost btn-sm" title="Bullet List">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                            <button type="button" data-action="orderedList" class="btn btn-ghost btn-sm" title="Numbered List">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h10M7 16h10M4 6h.01M4 10h.01M4 14h.01M4 18h.01"></path>
+                                </svg>
+                            </button>
+                            <button type="button" data-action="blockquote" class="btn btn-ghost btn-sm" title="Quote">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </button>
+                            <button type="button" data-action="codeBlock" class="btn btn-ghost btn-sm" title="Code Block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </button>
+                            <div class="divider divider-horizontal mx-1"></div>
+                            <button type="button" data-action="link" class="btn btn-ghost btn-sm" title="Link">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                </svg>
+                            </button>
+                            <button type="button" data-action="image" class="btn btn-ghost btn-sm" title="Image">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Editor -->
+                        <div id="editor" class="prose max-w-none p-4 min-h-[400px] bg-base-100"></div>
+                    </div>
+                    <input type="hidden" id="content" name="content" />
+                </div>
+                
+                <div class="form-control">
+                    <label class="label cursor-pointer justify-start gap-4">
+                        <input type="checkbox" name="is_featured" class="checkbox checkbox-primary" />
+                        <span class="label-text">Featured Article</span>
+                    </label>
+                </div>
+                
+                <div class="card-actions justify-end gap-2">
+                    <a href="/admin/articles" class="btn btn-ghost">Cancel</a>
+                    <button type="submit" name="action" value="draft" class="btn btn-outline">Save Draft</button>
+                    <button type="submit" name="action" value="publish" class="btn btn-gradient text-white">Publish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Initialize TipTap Editor
+    const editor = new window.TiptapCore.Editor({
+        element: document.getElementById('editor'),
+        extensions: [
+            window.TiptapStarterKit.StarterKit,
+            window.TiptapImage.Image,
+            window.TiptapLink.Link,
+            window.TiptapPlaceholder.Placeholder.configure({
+                placeholder: 'Start writing your article...'
+            })
+        ],
+        content: '',
+        editorProps: {
+            attributes: {
+                class: 'focus:outline-none'
+            }
+        }
+    });
+    
+    // Toolbar actions
+    document.querySelectorAll('.editor-toolbar button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const action = btn.dataset.action;
+            
+            switch(action) {
+                case 'bold':
+                    editor.chain().focus().toggleBold().run();
+                    break;
+                case 'italic':
+                    editor.chain().focus().toggleItalic().run();
+                    break;
+                case 'strike':
+                    editor.chain().focus().toggleStrike().run();
+                    break;
+                case 'heading1':
+                    editor.chain().focus().toggleHeading({ level: 1 }).run();
+                    break;
+                case 'heading2':
+                    editor.chain().focus().toggleHeading({ level: 2 }).run();
+                    break;
+                case 'heading3':
+                    editor.chain().focus().toggleHeading({ level: 3 }).run();
+                    break;
+                case 'bulletList':
+                    editor.chain().focus().toggleBulletList().run();
+                    break;
+                case 'orderedList':
+                    editor.chain().focus().toggleOrderedList().run();
+                    break;
+                case 'blockquote':
+                    editor.chain().focus().toggleBlockquote().run();
+                    break;
+                case 'codeBlock':
+                    editor.chain().focus().toggleCodeBlock().run();
+                    break;
+                case 'link':
+                    const url = prompt('Enter URL:');
+                    if (url) {
+                        editor.chain().focus().setLink({ href: url }).run();
+                    }
+                    break;
+                case 'image':
+                    const imgUrl = prompt('Enter image URL:');
+                    if (imgUrl) {
+                        editor.chain().focus().setImage({ src: imgUrl }).run();
+                    }
+                    break;
+            }
+        });
+    });
+    
+    // Form submission
+    document.getElementById('article-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const form = e.target;
+        const action = e.submitter?.value || 'draft';
+        
+        // Get editor content
+        document.getElementById('content').value = JSON.stringify(editor.getJSON());
+        
+        const formData = new FormData(form);
+        const data = {
+            title: formData.get('title'),
+            excerpt: formData.get('excerpt'),
+            content: JSON.parse(formData.get('content')),
+            cover_image: formData.get('cover_image') || null,
+            is_published: action === 'publish',
+            is_featured: formData.has('is_featured'),
+            category_ids: Array.from(form.querySelector('[name="category_ids"]').selectedOptions).map(o => parseInt(o.value)),
+            tag_ids: Array.from(form.querySelector('[name="tag_ids"]').selectedOptions).map(o => parseInt(o.value))
+        };
+        
+        try {
+            const response = await fetch('/api/admin/articles', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            if (response.ok) {
+                const article = await response.json();
+                window.location.href = '/admin/articles';
+            } else {
+                const error = await response.json();
+                alert(error.detail || 'Failed to save article');
+            }
+        } catch (err) {
+            alert('Failed to save article: ' + err.message);
+        }
+    });
+</script>
+{% endblock %}

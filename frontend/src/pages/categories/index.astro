@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+let categories = [];
+
+try {
+    const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
+    const res = await fetch(`${apiUrl}/categories`);
+    
+    if (res.ok) {
+        categories = await res.json();
+    }
+} catch (error) {
+    console.error('Failed to fetch categories:', error);
+}
+---
+
+<BaseLayout title="Categorii" description="Toate categoriile de articole">
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-white mb-8">Categorii</h1>
+        
+        {categories.length > 0 ? (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {categories.map((category: any) => (
+                    <a 
+                        href={`/categories/${category.slug}`}
+                        class="card bg-base-100 shadow-xl rounded-xl p-6 hover:shadow-2xl transition-shadow group"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div 
+                                class="w-12 h-12 rounded-lg flex items-center justify-center"
+                                style={`background-color: ${category.color}20`}
+                            >
+                                <div 
+                                    class="w-6 h-6 rounded"
+                                    style={`background-color: ${category.color}`}
+                                />
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-semibold text-white group-hover:text-accent transition-colors">
+                                    {category.name}
+                                </h2>
+                                {category.description && (
+                                    <p class="text-sm text-gray-400">{category.description}</p>
+                                )}
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        ) : (
+            <div class="text-center py-16">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+                <h3 class="text-lg font-semibold text-gray-400">Nu există categorii</h3>
+            </div>
+        )}
+    </main>
+</BaseLayout>

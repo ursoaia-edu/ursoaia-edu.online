@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { slug } = Astro.params;
+
+let article = null;
+
+try {
+    const apiUrl = import.meta.env.API_URL || 'http://localhost:8000/api';
+    const res = await fetch(`${apiUrl}/articles/${slug}`);
+    
+    if (res.ok) {
+        article = await res.json();
+    }
+} catch (error) {
+    console.error('Failed to fetch article:', error);
+}
+
+if (!article) {
+    return Astro.redirect('/404');
+}
+
+const formattedDate = article.published_at 
+    ? new Date(article.published_at).toLocaleDateString('ro-RO', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    })
+    : '';
+
+// Simple TipTap content renderer
+function renderContent(content: any): string {
+    if (!content || !content.content) return '';
+    
+    function renderNode(node: any): string {
+        if (!node) return '';
+        
+        switch (node.type) {
+            case 'text':
+                let text = node.text || '';
+                if (node.marks) {
+                    for (const mark of node.marks) {
+                        switch (mark.type) {
+                            case 'bold':
+                                text = `<strong>${text}</strong>`;
+                                break;
+                            case 'italic':
+                                text = `<em>${text}</em>`;
+                                break;
+                            case 'strike':
+                                text = `<s>${text}</s>`;
+                                break;
+                            case 'link':
+                                text = `<a href="${mark.attrs?.href || '#'}" class="text-accent hover:text-accent-secondary">${text}</a>`;
+                                break;
+                            case 'code':
+                                text = `<code class="bg-base-300 px-1 rounded">${text}</code>`;
+                                break;
+                        }
+                    }
+                }
+                return text;
+                
+            case 'paragraph':
+                return `<p>${(node.content || []).map(renderNode).join('')}</p>`;
+                
+            case 'heading':
+                const level = node.attrs?.level || 1;
+                return `<h${level} class="text-${4-level}xl font-bold text-white mt-6 mb-4">${(node.content || []).map(renderNode).join('')}</h${level}>`;
+                
+            case 'bulletList':
+                return `<ul class="list-disc list-inside space-y-2">${(node.content || []).map(renderNode).join('')}</ul>`;
+                
+            case 'orderedList':
+                return `<ol class="list-decimal list-inside space-y-2">${(node.content || []).map(renderNode).join('')}</ol>`;
+                
+            case 'listItem':
+                return `<li>${(node.content || []).map(renderNode).join('')}</li>`;
+                
+            case 'blockquote':
+                return `<blockquote class="border-l-4 border-accent pl-4 my-4 italic text-gray-300">${(node.content || []).map(renderNode).join('')}</blockquote>`;
+                
+            case 'codeBlock':
+                return `<pre class="bg-base-300 rounded-lg p-4 overflow-x-auto my-4"><code>${(node.content || []).map(renderNode).join('')}</code></pre>`;
+                
+            case 'image':
+                return `<img src="${node.attrs?.src || ''}" alt="${node.attrs?.alt || ''}" class="rounded-lg my-4 max-w-full" />`;
+                
+            case 'hardBreak':
+                return '<br />';
+                
+            default:
+                if (node.content) {
+                    return (node.content as any[]).map(renderNode).join('');
+                }
+                return '';
+        }
+    }
+    
+    return content.content.map(renderNode).join('');
+}
+---
+
+<BaseLayout title={article.title} description={article.excerpt}>
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        {/* Header */}
+        <header class="mb-8">
+            {article.categories?.length > 0 && (
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {article.categories.map((category: any) => (
+                        <a 
+                            href={`/categories/${category.slug}`}
+                            class="badge badge-lg"
+                            style={`background-color: ${category.color}; color: white;`}
+                        >
+                            {category.name}
+                        </a>
+                    ))}
+                </div>
+            )}
+            
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                {article.title}
+            </h1>
+            
+            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+                {formattedDate && (
+                    <span>{formattedDate}</span>
+                )}
+                {article.reading_time > 0 && (
+                    <span>· {article.reading_time} min citire</span>
+                )}
+                {article.views_count > 0 && (
+                    <span>· {article.views_count} vizualizări</span>
+                )}
+            </div>
+        </header>
+        
+        {/* Cover Image */}
+        {article.cover_image && (
+            <figure class="mb-8">
+                <img 
+                    src={article.cover_image} 
+                    alt={article.title}
+                    class="w-full rounded-2xl shadow-lg"
+                />
+            </figure>
+        )}
+        
+        {/* Content */}
+        <div class="prose prose-lg max-w-none">
+            <Fragment set:html={renderContent(article.content)} />
+        </div>
+        
+        {/* Tags */}
+        {article.tags?.length > 0 && (
+            <div class="mt-8 pt-8 border-t border-base-100/10">
+                <div class="flex flex-wrap gap-2">
+                    {article.tags.map((tag: any) => (
+                        <a 
+                            href={`/tags/${tag.slug}`}
+                            class="text-sm px-3 py-1 rounded-full hover:opacity-80 transition-opacity"
+                            style={`background-color: ${tag.color}20; color: ${tag.color};`}
+                        >
+                            #{tag.name}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        )}
+        
+        {/* Navigation */}
+        <nav class="mt-8 pt-8 border-t border-base-100/10">
+            <a href="/articles" class="btn btn-ghost">
+                ← Înapoi la articole
+            </a>
+        </nav>
+    </article>
+</BaseLayout>

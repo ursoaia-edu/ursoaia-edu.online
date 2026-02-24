@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock %}
+{% block page_title %}Articles{% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-6">
+    <div>
+        <a href="/admin/articles?published=true" class="btn btn-sm {% if request.query_params.get('published') == 'true' %}btn-primary{% else %}btn-ghost{% endif %}">Published</a>
+        <a href="/admin/articles?published=false" class="btn btn-sm {% if request.query_params.get('published') == 'false' %}btn-primary{% else %}btn-ghost{% endif %}">Drafts</a>
+        <a href="/admin/articles" class="btn btn-sm {% if not request.query_params.get('published') %}btn-primary{% else %}btn-ghost{% endif %}">All</a>
+    </div>
+    <a href="/admin/articles/create" class="btn btn-gradient text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        New Article
+    </a>
+</div>
+
+<div class="card bg-base-100 shadow-xl rounded-2xl">
+    <div class="card-body p-0">
+        {% if articles %}
+        <div class="overflow-x-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Categories</th>
+                        <th>Views</th>
+                        <th>Updated</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr class="hover">
+                        <td>
+                            <div class="flex items-center gap-3">
+                                {% if article.cover_image %}
+                                <div class="avatar">
+                                    <div class="w-12 h-12 rounded">
+                                        <img src="{{ article.cover_image }}" alt="{{ article.title }}" />
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <div>
+                                    <div class="font-bold">{{ article.title }}</div>
+                                    <div class="text-sm opacity-50">/{{ article.slug }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {% if article.is_published %}
+                            <span class="badge badge-success">Published</span>
+                            {% else %}
+                            <span class="badge badge-warning">Draft</span>
+                            {% endif %}
+                            {% if article.is_featured %}
+                            <span class="badge badge-accent">Featured</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% for category in article.categories %}
+                            <span class="badge badge-outline badge-sm" style="border-color: {{ category.color }}; color: {{ category.color }}">{{ category.name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>{{ article.views_count }}</td>
+                        <td class="text-sm opacity-70">{{ article.updated_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>
+                            <div class="flex gap-2">
+                                <a href="/admin/articles/{{ article.id }}/edit" class="btn btn-ghost btn-xs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </a>
+                                {% if article.is_published %}
+                                <a href="/articles/{{ article.slug }}" target="_blank" class="btn btn-ghost btn-xs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                                {% endif %}
+                                <button 
+                                    hx-delete="/api/admin/articles/{{ article.id }}" 
+                                    hx-confirm="Are you sure you want to delete this article?"
+                                    hx-target="closest tr"
+                                    hx-swap="outerHTML swap:0.5s"
+                                    class="btn btn-ghost btn-xs text-error">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-16">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+            <h3 class="text-lg font-semibold text-gray-400">No articles yet</h3>
+            <p class="text-gray-500 mb-4">Create your first article to get started</p>
+            <a href="/admin/articles/create" class="btn btn-gradient text-white">Create Article</a>
+        </div>
+        {% endif %}
+    </div>
+    
+    {% if pages > 1 %}
+    <div class="card-footer border-t border-base-300 p-4">
+        <div class="flex justify-center gap-2">
+            {% if page > 1 %}
+            <a href="/admin/articles?page={{ page - 1 }}" class="btn btn-sm">«</a>
+            {% endif %}
+            
+            {% for p in range(1, pages + 1) %}
+                {% if p == page %}
+                <span class="btn btn-sm btn-primary">{{ p }}</span>
+                {% elif p <= 3 or p > pages - 3 or (p >= page - 2 and p <= page + 2) %}
+                <a href="/admin/articles?page={{ p }}" class="btn btn-sm">{{ p }}</a>
+                {% elif p == 4 and page > 5 or p == pages - 3 and page < pages - 4 %}
+                <span class="btn btn-sm btn-disabled">...</span>
+                {% endif %}
+            {% endfor %}
+            
+            {% if page < pages %}
+            <a href="/admin/articles?page={{ page + 1 }}" class="btn btn-sm">»</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
