@@ -17,7 +17,7 @@ if (query) {
 
 <BaseLayout title="Căutare" description="Caută articole pe Ursoaia Edu">
     <main class="max-w-7xl mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold text-white mb-8">Căutare</h1>
+        <h1 class="text-3xl font-bold text-base-content mb-8">Căutare</h1>
         
         <form class="mb-8">
             <div class="join w-full max-w-xl">
@@ -37,7 +37,7 @@ if (query) {
         </form>
         
         {query && (
-            <p class="text-gray-400 mb-6">
+            <p class="text-base-content/60 mb-6">
                 {total > 0 
                     ? `${total} rezultat${total > 1 ? 'e' : ''} pentru "${query}"`
                     : `Nu s-au găsit rezultate pentru "${query}"`
@@ -66,11 +66,11 @@ if (query) {
         
         {!query && (
             <div class="text-center py-16">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-base-content/50 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <h3 class="text-lg font-semibold text-gray-400">Caută articole</h3>
-                <p class="text-gray-500">Introdu un termen de căutare pentru a găsi articole.</p>
+                <h3 class="text-lg font-semibold text-base-content/60">Caută articole</h3>
+                <p class="text-base-content/50">Introdu un termen de căutare pentru a găsi articole.</p>
             </div>
         )}
     </main>

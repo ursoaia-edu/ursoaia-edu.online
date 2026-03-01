@@ -18,12 +18,18 @@ const { title, description = "Ursoaia Educational Portal - Learning resources fo
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script is:inline>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <style is:global>
         @import '../styles/global.css';
     </style>
 </head>
 <body class="bg-base-300 min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 backdrop-blur-lg bg-base-300/80 border-b border-base-100/10">
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-base-300/80 border-b border-base-content/10">
         <nav class="navbar max-w-7xl mx-auto px-4">
             <div class="flex-1">
                 <a href="/" class="flex items-center gap-2">
@@ -32,16 +38,24 @@ const { title, description = "Ursoaia Educational Portal - Learning resources fo
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
                     </div>
-                    <span class="font-bold text-xl text-white hidden sm:inline">Ursoaia Edu</span>
+                    <span class="font-bold text-xl text-base-content hidden sm:inline">Ursoaia Edu</span>
                 </a>
             </div>
 
-            <div class="flex-none">
+            <div class="flex-none flex items-center gap-2">
                 <ul class="menu menu-horizontal px-1 gap-1">
-                    <li><a href="/" class="hover:text-accent transition-colors">Acasă</a></li>
-                    <li><a href="/articles" class="hover:text-accent transition-colors">Articole</a></li>
-                    <li><a href="/search" class="hover:text-accent transition-colors">Căutare</a></li>
+                    <li><a href="/" class="hover:text-primary transition-colors">Acasă</a></li>
+                    <li><a href="/articles" class="hover:text-primary transition-colors">Articole</a></li>
+                    <li><a href="/search" class="hover:text-primary transition-colors">Căutare</a></li>
                 </ul>
+                <button id="theme-toggle" class="btn btn-ghost btn-circle" aria-label="Schimbă tema">
+                    <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
             </div>
         </nav>
     </header>
@@ -50,7 +64,7 @@ const { title, description = "Ursoaia Educational Portal - Learning resources fo
         <slot />
     </main>
 
-    <footer class="bg-base-300 border-t border-base-100/10 mt-16">
+    <footer class="bg-base-300 border-t border-base-content/10 mt-16">
         <div class="max-w-7xl mx-auto px-4 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
@@ -60,43 +74,43 @@ const { title, description = "Ursoaia Educational Portal - Learning resources fo
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                             </svg>
                         </div>
-                        <span class="font-bold text-lg text-white">Ursoaia Edu</span>
+                        <span class="font-bold text-lg text-base-content">Ursoaia Edu</span>
                     </div>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-base-content/60 text-sm">
                         Portal educațional pentru elevi și studenți. Resurse de învățare și materiale didactice.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="font-semibold text-white mb-4">Navigare</h4>
+                    <h4 class="font-semibold text-base-content mb-4">Navigare</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="/" class="text-gray-400 hover:text-accent transition-colors">Acasă</a></li>
-                        <li><a href="/articles" class="text-gray-400 hover:text-accent transition-colors">Articole</a></li>
-                        <li><a href="/categories" class="text-gray-400 hover:text-accent transition-colors">Categorii</a></li>
+                        <li><a href="/" class="text-base-content/60 hover:text-primary transition-colors">Acasă</a></li>
+                        <li><a href="/articles" class="text-base-content/60 hover:text-primary transition-colors">Articole</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-semibold text-white mb-4">Resurse</h4>
+                    <h4 class="font-semibold text-base-content mb-4">Resurse</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="/tags" class="text-gray-400 hover:text-accent transition-colors">Tag-uri</a></li>
-                        <li><a href="/search" class="text-gray-400 hover:text-accent transition-colors">Căutare</a></li>
+                        <li><a href="/categories" class="text-base-content/60 hover:text-primary transition-colors">Categorii</a></li>
+                        <li><a href="/tags" class="text-base-content/60 hover:text-primary transition-colors">Tag-uri</a></li>
+                        <li><a href="/search" class="text-base-content/60 hover:text-primary transition-colors">Căutare</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-semibold text-white mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
+                    <h4 class="font-semibold text-base-content mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-base-content/60">
                         <li class="flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                            <a href="mailto:informatica.gimnaziu2025@gmail.com" class="hover:text-accent transition-colors">informatica.gimnaziu2025@gmail.com</a>
+                            <a href="mailto:informatica.gimnaziu2025@gmail.com" class="hover:text-primary transition-colors">informatica.gimnaziu2025@gmail.com</a>
                         </li>
                         <li class="flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             Luni - Vineri, 8:00 - 17:00
                         </li>
                         <li class="flex items-center gap-2">
-                            <a href="https://github.com/ursoaia-edu" target="_blank" aria-label="GitHub" class="flex items-center gap-2 hover:text-accent transition-colors">
+                            <a href="https://github.com/ursoaia-edu" target="_blank" aria-label="GitHub" class="flex items-center gap-2 hover:text-primary transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                                 GitHub
                             </a>
@@ -105,10 +119,38 @@ const { title, description = "Ursoaia Educational Portal - Learning resources fo
                 </div>
             </div>
 
-            <div class="border-t border-base-100/10 mt-8 pt-8 text-center text-sm text-gray-500">
+            <div class="border-t border-base-content/10 mt-8 pt-8 text-center text-sm text-base-content/50">
                 <p>&copy; {new Date().getFullYear()} Ursoaia Edu. Toate drepturile rezervate.</p>
             </div>
         </div>
     </footer>
+
+    <script is:inline>
+        (function() {
+            function updateIcons(theme) {
+                const sun = document.getElementById('theme-icon-sun');
+                const moon = document.getElementById('theme-icon-moon');
+                if (theme === 'dark') {
+                    sun.classList.remove('hidden');
+                    moon.classList.add('hidden');
+                } else {
+                    sun.classList.add('hidden');
+                    moon.classList.remove('hidden');
+                }
+            }
+
+            const current = document.documentElement.getAttribute('data-theme') || 'dark';
+            updateIcons(current);
+
+            document.getElementById('theme-toggle').addEventListener('click', function() {
+                const html = document.documentElement;
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcons(newTheme);
+            });
+        })();
+    </script>
 </body>
 </html>

@@ -8,7 +8,7 @@ const tags = await fetchApi<Tag[]>('/tags') || [];
 
 <BaseLayout title="Tag-uri" description="Toate tag-urile disponibile">
     <main class="max-w-7xl mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold text-white mb-8">Tag-uri</h1>
+        <h1 class="text-3xl font-bold text-base-content mb-8">Tag-uri</h1>
         
         {tags.length > 0 ? (
             <div class="flex flex-wrap gap-3">
@@ -24,10 +24,10 @@ const tags = await fetchApi<Tag[]>('/tags') || [];
             </div>
         ) : (
             <div class="text-center py-16">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-base-content/50 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                 </svg>
-                <h3 class="text-lg font-semibold text-gray-400">Nu există tag-uri</h3>
+                <h3 class="text-lg font-semibold text-base-content/60">Nu există tag-uri</h3>
             </div>
         )}
     </main>

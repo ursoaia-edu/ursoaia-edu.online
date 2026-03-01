@@ -12,11 +12,11 @@ const { title, subtitle, image } = Astro.props;
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col md:flex-row items-center gap-8">
             <div class="flex-1 text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 animate-fadeIn">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-base-content mb-4 animate-fadeIn">
                     {title}
                 </h1>
                 {subtitle && (
-                    <p class="text-xl text-gray-300 animate-fadeIn" style="animation-delay: 0.1s">
+                    <p class="text-xl text-base-content/70 animate-fadeIn" style="animation-delay: 0.1s">
                         {subtitle}
                     </p>
                 )}

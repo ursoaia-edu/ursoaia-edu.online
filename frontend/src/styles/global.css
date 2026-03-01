@@ -21,29 +21,49 @@ body {
     @apply from-accent-secondary to-accent transform -translate-y-0.5 shadow-lg;
 }
 
-.card-gradient {
+[data-theme="dark"] .card-gradient {
     @apply bg-gradient-to-br from-primary-dark/90 to-primary-light/10;
 }
 
-.hero-gradient {
+[data-theme="light"] .card-gradient {
+    @apply bg-gradient-to-br from-base-200 to-base-300;
+}
+
+[data-theme="dark"] .hero-gradient {
     background: linear-gradient(135deg, var(--primary-dark) 0%, #1a1b2e 50%, var(--primary-dark) 100%);
+}
+
+[data-theme="light"] .hero-gradient {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
 }
 
 .text-gradient {
     @apply bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent;
 }
 
-/* Prose overrides for dark theme (extends @tailwindcss/typography) */
-.prose a {
+/* Prose overrides (extends @tailwindcss/typography) */
+[data-theme="dark"] .prose a {
     @apply text-accent hover:text-accent-secondary transition-colors;
 }
 
-.prose code {
+[data-theme="light"] .prose a {
+    @apply text-accent hover:text-accent-secondary transition-colors;
+}
+
+[data-theme="dark"] .prose code {
     @apply bg-base-300;
 }
 
-.prose pre {
+[data-theme="light"] .prose code {
+    @apply bg-base-200;
+}
+
+[data-theme="dark"] .prose pre {
     @apply bg-base-300;
+}
+
+[data-theme="light"] .prose pre {
+    @apply bg-base-200;
 }
 
 .prose blockquote {
@@ -69,8 +89,12 @@ body {
     width: 8px;
 }
 
-::-webkit-scrollbar-track {
+[data-theme="dark"]::-webkit-scrollbar-track {
     @apply bg-base-300;
+}
+
+[data-theme="light"]::-webkit-scrollbar-track {
+    @apply bg-base-200;
 }
 
 ::-webkit-scrollbar-thumb {

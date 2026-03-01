@@ -39,11 +39,11 @@ const formattedDate = article.published_at
                 </div>
             )}
             
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-base-content mb-4">
                 {article.title}
             </h1>
             
-            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+            <div class="flex flex-wrap items-center gap-4 text-sm text-base-content/60">
                 {formattedDate && (
                     <span>{formattedDate}</span>
                 )}
@@ -68,13 +68,13 @@ const formattedDate = article.published_at
         )}
         
         {/* Content */}
-        <div class="prose prose-invert prose-lg max-w-none">
+        <div class="prose prose-neutral prose-lg max-w-none">
             <Fragment set:html={renderTipTapContent(article.content)} />
         </div>
         
         {/* Tags */}
         {article.tags?.length > 0 && (
-            <div class="mt-8 pt-8 border-t border-base-100/10">
+            <div class="mt-8 pt-8 border-t border-base-content/10">
                 <div class="flex flex-wrap gap-2">
                     {article.tags.map((tag) => (
                         <a 
@@ -90,7 +90,7 @@ const formattedDate = article.published_at
         )}
         
         {/* Navigation */}
-        <nav class="mt-8 pt-8 border-t border-base-100/10">
+        <nav class="mt-8 pt-8 border-t border-base-content/10">
             <a href="/articles" class="btn btn-ghost">
                 ← Înapoi la articole
             </a>

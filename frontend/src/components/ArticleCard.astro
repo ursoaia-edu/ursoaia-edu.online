@@ -63,14 +63,14 @@ const formattedDate = publishedAt
             </div>
         )}
         
-        <h3 class="card-title text-white group-hover:text-accent transition-colors">
+        <h3 class="card-title text-base-content group-hover:text-primary transition-colors">
             <a href={`/articles/${slug}`}>{title}</a>
         </h3>
         
-        <p class="text-gray-400 text-sm line-clamp-2">{excerpt}</p>
+        <p class="text-base-content/60 text-sm line-clamp-2">{excerpt}</p>
         
-        <div class="card-actions justify-between items-center mt-4 pt-4 border-t border-base-100/10">
-            <div class="text-xs text-gray-500">
+        <div class="card-actions justify-between items-center mt-4 pt-4 border-t border-base-content/10">
+            <div class="text-xs text-base-content/50">
                 {formattedDate && <span>{formattedDate}</span>}
                 {readingTime > 0 && <span> · {readingTime} min citire</span>}
             </div>

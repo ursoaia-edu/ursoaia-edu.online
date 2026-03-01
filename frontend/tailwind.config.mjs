@@ -33,7 +33,21 @@ export default {
                     "error": "#ef4444",
                 },
             },
-            "light",
+            {
+                light: {
+                    "primary": "#ef233c",
+                    "secondary": "#ff6b35",
+                    "accent": "#2b2d42",
+                    "neutral": "#f3f4f6",
+                    "base-100": "#ffffff",
+                    "base-200": "#f3f4f6",
+                    "base-300": "#e5e7eb",
+                    "info": "#3b82f6",
+                    "success": "#10b981",
+                    "warning": "#f59e0b",
+                    "error": "#ef4444",
+                },
+            },
         ],
     },
 }
