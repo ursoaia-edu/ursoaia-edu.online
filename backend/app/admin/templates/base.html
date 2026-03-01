@@ -41,28 +41,7 @@
             border-left: 3px solid var(--accent);
         }
         
-        .editor-toolbar button {
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            transition: background 0.2s;
-        }
         
-        .editor-toolbar button:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .ProseMirror {
-            min-height: 400px;
-            outline: none;
-        }
-        
-        .ProseMirror p.is-editor-empty:first-child::before {
-            color: #adb5bd;
-            content: attr(data-placeholder);
-            float: left;
-            height: 0;
-            pointer-events: none;
-        }
     </style>
     {% block head %}{% endblock %}
 </head>
@@ -91,7 +70,7 @@
                         </label>
                         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><a>{{ user.email }}</a></li>
-                            <li><a href="/api/admin/auth/logout" hx-post="/api/admin/auth/logout" hx-redirect="/admin/login">Logout</a></li>
+                            <li><a href="/api/admin/auth/logout" hx-post="/api/admin/auth/logout">Logout</a></li>
                         </ul>
                     </div>
                 </div>

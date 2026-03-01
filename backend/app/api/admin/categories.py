@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from app.database import get_db
@@ -96,6 +97,7 @@ async def update_category(
 @router.delete("/{category_id}")
 async def delete_category(
     category_id: int,
+    request: Request,
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
@@ -110,4 +112,6 @@ async def delete_category(
     await db.delete(category)
     await db.commit()
     
+    if request.headers.get("HX-Request"):
+        return Response(status_code=200)
     return {"message": "Category deleted successfully"}

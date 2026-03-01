@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.0/dist/full.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10/dist/ext/json-enc.js"></script>
     <style>
         :root {
             --primary-dark: #2b2d42;
@@ -48,7 +49,7 @@
             <p class="text-gray-400 mt-2">Admin Panel</p>
         </div>
         
-        <form hx-post="/api/admin/auth/login" hx-redirect="/admin" class="space-y-4">
+        <form hx-post="/api/admin/auth/login" hx-ext="json-enc" class="space-y-4">
             <div class="form-control">
                 <label class="label">
                     <span class="label-text text-gray-300">Email</span>

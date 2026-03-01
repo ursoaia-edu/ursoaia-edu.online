@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from sqlalchemy.orm import selectinload
@@ -92,7 +93,13 @@ async def create_article(
     
     db.add(article)
     await db.commit()
-    await db.refresh(article)
+    
+    result = await db.execute(
+        select(Article)
+        .options(selectinload(Article.categories), selectinload(Article.tags))
+        .where(Article.id == article.id)
+    )
+    article = result.scalar_one()
     
     return ArticleResponse.model_validate(article)
 
@@ -164,7 +171,13 @@ async def update_article(
         article.published_at = datetime.now(timezone.utc)
     
     await db.commit()
-    await db.refresh(article)
+    
+    result = await db.execute(
+        select(Article)
+        .options(selectinload(Article.categories), selectinload(Article.tags))
+        .where(Article.id == article.id)
+    )
+    article = result.scalar_one()
     
     return ArticleResponse.model_validate(article)
 
@@ -172,6 +185,7 @@ async def update_article(
 @router.delete("/{article_id}")
 async def delete_article(
     article_id: int,
+    request: Request,
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
@@ -186,4 +200,6 @@ async def delete_article(
     await db.delete(article)
     await db.commit()
     
+    if request.headers.get("HX-Request"):
+        return Response(status_code=200)
     return {"message": "Article deleted successfully"}

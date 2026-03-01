@@ -169,8 +169,12 @@
                 close_modal();
                 window.location.reload();
             } else {
-                const error = await response.json();
-                alert(error.detail || 'Failed to save tag');
+                try {
+                    const error = await response.json();
+                    alert(error.detail || 'Failed to save tag');
+                } catch {
+                    alert('Failed to save tag');
+                }
             }
         } catch (err) {
             alert('Failed to save tag: ' + err.message);

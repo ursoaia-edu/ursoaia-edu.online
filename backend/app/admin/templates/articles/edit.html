@@ -4,11 +4,17 @@
 {% block page_title %}Edit Article{% endblock %}
 
 {% block head %}
-<script src="https://cdn.jsdelivr.net/npm/@tiptap/core@2.1.12/dist/index.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tiptap/starter-kit@2.1.12/dist/index.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tiptap/extension-image@2.1.12/dist/index.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tiptap/extension-link@2.1.12/dist/index.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tiptap/extension-placeholder@2.1.12/dist/index.umd.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+<style>
+    .ql-toolbar.ql-snow { background: oklch(var(--b2)); border-color: oklch(var(--b3)); }
+    .ql-container.ql-snow { border-color: oklch(var(--b3)); }
+    .ql-editor { min-height: 400px; color: oklch(var(--bc)); font-size: 1rem; }
+    .ql-editor.ql-blank::before { color: oklch(var(--bc) / 0.4); }
+    .ql-snow .ql-stroke { stroke: oklch(var(--bc)); }
+    .ql-snow .ql-fill { fill: oklch(var(--bc)); }
+    .ql-snow .ql-picker { color: oklch(var(--bc)); }
+    .ql-snow .ql-picker-options { background: oklch(var(--b1)); border-color: oklch(var(--b3)); }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -62,78 +68,48 @@
                 
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text font-semibold">Cover Image URL</span>
+                        <span class="label-text font-semibold">Cover Image</span>
                     </label>
-                    <input type="url" id="cover_image" name="cover_image" value="{{ article.cover_image or '' }}" placeholder="https://example.com/image.jpg" class="input input-bordered" />
+                    <input type="hidden" id="cover_image" name="cover_image" value="{{ article.cover_image or '' }}" />
+                    <div id="cover-preview" class="{% if not article.cover_image %}hidden{% endif %} mb-3 relative group">
+                        <img id="cover-preview-img" src="{{ article.cover_image or '' }}" alt="Cover" class="w-full max-h-48 object-cover rounded-lg" />
+                        <button type="button" onclick="removeCover()" class="btn btn-circle btn-sm btn-error absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    </div>
+                    <div class="flex gap-2">
+                        <label class="btn btn-outline btn-sm flex-1 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                            </svg>
+                            Upload
+                            <input type="file" accept="image/*" class="hidden" onchange="uploadCoverImage(event)" />
+                        </label>
+                        <button type="button" onclick="openMediaPicker()" class="btn btn-outline btn-sm flex-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            Media Library
+                        </button>
+                    </div>
                 </div>
                 
-                <!-- TipTap Editor -->
+                <dialog id="media_picker_modal" class="modal">
+                    <div class="modal-box max-w-4xl">
+                        <h3 class="font-bold text-lg mb-4">Select Image</h3>
+                        <div id="media-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[60vh] overflow-y-auto">
+                            <div class="text-center col-span-full py-8 text-gray-500">Loading...</div>
+                        </div>
+                        <div class="modal-action">
+                            <button type="button" onclick="document.getElementById('media_picker_modal').close()" class="btn btn-ghost">Cancel</button>
+                        </div>
+                    </div>
+                    <form method="dialog" class="modal-backdrop"><button>close</button></form>
+                </dialog>
+                
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text font-semibold">Content</span>
                     </label>
-                    
-                    <div class="border border-base-300 rounded-lg overflow-hidden">
-                        <!-- Toolbar -->
-                        <div class="editor-toolbar bg-base-200 p-2 border-b border-base-300 flex flex-wrap gap-1">
-                            <button type="button" data-action="bold" class="btn btn-ghost btn-sm" title="Bold">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-action="italic" class="btn btn-ghost btn-sm" title="Italic">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4h4m-2 0v16m-4 0h8" transform="skewX(-10)"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-action="strike" class="btn btn-ghost btn-sm" title="Strike">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.5 10H19a2 2 0 012 2v0a2 2 0 01-2 2h-1.5M6.5 14H5a2 2 0 00-2 2v0a2 2 0 002 2h1.5M4 12h16"></path>
-                                </svg>
-                            </button>
-                            <div class="divider divider-horizontal mx-1"></div>
-                            <button type="button" data-action="heading1" class="btn btn-ghost btn-sm" title="Heading 1">H1</button>
-                            <button type="button" data-action="heading2" class="btn btn-ghost btn-sm" title="Heading 2">H2</button>
-                            <button type="button" data-action="heading3" class="btn btn-ghost btn-sm" title="Heading 3">H3</button>
-                            <div class="divider divider-horizontal mx-1"></div>
-                            <button type="button" data-action="bulletList" class="btn btn-ghost btn-sm" title="Bullet List">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-action="orderedList" class="btn btn-ghost btn-sm" title="Numbered List">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h10M7 16h10M4 6h.01M4 10h.01M4 14h.01M4 18h.01"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-action="blockquote" class="btn btn-ghost btn-sm" title="Quote">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-action="codeBlock" class="btn btn-ghost btn-sm" title="Code Block">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                                </svg>
-                            </button>
-                            <div class="divider divider-horizontal mx-1"></div>
-                            <button type="button" data-action="link" class="btn btn-ghost btn-sm" title="Link">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-action="image" class="btn btn-ghost btn-sm" title="Image">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        
-                        <!-- Editor -->
-                        <div id="editor" class="prose max-w-none p-4 min-h-[400px] bg-base-100"></div>
-                    </div>
-                    <input type="hidden" id="content" name="content" value='{{ article.content | tojson | safe }}' />
+                    <div id="editor" class="bg-base-100 rounded-lg"></div>
                 </div>
                 
                 <div class="form-control">
@@ -155,122 +131,153 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
-    // Initialize TipTap Editor with existing content
-    let initialContent = {};
-    try {
-        initialContent = JSON.parse(document.getElementById('content').value || '{}');
-    } catch (e) {
-        initialContent = {};
-    }
-    
-    const editor = new window.TiptapCore.Editor({
-        element: document.getElementById('editor'),
-        extensions: [
-            window.TiptapStarterKit.StarterKit,
-            window.TiptapImage.Image,
-            window.TiptapLink.Link,
-            window.TiptapPlaceholder.Placeholder.configure({
-                placeholder: 'Start writing your article...'
-            })
-        ],
-        content: Object.keys(initialContent).length > 0 ? initialContent : '',
-        editorProps: {
-            attributes: {
-                class: 'focus:outline-none'
-            }
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: 'Start writing your article...',
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'strike'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['blockquote', 'code-block'],
+                ['link', 'image'],
+                ['clean']
+            ]
         }
     });
-    
-    // Toolbar actions
-    document.querySelectorAll('.editor-toolbar button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const action = btn.dataset.action;
-            
-            switch(action) {
-                case 'bold':
-                    editor.chain().focus().toggleBold().run();
-                    break;
-                case 'italic':
-                    editor.chain().focus().toggleItalic().run();
-                    break;
-                case 'strike':
-                    editor.chain().focus().toggleStrike().run();
-                    break;
-                case 'heading1':
-                    editor.chain().focus().toggleHeading({ level: 1 }).run();
-                    break;
-                case 'heading2':
-                    editor.chain().focus().toggleHeading({ level: 2 }).run();
-                    break;
-                case 'heading3':
-                    editor.chain().focus().toggleHeading({ level: 3 }).run();
-                    break;
-                case 'bulletList':
-                    editor.chain().focus().toggleBulletList().run();
-                    break;
-                case 'orderedList':
-                    editor.chain().focus().toggleOrderedList().run();
-                    break;
-                case 'blockquote':
-                    editor.chain().focus().toggleBlockquote().run();
-                    break;
-                case 'codeBlock':
-                    editor.chain().focus().toggleCodeBlock().run();
-                    break;
-                case 'link':
-                    const url = prompt('Enter URL:');
-                    if (url) {
-                        editor.chain().focus().setLink({ href: url }).run();
+
+    // Load existing content
+    try {
+        const content = {{ article.content | tojson | safe }};
+        if (content && content.html) {
+            quill.root.innerHTML = content.html;
+        } else if (content && content.type === 'doc' && content.content) {
+            // Legacy TipTap JSON - render to HTML
+            function renderNode(node) {
+                if (!node) return '';
+                switch(node.type) {
+                    case 'text': {
+                        let t = node.text || '';
+                        t = t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                        (node.marks || []).forEach(m => {
+                            if (m.type === 'bold') t = '<strong>' + t + '</strong>';
+                            if (m.type === 'italic') t = '<em>' + t + '</em>';
+                            if (m.type === 'strike') t = '<s>' + t + '</s>';
+                            if (m.type === 'code') t = '<code>' + t + '</code>';
+                            if (m.type === 'link') t = '<a href="' + (m.attrs?.href||'') + '">' + t + '</a>';
+                        });
+                        return t;
                     }
-                    break;
-                case 'image':
-                    const imgUrl = prompt('Enter image URL:');
-                    if (imgUrl) {
-                        editor.chain().focus().setImage({ src: imgUrl }).run();
-                    }
-                    break;
+                    case 'paragraph': return '<p>' + children(node) + '</p>';
+                    case 'heading': return '<h' + (node.attrs?.level||1) + '>' + children(node) + '</h' + (node.attrs?.level||1) + '>';
+                    case 'bulletList': return '<ul>' + children(node) + '</ul>';
+                    case 'orderedList': return '<ol>' + children(node) + '</ol>';
+                    case 'listItem': return '<li>' + children(node) + '</li>';
+                    case 'blockquote': return '<blockquote>' + children(node) + '</blockquote>';
+                    case 'codeBlock': return '<pre><code>' + children(node) + '</code></pre>';
+                    case 'image': return '<img src="' + (node.attrs?.src||'') + '">';
+                    case 'horizontalRule': return '<hr>';
+                    case 'hardBreak': return '<br>';
+                    default: return children(node);
+                }
             }
-        });
-    });
-    
-    // Form submission
+            function children(n) { return (n.content||[]).map(renderNode).join(''); }
+            quill.root.innerHTML = content.content.map(renderNode).join('');
+        }
+    } catch(e) {}
+
+    function setCoverImage(url) {
+        document.getElementById('cover_image').value = url;
+        document.getElementById('cover-preview-img').src = url;
+        document.getElementById('cover-preview').classList.remove('hidden');
+    }
+
+    function removeCover() {
+        document.getElementById('cover_image').value = '';
+        document.getElementById('cover-preview').classList.add('hidden');
+        document.getElementById('cover-preview-img').src = '';
+    }
+
+    async function uploadCoverImage(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const formData = new FormData();
+        formData.append('file', file);
+        try {
+            const response = await fetch('/api/admin/media', { method: 'POST', body: formData });
+            if (response.ok) {
+                const media = await response.json();
+                setCoverImage(media.url);
+            } else {
+                alert('Failed to upload image');
+            }
+        } catch { alert('Failed to upload image'); }
+        event.target.value = '';
+    }
+
+    async function openMediaPicker() {
+        const modal = document.getElementById('media_picker_modal');
+        const grid = document.getElementById('media-grid');
+        grid.innerHTML = '<div class="text-center col-span-full py-8 text-gray-500">Loading...</div>';
+        modal.showModal();
+        try {
+            const response = await fetch('/api/admin/media?per_page=100');
+            const media = await response.json();
+            if (media.length === 0) {
+                grid.innerHTML = '<div class="text-center col-span-full py-8 text-gray-500">No images yet. Upload one first.</div>';
+                return;
+            }
+            grid.innerHTML = media.map(item =>
+                '<div class="cursor-pointer aspect-square rounded-lg overflow-hidden bg-base-200 border-2 border-transparent hover:border-primary transition-colors" onclick="selectMediaItem(\'' + item.url + '\')">' +
+                '<img src="' + item.url + '" alt="' + (item.original_filename || '') + '" class="w-full h-full object-cover" />' +
+                '</div>'
+            ).join('');
+        } catch {
+            grid.innerHTML = '<div class="text-center col-span-full py-8 text-error">Failed to load media</div>';
+        }
+    }
+
+    function selectMediaItem(url) {
+        setCoverImage(url);
+        document.getElementById('media_picker_modal').close();
+    }
+
     document.getElementById('article-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const form = e.target;
         const articleId = form.dataset.articleId;
         const action = e.submitter?.value || 'draft';
-        
-        // Get editor content
-        document.getElementById('content').value = JSON.stringify(editor.getJSON());
-        
-        const formData = new FormData(form);
+
         const data = {
-            title: formData.get('title'),
-            excerpt: formData.get('excerpt'),
-            content: JSON.parse(formData.get('content')),
-            cover_image: formData.get('cover_image') || null,
+            title: form.querySelector('#title').value,
+            excerpt: form.querySelector('#excerpt').value,
+            content: { html: quill.root.innerHTML },
+            cover_image: form.querySelector('#cover_image').value || null,
             is_published: action === 'publish',
-            is_featured: formData.has('is_featured'),
+            is_featured: form.querySelector('[name="is_featured"]').checked,
             category_ids: Array.from(form.querySelector('[name="category_ids"]').selectedOptions).map(o => parseInt(o.value)),
             tag_ids: Array.from(form.querySelector('[name="tag_ids"]').selectedOptions).map(o => parseInt(o.value))
         };
-        
+
         try {
-            const response = await fetch(`/api/admin/articles/${articleId}`, {
+            const response = await fetch('/api/admin/articles/' + articleId, {
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
-            
+
             if (response.ok) {
                 window.location.href = '/admin/articles';
             } else {
-                const error = await response.json();
-                alert(error.detail || 'Failed to save article');
+                try {
+                    const error = await response.json();
+                    alert(error.detail || 'Failed to save article');
+                } catch {
+                    alert('Failed to save article');
+                }
             }
         } catch (err) {
             alert('Failed to save article: ' + err.message);

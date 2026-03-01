@@ -73,12 +73,19 @@ async def login(
         secure=not settings.DEBUG
     )
     
+    if request.headers.get("HX-Request"):
+        response.headers["HX-Redirect"] = "/admin"
+    
     return TokenResponse(access_token=access_token)
 
 
 @router.post("/logout")
-async def logout(response: Response):
+async def logout(request: Request, response: Response):
     response.delete_cookie("access_token")
+    
+    if request.headers.get("HX-Request"):
+        response.headers["HX-Redirect"] = "/admin/login"
+    
     return {"message": "Logged out successfully"}
 
 

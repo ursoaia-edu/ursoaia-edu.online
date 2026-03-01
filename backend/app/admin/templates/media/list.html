@@ -83,8 +83,12 @@
             if (response.ok) {
                 window.location.reload();
             } else {
-                const error = await response.json();
-                alert(error.detail || 'Failed to upload image');
+                try {
+                    const error = await response.json();
+                    alert(error.detail || 'Failed to upload image');
+                } catch {
+                    alert('Failed to upload image');
+                }
             }
         } catch (err) {
             alert('Failed to upload image: ' + err.message);

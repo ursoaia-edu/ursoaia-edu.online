@@ -179,8 +179,12 @@
                 close_modal();
                 window.location.reload();
             } else {
-                const error = await response.json();
-                alert(error.detail || 'Failed to save category');
+                try {
+                    const error = await response.json();
+                    alert(error.detail || 'Failed to save category');
+                } catch {
+                    alert('Failed to save category');
+                }
             }
         } catch (err) {
             alert('Failed to save category: ' + err.message);

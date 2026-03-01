@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from app.database import get_db
@@ -81,6 +82,7 @@ async def update_tag(
 @router.delete("/{tag_id}")
 async def delete_tag(
     tag_id: int,
+    request: Request,
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
@@ -93,4 +95,6 @@ async def delete_tag(
     await db.delete(tag)
     await db.commit()
     
+    if request.headers.get("HX-Request"):
+        return Response(status_code=200)
     return {"message": "Tag deleted successfully"}

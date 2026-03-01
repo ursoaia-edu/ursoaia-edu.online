@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Query
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Query, Request
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from app.database import get_db
@@ -115,6 +116,7 @@ async def list_media(
 @router.delete("/{media_id}")
 async def delete_media(
     media_id: int,
+    request: Request,
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
@@ -132,4 +134,6 @@ async def delete_media(
     await db.delete(media)
     await db.commit()
     
+    if request.headers.get("HX-Request"):
+        return Response(status_code=200)
     return {"message": "Media deleted successfully"}
