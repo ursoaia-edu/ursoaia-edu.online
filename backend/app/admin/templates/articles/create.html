@@ -92,19 +92,6 @@
                     </div>
                 </div>
                 
-                <dialog id="media_picker_modal" class="modal">
-                    <div class="modal-box max-w-4xl">
-                        <h3 class="font-bold text-lg mb-4">Select Image</h3>
-                        <div id="media-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[60vh] overflow-y-auto">
-                            <div class="text-center col-span-full py-8 text-gray-500">Loading...</div>
-                        </div>
-                        <div class="modal-action">
-                            <button type="button" onclick="document.getElementById('media_picker_modal').close()" class="btn btn-ghost">Cancel</button>
-                        </div>
-                    </div>
-                    <form method="dialog" class="modal-backdrop"><button>close</button></form>
-                </dialog>
-                
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text font-semibold">Content</span>
@@ -128,6 +115,19 @@
         </div>
     </div>
 </div>
+
+<dialog id="media_picker_modal" class="modal">
+    <div class="modal-box max-w-4xl">
+        <h3 class="font-bold text-lg mb-4">Select Image</h3>
+        <div id="media-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[60vh] overflow-y-auto">
+            <div class="text-center col-span-full py-8 text-gray-500">Loading...</div>
+        </div>
+        <div class="modal-action">
+            <button type="button" onclick="document.getElementById('media_picker_modal').close()" class="btn btn-ghost">Cancel</button>
+        </div>
+    </div>
+    <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
 {% endblock %}
 
 {% block scripts %}

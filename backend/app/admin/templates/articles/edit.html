@@ -1,136 +1,289 @@
-{% extends "base.html" %}
-
-{% block title %}Edit Article{% endblock %}
-{% block page_title %}Edit Article{% endblock %}
-
-{% block head %}
-<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+{% extends "base.html" %} {% block title %}Edit Article{% endblock %} {% block
+page_title %}Edit Article{% endblock %} {% block head %}
+<link
+    href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+    rel="stylesheet"
+/>
 <style>
-    .ql-toolbar.ql-snow { background: oklch(var(--b2)); border-color: oklch(var(--b3)); }
-    .ql-container.ql-snow { border-color: oklch(var(--b3)); }
-    .ql-editor { min-height: 400px; color: oklch(var(--bc)); font-size: 1rem; }
-    .ql-editor.ql-blank::before { color: oklch(var(--bc) / 0.4); }
-    .ql-snow .ql-stroke { stroke: oklch(var(--bc)); }
-    .ql-snow .ql-fill { fill: oklch(var(--bc)); }
-    .ql-snow .ql-picker { color: oklch(var(--bc)); }
-    .ql-snow .ql-picker-options { background: oklch(var(--b1)); border-color: oklch(var(--b3)); }
+    .ql-toolbar.ql-snow {
+        background: oklch(var(--b2));
+        border-color: oklch(var(--b3));
+    }
+    .ql-container.ql-snow {
+        border-color: oklch(var(--b3));
+    }
+    .ql-editor {
+        min-height: 400px;
+        color: oklch(var(--bc));
+        font-size: 1rem;
+    }
+    .ql-editor.ql-blank::before {
+        color: oklch(var(--bc) / 0.4);
+    }
+    .ql-snow .ql-stroke {
+        stroke: oklch(var(--bc));
+    }
+    .ql-snow .ql-fill {
+        fill: oklch(var(--bc));
+    }
+    .ql-snow .ql-picker {
+        color: oklch(var(--bc));
+    }
+    .ql-snow .ql-picker-options {
+        background: oklch(var(--b1));
+        border-color: oklch(var(--b3));
+    }
 </style>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="max-w-4xl mx-auto">
     <div class="card bg-base-100 shadow-xl rounded-2xl">
         <div class="card-body">
-            <form id="article-form" data-article-id="{{ article.id }}" class="space-y-6">
+            <form
+                id="article-form"
+                data-article-id="{{ article.id }}"
+                class="space-y-6"
+            >
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text font-semibold">Title</span>
                     </label>
-                    <input type="text" id="title" name="title" value="{{ article.title }}" placeholder="Enter article title" class="input input-bordered text-lg" required />
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value="{{ article.title }}"
+                        placeholder="Enter article title"
+                        class="input input-bordered text-lg"
+                        required
+                    />
                 </div>
-                
+
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text font-semibold">Excerpt</span>
                     </label>
-                    <textarea id="excerpt" name="excerpt" placeholder="Brief description for SEO and previews" class="textarea textarea-bordered" rows="2">{{ article.excerpt }}</textarea>
+                    <textarea
+                        id="excerpt"
+                        name="excerpt"
+                        placeholder="Brief description for SEO and previews"
+                        class="textarea textarea-bordered"
+                        rows="2"
+                    >
+{{ article.excerpt }}</textarea
+                    >
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="form-control">
                         <label class="label">
-                            <span class="label-text font-semibold">Categories</span>
+                            <span class="label-text font-semibold"
+                                >Categories</span
+                            >
                         </label>
-                        <select name="category_ids" multiple class="select select-bordered h-auto" size="3">
+                        <select
+                            name="category_ids"
+                            multiple
+                            class="select select-bordered h-auto"
+                            size="3"
+                        >
                             {% for category in categories %}
-                            <option value="{{ category.id }}" {% if category.id in selected_categories %}selected{% endif %}>{{ category.name }}</option>
+                            <option
+                                value="{{ category.id }}"
+                                {%
+                                if
+                                category.id
+                                in
+                                selected_categories
+                                %}selected{%
+                                endif
+                                %}
+                            >
+                                {{ category.name }}
+                            </option>
                             {% endfor %}
                         </select>
                         <label class="label">
-                            <span class="label-text-alt">Hold Ctrl/Cmd to select multiple</span>
+                            <span class="label-text-alt"
+                                >Hold Ctrl/Cmd to select multiple</span
+                            >
                         </label>
                     </div>
-                    
+
                     <div class="form-control">
                         <label class="label">
                             <span class="label-text font-semibold">Tags</span>
                         </label>
-                        <select name="tag_ids" multiple class="select select-bordered h-auto" size="3">
+                        <select
+                            name="tag_ids"
+                            multiple
+                            class="select select-bordered h-auto"
+                            size="3"
+                        >
                             {% for tag in tags %}
-                            <option value="{{ tag.id }}" {% if tag.id in selected_tags %}selected{% endif %}>{{ tag.name }}</option>
+                            <option
+                                value="{{ tag.id }}"
+                                {%
+                                if
+                                tag.id
+                                in
+                                selected_tags
+                                %}selected{%
+                                endif
+                                %}
+                            >
+                                {{ tag.name }}
+                            </option>
                             {% endfor %}
                         </select>
                         <label class="label">
-                            <span class="label-text-alt">Hold Ctrl/Cmd to select multiple</span>
+                            <span class="label-text-alt"
+                                >Hold Ctrl/Cmd to select multiple</span
+                            >
                         </label>
                     </div>
                 </div>
-                
+
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text font-semibold">Cover Image</span>
+                        <span class="label-text font-semibold"
+                            >Cover Image</span
+                        >
                     </label>
-                    <input type="hidden" id="cover_image" name="cover_image" value="{{ article.cover_image or '' }}" />
-                    <div id="cover-preview" class="{% if not article.cover_image %}hidden{% endif %} mb-3 relative group">
-                        <img id="cover-preview-img" src="{{ article.cover_image or '' }}" alt="Cover" class="w-full max-h-48 object-cover rounded-lg" />
-                        <button type="button" onclick="removeCover()" class="btn btn-circle btn-sm btn-error absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <input
+                        type="hidden"
+                        id="cover_image"
+                        name="cover_image"
+                        value="{{ article.cover_image or '' }}"
+                    />
+                    <div
+                        id="cover-preview"
+                        class="{% if not article.cover_image %}hidden{% endif %} mb-3 relative group"
+                    >
+                        <img
+                            id="cover-preview-img"
+                            src="{{ article.cover_image or '' }}"
+                            alt="Cover"
+                            class="w-full max-h-48 object-cover rounded-lg"
+                        />
+                        <button
+                            type="button"
+                            onclick="removeCover()"
+                            class="btn btn-circle btn-sm btn-error absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                            ✕
+                        </button>
                     </div>
                     <div class="flex gap-2">
-                        <label class="btn btn-outline btn-sm flex-1 cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        <label
+                            class="btn btn-outline btn-sm flex-1 cursor-pointer"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                                />
                             </svg>
                             Upload
-                            <input type="file" accept="image/*" class="hidden" onchange="uploadCoverImage(event)" />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                class="hidden"
+                                onchange="uploadCoverImage(event)"
+                            />
                         </label>
-                        <button type="button" onclick="openMediaPicker()" class="btn btn-outline btn-sm flex-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        <button
+                            type="button"
+                            onclick="openMediaPicker()"
+                            class="btn btn-outline btn-sm flex-1"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
                             </svg>
                             Media Library
                         </button>
                     </div>
                 </div>
-                
-                <dialog id="media_picker_modal" class="modal">
-                    <div class="modal-box max-w-4xl">
-                        <h3 class="font-bold text-lg mb-4">Select Image</h3>
-                        <div id="media-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[60vh] overflow-y-auto">
-                            <div class="text-center col-span-full py-8 text-gray-500">Loading...</div>
-                        </div>
-                        <div class="modal-action">
-                            <button type="button" onclick="document.getElementById('media_picker_modal').close()" class="btn btn-ghost">Cancel</button>
-                        </div>
-                    </div>
-                    <form method="dialog" class="modal-backdrop"><button>close</button></form>
-                </dialog>
-                
+
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text font-semibold">Content</span>
                     </label>
                     <div id="editor" class="bg-base-100 rounded-lg"></div>
                 </div>
-                
+
                 <div class="form-control">
                     <label class="label cursor-pointer justify-start gap-4">
-                        <input type="checkbox" name="is_featured" class="checkbox checkbox-primary" {% if article.is_featured %}checked{% endif %} />
+                        <input
+                            type="checkbox"
+                            name="is_featured"
+                            class="checkbox checkbox-primary"
+                            {%
+                            if
+                            article.is_featured
+                            %}checked{%
+                            endif
+                            %}
+                        />
                         <span class="label-text">Featured Article</span>
                     </label>
                 </div>
-                
+
                 <div class="card-actions justify-end gap-2">
                     <a href="/admin/articles" class="btn btn-ghost">Cancel</a>
-                    <button type="submit" name="action" value="draft" class="btn btn-outline">Save Draft</button>
-                    <button type="submit" name="action" value="publish" class="btn btn-gradient text-white">Publish</button>
+                    <button
+                        type="submit"
+                        name="action"
+                        value="draft"
+                        class="btn btn-outline"
+                    >
+                        Save Draft
+                    </button>
+                    <button
+                        type="submit"
+                        name="action"
+                        value="publish"
+                        class="btn btn-gradient text-white"
+                    >
+                        Publish
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-{% endblock %}
 
-{% block scripts %}
+<dialog id="media_picker_modal" class="modal">
+    <div class="modal-box max-w-4xl">
+        <h3 class="font-bold text-lg mb-4">Select Image</h3>
+        <div id="media-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[60vh] overflow-y-auto">
+            <div class="text-center col-span-full py-8 text-gray-500">Loading...</div>
+        </div>
+        <div class="modal-action">
+            <button type="button" onclick="document.getElementById('media_picker_modal').close()" class="btn btn-ghost">Cancel</button>
+        </div>
+    </div>
+    <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
+{% endblock %} {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
     const quill = new Quill('#editor', {
@@ -245,43 +398,51 @@
     }
 
     document.getElementById('article-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
+         e.preventDefault();
+         console.log('Form submitted', e);
 
-        const form = e.target;
-        const articleId = form.dataset.articleId;
-        const action = e.submitter?.value || 'draft';
+         const form = e.target;
+         const articleId = form.dataset.articleId;
+         const action = e.submitter?.value || 'draft';
 
-        const data = {
-            title: form.querySelector('#title').value,
-            excerpt: form.querySelector('#excerpt').value,
-            content: { html: quill.root.innerHTML },
-            cover_image: form.querySelector('#cover_image').value || null,
-            is_published: action === 'publish',
-            is_featured: form.querySelector('[name="is_featured"]').checked,
-            category_ids: Array.from(form.querySelector('[name="category_ids"]').selectedOptions).map(o => parseInt(o.value)),
-            tag_ids: Array.from(form.querySelector('[name="tag_ids"]').selectedOptions).map(o => parseInt(o.value))
-        };
+         console.log('Submitter:', e.submitter);
+         console.log('Action:', action);
 
-        try {
-            const response = await fetch('/api/admin/articles/' + articleId, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
+         const data = {
+             title: form.querySelector('#title').value,
+             excerpt: form.querySelector('#excerpt').value,
+             content: { html: quill.root.innerHTML },
+             cover_image: form.querySelector('#cover_image').value || null,
+             is_published: action === 'publish',
+             is_featured: form.querySelector('[name="is_featured"]').checked,
+             category_ids: Array.from(form.querySelector('[name="category_ids"]').selectedOptions).map(o => parseInt(o.value)),
+             tag_ids: Array.from(form.querySelector('[name="tag_ids"]').selectedOptions).map(o => parseInt(o.value))
+         };
 
-            if (response.ok) {
-                window.location.href = '/admin/articles';
-            } else {
-                try {
-                    const error = await response.json();
-                    alert(error.detail || 'Failed to save article');
-                } catch {
-                    alert('Failed to save article');
-                }
-            }
-        } catch (err) {
-            alert('Failed to save article: ' + err.message);
-        }
-    });
+         console.log('Data to send:', data);
+
+         try {
+             const response = await fetch('/api/admin/articles/' + articleId, {
+                 method: 'PUT',
+                 headers: { 'Content-Type': 'application/json' },
+                 body: JSON.stringify(data)
+             });
+
+             console.log('Response status:', response.status);
+
+             if (response.ok) {
+                 window.location.href = '/admin/articles';
+             } else {
+                 try {
+                     const error = await response.json();
+                     alert(error.detail || 'Failed to save article');
+                 } catch {
+                     alert('Failed to save article');
+                 }
+             }
+         } catch (err) {
+             alert('Failed to save article: ' + err.message);
+         }
+     });
 </script>
 {% endblock %}
