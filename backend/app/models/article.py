@@ -1,4 +1,4 @@
-from sqlalchemy import String, Text, Boolean, Integer, DateTime, ForeignKey, JSON, func
+from sqlalchemy import String, Text, Boolean, Integer, DateTime, ForeignKey, JSON, func, Index
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Table, Column
 from typing import List, Optional, TYPE_CHECKING
@@ -21,6 +21,11 @@ article_categories = Table(
 
 class Article(Base):
     __tablename__ = "articles"
+    __table_args__ = (
+        Index("ix_articles_author_id", "author_id"),
+        Index("ix_articles_created_at", "created_at"),
+        Index("ix_articles_author_published", "author_id", "is_published"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(255))

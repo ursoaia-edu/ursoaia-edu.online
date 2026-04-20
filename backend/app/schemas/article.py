@@ -1,8 +1,11 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import Optional, List
 from datetime import datetime
+import json
 from app.schemas.category import CategoryResponse
 from app.schemas.tag import TagResponse
+
+_CONTENT_MAX_BYTES = 5 * 1024 * 1024  # 5 MB
 
 
 class ArticleBase(BaseModel):
@@ -11,6 +14,13 @@ class ArticleBase(BaseModel):
     content: dict = Field(default_factory=dict)
     cover_image: Optional[str] = None
     is_featured: bool = False
+
+    @field_validator("content")
+    @classmethod
+    def validate_content_size(cls, v: dict) -> dict:
+        if len(json.dumps(v, ensure_ascii=False).encode()) > _CONTENT_MAX_BYTES:
+            raise ValueError("Content exceeds the maximum allowed size of 5 MB")
+        return v
 
 
 class ArticleCreate(ArticleBase):

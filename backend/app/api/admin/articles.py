@@ -3,6 +3,7 @@ from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from sqlalchemy.orm import selectinload
+from sqlalchemy.exc import IntegrityError
 from typing import Optional
 from datetime import datetime, timezone
 from app.database import get_db
@@ -16,6 +17,22 @@ from app.utils.slug import generate_unique_slug
 router = APIRouter()
 
 
+async def _resolve_categories(db: AsyncSession, ids: list[int]) -> list[Category]:
+    result = await db.execute(select(Category).where(Category.id.in_(ids)))
+    categories = list(result.scalars().all())
+    if len(categories) != len(set(ids)):
+        raise HTTPException(status_code=400, detail="One or more category IDs do not exist")
+    return categories
+
+
+async def _resolve_tags(db: AsyncSession, ids: list[int]) -> list[Tag]:
+    result = await db.execute(select(Tag).where(Tag.id.in_(ids)))
+    tags = list(result.scalars().all())
+    if len(tags) != len(set(ids)):
+        raise HTTPException(status_code=400, detail="One or more tag IDs do not exist")
+    return tags
+
+
 @router.get("", response_model=ArticleListResponse)
 async def list_articles(
     page: int = Query(1, ge=1),
@@ -24,25 +41,22 @@ async def list_articles(
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
-    query = select(Article).options(
-        selectinload(Article.categories),
-        selectinload(Article.tags)
-    )
-    
+    # Build base filter without relationship loading (not needed for count)
+    base = select(Article)
     if is_published is not None:
-        query = query.where(Article.is_published == is_published)
-    
-    # Count
-    count_query = select(func.count()).select_from(query.subquery())
-    total = await db.scalar(count_query)
-    
-    # Paginate
+        base = base.where(Article.is_published == is_published)
+
+    total = await db.scalar(select(func.count()).select_from(base.subquery()))
+
     offset = (page - 1) * per_page
-    query = query.order_by(Article.updated_at.desc()).offset(offset).limit(per_page)
-    
-    result = await db.execute(query)
+    result = await db.execute(
+        base.options(selectinload(Article.categories), selectinload(Article.tags))
+        .order_by(Article.updated_at.desc())
+        .offset(offset)
+        .limit(per_page)
+    )
     articles = result.scalars().all()
-    
+
     return ArticleListResponse(
         items=[ArticlePreview.model_validate(a) for a in articles],
         total=total or 0,
@@ -58,11 +72,10 @@ async def create_article(
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
-    # Generate slug
     result = await db.execute(select(Article.slug))
     existing_slugs = set(row[0] for row in result.fetchall())
     slug = generate_unique_slug(article_data.title, existing_slugs)
-    
+
     article = Article(
         title=article_data.title,
         slug=slug,
@@ -72,36 +85,30 @@ async def create_article(
         is_featured=article_data.is_featured,
         author_id=user.id
     )
-    
-    # Add categories
+
     if article_data.category_ids:
-        result = await db.execute(
-            select(Category).where(Category.id.in_(article_data.category_ids))
-        )
-        article.categories = list(result.scalars().all())
-    
-    # Add tags
+        article.categories = await _resolve_categories(db, article_data.category_ids)
+
     if article_data.tag_ids:
-        result = await db.execute(
-            select(Tag).where(Tag.id.in_(article_data.tag_ids))
-        )
-        article.tags = list(result.scalars().all())
-    
+        article.tags = await _resolve_tags(db, article_data.tag_ids)
+
     if article_data.is_published:
         article.is_published = True
         article.published_at = datetime.now(timezone.utc)
-    
+
     db.add(article)
-    await db.commit()
-    
+    try:
+        await db.commit()
+    except IntegrityError:
+        await db.rollback()
+        raise HTTPException(status_code=409, detail="Article with this slug already exists")
+
     result = await db.execute(
         select(Article)
         .options(selectinload(Article.categories), selectinload(Article.tags))
         .where(Article.id == article.id)
     )
-    article = result.scalar_one()
-    
-    return ArticleResponse.model_validate(article)
+    return ArticleResponse.model_validate(result.scalar_one())
 
 
 @router.get("/{article_id}", response_model=ArticleResponse)
@@ -116,10 +123,8 @@ async def get_article(
         .where(Article.id == article_id)
     )
     article = result.scalar_one_or_none()
-    
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
-    
     return ArticleResponse.model_validate(article)
 
 
@@ -136,50 +141,37 @@ async def update_article(
         .where(Article.id == article_id)
     )
     article = result.scalar_one_or_none()
-    
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
-    
-    # Update fields
+
     update_data = article_data.model_dump(exclude_unset=True)
-    
-    # Handle category/tag updates separately
+
     if 'category_ids' in update_data:
-        category_ids = update_data.pop('category_ids')
-        if category_ids is not None:
-            result = await db.execute(
-                select(Category).where(Category.id.in_(category_ids))
-            )
-            article.categories = list(result.scalars().all())
-    
+        ids = update_data.pop('category_ids')
+        if ids is not None:
+            article.categories = await _resolve_categories(db, ids)
+
     if 'tag_ids' in update_data:
-        tag_ids = update_data.pop('tag_ids')
-        if tag_ids is not None:
-            result = await db.execute(
-                select(Tag).where(Tag.id.in_(tag_ids))
-            )
-            article.tags = list(result.scalars().all())
-    
-    # Update other fields
+        ids = update_data.pop('tag_ids')
+        if ids is not None:
+            article.tags = await _resolve_tags(db, ids)
+
     was_published = article.is_published
     for field, value in update_data.items():
         setattr(article, field, value)
-    
-    # Handle publishing
+
     if article_data.is_published and not was_published:
         article.is_published = True
         article.published_at = datetime.now(timezone.utc)
-    
+
     await db.commit()
-    
+
     result = await db.execute(
         select(Article)
         .options(selectinload(Article.categories), selectinload(Article.tags))
         .where(Article.id == article.id)
     )
-    article = result.scalar_one()
-    
-    return ArticleResponse.model_validate(article)
+    return ArticleResponse.model_validate(result.scalar_one())
 
 
 @router.delete("/{article_id}")
@@ -189,17 +181,14 @@ async def delete_article(
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
-    result = await db.execute(
-        select(Article).where(Article.id == article_id)
-    )
+    result = await db.execute(select(Article).where(Article.id == article_id))
     article = result.scalar_one_or_none()
-    
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
-    
+
     await db.delete(article)
     await db.commit()
-    
+
     if request.headers.get("HX-Request"):
         return Response(status_code=200)
     return {"message": "Article deleted successfully"}

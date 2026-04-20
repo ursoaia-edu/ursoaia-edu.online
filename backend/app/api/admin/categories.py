@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request, Query
 from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -14,10 +14,15 @@ router = APIRouter()
 
 @router.get("", response_model=List[CategoryResponse])
 async def list_categories(
+    page: int = Query(1, ge=1),
+    per_page: int = Query(100, ge=1, le=200),
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
-    result = await db.execute(select(Category).order_by(Category.name))
+    offset = (page - 1) * per_page
+    result = await db.execute(
+        select(Category).order_by(Category.name).offset(offset).limit(per_page)
+    )
     categories = result.scalars().all()
     return [CategoryResponse.model_validate(c) for c in categories]
 

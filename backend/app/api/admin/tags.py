@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request, Query
 from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -14,10 +14,15 @@ router = APIRouter()
 
 @router.get("", response_model=List[TagResponse])
 async def list_tags(
+    page: int = Query(1, ge=1),
+    per_page: int = Query(100, ge=1, le=200),
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
-    result = await db.execute(select(Tag).order_by(Tag.name))
+    offset = (page - 1) * per_page
+    result = await db.execute(
+        select(Tag).order_by(Tag.name).offset(offset).limit(per_page)
+    )
     tags = result.scalars().all()
     return [TagResponse.model_validate(t) for t in tags]
 

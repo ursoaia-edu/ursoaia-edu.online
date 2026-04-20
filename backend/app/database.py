@@ -8,7 +8,8 @@ engine = create_async_engine(
     echo=settings.DEBUG,
     pool_pre_ping=True,
     pool_size=5,
-    max_overflow=10
+    max_overflow=10,
+    connect_args={"timeout": 10, "command_timeout": 30},
 )
 
 async_session_maker = async_sessionmaker(

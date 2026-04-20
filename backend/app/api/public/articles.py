@@ -61,15 +61,7 @@ async def get_article(slug: str, db: AsyncSession = Depends(get_db)):
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
     
-    # Increment views
     article.views_count += 1
     await db.commit()
-    
-    result = await db.execute(
-        select(Article)
-        .options(selectinload(Article.categories), selectinload(Article.tags))
-        .where(Article.id == article.id)
-    )
-    article = result.scalar_one()
-    
+
     return ArticleResponse.model_validate(article)

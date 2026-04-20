@@ -3,6 +3,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 import os
 import bcrypt as _bcrypt
 
@@ -16,6 +18,7 @@ from app.api import api_router
 from app.admin import admin_router
 from app.models import User
 from app.utils.security import hash_password
+from app.utils.limiter import limiter
 from sqlalchemy import select
 
 
@@ -51,13 +54,21 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# Rate limiter
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 # CORS
+_origins = [settings.FRONTEND_URL]
+if settings.DEBUG:
+    _origins += ["http://localhost:4321", "http://localhost:3000"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL, "http://localhost:4321", "http://localhost:3000"],
+    allow_origins=_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 # Static files
