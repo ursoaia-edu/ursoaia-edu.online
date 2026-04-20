@@ -12,7 +12,7 @@ import aiofiles
 import os
 import uuid
 from datetime import datetime
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import io
 
 router = APIRouter()
@@ -27,33 +27,41 @@ def generate_filename(original_filename: str) -> str:
 
 
 async def process_image(file_content: bytes, filename: str) -> tuple[bytes, int, int]:
+    ext = filename.rsplit('.', 1)[-1].lower()
+
+    # SVG is vector — skip PIL processing
+    if ext == 'svg':
+        return file_content, 0, 0
+
     try:
         img = Image.open(io.BytesIO(file_content))
-        width, height = img.size
-        
-        # Resize if too large
-        max_dimension = 1920
-        if max(width, height) > max_dimension:
-            if width > height:
-                new_width = max_dimension
-                new_height = int(height * max_dimension / width)
-            else:
-                new_height = max_dimension
-                new_width = int(width * max_dimension / height)
-            
-            img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
-            width, height = new_width, new_height
-        
-        # Convert to RGB if necessary
-        if img.mode in ('RGBA', 'P'):
-            img = img.convert('RGB')
-        
-        output = io.BytesIO()
-        img.save(output, format='JPEG', quality=85, optimize=True)
-        return output.getvalue(), width, height
-    
-    except Exception:
-        return file_content, 0, 0
+        img.verify()
+    except UnidentifiedImageError:
+        raise HTTPException(status_code=400, detail="File is not a valid image")
+    except (OSError, SyntaxError) as e:
+        raise HTTPException(status_code=400, detail=f"Corrupted image file: {e}")
+
+    # Re-open after verify() — PIL closes the file handle after verify
+    img = Image.open(io.BytesIO(file_content))
+    width, height = img.size
+
+    max_dimension = 1920
+    if max(width, height) > max_dimension:
+        if width > height:
+            new_width = max_dimension
+            new_height = int(height * max_dimension / width)
+        else:
+            new_height = max_dimension
+            new_width = int(width * max_dimension / height)
+        img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+        width, height = new_width, new_height
+
+    if img.mode in ('RGBA', 'P'):
+        img = img.convert('RGB')
+
+    output = io.BytesIO()
+    img.save(output, format='JPEG', quality=85, optimize=True)
+    return output.getvalue(), width, height
 
 
 @router.post("", response_model=MediaResponse)
