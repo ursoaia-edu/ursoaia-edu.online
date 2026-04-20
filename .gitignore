@@ -73,3 +73,5 @@ htmlcov/
 *.bak
 *.tmp
 .cache/
+
+worktrees/
