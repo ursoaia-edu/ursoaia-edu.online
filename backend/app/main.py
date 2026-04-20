@@ -4,6 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 import os
+import bcrypt as _bcrypt
+
+# passlib 1.7.4 compatibility shim for bcrypt >= 4.x
+if not hasattr(_bcrypt, '__about__'):
+    _bcrypt.__about__ = type('about', (), {'__version__': _bcrypt.__version__})()
 
 from app.config import settings
 from app.database import init_db

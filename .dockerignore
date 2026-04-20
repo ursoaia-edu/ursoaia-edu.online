@@ -19,3 +19,4 @@ Thumbs.db
 certbot/
 uploads/
 !uploads/.gitkeep
+.claude/
