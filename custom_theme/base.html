@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.4s, color 0.4s; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #525252; border-radius: 3px; }
+    .dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+
+    /* Animations */
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+    }
+    @keyframes float-1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-8px, -12px); }
+    }
+    @keyframes float-2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(6px, -8px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(249,115,22,0.3); }
+      50% { box-shadow: 0 0 20px rgba(249,115,22,0.6); }
+    }
+    @keyframes circuit-flow {
+      0% { stroke-dashoffset: 100; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #f97316; }
+    }
+
+    .animate-in { animation: fadeSlideIn 0.6s ease-out both; }
+    .animate-in-1 { animation: fadeSlideIn 0.6s ease-out 0.1s both; }
+    .animate-in-2 { animation: fadeSlideIn 0.6s ease-out 0.2s both; }
+    .animate-in-3 { animation: fadeSlideIn 0.6s ease-out 0.3s both; }
+    .animate-in-4 { animation: fadeSlideIn 0.6s ease-out 0.4s both; }
+    .animate-in-5 { animation: fadeSlideIn 0.6s ease-out 0.5s both; }
+    .float-1 { animation: float-1 4s ease-in-out infinite; }
+    .float-2 { animation: float-2 3.5s ease-in-out infinite; }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+    /* Intersection Observer driven */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Glass */
+    .glass-dark {
+      background: rgba(24, 24, 27, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Project card hover */
+    .project-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .project-card:hover { transform: translateY(-6px); }
+    .dark .project-card:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    .project-card:hover { border-color: rgba(249,115,22,0.4); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+
+    /* Blog card */
+    .blog-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card:hover img { transform: scale(1.05); }
+    .blog-card img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Tag */
+    .tag { transition: all 0.2s; }
+    .tag:hover { transform: scale(1.05); }
+
+    /* Theme toggle */
+    .theme-toggle { position: relative; width: 56px; height: 28px; border-radius: 14px; cursor: pointer; transition: background 0.3s; }
+    .theme-toggle .knob {
+      position: absolute; top: 3px; left: 3px; width: 22px; height: 22px;
+      border-radius: 50%; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dark .theme-toggle .knob { left: 31px; }
+
+    /* Circuit SVG decoration */
+    .circuit-line {
+      stroke-dasharray: 10 5;
+      animation: circuit-flow 2s linear infinite;
+    }
+
+    /* Nav active indicator */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px;
+      background: #f97316; transition: all 0.3s; transform: translateX(-50%); border-radius: 1px;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    /* Mobile menu */
+    .mobile-menu { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Status dot */
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 8px rgba(34,197,94,0.5);
+      animation: pulse-glow-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow-green {
+      0%, 100% { box-shadow: 0 0 4px rgba(34,197,94,0.3); }
+      50% { box-shadow: 0 0 12px rgba(34,197,94,0.7); }
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Noise texture overlay */
+    .noise::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Typography Overrides */
+    .prose {
+      max-width: none;
+    }
+    .dark .prose {
+      --tw-prose-body: theme('colors.zinc.400');
+      --tw-prose-headings: theme('colors.white');
+      --tw-prose-links: theme('colors.orange.500');
+      --tw-prose-bold: theme('colors.white');
+      --tw-prose-counters: theme('colors.zinc.400');
+      --tw-prose-bullets: theme('colors.zinc.600');
+      --tw-prose-hr: theme('colors.zinc.800');
+      --tw-prose-quotes: theme('colors.zinc.100');
+      --tw-prose-quote-borders: theme('colors.zinc.700');
+      --tw-prose-captions: theme('colors.zinc.400');
+      --tw-prose-code: theme('colors.white');
+      --tw-prose-pre-code: theme('colors.zinc.200');
+      --tw-prose-pre-bg: theme('colors.zinc.900');
+      --tw-prose-th-borders: theme('colors.zinc.700');
+      --tw-prose-td-borders: theme('colors.zinc.800');
+    }
+  </style>
+  {% block extrahead %}{% endblock %}
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="{{ nav.homepage.url|url }}" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">{{ config.site_name }}</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          {% for nav_item in nav %}
+            <a href="{{ nav_item.url|url }}" class="nav-link {% if nav_item.active %}active{% endif %} px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">{{ nav_item.title }}</a>
+          {% endfor %}
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          {% if config.repo_url %}
+          <a href="{{ config.repo_url }}" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
+            <i data-lucide="github" class="w-4 h-4 dark:text-zinc-400 text-zinc-500"></i>
+          </a>
+          {% endif %}
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          {% for nav_item in nav %}
+            <a href="{{ nav_item.url|url }}" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">{{ nav_item.title }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">{{ config.site_name }}</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
+          {% for nav_item in nav %}
+            <a href="{{ nav_item.url|url }}" class="hover:text-orange-500 transition-colors">{{ nav_item.title }}</a>
+          {% endfor %}
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-400">
+          © 2024 {{ config.site_name }}. Built with ☕ and solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

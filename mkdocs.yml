@@ -4,6 +4,14 @@ site_author: "Ursoaia Edu Team"
 site_url: "https://ursoaia-edu.online"
 repo_url: "https://github.com/ursoaia-edu/ursoaia-edu.online.git"
 
+theme:
+  name: null
+  custom_dir: custom_theme
+
+extra:
+  status_badge_text: "Currently building"
+  status_badge_highlight: "Smart Greenhouse v2"
+
 nav:
   - Home: index.md
   - Guide:
