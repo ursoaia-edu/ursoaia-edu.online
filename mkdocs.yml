@@ -1,0 +1,10 @@
+site_name: Ursoaia Edu Online
+site_description: "Ursoaia Edu Online is a platform for online education and learning resources."
+site_author: "Ursoaia Edu Team"
+site_url: "https://ursoaia-edu.online"
+repo_url: "https://github.com/ursoaia-edu/ursoaia-edu.online.git"
+
+nav:
+  - Home: index.md
+  - Guide:
+      - Setup: guide/setup.md

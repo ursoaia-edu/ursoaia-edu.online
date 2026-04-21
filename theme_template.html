@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoT Lab — Self-Made Projects & Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.4s, color 0.4s; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #525252; border-radius: 3px; }
+    .dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+
+    /* Animations */
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+    }
+    @keyframes float-1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-8px, -12px); }
+    }
+    @keyframes float-2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(6px, -8px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(249,115,22,0.3); }
+      50% { box-shadow: 0 0 20px rgba(249,115,22,0.6); }
+    }
+    @keyframes circuit-flow {
+      0% { stroke-dashoffset: 100; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #f97316; }
+    }
+
+    .animate-in { animation: fadeSlideIn 0.6s ease-out both; }
+    .animate-in-1 { animation: fadeSlideIn 0.6s ease-out 0.1s both; }
+    .animate-in-2 { animation: fadeSlideIn 0.6s ease-out 0.2s both; }
+    .animate-in-3 { animation: fadeSlideIn 0.6s ease-out 0.3s both; }
+    .animate-in-4 { animation: fadeSlideIn 0.6s ease-out 0.4s both; }
+    .animate-in-5 { animation: fadeSlideIn 0.6s ease-out 0.5s both; }
+    .float-1 { animation: float-1 4s ease-in-out infinite; }
+    .float-2 { animation: float-2 3.5s ease-in-out infinite; }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+    /* Intersection Observer driven */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Glass */
+    .glass-dark {
+      background: rgba(24, 24, 27, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Project card hover */
+    .project-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .project-card:hover { transform: translateY(-6px); }
+    .dark .project-card:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    .project-card:hover { border-color: rgba(249,115,22,0.4); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+
+    /* Blog card */
+    .blog-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card:hover img { transform: scale(1.05); }
+    .blog-card img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Tag */
+    .tag { transition: all 0.2s; }
+    .tag:hover { transform: scale(1.05); }
+
+    /* Theme toggle */
+    .theme-toggle { position: relative; width: 56px; height: 28px; border-radius: 14px; cursor: pointer; transition: background 0.3s; }
+    .theme-toggle .knob {
+      position: absolute; top: 3px; left: 3px; width: 22px; height: 22px;
+      border-radius: 50%; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dark .theme-toggle .knob { left: 31px; }
+
+    /* Circuit SVG decoration */
+    .circuit-line {
+      stroke-dasharray: 10 5;
+      animation: circuit-flow 2s linear infinite;
+    }
+
+    /* Nav active indicator */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px;
+      background: #f97316; transition: all 0.3s; transform: translateX(-50%); border-radius: 1px;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    /* Mobile menu */
+    .mobile-menu { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Status dot */
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 8px rgba(34,197,94,0.5);
+      animation: pulse-glow-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow-green {
+      0%, 100% { box-shadow: 0 0 4px rgba(34,197,94,0.3); }
+      50% { box-shadow: 0 0 12px rgba(34,197,94,0.7); }
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Noise texture overlay */
+    .noise::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">IoT<span class="text-orange-500">Lab</span></span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#home" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          <a href="#projects" class="nav-link px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          <a href="#blog" class="nav-link px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Blog</a>
+          <a href="#about" class="nav-link px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">About</a>
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          <a href="#" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
+            <i data-lucide="github" class="w-4 h-4 dark:text-zinc-400 text-zinc-500"></i>
+          </a>
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          <a href="#home" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          <a href="#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          <a href="#blog" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Blog</a>
+          <a href="#about" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden noise">
+    <!-- Background effects -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-orange-500/10 dark:bg-orange-500/5 rounded-full blur-[120px] float-1"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-500/8 dark:bg-amber-500/5 rounded-full blur-[100px] float-2"></div>
+    </div>
+
+    <!-- Circuit decoration SVG -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none dark:opacity-10 opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10%" y1="20%" x2="30%" y2="20%" stroke="currentColor" stroke-width="1" class="circuit-line" />
+      <line x1="30%" y1="20%" x2="30%" y2="50%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 0.5s" />
+      <line x1="70%" y1="30%" x2="90%" y2="30%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 1s" />
+      <line x1="70%" y1="30%" x2="70%" y2="70%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 0.3s" />
+      <line x1="20%" y1="70%" x2="50%" y2="70%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 0.8s" />
+      <circle cx="30%" cy="20%" r="3" fill="currentColor" opacity="0.5" />
+      <circle cx="70%" cy="30%" r="3" fill="currentColor" opacity="0.5" />
+      <circle cx="70%" cy="70%" r="3" fill="currentColor" opacity="0.5" />
+    </svg>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-20">
+      <!-- Status badge -->
+      <div class="animate-in inline-flex items-center gap-2 px-4 py-2 rounded-full dark:bg-white/5 bg-zinc-100 dark:border-white/10 border-zinc-200 border mb-8">
+        <span class="status-dot"></span>
+        <span class="text-xs font-medium dark:text-zinc-400 text-zinc-500 tracking-wide uppercase">Currently building</span>
+        <span class="text-xs font-mono text-orange-500 font-medium">Smart Greenhouse v2</span>
+      </div>
+
+      <!-- Main heading -->
+      <h1 class="animate-in-1 text-4xl sm:text-5xl lg:text-7xl font-medium tracking-tight leading-[1.08] mb-6">
+        Building the<br>
+        <span class="gradient-text">Connected Future</span><br>
+        <span class="dark:text-zinc-500 text-zinc-400">One Board at a Time</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="animate-in-2 max-w-2xl mx-auto text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed mb-10 font-light">
+        DIY IoT projects, from concept to code to circuit. Sharing open-source hardware builds,
+        firmware experiments, and everything between the sensor and the cloud.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="animate-in-3 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#projects" class="group px-7 py-3.5 bg-gradient-to-b from-orange-500 to-orange-600 text-white font-medium text-sm rounded-full shadow-[0_10px_25px_-5px_rgba(249,115,22,0.35)] hover:shadow-[0_15px_35px_-5px_rgba(249,115,22,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-2">
+          Explore Projects
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="#blog" class="px-7 py-3.5 dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 font-medium text-sm rounded-full dark:hover:bg-white/10 hover:bg-zinc-200 dark:border-white/10 border-zinc-200 border transition-all duration-300 flex items-center gap-2">
+          <i data-lucide="book-open" class="w-4 h-4"></i>
+          Read the Blog
+        </a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="animate-in-4 flex items-center justify-center gap-8 sm:gap-14">
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-semibold dark:text-white text-zinc-900 tabular-nums">12+</div>
+          <div class="text-xs dark:text-zinc-500 text-zinc-400 mt-1 uppercase tracking-wider font-medium">Projects</div>
+        </div>
+        <div class="w-px h-10 dark:bg-zinc-800 bg-zinc-200"></div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-semibold dark:text-white text-zinc-900 tabular-nums">5K+</div>
+          <div class="text-xs dark:text-zinc-500 text-zinc-400 mt-1 uppercase tracking-wider font-medium">Lines of C++</div>
+        </div>
+        <div class="w-px h-10 dark:bg-zinc-800 bg-zinc-200"></div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-semibold dark:text-white text-zinc-900 tabular-nums">8</div>
+          <div class="text-xs dark:text-zinc-500 text-zinc-400 mt-1 uppercase tracking-wider font-medium">Blog Posts</div>
+        </div>
+        <div class="w-px h-10 dark:bg-zinc-800 bg-zinc-200 hidden sm:block"></div>
+        <div class="text-center hidden sm:block">
+          <div class="text-2xl sm:text-3xl font-semibold dark:text-white text-zinc-900 tabular-nums">3</div>
+          <div class="text-xs dark:text-zinc-500 text-zinc-400 mt-1 uppercase tracking-wider font-medium">MCU Families</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-in-5">
+      <span class="text-[10px] dark:text-zinc-600 text-zinc-400 uppercase tracking-[0.2em] font-medium">Scroll</span>
+      <div class="w-5 h-8 rounded-full dark:border-zinc-700 border-zinc-300 border-2 flex justify-center pt-1.5">
+        <div class="w-1 h-2 rounded-full bg-orange-500 animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROJECTS SECTION ==================== -->
+  <section id="projects" class="relative py-24 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <!-- Section header -->
+      <div class="reveal max-w-2xl mb-16">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+            <i data-lucide="circuit-board" class="w-4 h-4 text-orange-500"></i>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">IoT Projects</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-medium tracking-tight mb-4 dark:text-white text-zinc-900">
+          From Breadboard to<br>Production-Grade
+        </h2>
+        <p class="dark:text-zinc-400 text-zinc-500 text-base leading-relaxed font-light">
+          Each project is open-source, documented, and built with real-world use cases in mind.
+          No gimmicks — just functional hardware that solves actual problems.
+        </p>
+      </div>
+
+      <!-- Filter tags -->
+      <div class="reveal flex flex-wrap gap-2 mb-10" id="filterTags">
+        <button onclick="filterProjects('all')" class="tag active px-4 py-2 rounded-full text-xs font-medium bg-orange-500 text-white transition-all" data-filter="all">All Projects</button>
+        <button onclick="filterProjects('esp32')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="esp32">ESP32</button>
+        <button onclick="filterProjects('arduino')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="arduino">Arduino</button>
+        <button onclick="filterProjects('rp2040')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="rp2040">RP2040</button>
+        <button onclick="filterProjects('home')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="home">Home Automation</button>
+        <button onclick="filterProjects('sensor')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="sensor">Sensors</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5" id="projectsGrid">
+
+        <!-- Project Card 1 — Featured -->
+        <div class="reveal project-card lg:col-span-2 rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="esp32,home">
+          <div class="grid md:grid-cols-2 gap-0">
+            <div class="relative overflow-hidden aspect-[4/3] md:aspect-auto">
+              <img src="https://picsum.photos/seed/smart-home-hub/800/600.jpg" alt="Smart Home Hub" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-orange-500 text-white text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="star" class="w-3 h-3"></i> Featured
+              </div>
+            </div>
+            <div class="p-6 sm:p-8 flex flex-col justify-center">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2.5 py-1 rounded-md dark:bg-orange-500/10 bg-orange-50 text-orange-500 text-[11px] font-mono font-medium">ESP32</span>
+                <span class="px-2.5 py-1 rounded-md dark:bg-blue-500/10 bg-blue-50 text-blue-500 text-[11px] font-mono font-medium">MQTT</span>
+                <span class="px-2.5 py-1 rounded-md dark:bg-emerald-500/10 bg-emerald-50 text-emerald-500 text-[11px] font-mono font-medium">HomeKit</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-medium tracking-tight dark:text-white text-zinc-900 mb-3">Smart Home Hub</h3>
+              <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-6 font-light">
+                A central gateway built on ESP32 that bridges Zigbee sensors, BLE devices, and Wi-Fi peripherals into HomeKit and MQTT. Custom PCB with OLED status display and OTA updates.
+              </p>
+              <div class="flex items-center gap-4">
+                <a href="#" class="group inline-flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-400 transition-colors">
+                  View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#" class="inline-flex items-center gap-2 text-sm font-medium dark:text-zinc-500 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+                  <i data-lucide="github" class="w-4 h-4"></i> Source
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="esp32,sensor">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/weather-station-iot/600/380.jpg" alt="Weather Station" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+              <div class="flex gap-2">
+                <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">ESP32</span>
+                <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">BME280</span>
+              </div>
+              <div class="flex items-center gap-1.5 px-2 py-0.5 rounded dark:bg-green-500/20 bg-green-50 text-[10px] font-medium text-green-500">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Live
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Solar Weather Station</h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
+              Solar-powered outdoor weather station with BME280, anemometer, and rain gauge. Streams data via MQTT with 6+ month battery life.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
+                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 34</span>
+                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 8</span>
+              </div>
+              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="arduino,sensor,home">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/plant-monitor-arduino/600/380.jpg" alt="Plant Monitor" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 flex gap-2">
+              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino Nano</span>
+              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Capacitive Soil</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Plant Health Monitor</h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
+              Monitors soil moisture, light levels, and temperature for up to 6 plants. Neopixel ring provides at-a-glance health status per plant.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
+                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 21</span>
+                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 5</span>
+              </div>
+              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 4 -->
+        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="rp2040,sensor">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/air-quality-rp2040/600/380.jpg" alt="Air Quality" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 flex gap-2">
+              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">RP2040</span>
+              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">PMS5003</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Air Quality Mapper</h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
+              Portable PM2.5/PM10 sensor with GPS logging and e-ink display. Built on RP2040 with custom C++ firmware and Grafana dashboard.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
+                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 47</span>
+                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 12</span>
+              </div>
+              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 5 -->
+        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="esp32,home">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/smart-door-lock-iot/600/380.jpg" alt="Smart Lock" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 flex gap-2">
+              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">ESP32-S3</span>
+              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">NFC</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">NFC Smart Door Lock</h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
+              Retrofittable door lock with NFC card + PIN access. Logs all entries to a local server, with webhook notifications to Telegram.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
+                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 56</span>
+                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 14</span>
+              </div>
+              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BLOG SECTION ==================== -->
+  <section id="blog" class="relative py-24 sm:py-32 dark:bg-zinc-900/30 bg-zinc-50/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <!-- Section header -->
+      <div class="reveal flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
+        <div class="max-w-xl">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+              <i data-lucide="pen-tool" class="w-4 h-4 text-orange-500"></i>
+            </div>
+            <span class="text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">Blog</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-medium tracking-tight dark:text-white text-zinc-900">
+            Build Logs &<br>Deep Dives
+          </h2>
+        </div>
+        <a href="#" class="group inline-flex items-center gap-2 text-sm font-medium dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">
+          View all posts <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Blog Card 1 -->
+        <article class="reveal blog-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/pcb-design-blog/600/380.jpg" alt="PCB Design" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full dark:bg-black/50 bg-white/90 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider dark:text-zinc-300 text-zinc-600">Tutorial</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400 mb-3">
+              <time datetime="2024-12-15">Dec 15, 2024</time>
+              <span>·</span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="text-base font-medium tracking-tight dark:text-white text-zinc-900 mb-2 leading-snug">
+              Designing Your First Custom PCB: From KiCad to OSH Park
+            </h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light line-clamp-2">
+              A complete beginner's guide to schematic capture, PCB layout, DRC checks, and ordering boards. No prior EDA experience needed.
+            </p>
+          </div>
+        </article>
+
+        <!-- Blog Card 2 -->
+        <article class="reveal blog-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/mqtt-protocol-deep/600/380.jpg" alt="MQTT Deep Dive" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full dark:bg-black/50 bg-white/90 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider dark:text-zinc-300 text-zinc-600">Deep Dive</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400 mb-3">
+              <time datetime="2024-11-28">Nov 28, 2024</time>
+              <span>·</span>
+              <span>12 min read</span>
+            </div>
+            <h3 class="text-base font-medium tracking-tight dark:text-white text-zinc-900 mb-2 leading-snug">
+              MQTT vs HTTP vs WebSocket: Choosing the Right Protocol for IoT
+            </h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light line-clamp-2">
+              Benchmarking real-world throughput, latency, and power consumption across three protocols on ESP32 with actual sensor data.
+            </p>
+          </div>
+        </article>
+
+        <!-- Blog Card 3 -->
+        <article class="reveal blog-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/battery-optimization-iot/600/380.jpg" alt="Battery Optimization" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full dark:bg-black/50 bg-white/90 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider dark:text-zinc-300 text-zinc-600">Build Log</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400 mb-3">
+              <time datetime="2024-11-10">Nov 10, 2024</time>
+              <span>·</span>
+              <span>6 min read</span>
+            </div>
+            <h3 class="text-base font-medium tracking-tight dark:text-white text-zinc-900 mb-2 leading-snug">
+              How I Got 8 Months of Battery Life from an ESP32
+            </h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light line-clamp-2">
+              Deep sleep strategies, LDO selection, sensor power gating, and the one mistake that was draining 80% of my battery.
+            </p>
+          </div>
+        </article>
+
+        <!-- Blog Card 4 -->
+        <article class="reveal blog-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/3d-printed-enclosure/600/380.jpg" alt="3D Printed Enclosure" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full dark:bg-black/50 bg-white/90 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider dark:text-zinc-300 text-zinc-600">Tutorial</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400 mb-3">
+              <time datetime="2024-10-22">Oct 22, 2024</time>
+              <span>·</span>
+              <span>10 min read</span>
+            </div>
+            <h3 class="text-base font-medium tracking-tight dark:text-white text-zinc-900 mb-2 leading-snug">
+              Designing Snap-Fit 3D Printed Enclosures for PCBAs
+            </h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light line-clamp-2">
+              Parametric design workflow in OpenSCAD: wall thickness, snap clips, screw bosses, and tolerances for FDM printing.
+            </p>
+          </div>
+        </article>
+
+        <!-- Blog Card 5 -->
+        <article class="reveal blog-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/esp-homekit-setup/600/380.jpg" alt="ESP HomeKit" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full dark:bg-black/50 bg-white/90 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider dark:text-zinc-300 text-zinc-600">Guide</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400 mb-3">
+              <time datetime="2024-10-05">Oct 5, 2024</time>
+              <span>·</span>
+              <span>7 min read</span>
+            </div>
+            <h3 class="text-base font-medium tracking-tight dark:text-white text-zinc-900 mb-2 leading-snug">
+              Adding Native HomeKit Support to Any ESP32 Device
+            </h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light line-clamp-2">
+              Using the esp-hap library to create certified-like HomeKit accessories with pairing, status updates, and Siri control.
+            </p>
+          </div>
+        </article>
+
+        <!-- Blog Card 6 -->
+        <article class="reveal blog-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden">
+          <div class="relative overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/seed/grafana-iot-dashboard/600/380.jpg" alt="Grafana Dashboard" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full dark:bg-black/50 bg-white/90 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider dark:text-zinc-300 text-zinc-600">Showcase</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400 mb-3">
+              <time datetime="2024-09-18">Sep 18, 2024</time>
+              <span>·</span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="text-base font-medium tracking-tight dark:text-white text-zinc-900 mb-2 leading-snug">
+              Building a Real-Time IoT Dashboard with Grafana & InfluxDB
+            </h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light line-clamp-2">
+              Complete stack walkthrough: Telegraf ingestion, InfluxDB time-series storage, and Grafana panels for 6 months of sensor data.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TECH STACK MARQUEE ==================== -->
+  <section class="py-16 overflow-hidden dark:border-y border-zinc-800 border-zinc-200">
+    <div class="reveal">
+      <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] dark:text-zinc-600 text-zinc-400 mb-10">Tools & Technologies I Use</p>
+      <div class="flex gap-12 animate-marquee whitespace-nowrap">
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">C++</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Arduino</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">ESP-IDF</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">PlatformIO</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">KiCad</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">MQTT</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Node-RED</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Grafana</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">InfluxDB</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">OpenSCAD</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Python</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Rust</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">C++</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Arduino</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">ESP-IDF</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">PlatformIO</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">KiCad</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">MQTT</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Node-RED</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Grafana</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">InfluxDB</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">OpenSCAD</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Python</span>
+        <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Rust</span>
+      </div>
+    </div>
+    <style>
+      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      .animate-marquee { animation: marquee 25s linear infinite; }
+    </style>
+  </section>
+
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <section id="about" class="relative py-24 sm:py-32">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="reveal grid md:grid-cols-5 gap-10 items-center">
+        <!-- Photo side -->
+        <div class="md:col-span-2 flex justify-center">
+          <div class="relative">
+            <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border-2 dark:border-white/10 border-zinc-200 shadow-2xl">
+              <img src="https://picsum.photos/seed/maker-portrait-iot/400/400.jpg" alt="Author" class="w-full h-full object-cover">
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-3 -right-3 px-3 py-2 rounded-xl dark:glass-dark glass-light shadow-lg flex items-center gap-2">
+              <div class="w-6 h-6 rounded-md bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+                <i data-lucide="zap" class="w-3.5 h-3.5 text-white"></i>
+              </div>
+              <div>
+                <div class="text-[10px] dark:text-zinc-400 text-zinc-500 font-medium">Uptime</div>
+                <div class="text-xs font-semibold dark:text-white text-zinc-900 font-mono">99.7%</div>
+              </div>
+            </div>
+            <!-- Decorative dots -->
+            <div class="absolute -top-4 -left-4 w-20 h-20 opacity-20" style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 8px 8px;"></div>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="md:col-span-3">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+              <i data-lucide="user" class="w-4 h-4 text-orange-500"></i>
+            </div>
+            <span class="text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">About</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-medium tracking-tight dark:text-white text-zinc-900 mb-4">
+            Maker, Tinkerer,<br>Occasional Sleeper
+          </h2>
+          <div class="space-y-4 dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light">
+            <p>
+              I'm a self-taught embedded systems enthusiast who fell down the IoT rabbit hole in 2021.
+              What started with blinking an LED on an Arduino Nano has evolved into designing custom PCBs,
+              writing bare-metal firmware, and building a fully automated smart home — all open-source.
+            </p>
+            <p>
+              By day I work in software engineering. By night (and weekends), I'm soldering, debugging SPI
+              buses, and convincing myself that <span class="dark:text-zinc-300 text-zinc-600 font-mono text-xs">"just one more sensor"</span>
+              is a valid life choice.
+            </p>
+          </div>
+
+          <!-- Tech badges -->
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
+              <i data-lucide="code-2" class="w-3 h-3 text-orange-500"></i> Embedded C/C++
+            </span>
+            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
+              <i data-lucide="layout" class="w-3 h-3 text-orange-500"></i> PCB Design
+            </span>
+            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
+              <i data-lucide="wifi" class="w-3 h-3 text-orange-500"></i> Wireless Protocols
+            </span>
+            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
+              <i data-lucide="box" class="w-3 h-3 text-orange-500"></i> 3D Printing
+            </span>
+          </div>
+
+          <!-- Social links -->
+          <div class="flex items-center gap-3 mt-8">
+            <a href="#" class="w-10 h-10 rounded-xl dark:bg-white/5 bg-zinc-100 flex items-center justify-center dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-700 transition-all">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl dark:bg-white/5 bg-zinc-100 flex items-center justify-center dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-700 transition-all">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl dark:bg-white/5 bg-zinc-100 flex items-center justify-center dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-700 transition-all">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl dark:bg-white/5 bg-zinc-100 flex items-center justify-center dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-700 transition-all">
+              <i data-lucide="rss" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER CTA ==================== -->
+  <section class="relative py-20 sm:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="reveal relative rounded-3xl dark:bg-zinc-900/80 bg-white border dark:border-white/[0.08] border-zinc-200 p-8 sm:p-12 overflow-hidden noise">
+        <!-- Background glow -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="relative z-10 text-center">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 flex items-center justify-center mx-auto mb-6">
+            <i data-lucide="mail" class="w-6 h-6 text-orange-500"></i>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-medium tracking-tight dark:text-white text-zinc-900 mb-3">
+            Stay in the Loop
+          </h2>
+          <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-8 max-w-md mx-auto font-light">
+            Get notified when I publish a new project or blog post. No spam, just maker updates — roughly 2-3 emails per month.
+          </p>
+
+          <!-- Email form -->
+          <form id="newsletterForm" onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              id="emailInput"
+              placeholder="you@example.com"
+              required
+              class="flex-1 px-5 py-3.5 rounded-xl dark:bg-white/5 bg-zinc-100 border dark:border-white/10 border-zinc-200 dark:text-white text-zinc-900 text-sm placeholder:dark:text-zinc-500 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500/50 transition-all font-mono"
+            >
+            <button type="submit" class="px-6 py-3.5 bg-gradient-to-b from-orange-500 to-orange-600 text-white font-medium text-sm rounded-xl shadow-[0_8px_20px_-4px_rgba(249,115,22,0.3)] hover:shadow-[0_12px_30px_-4px_rgba(249,115,22,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
+              Subscribe
+            </button>
+          </form>
+          <p class="text-[11px] dark:text-zinc-600 text-zinc-400 mt-4 flex items-center justify-center gap-1.5">
+            <i data-lucide="shield-check" class="w-3 h-3"></i>
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">IoT<span class="text-orange-500">Lab</span></span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
+          <a href="#home" class="hover:text-orange-500 transition-colors">Home</a>
+          <a href="#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+          <a href="#blog" class="hover:text-orange-500 transition-colors">Blog</a>
+          <a href="#about" class="hover:text-orange-500 transition-colors">About</a>
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-400">
+          © 2024 IoT Lab. Built with ☕ and solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== PROJECT FILTER ==========
+    function filterProjects(tag) {
+      const cards = document.querySelectorAll('#projectsGrid .project-card');
+      const buttons = document.querySelectorAll('#filterTags button');
+
+      buttons.forEach(btn => {
+        if (btn.dataset.filter === tag) {
+          btn.className = 'tag active px-4 py-2 rounded-full text-xs font-medium bg-orange-500 text-white transition-all';
+        } else {
+          btn.className = 'tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all';
+        }
+      });
+
+      cards.forEach(card => {
+        const tags = card.dataset.tags.split(',');
+        if (tag === 'all' || tags.includes(tag)) {
+          card.style.display = '';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          requestAnimationFrame(() => {
+            card.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== ACTIVE NAV ON SCROLL ==========
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 200;
+        if (scrollY >= top) current = section.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+  </script>
+</body>
+</html>
