@@ -16,3 +16,15 @@ nav:
   - Home: index.md
   - Guide:
       - Setup: guide/setup.md
+  - Projects:
+      - Arduino:
+          - LED Cube: projects/arduino/led_cube.md
+          - Starter Kits: projects/arduino/kits.md
+      - ESP32:
+          - LED Blink: projects/esp32/led_blink.md
+          - Temperature & Humidity: projects/esp32/temperature.md
+          - Temperature Web Server: projects/esp32/temperature_web.md
+      - LoPy:
+          - LoRaWAN Node: projects/lopy/lorawan_node.md
+      - Raspberry Pi:
+          - Overview: projects/raspberry_pi/index.md
