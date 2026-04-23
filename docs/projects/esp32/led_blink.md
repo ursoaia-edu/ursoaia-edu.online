@@ -1,6 +1,8 @@
 ---
 category: ESP32
 tags: [LED, Blink, MicroPython]
+summary: "Hello World for ESP32: toggle the onboard LED with MicroPython."
+image: assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg
 ---
 
 # LED Blink
@@ -55,14 +57,14 @@ You can connect an external LED to any available GPIO pin instead of (or in addi
 
 ### Wiring
 
-```
+```board
 ESP32 GPIO pin  →  Resistor (220Ω)  →  LED anode (+, longer leg)
-                                        LED cathode (-, shorter leg)  →  GND
+LED cathode (-, shorter leg)  →  GND
 ```
 
 Example using GPIO 4:
 
-```
+```board
 GPIO 4  ──[220Ω]──  LED+  →  LED-  ──  GND
 ```
 

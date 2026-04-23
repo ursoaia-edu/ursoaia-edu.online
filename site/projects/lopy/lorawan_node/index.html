@@ -1,21 +1,11 @@
-{% macro first_page_url(item) -%}
-  {%- if item.url -%}{{ item.url }}
-  {%- elif item.children -%}{{ first_page_url(item.children[0]) }}
-  {%- endif -%}
-{%- endmacro %}
-{% macro nav_href(item) -%}
-  {%- if item.is_section and item.title == 'Projects' -%}
-    {%- if page.is_homepage -%}#projects{%- else -%}{{ nav.homepage.url|url }}#projects{%- endif -%}
-  {%- elif item.is_section -%}{{ first_page_url(item)|url }}
-  {%- else -%}{{ item.url|url }}
-  {%- endif -%}
-{%- endmacro %}
+
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+  <title>LoRaWAN Node - Ursoaia Edu Online</title>
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -194,7 +184,7 @@
       --tw-prose-td-borders: theme('colors.zinc.800');
     }
   </style>
-  {% block extrahead %}{% endblock %}
+  
 </head>
 <body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
 
@@ -203,18 +193,22 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
         <!-- Logo -->
-        <a href="{{ nav.homepage.url|url }}" class="flex items-center gap-3 group">
+        <a href="../../.." class="flex items-center gap-3 group">
           <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
             <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
           </div>
-          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </a>
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="nav-link {% if nav_item.active %}active{% endif %} px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../../../guide/setup/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Guide</a>
+          
+            <a href="../../..#projects" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
         </div>
 
         <!-- Right side -->
@@ -228,11 +222,11 @@
           </div>
 
           <!-- GitHub link -->
-          {% if config.repo_url %}
-          <a href="{{ config.repo_url }}" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
             <i data-lucide="github" class="w-4 h-4 dark:text-zinc-400 text-zinc-500"></i>
           </a>
-          {% endif %}
+          
 
           <!-- Mobile hamburger -->
           <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
@@ -244,15 +238,111 @@
       <!-- Mobile Menu -->
       <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
         <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../../../guide/setup/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Guide</a>
+          
+            <a href="../../..#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
         </div>
       </div>
     </div>
   </nav>
 
-  {% block content %}{% endblock %}
+  
+
+  <main class="pt-32 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="reveal">
+        <h1 class="text-4xl font-medium tracking-tight mb-8 dark:text-white text-zinc-900">LoRaWAN Node</h1>
+        <div class="prose dark:prose-invert">
+          <h1 id="lopy-lorawan-node">LoPy LoRaWAN Node</h1>
+<p>Connecting a Pycom LoPy4 to a LoRaWAN network using ABP (Activation By Personalization) and sending data.</p>
+<h2 id="description">Description</h2>
+<p>This project demonstrates how to configure the LoPy4 to join a LoRaWAN network in the EU868 region. It uses ABP for quick activation and sends a simple 4-byte payload periodically.</p>
+<h2 id="code">Code</h2>
+<h3 id="bootpy">boot.py</h3>
+<p>The <code>boot.py</code> file handles the network joining process.</p>
+<pre><code class="language-python">import os
+import binascii
+import time
+import machine
+import pycom
+import struct
+from network import LoRa
+
+# Disable heartbeat LED
+pycom.heartbeat(False)
+
+# LoRaWAN Configuration
+lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
+
+# ABP Credentials (replace with your own)
+dev_addr = struct.unpack(&quot;&gt;l&quot;, binascii.unhexlify('26011346'))[0]
+nwk_swkey = binascii.unhexlify('0619AB7D261950743D46D701AD9903DD')
+app_swkey = binascii.unhexlify('8FBE002AA5008BCC52638CF2D33A6A10')
+
+# Join network
+lora.join(activation=LoRa.ABP, auth=(dev_addr, nwk_swkey, app_swkey))
+
+# Wait for join
+pycom.rgbled(0xffff00) # Yellow
+while not lora.has_joined():
+    time.sleep(2.5)
+    print('Not joined yet...')
+
+print('Network joined!')
+pycom.rgbled(0x0000ff) # Blue
+time.sleep(1)
+pycom.rgbled(0x000000)
+</code></pre>
+<h3 id="mainpy">main.py</h3>
+<p>The <code>main.py</code> file handles data transmission.</p>
+<pre><code class="language-python">import socket
+import pycom
+from time import sleep
+
+# Create a LoRa socket
+s = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
+
+# Set the LoRaWAN data rate
+s.setsockopt(socket.SOL_LORA, socket.SO_DR, 5)
+
+count = 0
+while True:
+    s.setblocking(True)
+    # Send data (Example payload: 0x01, 0x67, 0x00, 0x96)
+    s.send(bytes([0x01, 0x67, 0x00, 0x96]))
+    s.setblocking(False)
+
+    print(f&quot;Sent packet #{count}&quot;)
+
+    # Receive downlink data (optional)
+    data = s.recv(64)
+    if data:
+        print(f&quot;Received: {data}&quot;)
+
+    count += 1
+    sleep(10) # Wait before next transmission
+</code></pre>
+<h2 id="how-it-works">How it works</h2>
+<ol>
+<li><strong>LoRa Stack:</strong> The <code>network.LoRa</code> module is used to initialize the LoRa radio in LoRaWAN mode.</li>
+<li><strong>ABP Joining:</strong> Unlike OTAA (Over-the-Air Activation), ABP uses hardcoded session keys. It doesn't require a handshake with the gateway, making it faster but less secure for production.</li>
+<li><strong>Data Transmission:</strong> A standard BSD-style socket is used to send data over the LoRa network.</li>
+<li><strong>Payload:</strong> The sample payload <code>[0x01, 0x67, 0x00, 0x96]</code> is typical for Cayenne LPP (Low Power Payload) format, where <code>0x67</code> represents temperature.</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/">Pycom Documentation: LoRaWAN</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
@@ -263,19 +353,23 @@
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
             <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
           </div>
-          <span class="font-medium dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </div>
 
         <!-- Links -->
         <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="hover:text-orange-500 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../../.." class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../../../guide/setup/" class="hover:text-orange-500 transition-colors">Guide</a>
+          
+            <a href="../../..#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+          
         </div>
 
         <!-- Copyright -->
         <p class="text-xs dark:text-zinc-600 text-zinc-400">
-          © 2024 {{ config.site_name }}. Built with ☕ and solder fumes.
+          © 2024 Ursoaia Edu Online. Built with ☕ and solder fumes.
         </p>
       </div>
     </div>
@@ -384,6 +478,8 @@
       lucide.createIcons();
     });
   </script>
-  {% block extra_scripts %}{% endblock %}
+  
+
+
 </body>
 </html>

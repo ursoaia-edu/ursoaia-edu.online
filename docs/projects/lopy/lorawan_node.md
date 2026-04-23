@@ -1,6 +1,7 @@
 ---
 category: LoPy
 tags: [LoRa, LoRaWAN, ABP, IoT]
+summary: Configure a Pycom LoPy4 for the EU868 LoRaWAN network using ABP activation and send periodic payloads.
 ---
 
 # LoPy LoRaWAN Node
@@ -14,6 +15,7 @@ This project demonstrates how to configure the LoPy4 to join a LoRaWAN network i
 ## Code
 
 ### boot.py
+
 The `boot.py` file handles the network joining process.
 
 ```python
@@ -52,6 +54,7 @@ pycom.rgbled(0x000000)
 ```
 
 ### main.py
+
 The `main.py` file handles data transmission.
 
 ```python
@@ -71,24 +74,25 @@ while True:
     # Send data (Example payload: 0x01, 0x67, 0x00, 0x96)
     s.send(bytes([0x01, 0x67, 0x00, 0x96]))
     s.setblocking(False)
-    
+
     print(f"Sent packet #{count}")
-    
+
     # Receive downlink data (optional)
     data = s.recv(64)
     if data:
         print(f"Received: {data}")
-        
+
     count += 1
     sleep(10) # Wait before next transmission
 ```
 
 ## How it works
 
-1.  **LoRa Stack:** The `network.LoRa` module is used to initialize the LoRa radio in LoRaWAN mode.
-2.  **ABP Joining:** Unlike OTAA (Over-the-Air Activation), ABP uses hardcoded session keys. It doesn't require a handshake with the gateway, making it faster but less secure for production.
-3.  **Data Transmission:** A standard BSD-style socket is used to send data over the LoRa network.
-4.  **Payload:** The sample payload `[0x01, 0x67, 0x00, 0x96]` is typical for Cayenne LPP (Low Power Payload) format, where `0x67` represents temperature.
+1. **LoRa Stack:** The `network.LoRa` module is used to initialize the LoRa radio in LoRaWAN mode.
+2. **ABP Joining:** Unlike OTAA (Over-the-Air Activation), ABP uses hardcoded session keys. It doesn't require a handshake with the gateway, making it faster but less secure for production.
+3. **Data Transmission:** A standard BSD-style socket is used to send data over the LoRa network.
+4. **Payload:** The sample payload `[0x01, 0x67, 0x00, 0x96]` is typical for Cayenne LPP (Low Power Payload) format, where `0x67` represents temperature.
 
 ## Reference
+
 - [Pycom Documentation: LoRaWAN](https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/)

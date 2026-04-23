@@ -1,6 +1,8 @@
 ---
 category: ESP32
 tags: [Sensor, Temperature, Humidity, DHT22, MicroPython]
+summary: Read DHT22 / DHT11 sensor data on an ESP32 and print values to the serial console every two seconds.
+image: assets/images/projects/esp32/ESP32-interfacing-with-dht11.webp
 ---
 
 # Temperature and Humidity
@@ -16,7 +18,7 @@ This script uses the built-in `dht` MicroPython library to communicate with a DH
 ```python
 from machine import Pin
 from time import sleep
-import dht 
+import dht
 
 # DHT22 on GPIO 14
 sensor = dht.DHT22(Pin(14))
@@ -42,7 +44,7 @@ while True:
 
 ### DHT22 (or DHT11) to ESP32
 
-```
+```board
 DHT22 Pin  →  ESP32
 ---------     -----
 VCC (1)    →  3.3V
@@ -52,7 +54,7 @@ GND (4)    →  GND
 
 A 10 kΩ pull-up resistor between DATA and VCC is recommended for reliable communication.
 
-```
+```board
 3.3V ──[10kΩ]──┬── GPIO 14
                │
               DATA pin of sensor

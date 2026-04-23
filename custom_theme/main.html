@@ -1,5 +1,70 @@
 {% extends "base.html" %}
 
+{% macro category_slug(name) -%}{{ (name or '')|lower|replace(' ', '_') }}{%- endmacro %}
+
+{% macro render_project_card(p, featured) -%}
+<a href="{{ p.url|url }}" class="reveal project-card {% if featured %}md:col-span-2 lg:col-span-3{% endif %} rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="{{ category_slug(p.meta.category) }}">
+  <div class="relative overflow-hidden {% if featured %}aspect-[21/9]{% else %}aspect-[16/10]{% endif %}">
+    {% if p.meta.image %}
+      <img src="{{ p.meta.image|url }}" alt="{{ p.title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    {% else %}
+      <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/10 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <i data-lucide="circuit-board" class="w-14 h-14 text-orange-500/70"></i>
+      </div>
+    {% endif %}
+    <div class="absolute top-4 left-4 flex gap-2">
+      {% if featured %}
+        <span class="px-3 py-1.5 rounded-full bg-orange-500 text-white text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="star" class="w-3 h-3"></i> Featured
+        </span>
+      {% endif %}
+      {% if p.meta.category %}
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">{{ p.meta.category }}</span>
+      {% endif %}
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">{{ p.title }}</h3>
+    {% if p.meta.summary %}
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">{{ p.meta.summary }}</p>
+    {% endif %}
+    {% if p.meta.tags %}
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      {% for t in p.meta.tags %}
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">{{ t }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a>
+{%- endmacro %}
+
+{% macro flatten_pages(items) -%}
+  {%- for it in items -%}
+    {%- if it.is_page -%}{% if it.meta.featured %}{{ render_project_card(it, true) }}{% endif %}{% if not it.meta.featured %}{{ render_project_card(it, false) }}{% endif %}
+    {%- elif it.is_section -%}{{ flatten_pages(it.children) }}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endmacro %}
+
+{% macro first_url(item) -%}
+  {%- if item.url -%}{{ item.url }}
+  {%- elif item.children -%}{{ first_url(item.children[0]) }}
+  {%- endif -%}
+{%- endmacro %}
+
+{% set projects_section = namespace(node=none) %}
+{% for nav_item in nav %}
+  {% if nav_item.title == 'Projects' %}{% set projects_section.node = nav_item %}{% endif %}
+{% endfor %}
+
 {% block content %}
 {% if page.is_homepage %}
   <!-- ==================== HERO SECTION ==================== -->
@@ -110,150 +175,14 @@
       <!-- Filter tags -->
       <div class="reveal flex flex-wrap gap-2 mb-10" id="filterTags">
         <button onclick="filterProjects('all')" class="tag active px-4 py-2 rounded-full text-xs font-medium bg-orange-500 text-white transition-all" data-filter="all">All Projects</button>
-        <button onclick="filterProjects('esp32')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="esp32">ESP32</button>
-        <button onclick="filterProjects('arduino')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="arduino">Arduino</button>
-        <button onclick="filterProjects('rp2040')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="rp2040">RP2040</button>
-        <button onclick="filterProjects('home')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="home">Home Automation</button>
-        <button onclick="filterProjects('sensor')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="sensor">Sensors</button>
+        {% if projects_section.node %}{% for sub in projects_section.node.children %}
+        <button onclick="filterProjects('{{ category_slug(sub.title) }}')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="{{ category_slug(sub.title) }}">{{ sub.title }}</button>
+        {% endfor %}{% endif %}
       </div>
 
       <!-- Projects Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5" id="projectsGrid">
-        <!-- Project Card 1 — Featured -->
-        <div class="reveal project-card lg:col-span-2 rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="esp32,home">
-          <div class="grid md:grid-cols-2 gap-0">
-            <div class="relative overflow-hidden aspect-[4/3] md:aspect-auto">
-              <img src="https://picsum.photos/seed/smart-home-hub/800/600.jpg" alt="Smart Home Hub" class="w-full h-full object-cover">
-              <div class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-orange-500 text-white text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                <i data-lucide="star" class="w-3 h-3"></i> Featured
-              </div>
-            </div>
-            <div class="p-6 sm:p-8 flex flex-col justify-center">
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-2.5 py-1 rounded-md dark:bg-orange-500/10 bg-orange-50 text-orange-500 text-[11px] font-mono font-medium">ESP32</span>
-                <span class="px-2.5 py-1 rounded-md dark:bg-blue-500/10 bg-blue-50 text-blue-500 text-[11px] font-mono font-medium">MQTT</span>
-                <span class="px-2.5 py-1 rounded-md dark:bg-emerald-500/10 bg-emerald-50 text-emerald-500 text-[11px] font-mono font-medium">HomeKit</span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-medium tracking-tight dark:text-white text-zinc-900 mb-3">Smart Home Hub</h3>
-              <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-6 font-light">
-                A central gateway built on ESP32 that bridges Zigbee sensors, BLE devices, and Wi-Fi peripherals into HomeKit and MQTT. Custom PCB with OLED status display and OTA updates.
-              </p>
-              <div class="flex items-center gap-4">
-                <a href="#" class="group inline-flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-400 transition-colors">
-                  View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </a>
-                <a href="#" class="inline-flex items-center gap-2 text-sm font-medium dark:text-zinc-500 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
-                  <i data-lucide="github" class="w-4 h-4"></i> Source
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Card 2 -->
-        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="esp32,sensor">
-          <div class="relative overflow-hidden aspect-[16/10]">
-            <img src="https://picsum.photos/seed/weather-station-iot/600/380.jpg" alt="Weather Station" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-              <div class="flex gap-2">
-                <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">ESP32</span>
-                <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">BME280</span>
-              </div>
-              <div class="flex items-center gap-1.5 px-2 py-0.5 rounded dark:bg-green-500/20 bg-green-50 text-[10px] font-medium text-green-500">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Live
-              </div>
-            </div>
-          </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Solar Weather Station</h3>
-            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
-              Solar-powered outdoor weather station with BME280, anemometer, and rain gauge. Streams data via MQTT with 6+ month battery life.
-            </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
-                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 34</span>
-                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 8</span>
-              </div>
-              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Card 3 -->
-        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="arduino,sensor,home">
-          <div class="relative overflow-hidden aspect-[16/10]">
-            <img src="https://picsum.photos/seed/plant-monitor-arduino/600/380.jpg" alt="Plant Monitor" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            <div class="absolute bottom-4 left-4 flex gap-2">
-              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino Nano</span>
-              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Capacitive Soil</span>
-            </div>
-          </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Plant Health Monitor</h3>
-            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
-              Monitors soil moisture, light levels, and temperature for up to 6 plants. Neopixel ring provides at-a-glance health status per plant.
-            </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
-                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 21</span>
-                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 5</span>
-              </div>
-              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Card 4 -->
-        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="rp2040,sensor">
-          <div class="relative overflow-hidden aspect-[16/10]">
-            <img src="https://picsum.photos/seed/air-quality-rp2040/600/380.jpg" alt="Air Quality" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            <div class="absolute bottom-4 left-4 flex gap-2">
-              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">RP2040</span>
-              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">PMS5003</span>
-            </div>
-          </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Air Quality Mapper</h3>
-            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
-              Portable PM2.5/PM10 sensor with GPS logging and e-ink display. Built on RP2040 with custom C++ firmware and Grafana dashboard.
-            </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
-                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 47</span>
-                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 12</span>
-              </div>
-              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Card 5 -->
-        <div class="reveal project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden" data-tags="esp32,home">
-          <div class="relative overflow-hidden aspect-[16/10]">
-            <img src="https://picsum.photos/seed/smart-door-lock-iot/600/380.jpg" alt="Smart Lock" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            <div class="absolute bottom-4 left-4 flex gap-2">
-              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">ESP32-S3</span>
-              <span class="px-2 py-0.5 rounded dark:bg-black/40 bg-white/80 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">NFC</span>
-            </div>
-          </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">NFC Smart Door Lock</h3>
-            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light">
-              Retrofittable door lock with NFC card + PIN access. Logs all entries to a local server, with webhook notifications to Telegram.
-            </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3 text-xs dark:text-zinc-500 text-zinc-400">
-                <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> 56</span>
-                <span class="flex items-center gap-1"><i data-lucide="git-fork" class="w-3 h-3"></i> 14</span>
-              </div>
-              <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
-            </div>
-          </div>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="projectsGrid">
+        {% if projects_section.node %}{{ flatten_pages(projects_section.node.children) }}{% endif %}
       </div>
     </div>
   </section>

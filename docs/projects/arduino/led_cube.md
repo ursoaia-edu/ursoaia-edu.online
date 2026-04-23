@@ -1,6 +1,9 @@
 ---
 category: Arduino
 tags: [LED, Cube, Multiplexing, Arduino Uno]
+summary: Build a 27-LED cube with layer multiplexing and POV animations using Arduino Uno.
+image: assets/images/projects/arduino/led_cube_schematic.svg
+featured: true
 ---
 
 # 3x3x3 LED Cube
@@ -15,7 +18,7 @@ The cube uses **layer multiplexing**:
 - **3 layers** (LED cathodes) are controlled via NPN transistors (2N2222 / BC547).
 - Arduino rapidly switches layers (POV — persistence of vision), creating the illusion that all 27 LEDs are lit simultaneously.
 
-```
+```board
      Top view (column numbering):
 
          C0   C1   C2
@@ -30,14 +33,14 @@ The cube uses **layer multiplexing**:
 
 ## Bill of Materials
 
-| Component                | Quantity   | Notes                          |
-|--------------------------|------------|--------------------------------|
-| Arduino Uno (CH340)      | 1          | Or Nano                        |
+| Component                | Quantity   | Notes                         |
+|--------------------------|------------|-------------------------------|
+| Arduino Uno (CH340)      | 1          | Or Nano                       |
 | LED 5mm (any color)      | 27         | Can use 3 colors, 9 each      |
-| 220 Ω resistor           | 9          | Current-limiting (columns)     |
-| 1 kΩ resistor            | 3          | For transistor bases (layers)  |
-| NPN transistor 2N2222    | 3          | Or BC547/BC337                 |
-| Breadboard               | 1          | 830 tie-points                 |
+| 220 Ω resistor           | 9          | Current-limiting (columns)    |
+| 1 kΩ resistor            | 3          | For transistor bases (layers) |
+| NPN transistor 2N2222    | 3          | Or BC547/BC337                |
+| Breadboard               | 1          | 830 tie-points                |
 | Jumper wires             | ~20        | M-M                           |
 
 > All components are included in the **LA036 Super Starter Kit for Arduino UNO**.
@@ -46,7 +49,7 @@ The cube uses **layer multiplexing**:
 
 ![LED Cube Schematic](../../assets/images/projects/arduino/led_cube_schematic.svg)
 
-```
+```board
                         Arduino Uno
                      ┌──────────────────┐
                      │                  │
@@ -95,26 +98,31 @@ The cube uses **layer multiplexing**:
 ## Building the Cube
 
 ### 1. Preparing the LEDs
+
 - Test each LED before soldering (with a 220 Ω resistor from 5V).
 - Identify polarity: long leg = anode (+), short leg = cathode (−).
 - Bend the cathode (−) of each LED at 90° — they will be connected horizontally to form a layer.
 
 ### 2. Making a Jig
+
 - Draw a 3×3 grid on cardboard or plywood with ~20 mm spacing between centers.
 - Drill 9 holes with a 5 mm diameter.
 
 ### 3. Soldering the Layers
+
 - Insert 9 LEDs into the jig.
 - Solder all cathodes (−) into a horizontal grid using copper wire.
 - Repeat for all 3 layers. Test each layer!
 
 ### 4. Connecting the Columns
+
 - Place the bottom layer on the breadboard.
 - Solder the middle layer on top, connecting anodes (+) vertically.
 - Solder the top layer.
 - Use spacers of equal height between layers (~20 mm).
 
 ### 5. Connecting to Arduino
+
 - 9 anodes (columns) → through 220 Ω resistors → pins D2–D10.
 - 3 cathode layers → through 2N2222 transistors → pins D11–D13.
 
@@ -164,7 +172,7 @@ void setLed(byte x, byte y, byte z, bool state) {
   else cube[z] &= ~(1 << col);
 }
 
-// Animations omitted for brevity in this snippet, 
+// Animations omitted for brevity in this snippet,
 // but you can add your own!
 // See full code for details.
 

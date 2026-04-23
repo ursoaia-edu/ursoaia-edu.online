@@ -1,21 +1,11 @@
-{% macro first_page_url(item) -%}
-  {%- if item.url -%}{{ item.url }}
-  {%- elif item.children -%}{{ first_page_url(item.children[0]) }}
-  {%- endif -%}
-{%- endmacro %}
-{% macro nav_href(item) -%}
-  {%- if item.is_section and item.title == 'Projects' -%}
-    {%- if page.is_homepage -%}#projects{%- else -%}{{ nav.homepage.url|url }}#projects{%- endif -%}
-  {%- elif item.is_section -%}{{ first_page_url(item)|url }}
-  {%- else -%}{{ item.url|url }}
-  {%- endif -%}
-{%- endmacro %}
+
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+  <title>Temperature Web Server - Ursoaia Edu Online</title>
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -194,7 +184,7 @@
       --tw-prose-td-borders: theme('colors.zinc.800');
     }
   </style>
-  {% block extrahead %}{% endblock %}
+  
 </head>
 <body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
 
@@ -203,18 +193,22 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
         <!-- Logo -->
-        <a href="{{ nav.homepage.url|url }}" class="flex items-center gap-3 group">
+        <a href="../../.." class="flex items-center gap-3 group">
           <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
             <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
           </div>
-          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </a>
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="nav-link {% if nav_item.active %}active{% endif %} px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../../../guide/setup/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Guide</a>
+          
+            <a href="../../..#projects" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
         </div>
 
         <!-- Right side -->
@@ -228,11 +222,11 @@
           </div>
 
           <!-- GitHub link -->
-          {% if config.repo_url %}
-          <a href="{{ config.repo_url }}" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
             <i data-lucide="github" class="w-4 h-4 dark:text-zinc-400 text-zinc-500"></i>
           </a>
-          {% endif %}
+          
 
           <!-- Mobile hamburger -->
           <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
@@ -244,15 +238,143 @@
       <!-- Mobile Menu -->
       <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
         <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../../../guide/setup/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Guide</a>
+          
+            <a href="../../..#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
         </div>
       </div>
     </div>
   </nav>
 
-  {% block content %}{% endblock %}
+  
+
+  <main class="pt-32 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="reveal">
+        <h1 class="text-4xl font-medium tracking-tight mb-8 dark:text-white text-zinc-900">Temperature Web Server</h1>
+        <div class="prose dark:prose-invert">
+          <h1 id="temperature-and-humidity-web-server">Temperature and Humidity Web Server</h1>
+<p>Reads temperature and humidity from a DHT22 (or DHT11) sensor connected to an ESP32 and serves the values over a simple HTTP web page using MicroPython.</p>
+<h2 id="description">Description</h2>
+<p>The project consists of a single <code>main.py</code> file that:</p>
+<ol>
+<li>Connects the ESP32 to your Wi-Fi network.</li>
+<li>Initialises the DHT11/DHT22 sensor.</li>
+<li>Opens a TCP socket on port 80.</li>
+<li>Waits for HTTP connections and responds with a styled HTML page showing current sensor readings.</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-python">import network
+import time
+from machine import Pin
+import dht
+try:
+  import usocket as socket
+except:
+  import socket
+
+# Configuration
+ssid = 'REPLACE_WITH_YOUR_SSID'
+password = 'REPLACE_WITH_YOUR_PASSWORD'
+
+# Connect to Wi-Fi
+station = network.WLAN(network.STA_IF)
+station.active(True)
+station.connect(ssid, password)
+
+while not station.isconnected():
+  print('Waiting for connection...')
+  time.sleep(1)
+
+print('Connection successful')
+print(station.ifconfig())
+
+# Sensor setup
+sensor = dht.DHT11(Pin(4))
+# sensor = dht.DHT22(Pin(4))
+
+def read_sensor():
+  try:
+    sensor.measure()
+    temp = sensor.temperature()
+    hum = sensor.humidity()
+    return temp, hum
+  except OSError as e:
+    print('Failed to read sensor.')
+    return 0, 0
+
+def web_page(temp, hum):
+  html = f&quot;&quot;&quot;&lt;!DOCTYPE HTML&gt;&lt;html&gt;
+&lt;head&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://use.fontawesome.com/releases/v5.7.2/css/all.css&quot;&gt;
+  &lt;style&gt;
+    html {{ font-family: Arial; display: inline-block; margin: 0px auto; text-align: center; }}
+    h2 {{ font-size: 3.0rem; }}
+    p {{ font-size: 3.0rem; }}
+    .units {{ font-size: 1.2rem; }}
+    .dht-labels{{ font-size: 1.5rem; vertical-align:middle; padding-bottom: 15px; }}
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;ESP DHT Server&lt;/h2&gt;
+  &lt;p&gt;
+    &lt;i class=&quot;fas fa-thermometer-half&quot; style=&quot;color:#059e8a;&quot;&gt;&lt;/i&gt;
+    &lt;span class=&quot;dht-labels&quot;&gt;Temperature&lt;/span&gt;
+    &lt;span&gt;{temp}&lt;/span&gt;
+    &lt;sup class=&quot;units&quot;&gt;&amp;deg;C&lt;/sup&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;i class=&quot;fas fa-tint&quot; style=&quot;color:#00add6;&quot;&gt;&lt;/i&gt;
+    &lt;span class=&quot;dht-labels&quot;&gt;Humidity&lt;/span&gt;
+    &lt;span&gt;{hum}&lt;/span&gt;
+    &lt;sup class=&quot;units&quot;&gt;%&lt;/sup&gt;
+  &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;&quot;&quot;&quot;
+  return html
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind(('', 80))
+s.listen(5)
+
+while True:
+  conn, addr = s.accept()
+  print('Got a connection from %s' % str(addr))
+  request = conn.recv(1024)
+  temp, hum = read_sensor()
+  response = web_page(temp, hum)
+  conn.send('HTTP/1.1 200 OK\n')
+  conn.send('Content-Type: text/html\n')
+  conn.send('Connection: close\n\n')
+  conn.sendall(response)
+  conn.close()
+</code></pre>
+<h2 id="wiring">Wiring</h2>
+<h3 id="dht22-or-dht11-to-esp32">DHT22 (or DHT11) to ESP32</h3>
+<pre><code class="language-board">DHT22 Pin  →  ESP32
+---------     -----
+VCC (1)    →  3.3V
+DATA (2)   →  GPIO 4
+GND (4)    →  GND
+</code></pre>
+<h3 id="wiring-diagram">Wiring Diagram</h3>
+<p><img alt="ESP32 dht22 wifi" src="../../../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png" /></p>
+<hr />
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://techtotinker.com/016-esp32-micropython-web-server-esp32-access-point-mode-in-micropython/">016 - ESP32 MicroPython: Web Server | ESP32 Access Point</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
@@ -263,19 +385,23 @@
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
             <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
           </div>
-          <span class="font-medium dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </div>
 
         <!-- Links -->
         <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="hover:text-orange-500 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../../.." class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../../../guide/setup/" class="hover:text-orange-500 transition-colors">Guide</a>
+          
+            <a href="../../..#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+          
         </div>
 
         <!-- Copyright -->
         <p class="text-xs dark:text-zinc-600 text-zinc-400">
-          © 2024 {{ config.site_name }}. Built with ☕ and solder fumes.
+          © 2024 Ursoaia Edu Online. Built with ☕ and solder fumes.
         </p>
       </div>
     </div>
@@ -384,6 +510,8 @@
       lucide.createIcons();
     });
   </script>
-  {% block extra_scripts %}{% endblock %}
+  
+
+
 </body>
 </html>

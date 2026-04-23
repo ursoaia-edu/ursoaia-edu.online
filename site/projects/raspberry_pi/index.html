@@ -1,21 +1,11 @@
-{% macro first_page_url(item) -%}
-  {%- if item.url -%}{{ item.url }}
-  {%- elif item.children -%}{{ first_page_url(item.children[0]) }}
-  {%- endif -%}
-{%- endmacro %}
-{% macro nav_href(item) -%}
-  {%- if item.is_section and item.title == 'Projects' -%}
-    {%- if page.is_homepage -%}#projects{%- else -%}{{ nav.homepage.url|url }}#projects{%- endif -%}
-  {%- elif item.is_section -%}{{ first_page_url(item)|url }}
-  {%- else -%}{{ item.url|url }}
-  {%- endif -%}
-{%- endmacro %}
+
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+  <title>Overview - Ursoaia Edu Online</title>
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -194,7 +184,7 @@
       --tw-prose-td-borders: theme('colors.zinc.800');
     }
   </style>
-  {% block extrahead %}{% endblock %}
+  
 </head>
 <body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
 
@@ -203,18 +193,22 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
         <!-- Logo -->
-        <a href="{{ nav.homepage.url|url }}" class="flex items-center gap-3 group">
+        <a href="../.." class="flex items-center gap-3 group">
           <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
             <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
           </div>
-          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </a>
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="nav-link {% if nav_item.active %}active{% endif %} px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../../guide/setup/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Guide</a>
+          
+            <a href="../..#projects" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
         </div>
 
         <!-- Right side -->
@@ -228,11 +222,11 @@
           </div>
 
           <!-- GitHub link -->
-          {% if config.repo_url %}
-          <a href="{{ config.repo_url }}" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
             <i data-lucide="github" class="w-4 h-4 dark:text-zinc-400 text-zinc-500"></i>
           </a>
-          {% endif %}
+          
 
           <!-- Mobile hamburger -->
           <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
@@ -244,15 +238,56 @@
       <!-- Mobile Menu -->
       <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
         <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../../guide/setup/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Guide</a>
+          
+            <a href="../..#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
         </div>
       </div>
     </div>
   </nav>
 
-  {% block content %}{% endblock %}
+  
+
+  <main class="pt-32 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="reveal">
+        <h1 class="text-4xl font-medium tracking-tight mb-8 dark:text-white text-zinc-900">Overview</h1>
+        <div class="prose dark:prose-invert">
+          <h1 id="raspberry-pi-projects">Raspberry Pi Projects</h1>
+<p>Educational resources for Raspberry Pi development using C, MicroPython, and Piper Make.</p>
+<h2 id="development-paths">Development Paths</h2>
+<h3 id="1-cc-development">1. C/C++ Development</h3>
+<p>For those interested in low-level programming and performance.</p>
+<ul>
+<li><a href="https://github.com/ursoaia-edu/cerc_de_informatica_2025/tree/main/raspberry_pi/C/Tutorial%20For%20Arduino%20User">Tutorial for Arduino Users</a> - Transitioning from Arduino to Raspberry Pi C.</li>
+</ul>
+<h3 id="2-micropython">2. MicroPython</h3>
+<p>A beginner-friendly way to interact with hardware on the Raspberry Pi Pico and other boards.</p>
+<ul>
+<li><a href="https://github.com/ursoaia-edu/cerc_de_informatica_2025/tree/main/raspberry_pi/MicroPython/Tutorial%20For%20MicroPython%20User">Tutorial for MicroPython Users</a></li>
+<li><a href="https://github.com/ursoaia-edu/cerc_de_informatica_2025/tree/main/raspberry_pi/MicroPython/MicroPython_Codes">MicroPython Code Samples</a></li>
+</ul>
+<h3 id="3-piper-make">3. Piper Make</h3>
+<p>A block-based visual programming interface for Raspberry Pi Pico.</p>
+<ul>
+<li><a href="https://github.com/ursoaia-edu/cerc_de_informatica_2025/tree/main/raspberry_pi/Piper_Make">Piper Make Resources</a></li>
+</ul>
+<hr />
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.raspberrypi.com/documentation/">Raspberry Pi Documentation</a></li>
+<li><a href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html">MicroPython for Raspberry Pi Pico</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
@@ -263,19 +298,23 @@
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
             <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
           </div>
-          <span class="font-medium dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </div>
 
         <!-- Links -->
         <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="hover:text-orange-500 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../.." class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../../guide/setup/" class="hover:text-orange-500 transition-colors">Guide</a>
+          
+            <a href="../..#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+          
         </div>
 
         <!-- Copyright -->
         <p class="text-xs dark:text-zinc-600 text-zinc-400">
-          © 2024 {{ config.site_name }}. Built with ☕ and solder fumes.
+          © 2024 Ursoaia Edu Online. Built with ☕ and solder fumes.
         </p>
       </div>
     </div>
@@ -384,6 +423,8 @@
       lucide.createIcons();
     });
   </script>
-  {% block extra_scripts %}{% endblock %}
+  
+
+
 </body>
 </html>
