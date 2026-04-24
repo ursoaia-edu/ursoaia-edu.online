@@ -432,7 +432,7 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">00: Cum funcționează web-ul</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Cum funcționează web-ul, diferența dintre Internet și Web, rolul browser-ului și instrumentele pe care le vei folosi.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">How the web works, the difference between Internet and Web, the role of the browser, and the tools you'll use.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
@@ -454,214 +454,214 @@
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-00-cum-functioneaza-web-ul">Lecția 00 · Cum funcționează web-ul<a class="headerlink" href="#lectia-00-cum-functioneaza-web-ul" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-00-how-the-web-works">Lesson 00 · How the web works<a class="headerlink" href="#lesson-00-how-the-web-works" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Diferența dintre <strong>Internet</strong> și <strong>Web</strong></li>
-<li>Modelul <strong>client–server</strong> și ce se întâmplă când deschizi un site</li>
-<li>Cele <strong>3 limbaje</strong> ale web-ului: HTML, CSS, JavaScript</li>
-<li>Instrumentele de lucru: <strong>VS Code</strong>, <strong>Live Server</strong>, <strong>DevTools</strong></li>
-<li>Cum să inspectezi orice pagină web cu <code>F12</code></li>
+<li>The difference between <strong>the Internet</strong> and <strong>the Web</strong></li>
+<li>The <strong>client-server</strong> model and what happens when you open a site</li>
+<li>The <strong>3 languages</strong> of the web: HTML, CSS, JavaScript</li>
+<li>Your toolkit: <strong>VS Code</strong>, <strong>Live Server</strong>, <strong>DevTools</strong></li>
+<li>How to inspect any web page with <code>F12</code></li>
 </ul>
 </div>
 <hr />
-<h2 id="internetul-vs-web-ul">Internetul vs. Web-ul<a class="headerlink" href="#internetul-vs-web-ul" title="Link to this section">&para;</a></h2>
-<p>Mulți folosesc cuvintele „Internet” și „Web” ca și cum ar fi același lucru. <strong>Nu sunt.</strong></p>
+<h2 id="the-internet-vs-the-web">The Internet vs. the Web<a class="headerlink" href="#the-internet-vs-the-web" title="Link to this section">&para;</a></h2>
+<p>Many people use the words "Internet" and "Web" as if they were the same thing. <strong>They are not.</strong></p>
 <ul>
-<li><strong>Internetul</strong> este rețeaua fizică globală de cabluri, routere, antene și servere care conectează miliarde de calculatoare.</li>
-<li><strong>Web-ul</strong> (World Wide Web) este <strong>stratul de informație</strong> construit deasupra Internetului — site-urile, paginile, imaginile, videoclipurile pe care le vezi în browser.</li>
+<li><strong>The Internet</strong> is the global physical network of cables, routers, antennas and servers that connects billions of computers.</li>
+<li><strong>The Web</strong> (World Wide Web) is the <strong>information layer</strong> built on top of the Internet — the sites, pages, images, and videos you see in the browser.</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Analogie</p>
-<p><strong>Internetul = autostrada.</strong> Cablurile și routerele sunt asfaltul și indicatoarele.</p>
-<p><strong>Web-ul = mașinile care circulă</strong> pe ea. Pagina pe care o citești acum este o „mașină” care a ajuns la tine prin autostradă.</p>
-<p>Pe Internet mai circulă și altceva: e-mail, jocuri online, apeluri video, actualizări de aplicații. Web-ul este doar <strong>un tip</strong> de trafic.</p>
+<p class="admonition-title">Analogy</p>
+<p><strong>The Internet = the highway.</strong> The cables and routers are the asphalt and signs.</p>
+<p><strong>The Web = the cars driving</strong> on it. The page you're reading right now is a "car" that reached you via the highway.</p>
+<p>Other things travel on the Internet too: e-mail, online games, video calls, app updates. The Web is just <strong>one type</strong> of traffic.</p>
 </div>
 <hr />
-<h2 id="modelul-clientserver">Modelul client–server<a class="headerlink" href="#modelul-clientserver" title="Link to this section">&para;</a></h2>
-<p>Orice pagină web pe care o deschizi presupune <strong>două părți</strong> care comunică:</p>
+<h2 id="the-client-server-model">The client-server model<a class="headerlink" href="#the-client-server-model" title="Link to this section">&para;</a></h2>
+<p>Every web page you open involves <strong>two parties</strong> communicating:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[CLIENT]                            [SERVER]
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Chrome / Firefox / Edge       Un calculator puternic
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>(calculatorul tău)            (ex: serverele Google)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Chrome / Firefox / Edge       A powerful computer
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>(your computer)               (e.g. Google&#39;s servers)
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>      |   1. Cerere (request)            |
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>      |   1. Request                     |
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      |   GET /index.html                |
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>      |  ------------------------------&gt; |
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>      |                                  |
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>      |   2. Răspuns (response)          |
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>      |   200 OK + cod HTML              |
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>      |   2. Response                    |
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>      |   200 OK + HTML code             |
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>      |  &lt;------------------------------ |
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>      |                                  |
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>      v                                  v
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   Afișează pagina            Trimite mai departe
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   Display the page              Forward to others
 </span></code></pre></div>
 <ul>
-<li><strong>Clientul</strong> cere o resursă (o pagină, o imagine, un videoclip).</li>
-<li><strong>Serverul</strong> răspunde cu acea resursă (sau cu o eroare, dacă nu există).</li>
+<li><strong>The client</strong> asks for a resource (a page, an image, a video).</li>
+<li><strong>The server</strong> responds with that resource (or with an error if it doesn't exist).</li>
 </ul>
-<p>Browser-ul tău este un client. Google, YouTube, Wikipedia rulează pe servere.</p>
+<p>Your browser is a client. Google, YouTube, Wikipedia run on servers.</p>
 <hr />
-<h2 id="cererea-http-pe-scurt">Cererea HTTP pe scurt<a class="headerlink" href="#cererea-http-pe-scurt" title="Link to this section">&para;</a></h2>
-<p>Limbajul prin care clientul și serverul vorbesc se numește <strong>HTTP</strong> (HyperText Transfer Protocol). Când scrii o adresă și apeși Enter, se întâmplă (simplificat):</p>
+<h2 id="the-http-request-in-a-nutshell">The HTTP request in a nutshell<a class="headerlink" href="#the-http-request-in-a-nutshell" title="Link to this section">&para;</a></h2>
+<p>The language clients and servers speak is called <strong>HTTP</strong> (HyperText Transfer Protocol). When you type an address and press Enter, this happens (simplified):</p>
 <ol>
-<li>Browser-ul construiește o <strong>cerere</strong>: „Dă-mi pagina <code>/</code> de pe <code>ursoaia-edu.online</code>”.</li>
-<li>Serverul răspunde cu un <strong>cod de stare</strong> și conținutul paginii.</li>
+<li>The browser builds a <strong>request</strong>: "Give me page <code>/</code> on <code>ursoaia-edu.online</code>".</li>
+<li>The server replies with a <strong>status code</strong> and the page content.</li>
 </ol>
-<p>Coduri pe care le vei întâlni des:</p>
+<p>Codes you'll meet often:</p>
 <table>
 <thead>
 <tr>
-<th>Cod</th>
-<th>Ce înseamnă</th>
+<th>Code</th>
+<th>What it means</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>200 OK</code></td>
-<td>Totul e bine, uite pagina</td>
+<td>Everything is fine, here's the page</td>
 </tr>
 <tr>
 <td><code>301</code> / <code>302</code></td>
-<td>Redirectare — pagina s-a mutat</td>
+<td>Redirect — the page has moved</td>
 </tr>
 <tr>
 <td><code>404 Not Found</code></td>
-<td>Nu există pagina cerută</td>
+<td>The requested page doesn't exist</td>
 </tr>
 <tr>
 <td><code>500 Internal Server Error</code></td>
-<td>Serverul are o problemă</td>
+<td>The server has a problem</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">HTTPS</p>
-<p>Versiunea <strong>sigură</strong> se numește <strong>HTTPS</strong> — comunicarea este criptată. În bara browser-ului vei vedea un <strong>lacăt</strong>. Toate site-urile moderne folosesc HTTPS.</p>
+<p>The <strong>secure</strong> version is <strong>HTTPS</strong> — communication is encrypted. In the browser bar you'll see a <strong>padlock</strong>. All modern websites use HTTPS.</p>
 </div>
 <hr />
-<h2 id="ce-face-browser-ul">Ce face browser-ul?<a class="headerlink" href="#ce-face-browser-ul" title="Link to this section">&para;</a></h2>
-<p>Browser-ul are practic <strong>3 joburi</strong> atunci când primește o pagină:</p>
+<h2 id="what-does-the-browser-do">What does the browser do?<a class="headerlink" href="#what-does-the-browser-do" title="Link to this section">&para;</a></h2>
+<p>When the browser receives a page, it has essentially <strong>3 jobs</strong>:</p>
 <ol>
-<li><strong>Citește HTML-ul</strong> (parse) și construiește o structură de tip copac (DOM).</li>
-<li><strong>Aplică CSS-ul</strong> ca pagina să arate frumos (culori, fonturi, poziții).</li>
-<li><strong>Execută JavaScript-ul</strong> ca pagina să fie interactivă (butoane, animații, date dinamice).</li>
+<li><strong>Reads the HTML</strong> (parses it) and builds a tree-like structure (DOM).</li>
+<li><strong>Applies CSS</strong> so the page looks nice (colors, fonts, positions).</li>
+<li><strong>Executes JavaScript</strong> to make the page interactive (buttons, animations, dynamic data).</li>
 </ol>
-<p>Fără browser, HTML este doar un fișier text. Browser-ul este „motorul” care îl transformă în ceea ce vezi.</p>
+<p>Without a browser, HTML is just a text file. The browser is the "engine" that turns it into what you see.</p>
 <hr />
-<h2 id="cele-3-limbaje-ale-web-ului">Cele 3 limbaje ale web-ului<a class="headerlink" href="#cele-3-limbaje-ale-web-ului" title="Link to this section">&para;</a></h2>
-<p>Orice site modern este construit pe trei piloni:</p>
+<h2 id="the-3-languages-of-the-web">The 3 languages of the web<a class="headerlink" href="#the-3-languages-of-the-web" title="Link to this section">&para;</a></h2>
+<p>Every modern site rests on three pillars:</p>
 <table>
 <thead>
 <tr>
-<th>Limbaj</th>
-<th>Rol</th>
-<th>Analogie</th>
+<th>Language</th>
+<th>Role</th>
+<th>Analogy</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>HTML</strong></td>
-<td>Structura și conținutul paginii</td>
-<td>Scheletul</td>
+<td>The structure and content of the page</td>
+<td>The skeleton</td>
 </tr>
 <tr>
 <td><strong>CSS</strong></td>
-<td>Aspectul: culori, fonturi, layout</td>
-<td>Hainele</td>
+<td>The look: colors, fonts, layout</td>
+<td>The clothes</td>
 </tr>
 <tr>
 <td><strong>JavaScript</strong></td>
-<td>Comportamentul: interactivitate</td>
-<td>Mișcările</td>
+<td>The behavior: interactivity</td>
+<td>The movements</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Focus pe rând</p>
-<p>În lecțiile 01–05 învățăm <strong>HTML</strong>, în 06–10 învățăm <strong>CSS</strong>, apoi trecem la <strong>JavaScript</strong>. Nu încerca să le înveți pe toate în același timp — fiecare are propriul mod de gândire.</p>
+<p class="admonition-title">One at a time</p>
+<p>In lessons 01-05 we learn <strong>HTML</strong>, in 06-10 we learn <strong>CSS</strong>, then we move to <strong>JavaScript</strong>. Don't try to learn them all at once — each has its own way of thinking.</p>
 </div>
 <hr />
-<h2 id="instrumentele-noastre">Instrumentele noastre<a class="headerlink" href="#instrumentele-noastre" title="Link to this section">&para;</a></h2>
-<h3 id="1-editor-de-cod-vs-code">1. Editor de cod: VS Code<a class="headerlink" href="#1-editor-de-cod-vs-code" title="Link to this section">&para;</a></h3>
-<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> este un editor gratuit, rapid și folosit în industrie. Descarcă-l și instalează-l.</p>
-<p>După instalare, instalează <strong>o singură extensie</strong> esențială pentru început:</p>
+<h2 id="our-tools">Our tools<a class="headerlink" href="#our-tools" title="Link to this section">&para;</a></h2>
+<h3 id="1-code-editor-vs-code">1. Code editor: VS Code<a class="headerlink" href="#1-code-editor-vs-code" title="Link to this section">&para;</a></h3>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> is a free, fast editor used in the industry. Download and install it.</p>
+<p>After installing, install <strong>a single essential extension</strong> to start with:</p>
 <ul>
-<li><strong>Live Server</strong> (autor: Ritwick Dey) — pornește un mini-server local și îți <strong>reîmprospătează automat</strong> pagina când salvezi fișierul.</li>
+<li><strong>Live Server</strong> (author: Ritwick Dey) — starts a tiny local server and <strong>automatically refreshes</strong> your page when you save the file.</li>
 </ul>
-<h3 id="2-browser-chrome-sau-firefox">2. Browser: Chrome sau Firefox<a class="headerlink" href="#2-browser-chrome-sau-firefox" title="Link to this section">&para;</a></h3>
-<p>Orice browser modern e bun. Recomandăm <strong>Chrome</strong> sau <strong>Firefox</strong> pentru că au DevTools puternice. Evită Internet Explorer — e oficial abandonat.</p>
-<h3 id="3-devtools-uneltele-developer-ului">3. DevTools (uneltele developer-ului)<a class="headerlink" href="#3-devtools-uneltele-developer-ului" title="Link to this section">&para;</a></h3>
-<p>Cea mai importantă scurtătură din tot cursul:</p>
+<h3 id="2-browser-chrome-or-firefox">2. Browser: Chrome or Firefox<a class="headerlink" href="#2-browser-chrome-or-firefox" title="Link to this section">&para;</a></h3>
+<p>Any modern browser will do. We recommend <strong>Chrome</strong> or <strong>Firefox</strong> because they have powerful DevTools. Avoid Internet Explorer — it's officially abandoned.</p>
+<h3 id="3-devtools-the-developers-tools">3. DevTools (the developer's tools)<a class="headerlink" href="#3-devtools-the-developers-tools" title="Link to this section">&para;</a></h3>
+<p>The most important shortcut in the entire course:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>F12
 </span></code></pre></div>
-<p>(sau <code>Ctrl+Shift+I</code> pe Windows / <code>Cmd+Opt+I</code> pe Mac)</p>
-<p>Se va deschide un panou cu mai multe tab-uri. Cele care ne interesează acum:</p>
+<p>(or <code>Ctrl+Shift+I</code> on Windows / <code>Cmd+Opt+I</code> on Mac)</p>
+<p>A panel opens with several tabs. The ones we care about now:</p>
 <ul>
-<li><strong>Elements</strong> — arborele HTML al paginii curente. Poți edita temporar orice element (doar la tine, nimeni altcineva nu vede schimbarea).</li>
-<li><strong>Console</strong> — poți scrie comenzi JavaScript și vedea mesajele din pagină.</li>
-<li><strong>Network</strong> — arată toate cererile HTTP (HTML, imagini, CSS, JS) pe care le face pagina.</li>
+<li><strong>Elements</strong> — the HTML tree of the current page. You can temporarily edit any element (only on your machine — nobody else sees the change).</li>
+<li><strong>Console</strong> — you can type JavaScript commands and see the page's messages.</li>
+<li><strong>Network</strong> — shows every HTTP request (HTML, images, CSS, JS) the page makes.</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Modificările din DevTools sunt locale</p>
-<p>Orice schimbi în tab-ul Elements dispare la refresh. Nu modifici site-ul original — doar ce vezi <strong>tu</strong> în browser-ul tău.</p>
+<p class="admonition-title">DevTools changes are local</p>
+<p>Anything you change in the Elements tab disappears on refresh. You're not modifying the original site — only what <strong>you</strong> see in <strong>your</strong> browser.</p>
 </div>
 <hr />
-<h2 id="primul-tau-experiment">Primul tău experiment<a class="headerlink" href="#primul-tau-experiment" title="Link to this section">&para;</a></h2>
+<h2 id="your-first-experiment">Your first experiment<a class="headerlink" href="#your-first-experiment" title="Link to this section">&para;</a></h2>
 <ol>
-<li>Deschide <strong><a href="https://www.google.com">google.com</a></strong>.</li>
-<li>Apasă <strong>F12</strong>.</li>
-<li>Mergi în tab-ul <strong>Elements</strong>.</li>
-<li>Dă click pe săgeata/iconița „Inspect” din stânga-sus a panoului și apoi click pe bara de căutare Google.</li>
-<li>În panou vei vedea codul HTML al acelui element — un <code>&lt;input&gt;</code>.</li>
-<li>Dublu-click pe un text vizibil din pagină (ex: „Google Search”) și schimbă-l cu numele tău. Apasă Enter. Pagina arată altfel <strong>doar pentru tine</strong>.</li>
+<li>Open <strong><a href="https://www.google.com">google.com</a></strong>.</li>
+<li>Press <strong>F12</strong>.</li>
+<li>Go to the <strong>Elements</strong> tab.</li>
+<li>Click the "Inspect" arrow/icon at the top-left of the panel, then click on the Google search bar.</li>
+<li>In the panel you'll see the HTML of that element — an <code>&lt;input&gt;</code>.</li>
+<li>Double-click on a visible piece of text on the page (e.g. "Google Search") and change it to your name. Press Enter. The page looks different <strong>only for you</strong>.</li>
 </ol>
-<p>Bravo! Tocmai ai făcut primul „hack” al unei pagini web. (Nu e un hack real — e doar o modificare locală.)</p>
+<p>Well done! You just made your first "hack" of a web page. (It's not a real hack — just a local change.)</p>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-diseceaza-un-url">Exercițiu 1 — Disecează un URL<a class="headerlink" href="#exercitiu-1-diseceaza-un-url" title="Link to this section">&para;</a></h3>
-<p>Explică fiecare parte a adresei: <code>https://ursoaia-edu.online/guide/python/04-conditii/</code></p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-dissect-a-url">Exercise 1 — Dissect a URL<a class="headerlink" href="#exercise-1-dissect-a-url" title="Link to this section">&para;</a></h3>
+<p>Explain each part of the address: <code>https://ursoaia-edu.online/guide/python/04-conditii/</code></p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <ul>
-<li><code>https</code> — <strong>protocolul</strong>: cum comunicăm (HTTPS = HTTP securizat).</li>
-<li><code>ursoaia-edu.online</code> — <strong>domeniul</strong>: adresa serverului.</li>
-<li><code>/guide/python/04-conditii/</code> — <strong>path-ul</strong>: ce pagină anume de pe acel server vrem să vedem.</li>
+<li><code>https</code> — the <strong>protocol</strong>: how we communicate (HTTPS = secured HTTP).</li>
+<li><code>ursoaia-edu.online</code> — the <strong>domain</strong>: the server's address.</li>
+<li><code>/guide/python/04-conditii/</code> — the <strong>path</strong>: which specific page on that server we want to see.</li>
 </ul>
 </details>
-<h3 id="exercitiu-2-modifica-temporar-un-titlu">Exercițiu 2 — Modifică temporar un titlu<a class="headerlink" href="#exercitiu-2-modifica-temporar-un-titlu" title="Link to this section">&para;</a></h3>
-<p>Deschide Wikipedia, apasă <code>F12</code>, mergi în Elements, găsește tag-ul <code>&lt;h1&gt;</code> al articolului și schimbă textul. Ia un screenshot. După refresh, totul revine.</p>
+<h3 id="exercise-2-temporarily-change-a-heading">Exercise 2 — Temporarily change a heading<a class="headerlink" href="#exercise-2-temporarily-change-a-heading" title="Link to this section">&para;</a></h3>
+<p>Open Wikipedia, press <code>F12</code>, go to Elements, find the article's <code>&lt;h1&gt;</code> tag and change the text. Take a screenshot. After refresh, everything reverts.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <ul>
 <li><code>F12</code> → Elements.</li>
-<li>Click pe iconița „Inspect element” (săgeata mică din stânga-sus a panoului).</li>
-<li>Click pe titlul articolului.</li>
-<li>Dublu-click pe text în panou, scrie altceva, Enter.</li>
-<li>Refresh (<code>F5</code>) — titlul original revine.</li>
+<li>Click the "Inspect element" icon (the small arrow at the top-left of the panel).</li>
+<li>Click the article title.</li>
+<li>Double-click the text in the panel, type something else, Enter.</li>
+<li>Refresh (<code>F5</code>) — the original title comes back.</li>
 </ul>
 </details>
-<h3 id="exercitiu-3-foloseste-console">Exercițiu 3 — Folosește Console<a class="headerlink" href="#exercitiu-3-foloseste-console" title="Link to this section">&para;</a></h3>
-<p>Deschide orice pagină și în tab-ul <strong>Console</strong> scrie:</p>
+<h3 id="exercise-3-use-the-console">Exercise 3 — Use the Console<a class="headerlink" href="#exercise-3-use-the-console" title="Link to this section">&para;</a></h3>
+<p>Open any page and in the <strong>Console</strong> tab type:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">title</span>
 </span></code></pre></div>
-<p>și apasă Enter. Ce afișează?</p>
+<p>and press Enter. What does it show?</p>
 <details class="success">
-<summary>Soluție</summary>
-<p>Afișează <strong>textul din tab-ul browser-ului</strong> (titlul paginii curente) — același lucru pe care îl vezi în bara de file. E primul tău contact cu JavaScript: <code>document</code> este pagina, <code>.title</code> este proprietatea cu titlul ei.</p>
+<summary>Solution</summary>
+<p>It shows the <strong>text from the browser's tab</strong> (the title of the current page) — the same thing you see in the tab bar. It's your first contact with JavaScript: <code>document</code> is the page, <code>.title</code> is the property holding its title.</p>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li><strong>Internet ≠ Web.</strong> Internetul e infrastructura; Web-ul e stratul de site-uri.</li>
-<li>Paginile merg pe modelul <strong>client–server</strong> prin protocolul <strong>HTTP/HTTPS</strong>.</li>
-<li>Browser-ul face 3 lucruri: parsează HTML, aplică CSS, execută JS.</li>
-<li>Cele 3 limbaje: <strong>HTML</strong> (structură), <strong>CSS</strong> (aspect), <strong>JavaScript</strong> (comportament).</li>
-<li>Instrumentele tale: <strong>VS Code + Live Server + browser modern + F12</strong>.</li>
-<li><code>F12</code> îți deschide DevTools — tab-urile <strong>Elements</strong>, <strong>Console</strong>, <strong>Network</strong> sunt prietenii tăi.</li>
+<li><strong>Internet ≠ Web.</strong> The Internet is the infrastructure; the Web is the layer of websites.</li>
+<li>Pages run on the <strong>client-server</strong> model via the <strong>HTTP/HTTPS</strong> protocol.</li>
+<li>The browser does 3 things: parses HTML, applies CSS, runs JS.</li>
+<li>The 3 languages: <strong>HTML</strong> (structure), <strong>CSS</strong> (look), <strong>JavaScript</strong> (behavior).</li>
+<li>Your tools: <strong>VS Code + Live Server + a modern browser + F12</strong>.</li>
+<li><code>F12</code> opens DevTools — the <strong>Elements</strong>, <strong>Console</strong>, and <strong>Network</strong> tabs are your friends.</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../01-prima-pagina/">→ Lecția 01: Prima ta pagină</a></p>
+<p><strong>Next step:</strong> <a href="../01-prima-pagina/">→ Lesson 01: Your first page</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -697,44 +697,44 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-00-cum-functioneaza-web-ul" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 00 · Cum funcționează web-ul</a>
+                  <a href="#lesson-00-how-the-web-works" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 00 · How the web works</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#internetul-vs-web-ul" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Internetul vs. Web-ul</a>
+                        <a href="#the-internet-vs-the-web" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The Internet vs. the Web</a>
                       </li>
                     
                       <li>
-                        <a href="#modelul-clientserver" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Modelul client–server</a>
+                        <a href="#the-client-server-model" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The client-server model</a>
                       </li>
                     
                       <li>
-                        <a href="#cererea-http-pe-scurt" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Cererea HTTP pe scurt</a>
+                        <a href="#the-http-request-in-a-nutshell" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The HTTP request in a nutshell</a>
                       </li>
                     
                       <li>
-                        <a href="#ce-face-browser-ul" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ce face browser-ul?</a>
+                        <a href="#what-does-the-browser-do" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">What does the browser do?</a>
                       </li>
                     
                       <li>
-                        <a href="#cele-3-limbaje-ale-web-ului" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Cele 3 limbaje ale web-ului</a>
+                        <a href="#the-3-languages-of-the-web" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The 3 languages of the web</a>
                       </li>
                     
                       <li>
-                        <a href="#instrumentele-noastre" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Instrumentele noastre</a>
+                        <a href="#our-tools" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Our tools</a>
                       </li>
                     
                       <li>
-                        <a href="#primul-tau-experiment" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Primul tău experiment</a>
+                        <a href="#your-first-experiment" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Your first experiment</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

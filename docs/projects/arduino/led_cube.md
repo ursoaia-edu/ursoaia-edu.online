@@ -10,6 +10,8 @@ featured: true
 
 O versiune simplificată a proiectului [8x8x8 LED Cube](https://www.instructables.com/8x8x8-Arduino-LED-Cube/), adaptată pentru începători.
 
+![Cub de LED-uri 3x3x3 asamblat](../../assets/images/projects/arduino/3x3x3_led_cube.jpg)
+
 ## Cum funcționează
 
 Cubul folosește **multiplexarea pe straturi**:

@@ -432,7 +432,7 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">02: HTML bazele</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Tagurile HTML esențiale — titluri, paragrafe, link-uri, imagini, formatare text, div și span.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">The essential HTML tags — headings, paragraphs, links, images, text formatting, div and span.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
@@ -441,355 +441,356 @@
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">html</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">linkuri</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">links</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">imagini</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">images</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">titluri</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">headings</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">accesibilitate</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">accessibility</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-02-html-tagurile-de-baza">Lecția 02 · HTML: tagurile de bază<a class="headerlink" href="#lectia-02-html-tagurile-de-baza" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-02-html-the-basic-tags">Lesson 02 · HTML: the basic tags<a class="headerlink" href="#lesson-02-html-the-basic-tags" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Ierarhia titlurilor <code>&lt;h1&gt;</code> – <code>&lt;h6&gt;</code> și de ce contează</li>
-<li>Paragrafe corecte și ce să <strong>nu</strong> faci cu <code>&lt;br&gt;</code></li>
-<li>Link-uri interne, externe, către secțiuni și către e-mail</li>
-<li>Imagini, atributul <code>alt</code> și formatele potrivite</li>
-<li>Formatare text: <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;mark&gt;</code>, <code>&lt;code&gt;</code></li>
-<li>Diferența dintre <code>&lt;div&gt;</code> și <code>&lt;span&gt;</code></li>
+<li>The hierarchy of headings <code>&lt;h1&gt;</code> – <code>&lt;h6&gt;</code> and why it matters</li>
+<li>Proper paragraphs and what <strong>not</strong> to do with <code>&lt;br&gt;</code></li>
+<li>Internal, external, in-page, and email links</li>
+<li>Images, the <code>alt</code> attribute, and the right formats</li>
+<li>Text formatting: <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;mark&gt;</code>, <code>&lt;code&gt;</code></li>
+<li>The difference between <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code></li>
 </ul>
 </div>
 <hr />
-<h2 id="titluri-de-la-h1-la-h6">Titluri: de la <code>&lt;h1&gt;</code> la <code>&lt;h6&gt;</code><a class="headerlink" href="#titluri-de-la-h1-la-h6" title="Link to this section">&para;</a></h2>
-<p>HTML are <strong>6 nivele de titluri</strong>. Nu sunt doar pentru mărime — sunt <strong>semantice</strong>. Motoarele de căutare și cititoarele de ecran folosesc ierarhia lor pentru a înțelege structura paginii.</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Titlul principal al paginii<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Secțiune mare<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Sub-secțiune<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Detaliu<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<h2 id="headings-from-h1-to-h6">Headings: from <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code><a class="headerlink" href="#headings-from-h1-to-h6" title="Link to this section">&para;</a></h2>
+<p>HTML has <strong>6 heading levels</strong>. They're not just about size — they're <strong>semantic</strong>. Search engines and screen readers use their hierarchy to understand the page structure.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>The main title of the page<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Major section<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Sub-section<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Detail<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Un singur <code>&lt;h1&gt;</code> per pagină</p>
-<p><code>&lt;h1&gt;</code> este titlul <strong>principal</strong> — unul per pagină (ca titlul unei cărți). <code>&lt;h2&gt;</code> pentru capitole, <code>&lt;h3&gt;</code> pentru sub-capitole și așa mai departe.</p>
+<p class="admonition-title">One <code>&lt;h1&gt;</code> per page</p>
+<p><code>&lt;h1&gt;</code> is the <strong>main</strong> title — one per page (like the title of a book). <code>&lt;h2&gt;</code> for chapters, <code>&lt;h3&gt;</code> for sub-chapters and so on.</p>
 </div>
-<p><strong>Exemplu de structură corectă pentru un articol:</strong></p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Ghid de ciclism pentru începători<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Alegerea bicicletei<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Bicicletă de oraș<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Bicicletă de munte<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Echipamentul esențial<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Cască<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Lumini și reflectorizante<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<p><strong>Example of correct structure for an article:</strong></p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Cycling guide for beginners<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Choosing a bike<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>City bike<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Mountain bike<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Essential gear<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Helmet<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Lights and reflectors<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Nu sări peste nivele (<code>&lt;h1&gt;</code> → <code>&lt;h4&gt;</code> direct) doar pentru „arată frumos” — pentru asta avem CSS (lecțiile 06+).</p>
+<p>Don't skip levels (<code>&lt;h1&gt;</code> straight to <code>&lt;h4&gt;</code>) just because "it looks nice" — for that we have CSS (lessons 06+).</p>
 <hr />
-<h2 id="paragrafe">Paragrafe<a class="headerlink" href="#paragrafe" title="Link to this section">&para;</a></h2>
-<p><code>&lt;p&gt;</code> înseamnă „paragraf”. Browser-ul pune automat spațiu înainte și după:</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Acesta este primul paragraf. Poate conține mai multe fraze, nu
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   trebuie să rupi linia manual — browser-ul se ocupă de asta.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Al doilea paragraf. Spațiul dintre ele e natural.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<h2 id="paragraphs">Paragraphs<a class="headerlink" href="#paragraphs" title="Link to this section">&para;</a></h2>
+<p><code>&lt;p&gt;</code> means "paragraph". The browser automatically adds space before and after:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is the first paragraph. It can contain several sentences,
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   you don&#39;t have to break the line manually — the browser handles
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>   that for you.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The second paragraph. The space between them is natural.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Nu folosi <code>&lt;br&gt;</code> pentru spațiu între paragrafe</p>
-<p><div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">&lt;!-- Greșit: --&gt;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Primul text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<p class="admonition-title">Don't use <code>&lt;br&gt;</code> for spacing between paragraphs</p>
+<p><div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">&lt;!-- Wrong: --&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>First text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Al doilea text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Second text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="cm">&lt;!-- Corect: --&gt;</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Primul text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Al doilea text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="cm">&lt;!-- Correct: --&gt;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>First text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Second text<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<code>&lt;br&gt;</code> e pentru <strong>o singură rupere de linie</strong> într-un context unde chiar vrei asta (adresă poștală, versuri). Pentru spațiu între paragrafe ai <code>&lt;p&gt;</code>, iar pentru spațiu personalizat vei folosi CSS mai târziu.</p>
+<code>&lt;br&gt;</code> is for <strong>a single line break</strong> in a context where you actually want one (postal address, song lyrics). For spacing between paragraphs use <code>&lt;p&gt;</code>, and for custom spacing you'll use CSS later.</p>
 </div>
 <hr />
-<h2 id="link-uri-a">Link-uri (<code>&lt;a&gt;</code>)<a class="headerlink" href="#link-uri-a" title="Link to this section">&para;</a></h2>
-<p>Link-ul (anchor) este <strong>inima web-ului</strong> — fără el nu s-ar chema „Web”.</p>
-<h3 id="link-simplu">Link simplu<a class="headerlink" href="#link-simplu" title="Link to this section">&para;</a></h3>
+<h2 id="links-a">Links (<code>&lt;a&gt;</code>)<a class="headerlink" href="#links-a" title="Link to this section">&para;</a></h2>
+<p>The link (anchor) is the <strong>heart of the web</strong> — without it, it wouldn't be called "the Web".</p>
+<h3 id="simple-link">Simple link<a class="headerlink" href="#simple-link" title="Link to this section">&para;</a></h3>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://ursoaia-edu.online&quot;</span><span class="p">&gt;</span>Ursoaia Edu<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <ul>
-<li><code>href</code> (hypertext reference) = adresa destinație.</li>
-<li>Textul dintre <code>&lt;a&gt;</code> și <code>&lt;/a&gt;</code> este ce vede utilizatorul.</li>
+<li><code>href</code> (hypertext reference) = the destination address.</li>
+<li>The text between <code>&lt;a&gt;</code> and <code>&lt;/a&gt;</code> is what the user sees.</li>
 </ul>
-<h3 id="url-absolut-vs-relativ">URL absolut vs. relativ<a class="headerlink" href="#url-absolut-vs-relativ" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">&lt;!-- Absolut: funcționează de oriunde --&gt;</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://ro.wikipedia.org&quot;</span><span class="p">&gt;</span>Wikipedia<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<h3 id="absolute-vs-relative-url">Absolute vs. relative URL<a class="headerlink" href="#absolute-vs-relative-url" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">&lt;!-- Absolute: works from anywhere --&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://en.wikipedia.org&quot;</span><span class="p">&gt;</span>Wikipedia<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cm">&lt;!-- Relativ: la alt fișier din același folder --&gt;</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;despre.html&quot;</span><span class="p">&gt;</span>Despre noi<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cm">&lt;!-- Relative: to another file in the same folder --&gt;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;about.html&quot;</span><span class="p">&gt;</span>About us<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="cm">&lt;!-- Relativ: la fișier din folder-ul părinte --&gt;</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../index.html&quot;</span><span class="p">&gt;</span>Acasă<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="cm">&lt;!-- Relative: to a file in the parent folder --&gt;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../index.html&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="cm">&lt;!-- Relativ: la fișier dintr-un subfolder --&gt;</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./proiecte/lista.html&quot;</span><span class="p">&gt;</span>Proiecte<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="cm">&lt;!-- Relative: to a file in a subfolder --&gt;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./projects/list.html&quot;</span><span class="p">&gt;</span>Projects<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<h3 id="tab-nou-target_blank-securitate">Tab nou: <code>target="_blank"</code> + securitate<a class="headerlink" href="#tab-nou-target_blank-securitate" title="Link to this section">&para;</a></h3>
+<h3 id="new-tab-target_blank-security">New tab: <code>target="_blank"</code> + security<a class="headerlink" href="#new-tab-target_blank-security" title="Link to this section">&para;</a></h3>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://example.com&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;noopener&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  Deschide într-un tab nou
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  Open in a new tab
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Adaugă mereu <code>rel=\"noopener\"</code></p>
-<p>Fără <code>rel="noopener"</code>, pagina deschisă poate accesa pagina ta prin <code>window.opener</code> — o mică breșă de securitate. <strong>Regulă:</strong> <code>target="_blank"</code> ⇒ <code>rel="noopener"</code>.</p>
+<p class="admonition-title">Always add <code>rel=\"noopener\"</code></p>
+<p>Without <code>rel="noopener"</code>, the opened page can access your page through <code>window.opener</code> — a small security hole. <strong>Rule:</strong> <code>target="_blank"</code> ⇒ <code>rel="noopener"</code>.</p>
 </div>
-<h3 id="link-catre-o-sectiune-din-aceeasi-pagina">Link către o secțiune din aceeași pagină<a class="headerlink" href="#link-catre-o-sectiune-din-aceeasi-pagina" title="Link to this section">&para;</a></h3>
-<p>Folosește un <code>id</code> și un <code>#</code>:</p>
+<h3 id="link-to-a-section-in-the-same-page">Link to a section in the same page<a class="headerlink" href="#link-to-a-section-in-the-same-page" title="Link to this section">&para;</a></h3>
+<p>Use an <code>id</code> and a <code>#</code>:</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#istoric&quot;</span><span class="p">&gt;</span>Sari la Istoric<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#history&quot;</span><span class="p">&gt;</span>Jump to History<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="cm">&lt;!-- Mai jos în pagină: --&gt;</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;istoric&quot;</span><span class="p">&gt;</span>Istoric<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>În 1989...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="cm">&lt;!-- Further down the page: --&gt;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;history&quot;</span><span class="p">&gt;</span>History<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>In 1989...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<h3 id="link-email">Link email<a class="headerlink" href="#link-email" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;mailto:ana@exemplu.ro&quot;</span><span class="p">&gt;</span>Scrie-mi<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<h3 id="email-link">Email link<a class="headerlink" href="#email-link" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;mailto:anna@example.com&quot;</span><span class="p">&gt;</span>Email me<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Deschide clientul de e-mail implicit cu adresa pre-completată.</p>
+<p>Opens the default mail client with the address pre-filled.</p>
 <hr />
-<h2 id="imagini-img">Imagini (<code>&lt;img&gt;</code>)<a class="headerlink" href="#imagini-img" title="Link to this section">&para;</a></h2>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;assets/peisaj.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vedere din Munții Apuseni&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;400&quot;</span><span class="p">&gt;</span>
+<h2 id="images-img">Images (<code>&lt;img&gt;</code>)<a class="headerlink" href="#images-img" title="Link to this section">&para;</a></h2>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;assets/landscape.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;View from the Apuseni Mountains&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;400&quot;</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <ul>
-<li><code>src</code> (source) = calea către fișierul imagine.</li>
-<li><code>alt</code> = descrierea imaginii (text alternativ).</li>
-<li><code>width</code> / <code>height</code> (opțional) = dimensiuni în pixeli.</li>
+<li><code>src</code> (source) = the path to the image file.</li>
+<li><code>alt</code> = the description of the image (alternative text).</li>
+<li><code>width</code> / <code>height</code> (optional) = dimensions in pixels.</li>
 </ul>
 <div class="admonition tip">
-<p class="admonition-title"><code>alt</code> NU este opțional</p>
-<p><code>alt</code> are <strong>două roluri critice</strong>:</p>
+<p class="admonition-title"><code>alt</code> is NOT optional</p>
+<p><code>alt</code> has <strong>two critical roles</strong>:</p>
 <ol>
-<li><strong>Accesibilitate:</strong> cititoarele de ecran îl citesc persoanelor nevăzătoare.</li>
-<li><strong>SEO:</strong> Google îl folosește pentru a înțelege ce e în imagine.</li>
+<li><strong>Accessibility:</strong> screen readers read it to people who can't see.</li>
+<li><strong>SEO:</strong> Google uses it to understand what's in the image.</li>
 </ol>
-<p>Plus: dacă imaginea nu se încarcă, se afișează textul <code>alt</code> în locul ei.</p>
-<p>Descrie <strong>ce se vede</strong>, nu „imagine” sau „poză”. Rău: <code>alt="img1"</code>. Bine: <code>alt="Câine Golden Retriever alergând pe o plajă"</code>.</p>
+<p>Plus: if the image fails to load, the <code>alt</code> text is shown in its place.</p>
+<p>Describe <strong>what is shown</strong>, not "image" or "picture". Bad: <code>alt="img1"</code>. Good: <code>alt="A Golden Retriever running on a beach"</code>.</p>
 </div>
-<h3 id="format-potrivit">Format potrivit<a class="headerlink" href="#format-potrivit" title="Link to this section">&para;</a></h3>
+<h3 id="the-right-format">The right format<a class="headerlink" href="#the-right-format" title="Link to this section">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>Format</th>
-<th>Când îl folosești</th>
+<th>When to use it</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>JPG</strong> / <strong>JPEG</strong></td>
-<td>Fotografii (multe culori, fără transparență)</td>
+<td>Photos (many colors, no transparency)</td>
 </tr>
 <tr>
 <td><strong>PNG</strong></td>
-<td>Grafică, capturi de ecran, <strong>transparență</strong></td>
+<td>Graphics, screenshots, <strong>transparency</strong></td>
 </tr>
 <tr>
 <td><strong>SVG</strong></td>
-<td>Icon-uri, logo-uri (scalabile, mici)</td>
+<td>Icons, logos (scalable, small)</td>
 </tr>
 <tr>
 <td><strong>WebP</strong></td>
-<td>Modern, mai mic decât JPG/PNG — suportat în toate browser-ele moderne</td>
+<td>Modern, smaller than JPG/PNG — supported in all modern browsers</td>
 </tr>
 </tbody>
 </table>
-<h3 id="cale-relativa-exemplu">Cale relativă — exemplu<a class="headerlink" href="#cale-relativa-exemplu" title="Link to this section">&para;</a></h3>
-<p>Structura folder-ului:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>site-meu/
+<h3 id="relative-path-example">Relative path — example<a class="headerlink" href="#relative-path-example" title="Link to this section">&para;</a></h3>
+<p>Folder structure:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>my-site/
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>├── index.html
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>└── imagini/
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    └── peisaj.jpg
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>└── images/
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    └── landscape.jpg
 </span></code></pre></div>
-<p>În <code>index.html</code>:</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;imagini/peisaj.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Peisaj montan&quot;</span><span class="p">&gt;</span>
+<p>In <code>index.html</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;images/landscape.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Mountain landscape&quot;</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="formatare-de-text">Formatare de text<a class="headerlink" href="#formatare-de-text" title="Link to this section">&para;</a></h2>
-<h3 id="strong-important-implicit-bold"><code>&lt;strong&gt;</code> — important (implicit bold)<a class="headerlink" href="#strong-important-implicit-bold" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Acest câmp este <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>obligatoriu<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<h2 id="text-formatting">Text formatting<a class="headerlink" href="#text-formatting" title="Link to this section">&para;</a></h2>
+<h3 id="strong-important-bold-by-default"><code>&lt;strong&gt;</code> — important (bold by default)<a class="headerlink" href="#strong-important-bold-by-default" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This field is <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>required<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<h3 id="em-accentuat-implicit-italic"><code>&lt;em&gt;</code> — accentuat (implicit italic)<a class="headerlink" href="#em-accentuat-implicit-italic" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>El chiar <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>voia<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> să meargă.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<h3 id="em-emphasis-italic-by-default"><code>&lt;em&gt;</code> — emphasis (italic by default)<a class="headerlink" href="#em-emphasis-italic-by-default" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>He really <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>did<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> want to go.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Semantică, nu doar stil</p>
-<p><code>&lt;strong&gt;</code> e diferit de <code>&lt;b&gt;</code> și <code>&lt;em&gt;</code> e diferit de <code>&lt;i&gt;</code>. Cele scurte (<code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>) înseamnă doar „arată bold/italic” — fără semnificație. Cele lungi (<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>) spun „este important” / „este accentuat”. Cititoarele de ecran rostesc diferit.</p>
+<p class="admonition-title">Semantics, not just style</p>
+<p><code>&lt;strong&gt;</code> is different from <code>&lt;b&gt;</code>, and <code>&lt;em&gt;</code> is different from <code>&lt;i&gt;</code>. The short ones (<code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>) only mean "show as bold/italic" — no meaning. The long ones (<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>) say "this is important" / "this is emphasized". Screen readers pronounce them differently.</p>
 </div>
-<h3 id="mark-evidentiere"><code>&lt;mark&gt;</code> — evidențiere<a class="headerlink" href="#mark-evidentiere" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Întâlnirea este <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>marți, ora 15:00<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<h3 id="mark-highlight"><code>&lt;mark&gt;</code> — highlight<a class="headerlink" href="#mark-highlight" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The meeting is <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>Tuesday at 3:00 PM<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Text cu fundal galben, ca un marker highlighter.</p>
-<h3 id="code-cod-inline"><code>&lt;code&gt;</code> — cod inline<a class="headerlink" href="#code-cod-inline" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Scrie <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>print(&quot;salut&quot;)<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> în terminal.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<p>Text with a yellow background, like a highlighter marker.</p>
+<h3 id="code-inline-code"><code>&lt;code&gt;</code> — inline code<a class="headerlink" href="#code-inline-code" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Type <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>print(&quot;hello&quot;)<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> in the terminal.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<h3 id="br-rupere-de-linie-foloseste-l-rar"><code>&lt;br&gt;</code> — rupere de linie (folosește-l RAR)<a class="headerlink" href="#br-rupere-de-linie-foloseste-l-rar" title="Link to this section">&para;</a></h3>
-<p>Util în versuri, adrese poștale:</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Str. Republicii nr. 10<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<h3 id="br-line-break-use-it-rarely"><code>&lt;br&gt;</code> — line break (use it RARELY)<a class="headerlink" href="#br-line-break-use-it-rarely" title="Link to this section">&para;</a></h3>
+<p>Useful in lyrics, postal addresses:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>10 Republicii Street<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>400001, Cluj-Napoca<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>România<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Romania<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<h3 id="hr-separator-orizontal"><code>&lt;hr&gt;</code> — separator orizontal<a class="headerlink" href="#hr-separator-orizontal" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Capitolul 1<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<h3 id="hr-horizontal-separator"><code>&lt;hr&gt;</code> — horizontal separator<a class="headerlink" href="#hr-horizontal-separator" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Chapter 1<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Capitolul 2<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Chapter 2<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="div-vs-span-containere"><code>&lt;div&gt;</code> vs <code>&lt;span&gt;</code> — containere<a class="headerlink" href="#div-vs-span-containere" title="Link to this section">&para;</a></h2>
-<p>Uneori vrei să <strong>grupezi</strong> elemente pentru stilizare sau interactivitate. Ai două containere neutre:</p>
-<h3 id="div-bloc"><code>&lt;div&gt;</code> — bloc<a class="headerlink" href="#div-bloc" title="Link to this section">&para;</a></h3>
-<p>Ocupă <strong>tot rândul</strong> (merge cu alineat nou).</p>
+<h2 id="div-vs-span-containers"><code>&lt;div&gt;</code> vs <code>&lt;span&gt;</code> — containers<a class="headerlink" href="#div-vs-span-containers" title="Link to this section">&para;</a></h2>
+<p>Sometimes you want to <strong>group</strong> elements for styling or interactivity. You have two neutral containers:</p>
+<h3 id="div-block"><code>&lt;div&gt;</code> — block<a class="headerlink" href="#div-block" title="Link to this section">&para;</a></h3>
+<p>Takes up <strong>the whole row</strong> (starts on a new line).</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Titlu card<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Conținutul card-ului.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Card title<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The card&#39;s content.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <h3 id="span-inline"><code>&lt;span&gt;</code> — inline<a class="headerlink" href="#span-inline" title="Link to this section">&para;</a></h3>
-<p>Ocupă <strong>doar cât textul lui</strong> (nu rupe linia).</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Prețul este <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>199 lei<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> doar azi.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<p>Takes up <strong>only as much space as its text</strong> (doesn't break the line).</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The price is <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>199 lei<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> only today.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Mai sunt alte opțiuni</p>
-<p><code>&lt;div&gt;</code> e un container <strong>generic</strong>. HTML5 a adus containere <strong>semantice</strong> mai bune: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code> — le vei folosi în Lecția 05. Preferă un container semantic când există.</p>
+<p class="admonition-title">There are other options</p>
+<p><code>&lt;div&gt;</code> is a <strong>generic</strong> container. HTML5 brought better <strong>semantic</strong> containers: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code> — you'll use them in Lesson 05. Prefer a semantic container when one exists.</p>
 </div>
 <hr />
-<h2 id="erori-frecvente">Erori frecvente<a class="headerlink" href="#erori-frecvente" title="Link to this section">&para;</a></h2>
+<h2 id="common-errors">Common errors<a class="headerlink" href="#common-errors" title="Link to this section">&para;</a></h2>
 <ul>
-<li><strong>Lipsește <code>alt</code></strong> la imagini → problemă de accesibilitate și SEO.</li>
-<li><strong>Mai multe <code>&lt;h1&gt;</code></strong> per pagină → structură confuză.</li>
-<li><strong><code>&lt;br&gt;</code> abuzat</strong> în loc de paragrafe separate.</li>
-<li><strong>Link-uri cu text generic</strong>: „click aici”, „mai multe” — folosește text descriptiv. Rău: <code>&lt;a href="url"&gt;aici&lt;/a&gt;</code>. Bine: <code>&lt;a href="url"&gt;raportul anual&lt;/a&gt;</code>.</li>
+<li><strong>Missing <code>alt</code></strong> on images → accessibility and SEO problem.</li>
+<li><strong>Multiple <code>&lt;h1&gt;</code></strong> per page → confusing structure.</li>
+<li><strong>Overusing <code>&lt;br&gt;</code></strong> instead of separate paragraphs.</li>
+<li><strong>Links with generic text</strong>: "click here", "more" — use descriptive text. Bad: <code>&lt;a href="url"&gt;here&lt;/a&gt;</code>. Good: <code>&lt;a href="url"&gt;the annual report&lt;/a&gt;</code>.</li>
 </ul>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-pagina-completa">Exercițiu 1 — Pagină completă<a class="headerlink" href="#exercitiu-1-pagina-completa" title="Link to this section">&para;</a></h3>
-<p>Creează o pagină cu: un <code>&lt;h1&gt;</code>, două <code>&lt;h2&gt;</code>, 3 paragrafe, 2 link-uri (unul intern spre o secțiune, unul extern cu <code>target="_blank"</code>) și o imagine cu <code>alt</code> descriptiv.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-complete-page">Exercise 1 — Complete page<a class="headerlink" href="#exercise-1-complete-page" title="Link to this section">&para;</a></h3>
+<p>Build a page with: an <code>&lt;h1&gt;</code>, two <code>&lt;h2&gt;</code>, 3 paragraphs, 2 links (one internal to a section, one external with <code>target="_blank"</code>) and an image with a descriptive <code>alt</code>.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ro&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Elena Marin – Despre mine<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Elena Marin – About me<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Elena Marin<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
 </span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>  <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
-</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#hobby&quot;</span><span class="p">&gt;</span>Hobby-uri<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> ·
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#hobbies&quot;</span><span class="p">&gt;</span>Hobbies<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> ·
 </span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://ursoaia-edu.online&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;noopener&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>      Ursoaia Edu
 </span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>  <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
 </span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>
-</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Sunt elevă la Liceul „Mihai Eminescu” din București.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I&#39;m a student at &quot;Mihai Eminescu&quot; High School in Bucharest.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>
-</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;imagini/profil.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Elena zâmbind într-un parc&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;images/profile.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Elena smiling in a park&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>
-</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>  <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;hobby&quot;</span><span class="p">&gt;</span>Hobby-uri<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Îmi place să pictez și să cânt la chitară.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>În weekend merg cu bicicleta prin parcul Herăstrău.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>  <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;hobbies&quot;</span><span class="p">&gt;</span>Hobbies<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I love painting and playing the guitar.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>On weekends I bike through Herăstrău Park.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-20-25"><a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-formatare-in-paragraf">Exercițiu 2 — Formatare în paragraf<a class="headerlink" href="#exercitiu-2-formatare-in-paragraf" title="Link to this section">&para;</a></h3>
-<p>Scrie un paragraf unde o parte e <code>&lt;strong&gt;</code>, alta <code>&lt;em&gt;</code>, iar un cuvânt-cheie e în <code>&lt;mark&gt;</code>.</p>
+<h3 id="exercise-2-formatting-in-a-paragraph">Exercise 2 — Formatting in a paragraph<a class="headerlink" href="#exercise-2-formatting-in-a-paragraph" title="Link to this section">&para;</a></h3>
+<p>Write a paragraph where one part is <code>&lt;strong&gt;</code>, another is <code>&lt;em&gt;</code>, and a keyword is in <code>&lt;mark&gt;</code>.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Radu spune că <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>siguranța e pe primul loc<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>,
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>   dar Ana este <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>absolut convinsă<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> că
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>   trebuie să ne grăbim. Termen limită:
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>   <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>vineri, ora 18:00<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<summary>Solution</summary>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Radu says that <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>safety comes first<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>,
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>   but Anna is <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>absolutely convinced<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> that
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>   we have to hurry. Deadline:
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>   <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>Friday, 6:00 PM<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-cuprins-cu-ancore">Exercițiu 3 — Cuprins cu ancore<a class="headerlink" href="#exercitiu-3-cuprins-cu-ancore" title="Link to this section">&para;</a></h3>
-<p>Fă un cuprins la începutul paginii cu 3 link-uri către secțiuni de mai jos (<code>#intro</code>, <code>#capitol-1</code>, <code>#capitol-2</code>).</p>
+<h3 id="exercise-3-table-of-contents-with-anchors">Exercise 3 — Table of contents with anchors<a class="headerlink" href="#exercise-3-table-of-contents-with-anchors" title="Link to this section">&para;</a></h3>
+<p>Create a table of contents at the top of the page with 3 links to sections below (<code>#intro</code>, <code>#chapter-1</code>, <code>#chapter-2</code>).</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Articolul meu<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<summary>Solution</summary>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My article<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Cuprins:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contents:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#intro&quot;</span><span class="p">&gt;</span>Introducere<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#capitol-1&quot;</span><span class="p">&gt;</span>Capitolul 1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#capitol-2&quot;</span><span class="p">&gt;</span>Capitolul 2<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#intro&quot;</span><span class="p">&gt;</span>Introduction<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#chapter-1&quot;</span><span class="p">&gt;</span>Chapter 1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#chapter-2&quot;</span><span class="p">&gt;</span>Chapter 2<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
 </span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
-</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;intro&quot;</span><span class="p">&gt;</span>Introducere<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;intro&quot;</span><span class="p">&gt;</span>Introduction<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;capitol-1&quot;</span><span class="p">&gt;</span>Capitolul 1<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;chapter-1&quot;</span><span class="p">&gt;</span>Chapter 1<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;capitol-2&quot;</span><span class="p">&gt;</span>Capitolul 2<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;chapter-2&quot;</span><span class="p">&gt;</span>Chapter 2<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-echipa-mea-preferata">Mini-proiect: „Echipa mea preferată”<a class="headerlink" href="#mini-proiect-echipa-mea-preferata" title="Link to this section">&para;</a></h2>
-<p>Fă o pagină despre formația, echipa sportivă sau trupa ta preferată, cu:</p>
+<h2 id="mini-project-my-favorite-team">Mini-project: "My favorite team"<a class="headerlink" href="#mini-project-my-favorite-team" title="Link to this section">&para;</a></h2>
+<p>Build a page about your favorite band, sports team or musical group, with:</p>
 <ul>
-<li><code>&lt;h1&gt;</code> cu numele</li>
-<li>Secțiune „Despre” (<code>&lt;h2&gt;</code> + paragrafe)</li>
-<li>Secțiune „Membri” / „Jucători” (<code>&lt;h2&gt;</code> + paragrafe)</li>
-<li>Secțiune „Realizări” / „Discografie” (<code>&lt;h2&gt;</code> + paragrafe)</li>
-<li>O imagine cu <code>alt</code> descriptiv</li>
-<li>Un link către site-ul oficial (extern, tab nou)</li>
+<li><code>&lt;h1&gt;</code> with the name</li>
+<li>"About" section (<code>&lt;h2&gt;</code> + paragraphs)</li>
+<li>"Members" / "Players" section (<code>&lt;h2&gt;</code> + paragraphs)</li>
+<li>"Achievements" / "Discography" section (<code>&lt;h2&gt;</code> + paragraphs)</li>
+<li>An image with descriptive <code>alt</code></li>
+<li>A link to the official site (external, new tab)</li>
 </ul>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ro&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>CFR Cluj – echipa mea<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>CFR Cluj – my team<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>CFR 1907 Cluj<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Site oficial:
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Official site:
 </span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.cfr1907.ro&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;noopener&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>      cfr1907.ro
 </span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>  <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>
-</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;imagini/stadion.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vedere de pe tribună a stadionului Dr. Constantin Rădulescu&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;images/stadium.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;View from the stands of Dr. Constantin Rădulescu Stadium&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>
-</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Despre<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Club de fotbal din Cluj-Napoca, fondat în 1907.
-</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>     Joacă pe stadionul „Dr. Constantin Rădulescu”.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>A football club from Cluj-Napoca, founded in 1907.
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>     Plays at the &quot;Dr. Constantin Rădulescu&quot; stadium.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>
-</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Antrenor și lot<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Mihai Popescu este antrenor principal. Căpitanul echipei
-</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>     este Andrei Ionescu.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Coach and squad<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Mihai Popescu is the head coach. The team captain
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>     is Andrei Ionescu.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>
-</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Realizări<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Multiplă campioană a României în ultimii ani.
-</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>     Participări frecvente în cupele europene.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Achievements<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Multiple-time champion of Romania in recent years.
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>     Frequent participant in European cups.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li>Un singur <code>&lt;h1&gt;</code> per pagină; folosește <code>&lt;h2&gt;</code> – <code>&lt;h6&gt;</code> ierarhic.</li>
-<li><code>&lt;p&gt;</code> pentru paragrafe; nu abuza de <code>&lt;br&gt;</code>.</li>
-<li><code>&lt;a href="..." target="_blank" rel="noopener"&gt;</code> pentru tab nou.</li>
-<li><code>&lt;img&gt;</code> cere <strong>mereu</strong> atributul <code>alt</code>.</li>
-<li><code>&lt;strong&gt;</code> / <code>&lt;em&gt;</code> au <strong>înțeles</strong>, nu doar stil.</li>
-<li><code>&lt;div&gt;</code> = container bloc; <code>&lt;span&gt;</code> = container inline.</li>
+<li>A single <code>&lt;h1&gt;</code> per page; use <code>&lt;h2&gt;</code> – <code>&lt;h6&gt;</code> hierarchically.</li>
+<li><code>&lt;p&gt;</code> for paragraphs; don't overuse <code>&lt;br&gt;</code>.</li>
+<li><code>&lt;a href="..." target="_blank" rel="noopener"&gt;</code> for a new tab.</li>
+<li><code>&lt;img&gt;</code> <strong>always</strong> requires the <code>alt</code> attribute.</li>
+<li><code>&lt;strong&gt;</code> / <code>&lt;em&gt;</code> carry <strong>meaning</strong>, not just style.</li>
+<li><code>&lt;div&gt;</code> = block container; <code>&lt;span&gt;</code> = inline container.</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../03-html-liste-tabele/">→ Lecția 03: Liste și tabele</a></p>
+<p><strong>Next step:</strong> <a href="../03-html-liste-tabele/">→ Lesson 03: Lists and tables</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -825,48 +826,48 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-02-html-tagurile-de-baza" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 02 · HTML: tagurile de bază</a>
+                  <a href="#lesson-02-html-the-basic-tags" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 02 · HTML: the basic tags</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#titluri-de-la-h1-la-h6" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Titluri: de la &lt;h1&gt; la &lt;h6&gt;</a>
+                        <a href="#headings-from-h1-to-h6" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Headings: from &lt;h1&gt; to &lt;h6&gt;</a>
                       </li>
                     
                       <li>
-                        <a href="#paragrafe" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Paragrafe</a>
+                        <a href="#paragraphs" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Paragraphs</a>
                       </li>
                     
                       <li>
-                        <a href="#link-uri-a" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Link-uri (&lt;a&gt;)</a>
+                        <a href="#links-a" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Links (&lt;a&gt;)</a>
                       </li>
                     
                       <li>
-                        <a href="#imagini-img" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Imagini (&lt;img&gt;)</a>
+                        <a href="#images-img" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Images (&lt;img&gt;)</a>
                       </li>
                     
                       <li>
-                        <a href="#formatare-de-text" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Formatare de text</a>
+                        <a href="#text-formatting" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Text formatting</a>
                       </li>
                     
                       <li>
-                        <a href="#div-vs-span-containere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">&lt;div&gt; vs &lt;span&gt; — containere</a>
+                        <a href="#div-vs-span-containers" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">&lt;div&gt; vs &lt;span&gt; — containers</a>
                       </li>
                     
                       <li>
-                        <a href="#erori-frecvente" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Erori frecvente</a>
+                        <a href="#common-errors" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Common errors</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-echipa-mea-preferata" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: „Echipa mea preferată”</a>
+                        <a href="#mini-project-my-favorite-team" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: "My favorite team"</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

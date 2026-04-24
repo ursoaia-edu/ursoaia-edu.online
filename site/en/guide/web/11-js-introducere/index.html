@@ -432,14 +432,14 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">11: JS introducere</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Primii pași în JavaScript — cum incluzi scripturi în pagină și cum folosești DevTools.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">First steps in JavaScript — how to include scripts in a page and how to use DevTools.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">introducere</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">introduction</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">console</span>
                 
@@ -452,261 +452,261 @@
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-11-javascript-introducere">Lecția 11 · JavaScript: introducere<a class="headerlink" href="#lectia-11-javascript-introducere" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-11-javascript-introduction">Lesson 11 · JavaScript: introduction<a class="headerlink" href="#lesson-11-javascript-introduction" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Ce este JavaScript și unde rulează</li>
-<li>Cele trei moduri de a include JS într-o pagină HTML</li>
-<li>Cum folosești <code>console.log()</code> și DevTools Console</li>
-<li>Funcții de bază: <code>alert</code>, <code>prompt</code>, <code>confirm</code></li>
-<li>Cum citești erorile din consolă</li>
+<li>What JavaScript is and where it runs</li>
+<li>The three ways to include JS in an HTML page</li>
+<li>How to use <code>console.log()</code> and the DevTools Console</li>
+<li>Basic functions: <code>alert</code>, <code>prompt</code>, <code>confirm</code></li>
+<li>How to read errors from the console</li>
 </ul>
 </div>
 <hr />
-<h2 id="ce-este-javascript">Ce este JavaScript?<a class="headerlink" href="#ce-este-javascript" title="Link to this section">&para;</a></h2>
-<p><strong>JavaScript</strong> (JS) este limbajul care <strong>aduce la viață</strong> paginile web. Dacă HTML-ul este „scheletul” și CSS-ul este „pielea”, JS-ul este „mușchiul” — el face paginile să reacționeze la clickuri, să valideze formulare, să încarce date din rețea și să se actualizeze fără reîncărcare.</p>
-<p>A fost creat în <strong>1995</strong> de Brendan Eich (la Netscape) în doar <strong>10 zile</strong>. Numele „JavaScript” este pur marketing — <strong>NU are nicio legătură cu limbajul Java</strong>. E ca și cum ai compara „ham” (șuncă) cu „hamster”.</p>
-<p>Astăzi, JS rulează pe <strong>aproape orice browser modern</strong> și este unul dintre cele mai populare limbaje din lume.</p>
+<h2 id="what-is-javascript">What is JavaScript?<a class="headerlink" href="#what-is-javascript" title="Link to this section">&para;</a></h2>
+<p><strong>JavaScript</strong> (JS) is the language that <strong>brings web pages to life</strong>. If HTML is the "skeleton" and CSS is the "skin", JS is the "muscle" — it makes pages react to clicks, validate forms, load data from the network and update without reloading.</p>
+<p>It was created in <strong>1995</strong> by Brendan Eich (at Netscape) in just <strong>10 days</strong>. The name "JavaScript" is pure marketing — it has <strong>NO connection to the Java language</strong>. It's like comparing "ham" with "hamster".</p>
+<p>Today, JS runs on <strong>almost every modern browser</strong> and is one of the most popular languages in the world.</p>
 <hr />
-<h2 id="unde-ruleaza-javascript">Unde rulează JavaScript?<a class="headerlink" href="#unde-ruleaza-javascript" title="Link to this section">&para;</a></h2>
-<p>JS poate rula în două locuri principale:</p>
+<h2 id="where-does-javascript-run">Where does JavaScript run?<a class="headerlink" href="#where-does-javascript-run" title="Link to this section">&para;</a></h2>
+<p>JS can run in two main places:</p>
 <ul>
-<li><strong>În browser (client-side)</strong> — ce învățăm aici. Codul rulează pe calculatorul vizitatorului.</li>
-<li><strong>Pe server (Node.js)</strong> — vom discuta mai târziu. Codul rulează pe un server.</li>
+<li><strong>In the browser (client-side)</strong> — what we are learning here. The code runs on the visitor's computer.</li>
+<li><strong>On the server (Node.js)</strong> — we'll discuss later. The code runs on a server.</li>
 </ul>
-<p>În această secțiune a ghidului ne concentrăm pe JS în browser.</p>
+<p>In this section of the guide we focus on JS in the browser.</p>
 <hr />
-<h2 id="trei-moduri-de-a-include-js">Trei moduri de a include JS<a class="headerlink" href="#trei-moduri-de-a-include-js" title="Link to this section">&para;</a></h2>
-<h3 id="1-inline-in-atribut-html-evita">1. Inline, în atribut HTML (EVITĂ)<a class="headerlink" href="#1-inline-in-atribut-html-evita" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;alert(&#39;salut&#39;)&quot;</span><span class="p">&gt;</span>Apasă-mă<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<h2 id="three-ways-to-include-js">Three ways to include JS<a class="headerlink" href="#three-ways-to-include-js" title="Link to this section">&para;</a></h2>
+<h3 id="1-inline-in-an-html-attribute-avoid">1. Inline, in an HTML attribute (AVOID)<a class="headerlink" href="#1-inline-in-an-html-attribute-avoid" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;alert(&#39;hello&#39;)&quot;</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Funcționează, dar amestecă logica cu structura și devine imposibil de menținut pentru pagini mari. <strong>Nu folosi acest stil</strong> în proiecte reale.</p>
-<h3 id="2-in-html-cu-tag-script">2. În HTML, cu tag <code>&lt;script&gt;</code><a class="headerlink" href="#2-in-html-cu-tag-script" title="Link to this section">&para;</a></h3>
+<p>It works, but it mixes logic with structure and becomes impossible to maintain for large pages. <strong>Don't use this style</strong> in real projects.</p>
+<h3 id="2-in-html-with-a-script-tag">2. In HTML, with a <code>&lt;script&gt;</code> tag<a class="headerlink" href="#2-in-html-with-a-script-tag" title="Link to this section">&para;</a></h3>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Salut!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut din script intern!&quot;</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello from inline script!&quot;</span><span class="p">);</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Util pentru teste rapide, dar codul se amestecă cu HTML-ul.</p>
-<h3 id="3-fisier-js-extern-recomandat">3. Fișier JS extern (RECOMANDAT)<a class="headerlink" href="#3-fisier-js-extern-recomandat" title="Link to this section">&para;</a></h3>
+<p>Useful for quick tests, but the code mixes with the HTML.</p>
+<h3 id="3-external-js-file-recommended">3. External JS file (RECOMMENDED)<a class="headerlink" href="#3-external-js-file-recommended" title="Link to this section">&para;</a></h3>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Prima mea pagină cu JS<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My first page with JS<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Salut!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Și fișierul <code>app.js</code>:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Primul meu cod JavaScript</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span><span class="p">);</span>
+<p>And the <code>app.js</code> file:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// My first JavaScript code</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Ce face <code>defer</code>?</p>
-<p>Fără <code>defer</code>, browserul descarcă și rulează scriptul <strong>imediat</strong>, oprind parsarea HTML. Cu <code>defer</code>, browserul <strong>așteaptă</strong> să termine de parsat HTML-ul, apoi rulează scriptul. Rezultat: pagina se încarcă mai rapid și scriptul găsește toate elementele deja create.</p>
+<p class="admonition-title">What does <code>defer</code> do?</p>
+<p>Without <code>defer</code>, the browser downloads and runs the script <strong>immediately</strong>, stopping HTML parsing. With <code>defer</code>, the browser <strong>waits</strong> to finish parsing the HTML, then runs the script. Result: the page loads faster and the script finds all elements already created.</p>
 </div>
 <hr />
-<h2 id="unde-pui-script">Unde pui <code>&lt;script&gt;</code>?<a class="headerlink" href="#unde-pui-script" title="Link to this section">&para;</a></h2>
-<p>Există două locuri bune:</p>
+<h2 id="where-do-you-put-script">Where do you put <code>&lt;script&gt;</code>?<a class="headerlink" href="#where-do-you-put-script" title="Link to this section">&para;</a></h2>
+<p>There are two good places:</p>
 <ul>
-<li><strong>În <code>&lt;head&gt;</code> cu <code>defer</code></strong> — curat, recomandat.</li>
-<li><strong>La sfârșitul <code>&lt;body&gt;</code></strong> — alternativă clasică (fără <code>defer</code>), tot funcționează pentru că HTML-ul de deasupra e deja parsat.</li>
+<li><strong>In <code>&lt;head&gt;</code> with <code>defer</code></strong> — clean, recommended.</li>
+<li><strong>At the end of <code>&lt;body&gt;</code></strong> — classic alternative (without <code>defer</code>), still works because the HTML above is already parsed.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">&lt;!-- Varianta 1: în head cu defer --&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">&lt;!-- Option 1: in head with defer --&gt;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="cm">&lt;!-- Varianta 2: la sfârșitul body --&gt;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="cm">&lt;!-- Option 2: at the end of body --&gt;</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  <span class="cm">&lt;!-- ... conținut ... --&gt;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  <span class="cm">&lt;!-- ... content ... --&gt;</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="primul-tau-cod-js">Primul tău cod JS<a class="headerlink" href="#primul-tau-cod-js" title="Link to this section">&para;</a></h2>
-<p>Cea mai simplă instrucțiune: afișare în consolă.</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span><span class="p">);</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Am învățat JavaScript!&quot;</span><span class="p">);</span>
+<h2 id="your-first-js-code">Your first JS code<a class="headerlink" href="#your-first-js-code" title="Link to this section">&para;</a></h2>
+<p>The simplest instruction: print to the console.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;I learned JavaScript!&quot;</span><span class="p">);</span>
 </span></code></pre></div>
-<p><code>console.log(...)</code> nu apare pe pagină — apare în <strong>DevTools Console</strong>.</p>
+<p><code>console.log(...)</code> does not appear on the page — it appears in the <strong>DevTools Console</strong>.</p>
 <hr />
 <h2 id="devtools-console">DevTools Console<a class="headerlink" href="#devtools-console" title="Link to this section">&para;</a></h2>
-<p>Fiecare browser modern are un set de unelte pentru dezvoltatori numite <strong>DevTools</strong>. Le deschizi cu:</p>
+<p>Every modern browser has a set of tools for developers called <strong>DevTools</strong>. You open them with:</p>
 <ul>
-<li><strong>F12</strong> (pe majoritatea browserelor)</li>
+<li><strong>F12</strong> (on most browsers)</li>
 <li><strong>Ctrl + Shift + I</strong> (Windows / Linux)</li>
 <li><strong>Cmd + Option + I</strong> (macOS)</li>
-<li>Click dreapta pe pagină → <strong>Inspect</strong> / <strong>Inspectează</strong></li>
+<li>Right-click on the page → <strong>Inspect</strong></li>
 </ul>
-<p>Apoi dă click pe tab-ul <strong>Console</strong>.</p>
-<p>În Console:</p>
+<p>Then click the <strong>Console</strong> tab.</p>
+<p>In the Console:</p>
 <ul>
-<li>Vezi tot ce ai scris cu <code>console.log(...)</code>.</li>
-<li>Poți tasta <strong>direct comenzi JS</strong> și apăsa Enter.</li>
+<li>You see everything you wrote with <code>console.log(...)</code>.</li>
+<li>You can type <strong>JS commands directly</strong> and press Enter.</li>
 </ul>
-<p>Încearcă să tastezi aceste comenzi în Console:</p>
+<p>Try typing these commands in the Console:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="w">                    </span><span class="c1">// 4</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s2">&quot;Ana&quot;</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="w">      </span><span class="c1">// &quot;ANA&quot;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w">            </span><span class="c1">// un număr aleatoriu între 0 și 1</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">()</span><span class="w">               </span><span class="c1">// data și ora curentă</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w">            </span><span class="c1">// a random number between 0 and 1</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">()</span><span class="w">               </span><span class="c1">// current date and time</span>
 </span></code></pre></div>
 <hr />
-<h2 id="alte-functii-utile">Alte funcții utile<a class="headerlink" href="#alte-functii-utile" title="Link to this section">&para;</a></h2>
-<h3 id="alert-popup-informativ"><code>alert()</code> — popup informativ<a class="headerlink" href="#alert-popup-informativ" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Bună ziua!&quot;</span><span class="p">);</span>
+<h2 id="other-useful-functions">Other useful functions<a class="headerlink" href="#other-useful-functions" title="Link to this section">&para;</a></h2>
+<h3 id="alert-informative-popup"><code>alert()</code> — informative popup<a class="headerlink" href="#alert-informative-popup" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Good day!&quot;</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Deschide o fereastră popup cu un mesaj. Utilă pentru debug rapid, <strong>iritantă pentru utilizator</strong> — evit-o în aplicații reale.</p>
-<h3 id="prompt-cere-input"><code>prompt()</code> — cere input<a class="headerlink" href="#prompt-cere-input" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Cum te cheamă?&quot;</span><span class="p">);</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut,&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">nume</span><span class="p">);</span>
+<p>Opens a popup window with a message. Useful for quick debugging, <strong>annoying for the user</strong> — avoid it in real applications.</p>
+<h3 id="prompt-ask-for-input"><code>prompt()</code> — ask for input<a class="headerlink" href="#prompt-ask-for-input" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello,&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Returnează un <strong>string</strong> (sau <code>null</code> dacă utilizatorul apasă Cancel).</p>
-<h3 id="confirm-intreaba-da-nu"><code>confirm()</code> — întreabă da / nu<a class="headerlink" href="#confirm-intreaba-da-nu" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sigur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;Sigur vrei să continui?&quot;</span><span class="p">);</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sigur</span><span class="p">);</span><span class="w">   </span><span class="c1">// true sau false</span>
+<p>Returns a <strong>string</strong> (or <code>null</code> if the user presses Cancel).</p>
+<h3 id="confirm-ask-yes-no"><code>confirm()</code> — ask yes / no<a class="headerlink" href="#confirm-ask-yes-no" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;Are you sure you want to continue?&quot;</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sure</span><span class="p">);</span><span class="w">   </span><span class="c1">// true or false</span>
 </span></code></pre></div>
-<h3 id="variante-de-console">Variante de <code>console</code><a class="headerlink" href="#variante-de-console" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;mesaj normal&quot;</span><span class="p">);</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">&quot;avertisment galben&quot;</span><span class="p">);</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;eroare roșie&quot;</span><span class="p">);</span>
+<h3 id="console-variants"><code>console</code> variants<a class="headerlink" href="#console-variants" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;normal message&quot;</span><span class="p">);</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">&quot;yellow warning&quot;</span><span class="p">);</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;red error&quot;</span><span class="p">);</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Fiecare apare cu o culoare / iconiță diferită în Console.</p>
+<p>Each appears with a different color / icon in the Console.</p>
 <hr />
-<h2 id="citirea-erorilor">Citirea erorilor<a class="headerlink" href="#citirea-erorilor" title="Link to this section">&para;</a></h2>
-<p>Când ceva nu merge, Console-ul îți afișează <strong>tipul erorii</strong> și <strong>linia</strong> pe care a apărut:</p>
+<h2 id="reading-errors">Reading errors<a class="headerlink" href="#reading-errors" title="Link to this section">&para;</a></h2>
+<p>When something goes wrong, the Console shows you the <strong>error type</strong> and the <strong>line</strong> where it appeared:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Uncaught ReferenceError: conzole is not defined
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    at app.js:3
 </span></code></pre></div>
-<p>Tipuri frecvente:</p>
+<p>Common types:</p>
 <ul>
-<li><strong><code>ReferenceError</code></strong> — ai folosit un nume care nu există (ex. <code>conzole</code> în loc de <code>console</code>).</li>
-<li><strong><code>TypeError</code></strong> — ai încercat o operație nepermisă pe un tip (ex. <code>null.length</code>).</li>
-<li><strong><code>SyntaxError</code></strong> — ai scris cod care nu respectă gramatica JS (paranteză lipsă, ghilimea nenchisă).</li>
+<li><strong><code>ReferenceError</code></strong> — you used a name that doesn't exist (e.g. <code>conzole</code> instead of <code>console</code>).</li>
+<li><strong><code>TypeError</code></strong> — you tried an operation not allowed on a type (e.g. <code>null.length</code>).</li>
+<li><strong><code>SyntaxError</code></strong> — you wrote code that doesn't follow JS grammar (missing parenthesis, unclosed quote).</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Citește mesajul de eroare!</p>
-<p>Mulți începători ignoră mesajul și se uită direct în cod. Mesajul îți spune <strong>unde</strong> și <strong>ce</strong> s-a stricat — e primul loc unde trebuie să te uiți.</p>
+<p class="admonition-title">Read the error message!</p>
+<p>Many beginners ignore the message and look directly at the code. The message tells you <strong>where</strong> and <strong>what</strong> broke — it's the first place you should look.</p>
 </div>
 <hr />
-<h2 id="comentarii-in-js">Comentarii în JS<a class="headerlink" href="#comentarii-in-js" title="Link to this section">&para;</a></h2>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Acesta este un comentariu pe o singură linie</span>
+<h2 id="comments-in-js">Comments in JS<a class="headerlink" href="#comments-in-js" title="Link to this section">&para;</a></h2>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// This is a single-line comment</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="cm">/*</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="cm">   Acesta este un comentariu</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="cm">   pe mai multe linii.</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="cm">   This is a comment</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="cm">   on multiple lines.</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="cm">*/</span>
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">   </span><span class="c1">// poți pune și la capăt de linie</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">   </span><span class="c1">// you can also put it at the end of a line</span>
 </span></code></pre></div>
-<p>Comentariile nu sunt executate — sunt doar pentru tine și pentru colegii care citesc codul.</p>
+<p>Comments are not executed — they are just for you and for the colleagues who read the code.</p>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-prima-pagina-cu-js">Exercițiu 1 — Prima pagină cu JS<a class="headerlink" href="#exercitiu-1-prima-pagina-cu-js" title="Link to this section">&para;</a></h3>
-<p>Creează un folder nou cu două fișiere: <code>index.html</code> și <code>app.js</code>. Leagă-le corect și afișează <code>"merge!"</code> în Console.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-first-page-with-js">Exercise 1 — First page with JS<a class="headerlink" href="#exercise-1-first-page-with-js" title="Link to this section">&para;</a></h3>
+<p>Create a new folder with two files: <code>index.html</code> and <code>app.js</code>. Link them correctly and print <code>"it works!"</code> to the Console.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <p><code>index.html</code>:</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Test JS<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>JS Test<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Verifică Console!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Check the Console!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <p><code>app.js</code>:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;merge!&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;it works!&quot;</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Deschide <code>index.html</code> în browser, apasă F12 → Console și ar trebui să vezi <code>merge!</code>.</p>
+<p>Open <code>index.html</code> in the browser, press F12 → Console and you should see <code>it works!</code>.</p>
 </details>
-<h3 id="exercitiu-2-experimente-in-console">Exercițiu 2 — Experimente în Console<a class="headerlink" href="#exercitiu-2-experimente-in-console" title="Link to this section">&para;</a></h3>
-<p>Deschide Console-ul pe orice pagină și tastează:</p>
+<h3 id="exercise-2-console-experiments">Exercise 2 — Console experiments<a class="headerlink" href="#exercise-2-console-experiments" title="Link to this section">&para;</a></h3>
+<p>Open the Console on any page and type:</p>
 <ol>
 <li><code>5 + 5 * 2</code></li>
-<li><code>"salut".length</code></li>
-<li><code>prompt("Vârsta ta?")</code></li>
+<li><code>"hello".length</code></li>
+<li><code>prompt("Your age?")</code></li>
 </ol>
-<p>Ce observi?</p>
+<p>What do you notice?</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="mf">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="w">             </span><span class="c1">// 15 — înmulțirea are prioritate</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s2">&quot;salut&quot;</span><span class="p">.</span><span class="nx">length</span><span class="w">        </span><span class="c1">// 5 — numărul de caractere</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Vârsta ta?&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// deschide popup, returnează string (ex: &quot;14&quot;)</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="mf">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="w">             </span><span class="c1">// 15 — multiplication has priority</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s2">&quot;hello&quot;</span><span class="p">.</span><span class="nx">length</span><span class="w">        </span><span class="c1">// 5 — number of characters</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Your age?&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// opens popup, returns string (e.g. &quot;14&quot;)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-forteaza-o-eroare">Exercițiu 3 — Forțează o eroare<a class="headerlink" href="#exercitiu-3-forteaza-o-eroare" title="Link to this section">&para;</a></h3>
-<p>În <code>app.js</code>, scrie o linie greșită intenționat: <code>conzole.log("test")</code>. Reîncarcă pagina și citește mesajul din Console.</p>
+<h3 id="exercise-3-force-an-error">Exercise 3 — Force an error<a class="headerlink" href="#exercise-3-force-an-error" title="Link to this section">&para;</a></h3>
+<p>In <code>app.js</code>, intentionally write an incorrect line: <code>conzole.log("test")</code>. Reload the page and read the message in the Console.</p>
 <details class="success">
-<summary>Soluție</summary>
-<p>Vei vedea ceva de genul:</p>
+<summary>Solution</summary>
+<p>You'll see something like:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Uncaught ReferenceError: conzole is not defined
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    at app.js:1
 </span></code></pre></div>
-<p>Browserul îți spune exact linia (<code>app.js:1</code>) și motivul (<code>conzole</code> nu există). Corectezi la <code>console</code> și eroarea dispare.</p>
+<p>The browser tells you the exact line (<code>app.js:1</code>) and the reason (<code>conzole</code> doesn't exist). Fix to <code>console</code> and the error disappears.</p>
 </details>
 <hr />
-<h2 id="mini-proiect-banner-de-salut">Mini-proiect: Banner de salut<a class="headerlink" href="#mini-proiect-banner-de-salut" title="Link to this section">&para;</a></h2>
-<p>Pagina cere numele vizitatorului la încărcare și afișează un alert personalizat.</p>
-<p><strong>Cerință:</strong></p>
+<h2 id="mini-project-greeting-banner">Mini-project: Greeting banner<a class="headerlink" href="#mini-project-greeting-banner" title="Link to this section">&para;</a></h2>
+<p>The page asks for the visitor's name on load and shows a personalized alert.</p>
+<p><strong>Requirement:</strong></p>
 <ul>
-<li>Folosește <code>prompt()</code> pentru a cere numele.</li>
-<li>Folosește <code>alert()</code> pentru a afișa un salut personalizat.</li>
-<li>Loghează în consolă numele introdus.</li>
+<li>Use <code>prompt()</code> to ask for the name.</li>
+<li>Use <code>alert()</code> to show a personalized greeting.</li>
+<li>Log the entered name to the console.</li>
 </ul>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <p><code>index.html</code>:</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Banner de salut<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Greeting banner<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Bun venit pe site!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to the site!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <p><code>app.js</code>:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Cere numele vizitatorului</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Cum te cheamă?&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Ask for the visitor&#39;s name</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">);</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">// Loghează în consolă pentru debug</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Nume introdus:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">nume</span><span class="p">);</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">// Log to the console for debug</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Name entered:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
 </span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1">// Afișează un salut personalizat</span>
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Salut, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;! Mă bucur să te văd.&quot;</span><span class="p">);</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1">// Show a personalized greeting</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;! Glad to see you.&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li>JavaScript rulează în browser și face paginile interactive.</li>
-<li>Include scripturile cu <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code> în <code>&lt;head&gt;</code>.</li>
-<li><code>console.log(...)</code> afișează mesaje în <strong>DevTools Console</strong> (F12).</li>
-<li><code>alert</code>, <code>prompt</code>, <code>confirm</code> sunt popup-uri simple — utile pentru debug, nu pentru UI real.</li>
-<li>Citește <strong>tipul</strong> și <strong>linia</strong> erorii — sunt cel mai bun ghid când ceva nu merge.</li>
-<li><code>//</code> și <code>/* */</code> sunt comentarii, ignorate de browser.</li>
+<li>JavaScript runs in the browser and makes pages interactive.</li>
+<li>Include scripts with <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code> in <code>&lt;head&gt;</code>.</li>
+<li><code>console.log(...)</code> shows messages in the <strong>DevTools Console</strong> (F12).</li>
+<li><code>alert</code>, <code>prompt</code>, <code>confirm</code> are simple popups — useful for debug, not for real UI.</li>
+<li>Read the <strong>type</strong> and the <strong>line</strong> of the error — they are the best guide when something fails.</li>
+<li><code>//</code> and <code>/* */</code> are comments, ignored by the browser.</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../12-js-variabile-tipuri/">→ Lecția 12: Variabile și tipuri de date</a></p>
+<p><strong>Next step:</strong> <a href="../12-js-variabile-tipuri/">→ Lesson 12: Variables and data types</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -742,28 +742,28 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-11-javascript-introducere" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 11 · JavaScript: introducere</a>
+                  <a href="#lesson-11-javascript-introduction" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 11 · JavaScript: introduction</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#ce-este-javascript" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ce este JavaScript?</a>
+                        <a href="#what-is-javascript" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">What is JavaScript?</a>
                       </li>
                     
                       <li>
-                        <a href="#unde-ruleaza-javascript" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Unde rulează JavaScript?</a>
+                        <a href="#where-does-javascript-run" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Where does JavaScript run?</a>
                       </li>
                     
                       <li>
-                        <a href="#trei-moduri-de-a-include-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Trei moduri de a include JS</a>
+                        <a href="#three-ways-to-include-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Three ways to include JS</a>
                       </li>
                     
                       <li>
-                        <a href="#unde-pui-script" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Unde pui &lt;script&gt;?</a>
+                        <a href="#where-do-you-put-script" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Where do you put &lt;script&gt;?</a>
                       </li>
                     
                       <li>
-                        <a href="#primul-tau-cod-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Primul tău cod JS</a>
+                        <a href="#your-first-js-code" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Your first JS code</a>
                       </li>
                     
                       <li>
@@ -771,27 +771,27 @@
                       </li>
                     
                       <li>
-                        <a href="#alte-functii-utile" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Alte funcții utile</a>
+                        <a href="#other-useful-functions" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Other useful functions</a>
                       </li>
                     
                       <li>
-                        <a href="#citirea-erorilor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Citirea erorilor</a>
+                        <a href="#reading-errors" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Reading errors</a>
                       </li>
                     
                       <li>
-                        <a href="#comentarii-in-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Comentarii în JS</a>
+                        <a href="#comments-in-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Comments in JS</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-banner-de-salut" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Banner de salut</a>
+                        <a href="#mini-project-greeting-banner" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Greeting banner</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

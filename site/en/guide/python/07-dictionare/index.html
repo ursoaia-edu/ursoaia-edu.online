@@ -432,224 +432,224 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">07: Dicționare</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Stochează date structurate cu dicționarele Python — perechi cheie-valoare.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Store structured data with Python dictionaries — key-value pairs.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">python</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">dicționare</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">dictionaries</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">dict</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">chei</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">keys</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">valori</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">values</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-07-dictionare">Lecția 07 · Dicționare<a class="headerlink" href="#lectia-07-dictionare" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-07-dictionaries">Lesson 07 · Dictionaries<a class="headerlink" href="#lesson-07-dictionaries" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Ce este un dicționar și când îl folosești</li>
-<li>Cum creezi, accesezi și modifici un dicționar</li>
-<li>Metodele principale: <code>.keys()</code>, <code>.values()</code>, <code>.items()</code></li>
-<li>Iterarea peste dicționar</li>
+<li>What a dictionary is and when to use it</li>
+<li>How to create, access, and modify a dictionary</li>
+<li>The main methods: <code>.keys()</code>, <code>.values()</code>, <code>.items()</code></li>
+<li>Iterating over a dictionary</li>
 </ul>
 </div>
 <hr />
-<h2 id="ce-este-un-dictionar">Ce este un dicționar?<a class="headerlink" href="#ce-este-un-dictionar" title="Link to this section">&para;</a></h2>
-<p>Un <strong>dicționar</strong> stochează perechi <strong>cheie → valoare</strong>, ca un dicționar real unde cuvântul este cheia și definiția este valoarea:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">elev</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;nume&quot;</span><span class="p">:</span> <span class="s2">&quot;Andrei&quot;</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">&quot;varsta&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s2">&quot;medie&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s2">&quot;este_premiant&quot;</span><span class="p">:</span> <span class="kc">True</span>
+<h2 id="what-is-a-dictionary">What is a dictionary?<a class="headerlink" href="#what-is-a-dictionary" title="Link to this section">&para;</a></h2>
+<p>A <strong>dictionary</strong> stores <strong>key → value</strong> pairs, like a real dictionary where the word is the key and the definition is the value:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">student</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Andrew&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s2">&quot;average&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s2">&quot;is_honor_student&quot;</span><span class="p">:</span> <span class="kc">True</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Spre deosebire de liste (unde accesezi prin index numeric), dicționarele se accesează prin <strong>chei</strong>:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">elev</span><span class="p">[</span><span class="s2">&quot;nume&quot;</span><span class="p">])</span>    <span class="c1"># Andrei</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">elev</span><span class="p">[</span><span class="s2">&quot;medie&quot;</span><span class="p">])</span>   <span class="c1"># 9.5</span>
+<p>Unlike lists (where you access elements via a numeric index), dictionaries are accessed via <strong>keys</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>      <span class="c1"># Andrew</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">])</span>   <span class="c1"># 9.5</span>
 </span></code></pre></div>
 <hr />
-<h2 id="crearea-unui-dictionar">Crearea unui dicționar<a class="headerlink" href="#crearea-unui-dictionar" title="Link to this section">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Dicționar gol</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">date</span> <span class="o">=</span> <span class="p">{}</span>
+<h2 id="creating-a-dictionary">Creating a dictionary<a class="headerlink" href="#creating-a-dictionary" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Empty dictionary</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Dicționar cu valori inițiale</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">masina</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="s2">&quot;marca&quot;</span><span class="p">:</span> <span class="s2">&quot;Dacia&quot;</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Dictionary with initial values</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">car</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Dacia&quot;</span><span class="p">,</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Logan&quot;</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="s2">&quot;an&quot;</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s2">&quot;km&quot;</span><span class="p">:</span> <span class="mi">45000</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Cheile pot fi <code>str</code>, <code>int</code> sau <code>float</code>. Valorile pot fi orice tip.</p>
+<p>Keys can be <code>str</code>, <code>int</code>, or <code>float</code>. Values can be any type.</p>
 <hr />
-<h2 id="accesarea-valorilor">Accesarea valorilor<a class="headerlink" href="#accesarea-valorilor" title="Link to this section">&para;</a></h2>
-<h3 id="cu">Cu <code>[]</code><a class="headerlink" href="#cu" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">masina</span><span class="p">[</span><span class="s2">&quot;marca&quot;</span><span class="p">])</span>   <span class="c1"># Dacia</span>
+<h2 id="accessing-values">Accessing values<a class="headerlink" href="#accessing-values" title="Link to this section">&para;</a></h2>
+<h3 id="with">With <code>[]</code><a class="headerlink" href="#with" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">car</span><span class="p">[</span><span class="s2">&quot;brand&quot;</span><span class="p">])</span>   <span class="c1"># Dacia</span>
 </span></code></pre></div>
-<p>Dacă cheia nu există, primești <code>KeyError</code>.</p>
-<h3 id="cu-get-mai-sigur">Cu <code>.get()</code> — mai sigur<a class="headerlink" href="#cu-get-mai-sigur" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">masina</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;culoare&quot;</span><span class="p">))</span>                   <span class="c1"># None (fără eroare)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">masina</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;culoare&quot;</span><span class="p">,</span> <span class="s2">&quot;necunoscut&quot;</span><span class="p">))</span>      <span class="c1"># necunoscut</span>
-</span></code></pre></div>
-<hr />
-<h2 id="adaugarea-si-modificarea">Adăugarea și modificarea<a class="headerlink" href="#adaugarea-si-modificarea" title="Link to this section">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">masina</span><span class="p">[</span><span class="s2">&quot;culoare&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;alb&quot;</span>    <span class="c1"># adaugă cheie nouă</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">masina</span><span class="p">[</span><span class="s2">&quot;km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">46000</span>          <span class="c1"># modifică valoare existentă</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">masina</span><span class="p">)</span>
+<p>If the key doesn't exist, you get a <code>KeyError</code>.</p>
+<h3 id="with-get-safer">With <code>.get()</code> — safer<a class="headerlink" href="#with-get-safer" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">car</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">))</span>                  <span class="c1"># None (no error)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">car</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">))</span>       <span class="c1"># unknown</span>
 </span></code></pre></div>
 <hr />
-<h2 id="stergerea-cheilor">Ștergerea cheilor<a class="headerlink" href="#stergerea-cheilor" title="Link to this section">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">del</span> <span class="n">masina</span><span class="p">[</span><span class="s2">&quot;km&quot;</span><span class="p">]</span>              <span class="c1"># șterge cheia</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">km</span> <span class="o">=</span> <span class="n">masina</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>   <span class="c1"># șterge și returnează valoarea</span>
+<h2 id="adding-and-modifying">Adding and modifying<a class="headerlink" href="#adding-and-modifying" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">car</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>   <span class="c1"># add a new key</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">car</span><span class="p">[</span><span class="s2">&quot;km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">46000</span>         <span class="c1"># modify an existing value</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">car</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="verificarea-existentei-cheii">Verificarea existenței cheii<a class="headerlink" href="#verificarea-existentei-cheii" title="Link to this section">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span> <span class="s2">&quot;marca&quot;</span> <span class="ow">in</span> <span class="n">masina</span><span class="p">:</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Avem marca:&quot;</span><span class="p">,</span> <span class="n">masina</span><span class="p">[</span><span class="s2">&quot;marca&quot;</span><span class="p">])</span>
+<h2 id="deleting-keys">Deleting keys<a class="headerlink" href="#deleting-keys" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">del</span> <span class="n">car</span><span class="p">[</span><span class="s2">&quot;km&quot;</span><span class="p">]</span>              <span class="c1"># delete the key</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">year</span> <span class="o">=</span> <span class="n">car</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>   <span class="c1"># delete and return the value</span>
 </span></code></pre></div>
 <hr />
-<h2 id="metodele-principale">Metodele principale<a class="headerlink" href="#metodele-principale" title="Link to this section">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">persoana</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;nume&quot;</span><span class="p">:</span> <span class="s2">&quot;Elena&quot;</span><span class="p">,</span> <span class="s2">&quot;varsta&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;oras&quot;</span><span class="p">:</span> <span class="s2">&quot;Cluj&quot;</span><span class="p">}</span>
+<h2 id="checking-key-existence">Checking key existence<a class="headerlink" href="#checking-key-existence" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span> <span class="s2">&quot;brand&quot;</span> <span class="ow">in</span> <span class="n">car</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We have brand:&quot;</span><span class="p">,</span> <span class="n">car</span><span class="p">[</span><span class="s2">&quot;brand&quot;</span><span class="p">])</span>
+</span></code></pre></div>
+<hr />
+<h2 id="the-main-methods">The main methods<a class="headerlink" href="#the-main-methods" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Helen&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Cluj&quot;</span><span class="p">}</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">persoana</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>    <span class="c1"># dict_keys([&#39;nume&#39;, &#39;varsta&#39;, &#39;oras&#39;])</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">persoana</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>  <span class="c1"># dict_values([&#39;Elena&#39;, 16, &#39;Cluj&#39;])</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">persoana</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>   <span class="c1"># dict_items([(&#39;nume&#39;, &#39;Elena&#39;), ...])</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">persoana</span><span class="p">))</span>      <span class="c1"># 3</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>    <span class="c1"># dict_keys([&#39;name&#39;, &#39;age&#39;, &#39;city&#39;])</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>  <span class="c1"># dict_values([&#39;Helen&#39;, 16, &#39;Cluj&#39;])</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>   <span class="c1"># dict_items([(&#39;name&#39;, &#39;Helen&#39;), ...])</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">person</span><span class="p">))</span>      <span class="c1"># 3</span>
 </span></code></pre></div>
 <hr />
-<h2 id="iterarea">Iterarea<a class="headerlink" href="#iterarea" title="Link to this section">&para;</a></h2>
-<h3 id="doar-chei">Doar chei<a class="headerlink" href="#doar-chei" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> <span class="n">cheie</span> <span class="ow">in</span> <span class="n">persoana</span><span class="p">:</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">cheie</span><span class="p">)</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># nume</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># varsta</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># oras</span>
+<h2 id="iterating">Iterating<a class="headerlink" href="#iterating" title="Link to this section">&para;</a></h2>
+<h3 id="just-the-keys">Just the keys<a class="headerlink" href="#just-the-keys" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">person</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># name</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># age</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># city</span>
 </span></code></pre></div>
-<h3 id="chei-si-valori-cu-items">Chei și valori cu <code>.items()</code><a class="headerlink" href="#chei-si-valori-cu-items" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span> <span class="n">cheie</span><span class="p">,</span> <span class="n">valoare</span> <span class="ow">in</span> <span class="n">persoana</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cheie</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">valoare</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># nume: Elena</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># varsta: 16</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># oras: Cluj</span>
+<h3 id="keys-and-values-with-items">Keys and values with <code>.items()</code><a class="headerlink" href="#keys-and-values-with-items" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">person</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># name: Helen</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># age: 16</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># city: Cluj</span>
 </span></code></pre></div>
 <hr />
-<h2 id="dictionare-imbricate">Dicționare imbricate<a class="headerlink" href="#dictionare-imbricate" title="Link to this section">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">clasa</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="s2">&quot;Andrei&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;nota_ro&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;nota_mat&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="s2">&quot;Maria&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;nota_ro&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;nota_mat&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+<h2 id="nested-dictionaries">Nested dictionaries<a class="headerlink" href="#nested-dictionaries" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">classroom</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="s2">&quot;Andrew&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;romanian_grade&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;math_grade&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="s2">&quot;Mary&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;romanian_grade&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;math_grade&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">}</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">clasa</span><span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">][</span><span class="s2">&quot;nota_mat&quot;</span><span class="p">])</span>   <span class="c1"># 9</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">classroom</span><span class="p">[</span><span class="s2">&quot;Mary&quot;</span><span class="p">][</span><span class="s2">&quot;math_grade&quot;</span><span class="p">])</span>   <span class="c1"># 9</span>
 </span></code></pre></div>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-capitala">Exercițiu 1 — Capitala<a class="headerlink" href="#exercitiu-1-capitala" title="Link to this section">&para;</a></h3>
-<p>Creează un dicționar cu 5 perechi țară-capitală. Cere o țară de la utilizator și afișează capitala (sau "Necunoscut" dacă nu există).</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-the-capital">Exercise 1 — The capital<a class="headerlink" href="#exercise-1-the-capital" title="Link to this section">&para;</a></h3>
+<p>Create a dictionary with 5 country-capital pairs. Ask the user for a country and display the capital (or "Unknown" if it doesn't exist).</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">capitale</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="s2">&quot;România&quot;</span><span class="p">:</span> <span class="s2">&quot;București&quot;</span><span class="p">,</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="s2">&quot;Franța&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="s2">&quot;Germania&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="s2">&quot;Italia&quot;</span><span class="p">:</span> <span class="s2">&quot;Roma&quot;</span><span class="p">,</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="s2">&quot;Spania&quot;</span><span class="p">:</span> <span class="s2">&quot;Madrid&quot;</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">capitals</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="s2">&quot;Romania&quot;</span><span class="p">:</span> <span class="s2">&quot;Bucharest&quot;</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="s2">&quot;France&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="s2">&quot;Germany&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="s2">&quot;Italy&quot;</span><span class="p">:</span> <span class="s2">&quot;Rome&quot;</span><span class="p">,</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="s2">&quot;Spain&quot;</span><span class="p">:</span> <span class="s2">&quot;Madrid&quot;</span>
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="p">}</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">tara</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Țara: &quot;</span><span class="p">)</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">capitale</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tara</span><span class="p">,</span> <span class="s2">&quot;Necunoscut&quot;</span><span class="p">))</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">country</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Country: &quot;</span><span class="p">)</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">capitals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">))</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-numararea-aparitiilor">Exercițiu 2 — Numărarea aparițiilor<a class="headerlink" href="#exercitiu-2-numararea-aparitiilor" title="Link to this section">&para;</a></h3>
-<p>Numără de câte ori apare fiecare literă din cuvântul <code>"programare"</code>.</p>
+<h3 id="exercise-2-counting-occurrences">Exercise 2 — Counting occurrences<a class="headerlink" href="#exercise-2-counting-occurrences" title="Link to this section">&para;</a></h3>
+<p>Count how many times each letter appears in the word <code>"programming"</code>.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">cuvant</span> <span class="o">=</span> <span class="s2">&quot;programare&quot;</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">frecventa</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">for</span> <span class="n">litera</span> <span class="ow">in</span> <span class="n">cuvant</span><span class="p">:</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="k">if</span> <span class="n">litera</span> <span class="ow">in</span> <span class="n">frecventa</span><span class="p">:</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="n">frecventa</span><span class="p">[</span><span class="n">litera</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;programming&quot;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">frequency</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="k">if</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">frequency</span><span class="p">:</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="n">frequency</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>        <span class="n">frecventa</span><span class="p">[</span><span class="n">litera</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">for</span> <span class="n">litera</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">frecventa</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">litera</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>        <span class="n">frequency</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">frequency</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">letter</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-actualizare">Exercițiu 3 — Actualizare<a class="headerlink" href="#exercitiu-3-actualizare" title="Link to this section">&para;</a></h3>
-<p>Pornind de la <code>{"mere": 5, "pere": 3}</code>, adaugă <code>"cireșe": 10</code>, modifică merele la <code>8</code> și șterge perele.</p>
+<h3 id="exercise-3-update">Exercise 3 — Update<a class="headerlink" href="#exercise-3-update" title="Link to this section">&para;</a></h3>
+<p>Starting from <code>{"apples": 5, "pears": 3}</code>, add <code>"cherries": 10</code>, change apples to <code>8</code>, and delete pears.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">cos</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mere&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;pere&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">cos</span><span class="p">[</span><span class="s2">&quot;cireșe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">cos</span><span class="p">[</span><span class="s2">&quot;mere&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">del</span> <span class="n">cos</span><span class="p">[</span><span class="s2">&quot;pere&quot;</span><span class="p">]</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">cos</span><span class="p">)</span>   <span class="c1"># {&#39;mere&#39;: 8, &#39;cireșe&#39;: 10}</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">basket</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apples&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;pears&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">basket</span><span class="p">[</span><span class="s2">&quot;cherries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">basket</span><span class="p">[</span><span class="s2">&quot;apples&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">del</span> <span class="n">basket</span><span class="p">[</span><span class="s2">&quot;pears&quot;</span><span class="p">]</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">basket</span><span class="p">)</span>   <span class="c1"># {&#39;apples&#39;: 8, &#39;cherries&#39;: 10}</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-carnet-de-contacte">Mini-proiect: Carnet de contacte<a class="headerlink" href="#mini-proiect-carnet-de-contacte" title="Link to this section">&para;</a></h2>
-<p>Creează un mic program de gestiune a contactelor care permite adăugarea, căutarea și listarea contactelor.</p>
-<p><strong>Exemplu de rulare:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>1. Adaugă contact
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>2. Caută contact
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>3. Listează toate
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>4. Ieșire
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Alegerea ta: 1
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>Nume: Ana
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>Telefon: 0722123456
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>Contact adăugat!
+<h2 id="mini-project-contact-book">Mini-project: Contact book<a class="headerlink" href="#mini-project-contact-book" title="Link to this section">&para;</a></h2>
+<p>Build a small contact-management program that lets you add, search, and list contacts.</p>
+<p><strong>Example run:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>1. Add contact
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>2. Search contact
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>3. List all
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>4. Exit
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Your choice: 1
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>Name: Anna
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>Phone: 0722123456
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>Contact added!
 </span></code></pre></div></p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">contacte</span> <span class="o">=</span> <span class="p">{}</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">contacts</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1. Adaugă contact&quot;</span><span class="p">)</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Caută contact&quot;</span><span class="p">)</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Listează toate&quot;</span><span class="p">)</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Ieșire&quot;</span><span class="p">)</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="n">alegere</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Alegerea ta: &quot;</span><span class="p">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1. Add contact&quot;</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Search contact&quot;</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. List all&quot;</span><span class="p">)</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Exit&quot;</span><span class="p">)</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your choice: &quot;</span><span class="p">)</span>
 </span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="k">if</span> <span class="n">alegere</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>        <span class="n">nume</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nume: &quot;</span><span class="p">)</span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="n">telefon</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Telefon: &quot;</span><span class="p">)</span>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>        <span class="n">contacte</span><span class="p">[</span><span class="n">nume</span><span class="p">]</span> <span class="o">=</span> <span class="n">telefon</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contact adăugat!&quot;</span><span class="p">)</span>
-</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>    <span class="k">elif</span> <span class="n">alegere</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
-</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>        <span class="n">nume</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Caută după nume: &quot;</span><span class="p">)</span>
-</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">contacte</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nume</span><span class="p">,</span> <span class="s2">&quot;Contact negăsit.&quot;</span><span class="p">))</span>
-</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="k">elif</span> <span class="n">alegere</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
-</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>        <span class="k">if</span> <span class="n">contacte</span><span class="p">:</span>
-</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>            <span class="k">for</span> <span class="n">nume</span><span class="p">,</span> <span class="n">tel</span> <span class="ow">in</span> <span class="n">contacte</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nume</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>        <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Name: &quot;</span><span class="p">)</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="n">phone</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Phone: &quot;</span><span class="p">)</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>        <span class="n">contacts</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">phone</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contact added!&quot;</span><span class="p">)</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>    <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>        <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Search by name: &quot;</span><span class="p">)</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;Contact not found.&quot;</span><span class="p">))</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>        <span class="k">if</span> <span class="n">contacts</span><span class="p">:</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phone</span> <span class="ow">in</span> <span class="n">contacts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">phone</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Niciun contact salvat.&quot;</span><span class="p">)</span>
-</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>    <span class="k">elif</span> <span class="n">alegere</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
-</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La revedere!&quot;</span><span class="p">)</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No contacts saved.&quot;</span><span class="p">)</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>    <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Goodbye!&quot;</span><span class="p">)</span>
 </span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>        <span class="k">break</span>
 </span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opțiune invalidă.&quot;</span><span class="p">)</span>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid option.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li>Dicționarele stochează perechi cheie-valoare: <code>{"cheie": valoare}</code></li>
-<li>Accesare: <code>dict["cheie"]</code> sau <code>dict.get("cheie", implicit)</code></li>
-<li>Adăugare/modificare: <code>dict["cheie"] = valoare</code></li>
-<li>Ștergere: <code>del dict["cheie"]</code> sau <code>dict.pop("cheie")</code></li>
-<li>Iterare cu <code>.items()</code> pentru chei și valori simultan</li>
-<li>Verificare: <code>"cheie" in dict</code></li>
+<li>Dictionaries store key-value pairs: <code>{"key": value}</code></li>
+<li>Access: <code>dict["key"]</code> or <code>dict.get("key", default)</code></li>
+<li>Add/modify: <code>dict["key"] = value</code></li>
+<li>Delete: <code>del dict["key"]</code> or <code>dict.pop("key")</code></li>
+<li>Iterate with <code>.items()</code> for keys and values together</li>
+<li>Check: <code>"key" in dict</code></li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../08-functii/">→ Lecția 08: Funcții</a></p>
+<p><strong>Next step:</strong> <a href="../08-functii/">→ Lesson 08: Functions</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -685,56 +685,56 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-07-dictionare" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 07 · Dicționare</a>
+                  <a href="#lesson-07-dictionaries" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 07 · Dictionaries</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#ce-este-un-dictionar" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ce este un dicționar?</a>
+                        <a href="#what-is-a-dictionary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">What is a dictionary?</a>
                       </li>
                     
                       <li>
-                        <a href="#crearea-unui-dictionar" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Crearea unui dicționar</a>
+                        <a href="#creating-a-dictionary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Creating a dictionary</a>
                       </li>
                     
                       <li>
-                        <a href="#accesarea-valorilor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Accesarea valorilor</a>
+                        <a href="#accessing-values" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Accessing values</a>
                       </li>
                     
                       <li>
-                        <a href="#adaugarea-si-modificarea" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Adăugarea și modificarea</a>
+                        <a href="#adding-and-modifying" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Adding and modifying</a>
                       </li>
                     
                       <li>
-                        <a href="#stergerea-cheilor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ștergerea cheilor</a>
+                        <a href="#deleting-keys" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Deleting keys</a>
                       </li>
                     
                       <li>
-                        <a href="#verificarea-existentei-cheii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Verificarea existenței cheii</a>
+                        <a href="#checking-key-existence" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Checking key existence</a>
                       </li>
                     
                       <li>
-                        <a href="#metodele-principale" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Metodele principale</a>
+                        <a href="#the-main-methods" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The main methods</a>
                       </li>
                     
                       <li>
-                        <a href="#iterarea" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Iterarea</a>
+                        <a href="#iterating" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Iterating</a>
                       </li>
                     
                       <li>
-                        <a href="#dictionare-imbricate" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Dicționare imbricate</a>
+                        <a href="#nested-dictionaries" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Nested dictionaries</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-carnet-de-contacte" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Carnet de contacte</a>
+                        <a href="#mini-project-contact-book" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Contact book</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

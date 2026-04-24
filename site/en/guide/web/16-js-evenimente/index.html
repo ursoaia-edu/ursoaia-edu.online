@@ -432,14 +432,14 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">16: Evenimente</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Răspunde la acțiunile utilizatorului cu addEventListener — click, submit, input, keydown.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Respond to user actions with addEventListener — click, submit, input, keydown.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">evenimente</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">events</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">addEventListener</span>
                 
@@ -454,269 +454,269 @@
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-16-evenimente">Lecția 16 · Evenimente<a class="headerlink" href="#lectia-16-evenimente" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-16-events">Lesson 16 · Events<a class="headerlink" href="#lesson-16-events" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Ce sunt evenimentele și trei moduri de a le asculta</li>
-<li>De ce <code>addEventListener</code> e alegerea modernă</li>
-<li>Evenimentele comune: <code>click</code>, <code>submit</code>, <code>input</code>, <code>change</code>, <code>keydown</code></li>
-<li>Obiectul <code>event</code>: <code>e.target</code>, <code>e.preventDefault</code>, <code>e.stopPropagation</code></li>
-<li>Event bubbling și delegation (pe scurt)</li>
+<li>What events are and three ways to listen for them</li>
+<li>Why <code>addEventListener</code> is the modern choice</li>
+<li>Common events: <code>click</code>, <code>submit</code>, <code>input</code>, <code>change</code>, <code>keydown</code></li>
+<li>The <code>event</code> object: <code>e.target</code>, <code>e.preventDefault</code>, <code>e.stopPropagation</code></li>
+<li>Event bubbling and delegation (briefly)</li>
 </ul>
 </div>
 <hr />
-<h2 id="ce-sunt-evenimentele">Ce sunt evenimentele?<a class="headerlink" href="#ce-sunt-evenimentele" title="Link to this section">&para;</a></h2>
-<p>Un <strong>eveniment</strong> e o „întâmplare” în browser: un click, o tastă apăsată, un formular trimis, o pagină încărcată. JavaScript poate <strong>asculta</strong> aceste evenimente și rula cod ca răspuns.</p>
-<p>Exemple de evenimente pe care le vei folosi des:</p>
+<h2 id="what-are-events">What are events?<a class="headerlink" href="#what-are-events" title="Link to this section">&para;</a></h2>
+<p>An <strong>event</strong> is something that happens in the browser: a click, a key pressed, a form submitted, a page loaded. JavaScript can <strong>listen</strong> for these events and run code in response.</p>
+<p>Examples of events you'll often use:</p>
 <ul>
-<li><strong><code>click</code></strong> — utilizatorul apasă un buton sau un link.</li>
-<li><strong><code>submit</code></strong> — un <code>&lt;form&gt;</code> e trimis.</li>
-<li><strong><code>input</code></strong> — textul dintr-un <code>&lt;input&gt;</code> s-a schimbat.</li>
-<li><strong><code>change</code></strong> — s-a schimbat valoarea unui <code>&lt;select&gt;</code> sau unui checkbox.</li>
-<li><strong><code>keydown</code></strong> — s-a apăsat o tastă.</li>
-<li><strong><code>DOMContentLoaded</code></strong> — HTML-ul e parsat și DOM-ul e gata.</li>
+<li><strong><code>click</code></strong> — the user presses a button or a link.</li>
+<li><strong><code>submit</code></strong> — a <code>&lt;form&gt;</code> is submitted.</li>
+<li><strong><code>input</code></strong> — the text in an <code>&lt;input&gt;</code> has changed.</li>
+<li><strong><code>change</code></strong> — the value of a <code>&lt;select&gt;</code> or a checkbox has changed.</li>
+<li><strong><code>keydown</code></strong> — a key was pressed.</li>
+<li><strong><code>DOMContentLoaded</code></strong> — the HTML is parsed and the DOM is ready.</li>
 </ul>
 <hr />
-<h2 id="trei-moduri-din-vechi-in-nou">Trei moduri (din vechi în nou)<a class="headerlink" href="#trei-moduri-din-vechi-in-nou" title="Link to this section">&para;</a></h2>
-<h3 id="1-inline-in-html-evita">1. Inline în HTML (EVITĂ)<a class="headerlink" href="#1-inline-in-html-evita" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;alert(&#39;salut&#39;)&quot;</span><span class="p">&gt;</span>Apasă<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<h2 id="three-ways-from-old-to-new">Three ways (from old to new)<a class="headerlink" href="#three-ways-from-old-to-new" title="Link to this section">&para;</a></h2>
+<h3 id="1-inline-in-html-avoid">1. Inline in HTML (AVOID)<a class="headerlink" href="#1-inline-in-html-avoid" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;alert(&#39;hello&#39;)&quot;</span><span class="p">&gt;</span>Click<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>Amestecă logică cu structură. <strong>Nu folosi.</strong></p>
-<h3 id="2-proprietate-oneveniment">2. Proprietate <code>on&lt;eveniment&gt;</code><a class="headerlink" href="#2-proprietate-oneveniment" title="Link to this section">&para;</a></h3>
+<p>Mixes logic with structure. <strong>Don't use.</strong></p>
+<h3 id="2-onevent-property">2. <code>on&lt;event&gt;</code> property<a class="headerlink" href="#2-onevent-property" title="Link to this section">&para;</a></h3>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">);</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;salut&quot;</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Limitat la <strong>un singur handler</strong> — dacă îl setezi de două ori, al doilea îl suprascrie.</p>
-<h3 id="3-addeventlistener-recomandat">3. <code>addEventListener</code> (RECOMANDAT)<a class="headerlink" href="#3-addeventlistener-recomandat" title="Link to this section">&para;</a></h3>
+<p>Limited to <strong>one single handler</strong> — if you set it twice, the second overwrites it.</p>
+<h3 id="3-addeventlistener-recommended">3. <code>addEventListener</code> (RECOMMENDED)<a class="headerlink" href="#3-addeventlistener-recommended" title="Link to this section">&para;</a></h3>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">);</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;salut&quot;</span><span class="p">);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">);</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">});</span>
 </span></code></pre></div>
-<p>Avantaje:</p>
+<p>Advantages:</p>
 <ul>
-<li>Poți adăuga <strong>multiple</strong> handlere pentru același eveniment.</li>
-<li>Poți specifica opțiuni (<code>once</code>, <code>passive</code>, <code>capture</code>).</li>
-<li>Ușor de scos cu <code>removeEventListener</code>.</li>
+<li>You can add <strong>multiple</strong> handlers for the same event.</li>
+<li>You can specify options (<code>once</code>, <code>passive</code>, <code>capture</code>).</li>
+<li>Easy to remove with <code>removeEventListener</code>.</li>
 </ul>
 <hr />
 <h2 id="addeventlistener"><code>addEventListener</code><a class="headerlink" href="#addeventlistener" title="Link to this section">&para;</a></h2>
-<p>Semnătura:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">elem</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">tipEveniment</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">,</span><span class="w"> </span><span class="nx">optiuni</span><span class="p">);</span>
+<p>Signature:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">elem</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
 </span></code></pre></div>
 <ul>
-<li><strong><code>tipEveniment</code></strong> — un string: <code>"click"</code>, <code>"submit"</code>, <code>"keydown"</code>, etc. (fără „on”).</li>
-<li><strong><code>handler</code></strong> — funcția care se rulează la eveniment.</li>
-<li><strong><code>optiuni</code></strong> — opțional, obiect: <code>{ once: true }</code>, <code>{ passive: true }</code>, <code>{ capture: true }</code>.</li>
+<li><strong><code>eventType</code></strong> — a string: <code>"click"</code>, <code>"submit"</code>, <code>"keydown"</code>, etc. (without "on").</li>
+<li><strong><code>handler</code></strong> — the function that runs on the event.</li>
+<li><strong><code>options</code></strong> — optional, object: <code>{ once: true }</code>, <code>{ passive: true }</code>, <code>{ capture: true }</code>.</li>
 </ul>
-<p>Exemple:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#salut-btn&quot;</span><span class="p">);</span>
+<p>Examples:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#hello-btn&quot;</span><span class="p">);</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Ai dat click!&quot;</span><span class="p">);</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;You clicked!&quot;</span><span class="p">);</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">});</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// Handler care rulează o singură dată</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;doar o dată&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">once</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// Handler that runs only once</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;only once&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">once</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
 </span></code></pre></div>
 <hr />
-<h2 id="evenimente-comune">Evenimente comune<a class="headerlink" href="#evenimente-comune" title="Link to this section">&para;</a></h2>
-<h3 id="click-si-dblclick"><code>click</code> și <code>dblclick</code><a class="headerlink" href="#click-si-dblclick" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;click simplu&quot;</span><span class="p">));</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;dblclick&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;dublu click&quot;</span><span class="p">));</span>
+<h2 id="common-events">Common events<a class="headerlink" href="#common-events" title="Link to this section">&para;</a></h2>
+<h3 id="click-and-dblclick"><code>click</code> and <code>dblclick</code><a class="headerlink" href="#click-and-dblclick" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;simple click&quot;</span><span class="p">));</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;dblclick&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;double click&quot;</span><span class="p">));</span>
 </span></code></pre></div>
-<h3 id="input-la-fiecare-tasta"><code>input</code> — la fiecare tastă<a class="headerlink" href="#input-la-fiecare-tasta" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cautare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#cautare&quot;</span><span class="p">);</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">cautare</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Utilizatorul a scris:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<h3 id="input-on-every-keystroke"><code>input</code> — on every keystroke<a class="headerlink" href="#input-on-every-keystroke" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#search&quot;</span><span class="p">);</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">search</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;The user typed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">});</span>
 </span></code></pre></div>
-<h3 id="change-cand-se-schimba-un-select-checkbox"><code>change</code> — când se schimbă un select / checkbox<a class="headerlink" href="#change-cand-se-schimba-un-select-checkbox" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">optiune</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#optiune&quot;</span><span class="p">);</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nx">optiune</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Nouă valoare:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<h3 id="change-when-a-select-checkbox-changes"><code>change</code> — when a select / checkbox changes<a class="headerlink" href="#change-when-a-select-checkbox-changes" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#option&quot;</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nx">option</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;New value:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">});</span>
 </span></code></pre></div>
-<h3 id="submit-la-trimiterea-unui-form"><code>submit</code> — la trimiterea unui form<a class="headerlink" href="#submit-la-trimiterea-unui-form" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#formular&quot;</span><span class="p">);</span>
+<h3 id="submit-when-a-form-is-submitted"><code>submit</code> — when a form is submitted<a class="headerlink" href="#submit-when-a-form-is-submitted" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#form&quot;</span><span class="p">);</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w">   </span><span class="c1">// oprește reîncărcarea paginii</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Form trimis!&quot;</span><span class="p">);</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w">   </span><span class="c1">// stop the page reload</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Form submitted!&quot;</span><span class="p">);</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">});</span>
 </span></code></pre></div>
 <h3 id="keydown-keyup-keypress"><code>keydown</code>, <code>keyup</code>, <code>keypress</code><a class="headerlink" href="#keydown-keyup-keypress" title="Link to this section">&para;</a></h3>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ai apăsat tasta: </span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`You pressed the key: </span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">});</span>
 </span></code></pre></div>
-<p><code>e.key</code> e string-ul tastei: <code>"a"</code>, <code>"Enter"</code>, <code>"ArrowUp"</code>, <code>" "</code> (spațiu), etc.</p>
+<p><code>e.key</code> is the key string: <code>"a"</code>, <code>"Enter"</code>, <code>"ArrowUp"</code>, <code>" "</code> (space), etc.</p>
 <h3 id="mouseenter-mouseleave"><code>mouseenter</code> / <code>mouseleave</code><a class="headerlink" href="#mouseenter-mouseleave" title="Link to this section">&para;</a></h3>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;.card&quot;</span><span class="p">);</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">card</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;mouseenter&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">card</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;hover&quot;</span><span class="p">));</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">card</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;mouseleave&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">card</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;hover&quot;</span><span class="p">));</span>
 </span></code></pre></div>
 <h3 id="load-domcontentloaded"><code>load</code> / <code>DOMContentLoaded</code><a class="headerlink" href="#load-domcontentloaded" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// HTML-ul e parsat (fără a aștepta imagini mari)</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// HTML is parsed (without waiting for large images)</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;DOM gata!&quot;</span><span class="p">);</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;DOM ready!&quot;</span><span class="p">);</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">});</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1">// Totul e încărcat: HTML + CSS + imagini + scripturi</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1">// Everything is loaded: HTML + CSS + images + scripts</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Totul e gata!&quot;</span><span class="p">);</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Everything is ready!&quot;</span><span class="p">);</span>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="p">});</span>
 </span></code></pre></div>
-<p>Dacă folosești <code>&lt;script defer&gt;</code>, scriptul rulează automat după ce DOM-ul e parsat — deci de obicei nu mai ai nevoie de <code>DOMContentLoaded</code>.</p>
+<p>If you use <code>&lt;script defer&gt;</code>, the script runs automatically after the DOM is parsed — so usually you don't need <code>DOMContentLoaded</code> anymore.</p>
 <hr />
-<h2 id="obiectul-event">Obiectul <code>event</code><a class="headerlink" href="#obiectul-event" title="Link to this section">&para;</a></h2>
-<p>Handler-ul primește automat un obiect <code>event</code> (de obicei numit <code>e</code> sau <code>event</code>):</p>
+<h2 id="the-event-object">The <code>event</code> object<a class="headerlink" href="#the-event-object" title="Link to this section">&para;</a></h2>
+<p>The handler automatically receives an <code>event</code> object (usually called <code>e</code> or <code>event</code>):</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span><span class="w">      </span><span class="c1">// &quot;click&quot;</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span><span class="w">    </span><span class="c1">// elementul pe care s-a declanșat</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span><span class="p">);</span><span class="w">  </span><span class="c1">// coordonatele mouse-ului</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span><span class="w">    </span><span class="c1">// the element it was triggered on</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span><span class="p">);</span><span class="w">  </span><span class="c1">// mouse coordinates</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">});</span>
 </span></code></pre></div>
-<p>Cele mai utile proprietăți / metode:</p>
+<p>The most useful properties / methods:</p>
 <table>
 <thead>
 <tr>
-<th>Proprietate / metodă</th>
-<th>Ce face</th>
+<th>Property / method</th>
+<th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>e.target</code></td>
-<td>elementul pe care s-a <strong>declanșat</strong> evenimentul</td>
+<td>the element on which the event was <strong>triggered</strong></td>
 </tr>
 <tr>
 <td><code>e.currentTarget</code></td>
-<td>elementul pe care ai <strong>atașat listener</strong>-ul</td>
+<td>the element you <strong>attached the listener</strong> to</td>
 </tr>
 <tr>
 <td><code>e.type</code></td>
-<td>tipul evenimentului (<code>"click"</code>, etc.)</td>
+<td>the event type (<code>"click"</code>, etc.)</td>
 </tr>
 <tr>
 <td><code>e.preventDefault()</code></td>
-<td>oprește comportamentul default</td>
+<td>stops the default behavior</td>
 </tr>
 <tr>
 <td><code>e.stopPropagation()</code></td>
-<td>oprește propagarea spre părinți</td>
+<td>stops propagation toward parents</td>
 </tr>
 <tr>
 <td><code>e.key</code></td>
-<td>tasta apăsată (pentru keydown)</td>
+<td>the pressed key (for keydown)</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="preventdefault"><code>preventDefault()</code><a class="headerlink" href="#preventdefault" title="Link to this section">&para;</a></h2>
-<p>Unele elemente au comportament <strong>default</strong>:</p>
+<p>Some elements have <strong>default</strong> behavior:</p>
 <ul>
-<li>Un <code>&lt;a href&gt;</code> navighează când e click.</li>
-<li>Un <code>&lt;form&gt;</code> reîncarcă pagina când e <code>submit</code>.</li>
-<li><code>Space</code> pe pagină o scrollează.</li>
+<li>An <code>&lt;a href&gt;</code> navigates when clicked.</li>
+<li>A <code>&lt;form&gt;</code> reloads the page when submitted.</li>
+<li><code>Space</code> on the page scrolls it.</li>
 </ul>
-<p>Ca să-l oprești:</p>
+<p>To stop it:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nx">link</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Am oprit navigarea.&quot;</span><span class="p">);</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;I stopped the navigation.&quot;</span><span class="p">);</span>
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">});</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
 </span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;form&quot;</span><span class="p">);</span>
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w">   </span><span class="c1">// procesează în JS, nu reîncărca</span>
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span><span class="c1">// ... validează, trimite cu fetch, etc.</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w">   </span><span class="c1">// process in JS, don&#39;t reload</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span><span class="c1">// ... validate, send with fetch, etc.</span>
 </span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="p">});</span>
 </span></code></pre></div>
 <hr />
 <h2 id="event-bubbling">Event bubbling<a class="headerlink" href="#event-bubbling" title="Link to this section">&para;</a></h2>
-<p>Când apeși pe un element, evenimentul <strong>urcă</strong> (bubble) prin părinți până la <code>document</code>:</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;exterior&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;buton&quot;</span><span class="p">&gt;</span>Click<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<p>When you click on an element, the event <strong>bubbles</strong> up through parents to <code>document</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;outer&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;button&quot;</span><span class="p">&gt;</span>Click<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;exterior&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;div exterior&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;outer&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;outer div&quot;</span><span class="p">);</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">});</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;buton&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;buton&quot;</span><span class="p">);</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">);</span>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="p">});</span>
 </span></code></pre></div>
-<p>Click pe buton afișează:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>buton
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>div exterior
+<p>A click on the button shows:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>button
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>outer div
 </span></code></pre></div>
-<p>Evenimentul „a urcat” de la buton la div.</p>
+<p>The event "bubbled up" from the button to the div.</p>
 <h3 id="stoppropagation"><code>stopPropagation</code><a class="headerlink" href="#stoppropagation" title="Link to this section">&para;</a></h3>
-<p>Dacă nu vrei propagarea:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;buton&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<p>If you don't want propagation:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Doar buton.&quot;</span><span class="p">);</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Button only.&quot;</span><span class="p">);</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">});</span>
 </span></code></pre></div>
-<h3 id="event-delegation-pe-scurt">Event delegation (pe scurt)<a class="headerlink" href="#event-delegation-pe-scurt" title="Link to this section">&para;</a></h3>
-<p>Bubbling-ul permite o șmecherie elegantă: atașezi listener pe <strong>un părinte</strong> și folosești <code>e.target</code> ca să știi pe ce s-a dat click. Util pentru <strong>copii dinamici</strong> (creați după ce ai pornit):</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#lista&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<h3 id="event-delegation-briefly">Event delegation (briefly)<a class="headerlink" href="#event-delegation-briefly" title="Link to this section">&para;</a></h3>
+<p>Bubbling allows an elegant trick: you attach a listener on <strong>a parent</strong> and use <code>e.target</code> to know what was clicked. Useful for <strong>dynamic children</strong> (created after you started):</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#list&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;LI&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;selectat&quot;</span><span class="p">);</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;selected&quot;</span><span class="p">);</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="p">});</span>
 </span></code></pre></div>
-<p>Nu mai trebuie să pui listener pe fiecare <code>&lt;li&gt;</code> nou creat.</p>
+<p>You no longer have to put a listener on each newly created <code>&lt;li&gt;</code>.</p>
 <hr />
-<h2 id="scoaterea-unui-listener-removeeventlistener">Scoaterea unui listener — <code>removeEventListener</code><a class="headerlink" href="#scoaterea-unui-listener-removeeventlistener" title="Link to this section">&para;</a></h2>
-<p>Ca să poți scoate un listener, trebuie să ai <strong>referința</strong> la funcție (deci nu anonimă):</p>
+<h2 id="removing-a-listener-removeeventlistener">Removing a listener — <code>removeEventListener</code><a class="headerlink" href="#removing-a-listener-removeeventlistener" title="Link to this section">&para;</a></h2>
+<p>To be able to remove a listener, you need to have the <strong>reference</strong> to the function (so not anonymous):</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">handler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;odată&quot;</span><span class="p">);</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;once&quot;</span><span class="p">);</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">}</span>
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
 </span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Dacă ai nevoie doar să ruleze o dată, folosește opțiunea <code>once</code>:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;doar o dată&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">once</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+<p>If you only need it to run once, use the <code>once</code> option:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;only once&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">once</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
 </span></code></pre></div>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-alert-la-click">Exercițiu 1 — Alert la click<a class="headerlink" href="#exercitiu-1-alert-la-click" title="Link to this section">&para;</a></h3>
-<p>Un buton care la click afișează un alert cu „Salut!”.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-alert-on-click">Exercise 1 — Alert on click<a class="headerlink" href="#exercise-1-alert-on-click" title="Link to this section">&para;</a></h3>
+<p>A button that on click shows an alert with "Hello!".</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn-salut&quot;</span><span class="p">&gt;</span>Apasă-mă<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<summary>Solution</summary>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn-hello&quot;</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn-salut&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn-hello&quot;</span><span class="p">);</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Salut!&quot;</span><span class="p">);</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">);</span>
 </span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">});</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-log-la-tastare">Exercițiu 2 — Log la tastare<a class="headerlink" href="#exercitiu-2-log-la-tastare" title="Link to this section">&para;</a></h3>
-<p>Un <code>&lt;input&gt;</code> care loghează valoarea curentă la fiecare tastă.</p>
+<h3 id="exercise-2-log-on-typing">Exercise 2 — Log on typing<a class="headerlink" href="#exercise-2-log-on-typing" title="Link to this section">&para;</a></h3>
+<p>An <code>&lt;input&gt;</code> that logs the current value on every keystroke.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Scrie ceva...&quot;</span> <span class="p">/&gt;</span>
+<summary>Solution</summary>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Type something...&quot;</span> <span class="p">/&gt;</span>
 </span></code></pre></div>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">);</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Ai scris:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;You typed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
 </span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">});</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-schimba-culoarea-fundalului">Exercițiu 3 — Schimbă culoarea fundalului<a class="headerlink" href="#exercitiu-3-schimba-culoarea-fundalului" title="Link to this section">&para;</a></h3>
-<p>Un buton care la fiecare click schimbă culoarea fundalului paginii (random).</p>
+<h3 id="exercise-3-change-the-background-color">Exercise 3 — Change the background color<a class="headerlink" href="#exercise-3-change-the-background-color" title="Link to this section">&para;</a></h3>
+<p>A button that on each click changes the background color of the page (random).</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;schimba&quot;</span><span class="p">&gt;</span>Schimbă culoarea<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<summary>Solution</summary>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;change&quot;</span><span class="p">&gt;</span>Change color<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;schimba&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">);</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">culoareRandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">randomColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">256</span><span class="p">);</span>
 </span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">256</span><span class="p">);</span>
 </span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">256</span><span class="p">);</span>
@@ -724,28 +724,28 @@
 </span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="p">};</span>
 </span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>
 </span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">culoareRandom</span><span class="p">();</span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">randomColor</span><span class="p">();</span>
 </span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="p">});</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-4-afiseaza-tasta-apasata">Exercițiu 4 — Afișează tasta apăsată<a class="headerlink" href="#exercitiu-4-afiseaza-tasta-apasata" title="Link to this section">&para;</a></h3>
-<p>Pagina afișează pe ecran ce tastă a fost apăsată ultima.</p>
+<h3 id="exercise-4-show-the-pressed-key">Exercise 4 — Show the pressed key<a class="headerlink" href="#exercise-4-show-the-pressed-key" title="Link to this section">&para;</a></h3>
+<p>The page shows on screen which key was last pressed.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Ultima tastă: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;tasta&quot;</span><span class="p">&gt;</span>—<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<summary>Solution</summary>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Last key: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;key&quot;</span><span class="p">&gt;</span>—<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;tasta&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">);</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="nx">span</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
 </span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="p">});</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-click-counter">Mini-proiect: Click counter<a class="headerlink" href="#mini-proiect-click-counter" title="Link to this section">&para;</a></h2>
-<p>Un buton care numără câte click-uri a primit și afișează rezultatul. Plus un buton „Reset” care pune contorul la zero.</p>
-<p><strong>Cod complet:</strong></p>
+<h2 id="mini-project-click-counter">Mini-project: Click counter<a class="headerlink" href="#mini-project-click-counter" title="Link to this section">&para;</a></h2>
+<p>A button that counts how many clicks it received and shows the result. Plus a "Reset" button that sets the counter to zero.</p>
+<p><strong>Complete code:</strong></p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ro&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
 </span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Click counter<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
@@ -756,7 +756,7 @@
 </span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">        </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">        </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
 </span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">      </span><span class="p">#</span><span class="nn">scor</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">      </span><span class="p">#</span><span class="nn">score</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">        </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="w">        </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
 </span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="w">        </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#2563eb</span><span class="p">;</span>
@@ -771,49 +771,49 @@
 </span><span id="__span-29-25"><a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-29-26"><a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-29-27"><a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Click counter<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-29-28"><a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Scor: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;scor&quot;</span><span class="p">&gt;</span>0<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-29-29"><a id="__codelineno-29-29" name="__codelineno-29-29" href="#__codelineno-29-29"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn-click&quot;</span><span class="p">&gt;</span>Apasă-mă!<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-29-28"><a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Score: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;score&quot;</span><span class="p">&gt;</span>0<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-29-29"><a id="__codelineno-29-29" name="__codelineno-29-29" href="#__codelineno-29-29"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn-click&quot;</span><span class="p">&gt;</span>Click me!<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span><span id="__span-29-30"><a id="__codelineno-29-30" name="__codelineno-29-30" href="#__codelineno-29-30"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn-reset&quot;</span><span class="p">&gt;</span>Reset<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span><span id="__span-29-31"><a id="__codelineno-29-31" name="__codelineno-29-31" href="#__codelineno-29-31"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-29-32"><a id="__codelineno-29-32" name="__codelineno-29-32" href="#__codelineno-29-32"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">// Selectăm elementele</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">scor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;scor&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">// Select the elements</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">);</span>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btnClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn-click&quot;</span><span class="p">);</span>
 </span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">btnReset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn-reset&quot;</span><span class="p">);</span>
 </span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
 </span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 </span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>
-</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="c1">// Incrementează la click</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="c1">// Increment on click</span>
 </span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="nx">btnClick</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="w">  </span><span class="nx">counter</span><span class="o">++</span><span class="p">;</span>
-</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="w">  </span><span class="nx">scor</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">counter</span><span class="p">;</span>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="w">  </span><span class="nx">score</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">counter</span><span class="p">;</span>
 </span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="p">});</span>
 </span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>
-</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="c1">// Resetează</span>
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="c1">// Reset</span>
 </span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="nx">btnReset</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="w">  </span><span class="nx">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="w">  </span><span class="nx">scor</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">counter</span><span class="p">;</span>
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="w">  </span><span class="nx">score</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">counter</span><span class="p">;</span>
 </span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="p">});</span>
 </span></code></pre></div>
-<p><strong>Idei de extindere:</strong></p>
+<p><strong>Ideas to extend:</strong></p>
 <ul>
-<li>Salvează scorul în <code>localStorage</code> ca să rămână după reîncărcare.</li>
-<li>Schimbă culoarea scorului după prag (100 = auriu, 500 = curcubeu).</li>
-<li>Adaugă un al doilea buton cu valoare negativă („scade”).</li>
+<li>Save the score in <code>localStorage</code> so it persists after reload.</li>
+<li>Change the score color past a threshold (100 = gold, 500 = rainbow).</li>
+<li>Add a second button with a negative value ("decrease").</li>
 </ul>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li><strong>Evenimentele</strong> sunt acțiunile utilizatorului (click, tastare, submit) la care JS poate reacționa.</li>
-<li>Folosește <strong><code>addEventListener(tip, handler)</code></strong> — permite multiple handlere și opțiuni.</li>
-<li>Handler-ul primește un obiect <code>event</code> cu <code>target</code>, <code>type</code>, <code>key</code>, etc.</li>
-<li><strong><code>e.preventDefault()</code></strong> oprește comportamentul default (navigare, reload de form).</li>
-<li><strong>Event bubbling:</strong> evenimentul urcă prin părinți. <strong>Delegation:</strong> ascultă pe părinte pentru copii dinamici.</li>
-<li>Pentru a rula o dată, folosește <code>{ once: true }</code> în opțiuni.</li>
+<li><strong>Events</strong> are user actions (click, typing, submit) that JS can react to.</li>
+<li>Use <strong><code>addEventListener(type, handler)</code></strong> — supports multiple handlers and options.</li>
+<li>The handler receives an <code>event</code> object with <code>target</code>, <code>type</code>, <code>key</code>, etc.</li>
+<li><strong><code>e.preventDefault()</code></strong> stops the default behavior (navigation, form reload).</li>
+<li><strong>Event bubbling:</strong> the event bubbles up through parents. <strong>Delegation:</strong> listen on the parent for dynamic children.</li>
+<li>To run once, use <code>{ once: true }</code> in options.</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../17-js-formulare-validare/">→ Lecția 17: Formulare cu validare JS</a></p>
+<p><strong>Next step:</strong> <a href="../17-js-formulare-validare/">→ Lesson 17: Forms with JS validation</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -849,16 +849,16 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-16-evenimente" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 16 · Evenimente</a>
+                  <a href="#lesson-16-events" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 16 · Events</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#ce-sunt-evenimentele" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ce sunt evenimentele?</a>
+                        <a href="#what-are-events" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">What are events?</a>
                       </li>
                     
                       <li>
-                        <a href="#trei-moduri-din-vechi-in-nou" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Trei moduri (din vechi în nou)</a>
+                        <a href="#three-ways-from-old-to-new" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Three ways (from old to new)</a>
                       </li>
                     
                       <li>
@@ -866,11 +866,11 @@
                       </li>
                     
                       <li>
-                        <a href="#evenimente-comune" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Evenimente comune</a>
+                        <a href="#common-events" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Common events</a>
                       </li>
                     
                       <li>
-                        <a href="#obiectul-event" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Obiectul event</a>
+                        <a href="#the-event-object" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The event object</a>
                       </li>
                     
                       <li>
@@ -882,19 +882,19 @@
                       </li>
                     
                       <li>
-                        <a href="#scoaterea-unui-listener-removeeventlistener" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Scoaterea unui listener — removeEventListener</a>
+                        <a href="#removing-a-listener-removeeventlistener" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Removing a listener — removeEventListener</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-click-counter" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Click counter</a>
+                        <a href="#mini-project-click-counter" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Click counter</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

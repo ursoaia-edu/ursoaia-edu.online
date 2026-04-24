@@ -432,87 +432,87 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">02: Operații și expresii</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Lucrează cu numere și text — operații aritmetice, f-strings și conversii de tip.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Work with numbers and text — arithmetic operations, f-strings, and type conversions.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">python</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">operatori</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">operators</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">aritmetică</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">arithmetic</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">f-strings</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">conversii</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">conversions</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-02-operatii-si-expresii">Lecția 02 · Operații și expresii<a class="headerlink" href="#lectia-02-operatii-si-expresii" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-02-operations-and-expressions">Lesson 02 · Operations and expressions<a class="headerlink" href="#lesson-02-operations-and-expressions" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Operatorii aritmetici și ordinea operațiilor</li>
-<li>Operații cu șiruri de caractere</li>
-<li>F-strings — modul modern de a formata text</li>
-<li>Conversia între tipuri: <code>int()</code>, <code>float()</code>, <code>str()</code></li>
+<li>Arithmetic operators and the order of operations</li>
+<li>String operations</li>
+<li>F-strings — the modern way to format text</li>
+<li>Conversion between types: <code>int()</code>, <code>float()</code>, <code>str()</code></li>
 </ul>
 </div>
 <hr />
-<h2 id="operatori-aritmetici">Operatori aritmetici<a class="headerlink" href="#operatori-aritmetici" title="Link to this section">&para;</a></h2>
+<h2 id="arithmetic-operators">Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Link to this section">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Operator</th>
-<th>Operație</th>
-<th>Exemplu</th>
-<th>Rezultat</th>
+<th>Operation</th>
+<th>Example</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>+</code></td>
-<td>adunare</td>
+<td>addition</td>
 <td><code>3 + 4</code></td>
 <td><code>7</code></td>
 </tr>
 <tr>
 <td><code>-</code></td>
-<td>scădere</td>
+<td>subtraction</td>
 <td><code>10 - 3</code></td>
 <td><code>7</code></td>
 </tr>
 <tr>
 <td><code>*</code></td>
-<td>înmulțire</td>
+<td>multiplication</td>
 <td><code>3 * 4</code></td>
 <td><code>12</code></td>
 </tr>
 <tr>
 <td><code>/</code></td>
-<td>împărțire (rezultat float)</td>
+<td>division (float result)</td>
 <td><code>7 / 2</code></td>
 <td><code>3.5</code></td>
 </tr>
 <tr>
 <td><code>//</code></td>
-<td>împărțire întreagă</td>
+<td>integer division</td>
 <td><code>7 // 2</code></td>
 <td><code>3</code></td>
 </tr>
 <tr>
 <td><code>%</code></td>
-<td>rest (modulo)</td>
+<td>remainder (modulo)</td>
 <td><code>7 % 2</code></td>
 <td><code>1</code></td>
 </tr>
 <tr>
 <td><code>**</code></td>
-<td>ridicare la putere</td>
+<td>exponentiation</td>
 <td><code>2 ** 8</code></td>
 <td><code>256</code></td>
 </tr>
@@ -526,154 +526,154 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># 1</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 1024</span>
 </span></code></pre></div>
-<h3 id="ordinea-operatiilor">Ordinea operațiilor<a class="headerlink" href="#ordinea-operatiilor" title="Link to this section">&para;</a></h3>
-<p>Python respectă regulile matematice: <code>**</code> → <code>* / // %</code> → <code>+ -</code></p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># 14 (nu 20!)</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">((</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 20 — parantezele schimbă ordinea</span>
+<h3 id="order-of-operations">Order of operations<a class="headerlink" href="#order-of-operations" title="Link to this section">&para;</a></h3>
+<p>Python follows standard math rules: <code>**</code> → <code>* / // %</code> → <code>+ -</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># 14 (not 20!)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">((</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 20 — parentheses change the order</span>
 </span></code></pre></div>
-<h3 id="operatorul-la-ce-foloseste">Operatorul <code>%</code> — la ce folosește?<a class="headerlink" href="#operatorul-la-ce-foloseste" title="Link to this section">&para;</a></h3>
-<p><code>%</code> returnează <strong>restul</strong> împărțirii. Util pentru a verifica paritatea:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 0 — par</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">11</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 1 — impar</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="mi">15</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span>   <span class="c1"># 0 — divizibil cu 5</span>
+<h3 id="the-operator-whats-it-for">The <code>%</code> operator — what's it for?<a class="headerlink" href="#the-operator-whats-it-for" title="Link to this section">&para;</a></h3>
+<p><code>%</code> returns the <strong>remainder</strong> of division. Useful for checking parity:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 0 — even</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">11</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 1 — odd</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="mi">15</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span>   <span class="c1"># 0 — divisible by 5</span>
 </span></code></pre></div>
 <hr />
-<h2 id="operatii-cu-siruri-de-caractere">Operații cu șiruri de caractere<a class="headerlink" href="#operatii-cu-siruri-de-caractere" title="Link to this section">&para;</a></h2>
-<h3 id="concatenare-cu">Concatenare cu <code>+</code><a class="headerlink" href="#concatenare-cu" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">prenume</span> <span class="o">=</span> <span class="s2">&quot;Ana&quot;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">nume</span> <span class="o">=</span> <span class="s2">&quot;Pop&quot;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">prenume</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">nume</span><span class="p">)</span>   <span class="c1"># Ana Pop</span>
+<h2 id="string-operations">String operations<a class="headerlink" href="#string-operations" title="Link to this section">&para;</a></h2>
+<h3 id="concatenation-with">Concatenation with <code>+</code><a class="headerlink" href="#concatenation-with" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;Anna&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">last_name</span> <span class="o">=</span> <span class="s2">&quot;Pop&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">last_name</span><span class="p">)</span>   <span class="c1"># Anna Pop</span>
 </span></code></pre></div>
-<h3 id="repetare-cu">Repetare cu <code>*</code><a class="headerlink" href="#repetare-cu" title="Link to this section">&para;</a></h3>
+<h3 id="repetition-with">Repetition with <code>*</code><a class="headerlink" href="#repetition-with" title="Link to this section">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ha&quot;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># HaHaHa</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>    <span class="c1"># ------------------------------</span>
 </span></code></pre></div>
-<h3 id="functii-utile">Funcții utile<a class="headerlink" href="#functii-utile" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">mesaj</span> <span class="o">=</span> <span class="s2">&quot;  Bun venit!  &quot;</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mesaj</span><span class="p">))</span>           <span class="c1"># 14</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>        <span class="c1"># &quot;  BUN VENIT!  &quot;</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>        <span class="c1"># &quot;  bun venit!  &quot;</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>        <span class="c1"># &quot;Bun venit!&quot;</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="c1"># &quot;BUN VENIT!&quot;</span>
+<h3 id="useful-functions">Useful functions<a class="headerlink" href="#useful-functions" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;  Welcome!  &quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>           <span class="c1"># 12</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>        <span class="c1"># &quot;  WELCOME!  &quot;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>        <span class="c1"># &quot;  welcome!  &quot;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>        <span class="c1"># &quot;Welcome!&quot;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="c1"># &quot;WELCOME!&quot;</span>
 </span></code></pre></div>
 <hr />
 <h2 id="f-strings">F-strings<a class="headerlink" href="#f-strings" title="Link to this section">&para;</a></h2>
-<p>F-strings îți permit să inserezi variabile direct în text:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">nume</span> <span class="o">=</span> <span class="s2">&quot;Mihai&quot;</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">varsta</span> <span class="o">=</span> <span class="mi">14</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mă numesc </span><span class="si">{</span><span class="n">nume</span><span class="si">}</span><span class="s2"> și am </span><span class="si">{</span><span class="n">varsta</span><span class="si">}</span><span class="s2"> ani.&quot;</span><span class="p">)</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Mă numesc Mihai și am 14 ani.</span>
+<p>F-strings let you insert variables directly into text:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Michael&quot;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">age</span> <span class="o">=</span> <span class="mi">14</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> and I am </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># My name is Michael and I am 14 years old.</span>
 </span></code></pre></div>
-<h3 id="formatarea-numerelor">Formatarea numerelor<a class="headerlink" href="#formatarea-numerelor" title="Link to this section">&para;</a></h3>
+<h3 id="number-formatting">Number formatting<a class="headerlink" href="#number-formatting" title="Link to this section">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi ≈ </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># Pi ≈ 3.14</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi ≈ </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># Pi ≈ 3.1416</span>
 </span></code></pre></div>
-<h3 id="calcule-in-f-strings">Calcule în f-strings<a class="headerlink" href="#calcule-in-f-strings" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">latime</span> <span class="o">=</span> <span class="mi">4</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">lungime</span> <span class="o">=</span> <span class="mi">7</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aria dreptunghiului: </span><span class="si">{</span><span class="n">latime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lungime</span><span class="si">}</span><span class="s2"> m²&quot;</span><span class="p">)</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Aria dreptunghiului: 28 m²</span>
+<h3 id="calculations-inside-f-strings">Calculations inside f-strings<a class="headerlink" href="#calculations-inside-f-strings" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">width</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">length</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rectangle area: </span><span class="si">{</span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">length</span><span class="si">}</span><span class="s2"> m²&quot;</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Rectangle area: 28 m²</span>
 </span></code></pre></div>
 <hr />
-<h2 id="conversii-de-tip">Conversii de tip<a class="headerlink" href="#conversii-de-tip" title="Link to this section">&para;</a></h2>
+<h2 id="type-conversions">Type conversions<a class="headerlink" href="#type-conversions" title="Link to this section">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Funcție</th>
-<th>Ce face</th>
+<th>Function</th>
+<th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>int(x)</code></td>
-<td>transformă în număr întreg</td>
+<td>converts to whole number</td>
 </tr>
 <tr>
 <td><code>float(x)</code></td>
-<td>transformă în număr zecimal</td>
+<td>converts to decimal number</td>
 </tr>
 <tr>
 <td><code>str(x)</code></td>
-<td>transformă în text</td>
+<td>converts to text</td>
 </tr>
 </tbody>
 </table>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">3.9</span><span class="p">))</span>      <span class="c1"># 3  (taie zecimalele, nu rotunjește!)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">3.9</span><span class="p">))</span>      <span class="c1"># 3  (truncates decimals, doesn&#39;t round!)</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">))</span>     <span class="c1"># 42</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>      <span class="c1"># 5.0</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">))</span> <span class="c1"># 3.14</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>      <span class="c1"># &quot;100&quot;</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Conversii invalide</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;salut&quot;</span><span class="p">)</span>    <span class="c1"># ValueError</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">)</span>     <span class="c1"># ValueError — folosește int(float(&quot;3.14&quot;))</span>
+<p class="admonition-title">Invalid conversions</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>    <span class="c1"># ValueError</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">)</span>     <span class="c1"># ValueError — use int(float(&quot;3.14&quot;))</span>
 </span></code></pre></div>
 </div>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-calculeaza">Exercițiu 1 — Calculează<a class="headerlink" href="#exercitiu-1-calculeaza" title="Link to this section">&para;</a></h3>
-<p>Fără a rula codul, calculează:</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-calculate">Exercise 1 — Calculate<a class="headerlink" href="#exercise-1-calculate" title="Link to this section">&para;</a></h3>
+<p>Without running the code, calculate:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">17</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">print</span><span class="p">(</span><span class="mi">15</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span>
 </span></code></pre></div>
 <details class="success">
-<summary>Răspuns</summary>
+<summary>Answer</summary>
 <ul>
 <li><code>17 % 5</code> → <code>2</code></li>
 <li><code>2 ** 3 + 1</code> → <code>9</code></li>
 <li><code>15 // 4</code> → <code>3</code></li>
 </ul>
 </details>
-<h3 id="exercitiu-2-f-string">Exercițiu 2 — F-string<a class="headerlink" href="#exercitiu-2-f-string" title="Link to this section">&para;</a></h3>
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">produs</span> <span class="o">=</span> <span class="s2">&quot;caiet&quot;</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">pret</span> <span class="o">=</span> <span class="mf">3.5</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">cantitate</span> <span class="o">=</span> <span class="mi">4</span>
+<h3 id="exercise-2-f-string">Exercise 2 — F-string<a class="headerlink" href="#exercise-2-f-string" title="Link to this section">&para;</a></h3>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;notebook&quot;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">price</span> <span class="o">=</span> <span class="mf">3.5</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">quantity</span> <span class="o">=</span> <span class="mi">4</span>
 </span></code></pre></div>
-Afișează: <code>4 caiete costă 14.0 lei.</code></p>
+Display: <code>4 notebooks cost 14.0 lei.</code></p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cantitate</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">produs</span><span class="si">}</span><span class="s2">e costă </span><span class="si">{</span><span class="n">pret</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cantitate</span><span class="si">}</span><span class="s2"> lei.&quot;</span><span class="p">)</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">product</span><span class="si">}</span><span class="s2">s cost </span><span class="si">{</span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quantity</span><span class="si">}</span><span class="s2"> lei.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-par-sau-impar">Exercițiu 3 — Par sau impar?<a class="headerlink" href="#exercitiu-3-par-sau-impar" title="Link to this section">&para;</a></h3>
-<p>Afișează restul împărțirii lui 47 la 2.</p>
+<h3 id="exercise-3-even-or-odd">Exercise 3 — Even or odd?<a class="headerlink" href="#exercise-3-even-or-odd" title="Link to this section">&para;</a></h3>
+<p>Display the remainder of dividing 47 by 2.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">47</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 1 — deci impar</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">47</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 1 — so it&#39;s odd</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-convertor-de-temperaturi">Mini-proiect: Convertor de temperaturi<a class="headerlink" href="#mini-proiect-convertor-de-temperaturi" title="Link to this section">&para;</a></h2>
-<p>Convertește 100 °C în Fahrenheit și Kelvin.</p>
-<p><strong>Formule:</strong> <code>F = C × 9/5 + 32</code> și <code>K = C + 273.15</code></p>
+<h2 id="mini-project-temperature-converter">Mini-project: Temperature converter<a class="headerlink" href="#mini-project-temperature-converter" title="Link to this section">&para;</a></h2>
+<p>Convert 100 °C to Fahrenheit and Kelvin.</p>
+<p><strong>Formulas:</strong> <code>F = C × 9/5 + 32</code> and <code>K = C + 273.15</code></p>
 <p><strong>Output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Temperatura: 100 °C
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>În Fahrenheit: 212.0 °F
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>În Kelvin: 373.15 K
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Temperature: 100 °C
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>In Fahrenheit: 212.0 °F
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>In Kelvin: 373.15 K
 </span></code></pre></div></p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">celsius</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">fahrenheit</span> <span class="o">=</span> <span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">kelvin</span> <span class="o">=</span> <span class="n">celsius</span> <span class="o">+</span> <span class="mf">273.15</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperatura: </span><span class="si">{</span><span class="n">celsius</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;În Fahrenheit: </span><span class="si">{</span><span class="n">fahrenheit</span><span class="si">}</span><span class="s2"> °F&quot;</span><span class="p">)</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;În Kelvin: </span><span class="si">{</span><span class="n">kelvin</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">celsius</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;In Fahrenheit: </span><span class="si">{</span><span class="n">fahrenheit</span><span class="si">}</span><span class="s2"> °F&quot;</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;In Kelvin: </span><span class="si">{</span><span class="n">kelvin</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li>Operatori aritmetici: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code></li>
-<li><code>%</code> returnează restul — util pentru paritate</li>
-<li>F-strings <code>f"text {variabila}"</code> — formatare modernă</li>
-<li>Conversii: <code>int()</code>, <code>float()</code>, <code>str()</code></li>
+<li>Arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code></li>
+<li><code>%</code> returns the remainder — useful for parity</li>
+<li>F-strings <code>f"text {variable}"</code> — modern formatting</li>
+<li>Conversions: <code>int()</code>, <code>float()</code>, <code>str()</code></li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../03-input-output/">→ Lecția 03: Input și Output</a></p>
+<p><strong>Next step:</strong> <a href="../03-input-output/">→ Lesson 03: Input and Output</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -709,16 +709,16 @@ Afișează: <code>4 caiete costă 14.0 lei.</code></p>
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-02-operatii-si-expresii" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 02 · Operații și expresii</a>
+                  <a href="#lesson-02-operations-and-expressions" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 02 · Operations and expressions</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#operatori-aritmetici" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatori aritmetici</a>
+                        <a href="#arithmetic-operators" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arithmetic operators</a>
                       </li>
                     
                       <li>
-                        <a href="#operatii-cu-siruri-de-caractere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operații cu șiruri de caractere</a>
+                        <a href="#string-operations" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">String operations</a>
                       </li>
                     
                       <li>
@@ -726,19 +726,19 @@ Afișează: <code>4 caiete costă 14.0 lei.</code></p>
                       </li>
                     
                       <li>
-                        <a href="#conversii-de-tip" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Conversii de tip</a>
+                        <a href="#type-conversions" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Type conversions</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-convertor-de-temperaturi" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Convertor de temperaturi</a>
+                        <a href="#mini-project-temperature-converter" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Temperature converter</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

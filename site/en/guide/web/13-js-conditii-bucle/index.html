@@ -432,14 +432,14 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">13: Condiții și bucle</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Controlează fluxul programului cu if/else, switch și bucle for/while.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Control your program's flow with if/else, switch and for/while loops.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">conditii</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">conditions</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">if</span>
                 
@@ -449,193 +449,193 @@
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">while</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">bucle</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">loops</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">operatori</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">operators</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-13-conditii-si-bucle">Lecția 13 · Condiții și bucle<a class="headerlink" href="#lectia-13-conditii-si-bucle" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-13-conditions-and-loops">Lesson 13 · Conditions and loops<a class="headerlink" href="#lesson-13-conditions-and-loops" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Cum iei decizii cu <code>if / else if / else</code></li>
-<li>Diferența între <code>==</code> și <code>===</code> (spoiler: folosește <code>===</code>)</li>
-<li>Operatori logici <code>&amp;&amp;</code>, <code>||</code>, <code>!</code> și operatorul ternar</li>
-<li>Buclele <code>for</code>, <code>while</code>, <code>do...while</code>, <code>for...of</code></li>
-<li>Cum controlezi execuția cu <code>break</code> și <code>continue</code></li>
+<li>How to make decisions with <code>if / else if / else</code></li>
+<li>The difference between <code>==</code> and <code>===</code> (spoiler: use <code>===</code>)</li>
+<li>Logical operators <code>&amp;&amp;</code>, <code>||</code>, <code>!</code> and the ternary operator</li>
+<li>The <code>for</code>, <code>while</code>, <code>do...while</code>, <code>for...of</code> loops</li>
+<li>How to control execution with <code>break</code> and <code>continue</code></li>
 </ul>
 </div>
 <hr />
 <h2 id="if-else-if-else"><code>if / else if / else</code><a class="headerlink" href="#if-else-if-else" title="Link to this section">&para;</a></h2>
-<p>Cea mai simplă decizie:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16</span><span class="p">;</span>
+<p>The simplest decision:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16</span><span class="p">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">varsta</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Poate vota.&quot;</span><span class="p">);</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">varsta</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">16</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Poate obține permis categoria AM.&quot;</span><span class="p">);</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Can vote.&quot;</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">16</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Can get a category AM license.&quot;</span><span class="p">);</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Încă prea tânăr pentru permis.&quot;</span><span class="p">);</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Still too young for a license.&quot;</span><span class="p">);</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Structura:</p>
+<p>Structure:</p>
 <ul>
-<li><code>if (condiție) { ... }</code> — dacă <code>condiție</code> e <code>true</code>, rulează blocul.</li>
-<li><code>else if (altaCondiție) { ... }</code> — verificată doar dacă precedenta e <code>false</code>.</li>
-<li><code>else { ... }</code> — se rulează dacă nimic de mai sus nu s-a potrivit.</li>
+<li><code>if (condition) { ... }</code> — if <code>condition</code> is <code>true</code>, run the block.</li>
+<li><code>else if (otherCondition) { ... }</code> — checked only if the previous one is <code>false</code>.</li>
+<li><code>else { ... }</code> — runs if nothing above matched.</li>
 </ul>
-<p>Acoladele sunt opționale pentru o singură linie, dar <strong>pune-le oricum</strong> — e mai sigur și mai clar.</p>
+<p>The braces are optional for a single line, but <strong>always put them</strong> — it's safer and clearer.</p>
 <hr />
-<h2 id="operatori-de-comparatie">Operatori de comparație<a class="headerlink" href="#operatori-de-comparatie" title="Link to this section">&para;</a></h2>
+<h2 id="comparison-operators">Comparison operators<a class="headerlink" href="#comparison-operators" title="Link to this section">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Operator</th>
-<th>Semnificație</th>
-<th>Exemplu</th>
-<th>Rezultat</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>===</code></td>
-<td>strict egal</td>
+<td>strictly equal</td>
 <td><code>5 === 5</code></td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>!==</code></td>
-<td>strict diferit</td>
+<td>strictly different</td>
 <td><code>"5" !== 5</code></td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>==</code></td>
-<td>egal cu coerce</td>
+<td>equal with coercion</td>
 <td><code>"5" == 5</code></td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>!=</code></td>
-<td>diferit cu coerce</td>
+<td>different with coercion</td>
 <td><code>"5" != 5</code></td>
 <td><code>false</code></td>
 </tr>
 <tr>
 <td><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td>
-<td>comparație numerică</td>
+<td>numeric comparison</td>
 <td><code>3 &lt; 5</code></td>
 <td><code>true</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="vs-capcana-clasica"><code>==</code> vs <code>===</code> — capcana clasică<a class="headerlink" href="#vs-capcana-clasica" title="Link to this section">&para;</a></h3>
-<p><code>==</code> face <strong>coerce de tip</strong> înainte să compare — încearcă să facă valorile „compatibile”:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">      </span><span class="c1">// true  — string e convertit la number</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">     </span><span class="c1">// false — tipuri diferite, gata</span>
+<h3 id="vs-the-classic-pitfall"><code>==</code> vs <code>===</code> — the classic pitfall<a class="headerlink" href="#vs-the-classic-pitfall" title="Link to this section">&para;</a></h3>
+<p><code>==</code> does <strong>type coercion</strong> before comparing — tries to make the values "compatible":</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">      </span><span class="c1">// true  — string is converted to number</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">     </span><span class="c1">// false — different types, done</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">    </span><span class="c1">// true  — coerce la boolean</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">undefined</span><span class="p">);</span><span class="w">  </span><span class="c1">// true — caz special</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">    </span><span class="c1">// true  — coerce to boolean</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">undefined</span><span class="p">);</span><span class="w">  </span><span class="c1">// true — special case</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">0</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">   </span><span class="c1">// false</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Folosește întotdeauna <code>===</code> și <code>!==</code></p>
-<p><code>==</code> are reguli de coerce complicate care duc la bug-uri subtile. <code>===</code> compară tipul + valoarea — simplu și previzibil.</p>
+<p class="admonition-title">Always use <code>===</code> and <code>!==</code></p>
+<p><code>==</code> has complicated coercion rules that lead to subtle bugs. <code>===</code> compares type + value — simple and predictable.</p>
 </div>
 <hr />
-<h2 id="operatori-logici">Operatori logici<a class="headerlink" href="#operatori-logici" title="Link to this section">&para;</a></h2>
+<h2 id="logical-operators">Logical operators<a class="headerlink" href="#logical-operators" title="Link to this section">&para;</a></h2>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// false — AND: true doar dacă ambele true</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// true  — OR: true dacă cel puțin unul e true</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">);</span><span class="w">       </span><span class="c1">// false — NOT: inversează</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// false — AND: true only if both are true</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// true  — OR: true if at least one is true</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">);</span><span class="w">       </span><span class="c1">// false — NOT: inverts</span>
 </span></code></pre></div>
-<p>Exemplu practic:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">17</span><span class="p">;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">areCarnet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<p>Practical example:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">17</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">hasLicense</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">varsta</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">areCarnet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Poate conduce.&quot;</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hasLicense</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Can drive.&quot;</span><span class="p">);</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Nu încă.&quot;</span><span class="p">);</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Not yet.&quot;</span><span class="p">);</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="short-circuit-evaluare-lenesa">Short-circuit (evaluare leneșă)<a class="headerlink" href="#short-circuit-evaluare-lenesa" title="Link to this section">&para;</a></h3>
+<h3 id="short-circuit-lazy-evaluation">Short-circuit (lazy evaluation)<a class="headerlink" href="#short-circuit-lazy-evaluation" title="Link to this section">&para;</a></h3>
 <ul>
-<li><code>&amp;&amp;</code> se oprește la <strong>primul <code>false</code></strong>.</li>
-<li><code>||</code> se oprește la <strong>primul <code>true</code></strong>.</li>
+<li><code>&amp;&amp;</code> stops at the <strong>first <code>false</code></strong>.</li>
+<li><code>||</code> stops at the <strong>first <code>true</code></strong>.</li>
 </ul>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// b() nu va fi apelată, pentru că a() a returnat false</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// b() will not be called, because a() returned false</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">a</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">b</span><span class="p">();</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// b() nu va fi apelată, pentru că a() a returnat true</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// b() will not be called, because a() returned true</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nx">a</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">b</span><span class="p">();</span>
 </span></code></pre></div>
-<p>Util pentru valori default:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">inputUtilizator</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;Necunoscut&quot;</span><span class="p">;</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// dacă inputUtilizator e &quot;&quot; / null / undefined, folosește &quot;Necunoscut&quot;</span>
+<p>Useful for default values:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userInput</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;Unknown&quot;</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// if userInput is &quot;&quot; / null / undefined, use &quot;Unknown&quot;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="operatorul-ternar">Operatorul ternar<a class="headerlink" href="#operatorul-ternar" title="Link to this section">&para;</a></h2>
-<p>Formă scurtă pentru <code>if / else</code> care returnează o valoare:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// condiție ? valoareDacaTrue : valoareDacaFalse</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16</span><span class="p">;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">eticheta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;major&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;minor&quot;</span><span class="p">;</span>
+<h2 id="ternary-operator">Ternary operator<a class="headerlink" href="#ternary-operator" title="Link to this section">&para;</a></h2>
+<p>A short form of <code>if / else</code> that returns a value:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// condition ? valueIfTrue : valueIfFalse</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;adult&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;minor&quot;</span><span class="p">;</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">eticheta</span><span class="p">);</span><span class="w">   </span><span class="c1">// &quot;minor&quot;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">label</span><span class="p">);</span><span class="w">   </span><span class="c1">// &quot;minor&quot;</span>
 </span></code></pre></div>
-<p>Poate fi util, dar <strong>nu-l îngropa</strong> în expresii imbricate — devine ilizibil.</p>
+<p>It can be useful, but <strong>don't bury it</strong> in nested expressions — it becomes unreadable.</p>
 <hr />
 <h2 id="switch-case"><code>switch / case</code><a class="headerlink" href="#switch-case" title="Link to this section">&para;</a></h2>
-<p>Când ai multe ramuri bazate pe aceeași variabilă:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">zi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;luni&quot;</span><span class="p">;</span>
+<p>When you have many branches based on the same variable:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;monday&quot;</span><span class="p">;</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">zi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;luni&quot;</span><span class="o">:</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;marți&quot;</span><span class="o">:</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;miercuri&quot;</span><span class="o">:</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;joi&quot;</span><span class="o">:</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;vineri&quot;</span><span class="o">:</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Zi lucrătoare&quot;</span><span class="p">);</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">day</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;monday&quot;</span><span class="o">:</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;tuesday&quot;</span><span class="o">:</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;wednesday&quot;</span><span class="o">:</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;thursday&quot;</span><span class="o">:</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;friday&quot;</span><span class="o">:</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Weekday&quot;</span><span class="p">);</span>
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;sâmbătă&quot;</span><span class="o">:</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;duminică&quot;</span><span class="o">:</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;saturday&quot;</span><span class="o">:</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;sunday&quot;</span><span class="o">:</span>
 </span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Weekend!&quot;</span><span class="p">);</span>
 </span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
 </span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">  </span><span class="k">default</span><span class="o">:</span>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Zi necunoscută&quot;</span><span class="p">);</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Unknown day&quot;</span><span class="p">);</span>
 </span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="p">}</span>
 </span></code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Nu uita <code>break</code>!</p>
-<p>Fără <code>break</code>, execuția „cade” în case-ul următor (fall-through). Util intenționat (ca mai sus, unde mai multe zile rulează același cod), dar periculos dacă uiți.</p>
+<p class="admonition-title">Don't forget <code>break</code>!</p>
+<p>Without <code>break</code>, execution "falls" into the next case (fall-through). Useful intentionally (as above, where multiple days run the same code), but dangerous if you forget.</p>
 </div>
 <hr />
-<h2 id="bucla-for">Bucla <code>for</code><a class="headerlink" href="#bucla-for" title="Link to this section">&para;</a></h2>
+<h2 id="the-for-loop">The <code>for</code> loop<a class="headerlink" href="#the-for-loop" title="Link to this section">&para;</a></h2>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Iterația </span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Iteration </span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// Iterația 0</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">// Iterația 1</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1">// Iterația 2</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1">// Iterația 3</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1">// Iterația 4</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// Iteration 0</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">// Iteration 1</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1">// Iteration 2</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1">// Iteration 3</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1">// Iteration 4</span>
 </span></code></pre></div>
-<p>Trei părți în paranteze:</p>
+<p>Three parts in parentheses:</p>
 <ol>
-<li><strong>Inițializare</strong> — <code>let i = 0</code> (rulează o dată, la început).</li>
-<li><strong>Condiție</strong> — <code>i &lt; 5</code> (verificată înainte de fiecare iterație).</li>
-<li><strong>Pas</strong> — <code>i++</code> (rulează după fiecare iterație).</li>
+<li><strong>Initialization</strong> — <code>let i = 0</code> (runs once, at the start).</li>
+<li><strong>Condition</strong> — <code>i &lt; 5</code> (checked before each iteration).</li>
+<li><strong>Step</strong> — <code>i++</code> (runs after each iteration).</li>
 </ol>
-<p><code>i++</code> e prescurtare pentru <code>i = i + 1</code>. Similar: <code>i--</code>, <code>i += 2</code>, <code>i *= 3</code>.</p>
+<p><code>i++</code> is shorthand for <code>i = i + 1</code>. Similar: <code>i--</code>, <code>i += 2</code>, <code>i *= 3</code>.</p>
 <hr />
-<h2 id="bucla-while">Bucla <code>while</code><a class="headerlink" href="#bucla-while" title="Link to this section">&para;</a></h2>
+<h2 id="the-while-loop">The <code>while</code> loop<a class="headerlink" href="#the-while-loop" title="Link to this section">&para;</a></h2>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -643,91 +643,91 @@
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nx">n</span><span class="o">++</span><span class="p">;</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Rulează <strong>atâta timp cât</strong> condiția e <code>true</code>. Folosește-o când <strong>nu știi dinainte</strong> câte iterații vei face.</p>
+<p>Runs <strong>as long as</strong> the condition is <code>true</code>. Use it when you <strong>don't know in advance</strong> how many iterations you'll do.</p>
 <hr />
-<h2 id="bucla-dowhile">Bucla <code>do...while</code><a class="headerlink" href="#bucla-dowhile" title="Link to this section">&para;</a></h2>
-<p>Similară cu <code>while</code>, dar <strong>rulează cel puțin o dată</strong> (verifică condiția la final):</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">raspuns</span><span class="p">;</span>
+<h2 id="the-dowhile-loop">The <code>do...while</code> loop<a class="headerlink" href="#the-dowhile-loop" title="Link to this section">&para;</a></h2>
+<p>Similar to <code>while</code>, but <strong>runs at least once</strong> (checks the condition at the end):</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">answer</span><span class="p">;</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nx">raspuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Spune „ieși” ca să termini:&quot;</span><span class="p">);</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">raspuns</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;ieși&quot;</span><span class="p">);</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nx">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Type &#39;exit&#39; to finish:&quot;</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">answer</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;exit&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 <hr />
-<h2 id="break-si-continue"><code>break</code> și <code>continue</code><a class="headerlink" href="#break-si-continue" title="Link to this section">&para;</a></h2>
+<h2 id="break-and-continue"><code>break</code> and <code>continue</code><a class="headerlink" href="#break-and-continue" title="Link to this section">&para;</a></h2>
 <ul>
-<li><strong><code>break</code></strong> iese complet din buclă.</li>
-<li><strong><code>continue</code></strong> sare la următoarea iterație.</li>
+<li><strong><code>break</code></strong> exits the loop completely.</li>
+<li><strong><code>continue</code></strong> jumps to the next iteration.</li>
 </ul>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">       </span><span class="c1">// se oprește când i e 5</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="c1">// sare peste pare</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">       </span><span class="c1">// stops when i is 5</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="c1">// skips even numbers</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span><span class="w">           </span><span class="c1">// 1, 3</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <hr />
-<h2 id="forof-pentru-iterare-peste-array"><code>for...of</code> — pentru iterare peste array<a class="headerlink" href="#forof-pentru-iterare-peste-array" title="Link to this section">&para;</a></h2>
-<p>Varianta modernă, <strong>preferată</strong> pentru a parcurge un array:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">culori</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;roșu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;verde&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;albastru&quot;</span><span class="p">];</span>
+<h2 id="forof-for-iterating-over-an-array"><code>for...of</code> — for iterating over an array<a class="headerlink" href="#forof-for-iterating-over-an-array" title="Link to this section">&para;</a></h2>
+<p>The modern variant, <strong>preferred</strong> for going through an array:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">];</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">culoare</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">culori</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">culoare</span><span class="p">);</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">colors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">color</span><span class="p">);</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">}</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1">// roșu</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1">// verde</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1">// albastru</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1">// red</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1">// green</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1">// blue</span>
 </span></code></pre></div>
-<p>Simplu și curat. Nu mai ai nevoie de index <code>i</code>.</p>
+<p>Simple and clean. You no longer need an index <code>i</code>.</p>
 <div class="admonition note">
-<p class="admonition-title"><code>for...in</code> există, dar evit-o pentru array-uri</p>
-<p><code>for...in</code> iterează peste <strong>chei</strong> (inclusiv moștenite) și e concepută pentru obiecte. Pentru array-uri, folosește <code>for...of</code> sau <code>.forEach()</code>.</p>
+<p class="admonition-title"><code>for...in</code> exists, but avoid it for arrays</p>
+<p><code>for...in</code> iterates over <strong>keys</strong> (including inherited ones) and is designed for objects. For arrays, use <code>for...of</code> or <code>.forEach()</code>.</p>
 </div>
 <hr />
-<h2 id="erori-frecvente">Erori frecvente<a class="headerlink" href="#erori-frecvente" title="Link to this section">&para;</a></h2>
-<h3 id="bucla-infinita">Buclă infinită<a class="headerlink" href="#bucla-infinita" title="Link to this section">&para;</a></h3>
-<p>Uiți să incrementezi contorul:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// GREȘIT: n nu crește niciodată!</span>
+<h2 id="common-errors">Common errors<a class="headerlink" href="#common-errors" title="Link to this section">&para;</a></h2>
+<h3 id="infinite-loop">Infinite loop<a class="headerlink" href="#infinite-loop" title="Link to this section">&para;</a></h3>
+<p>You forget to increment the counter:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// WRONG: n never increases!</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="c1">// lipsește n++</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="c1">// n++ is missing</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Browserul se va bloca. Deschide DevTools și oprește fila.</p>
+<p>The browser will freeze. Open DevTools and stop the tab.</p>
 <h3 id="vs-vs"><code>=</code> vs <code>==</code> vs <code>===</code><a class="headerlink" href="#vs-vs" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// atribuire! nu comparație. Aproape mereu greșit.</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// comparație cu coerce. Evită.</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// strict equal. Corect.</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// assignment! not comparison. Almost always wrong.</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// comparison with coercion. Avoid.</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// strict equal. Correct.</span>
 </span></code></pre></div>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-par-sau-impar">Exercițiu 1 — Par sau impar<a class="headerlink" href="#exercitiu-1-par-sau-impar" title="Link to this section">&para;</a></h3>
-<p>Scrie un program care citește un număr și afișează dacă e par sau impar.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-even-or-odd">Exercise 1 — Even or odd<a class="headerlink" href="#exercise-1-even-or-odd" title="Link to this section">&para;</a></h3>
+<p>Write a program that reads a number and prints whether it's even or odd.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Un număr:&quot;</span><span class="p">));</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;A number:&quot;</span><span class="p">));</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">n</span><span class="si">}</span><span class="sb"> e par.`</span><span class="p">);</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">n</span><span class="si">}</span><span class="sb"> is even.`</span><span class="p">);</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">n</span><span class="si">}</span><span class="sb"> e impar.`</span><span class="p">);</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">n</span><span class="si">}</span><span class="sb"> is odd.`</span><span class="p">);</span>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="p">}</span>
 </span></code></pre></div>
-<p><code>% 2</code> dă 0 pentru numere pare, 1 pentru impare.</p>
+<p><code>% 2</code> gives 0 for even numbers, 1 for odd ones.</p>
 </details>
-<h3 id="exercitiu-2-numere-de-la-1-la-10">Exercițiu 2 — Numere de la 1 la 10<a class="headerlink" href="#exercitiu-2-numere-de-la-1-la-10" title="Link to this section">&para;</a></h3>
-<p>Afișează în consolă numerele de la 1 la 10 cu <code>for</code>.</p>
+<h3 id="exercise-2-numbers-from-1-to-10">Exercise 2 — Numbers from 1 to 10<a class="headerlink" href="#exercise-2-numbers-from-1-to-10" title="Link to this section">&para;</a></h3>
+<p>Print to the console the numbers from 1 to 10 with <code>for</code>.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-cel-mai-mare-din-trei">Exercițiu 3 — Cel mai mare din trei<a class="headerlink" href="#exercitiu-3-cel-mai-mare-din-trei" title="Link to this section">&para;</a></h3>
-<p>Primești 3 numere și afișezi pe cel mai mare.</p>
+<h3 id="exercise-3-largest-of-three">Exercise 3 — Largest of three<a class="headerlink" href="#exercise-3-largest-of-three" title="Link to this section">&para;</a></h3>
+<p>You receive 3 numbers and print the largest one.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="p">;</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">47</span><span class="p">;</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
@@ -736,70 +736,70 @@
 </span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">max</span><span class="p">)</span><span class="w"> </span><span class="nx">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
 </span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">max</span><span class="p">)</span><span class="w"> </span><span class="nx">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span>
 </span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Cel mai mare: </span><span class="si">${</span><span class="nx">max</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w">   </span><span class="c1">// 47</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Largest: </span><span class="si">${</span><span class="nx">max</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w">   </span><span class="c1">// 47</span>
 </span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
-</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="c1">// Variantă scurtă, cu Math.max:</span>
-</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">));</span><span class="w">         </span><span class="c1">// 47</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="c1">// Short version, with Math.max:</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">));</span><span class="w">    </span><span class="c1">// 47</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-4-suma-de-la-1-la-100">Exercițiu 4 — Suma de la 1 la 100<a class="headerlink" href="#exercitiu-4-suma-de-la-1-la-100" title="Link to this section">&para;</a></h3>
-<p>Calculează suma numerelor de la 1 la 100.</p>
+<h3 id="exercise-4-sum-from-1-to-100">Exercise 4 — Sum from 1 to 100<a class="headerlink" href="#exercise-4-sum-from-1-to-100" title="Link to this section">&para;</a></h3>
+<p>Calculate the sum of numbers from 1 to 100.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="nx">suma</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">}</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">suma</span><span class="p">);</span><span class="w">   </span><span class="c1">// 5050</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span><span class="w">   </span><span class="c1">// 5050</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-ghiceste-numarul">Mini-proiect: Ghicește numărul<a class="headerlink" href="#mini-proiect-ghiceste-numarul" title="Link to this section">&para;</a></h2>
-<p>Un joc clasic: calculatorul alege un număr random între 1 și 100, tu ai câte încercări îți trebuie să-l ghicești.</p>
-<p><strong>Cerințe:</strong></p>
+<h2 id="mini-project-guess-the-number">Mini-project: Guess the number<a class="headerlink" href="#mini-project-guess-the-number" title="Link to this section">&para;</a></h2>
+<p>A classic game: the computer picks a random number between 1 and 100, you have as many tries as you need to guess it.</p>
+<p><strong>Requirements:</strong></p>
 <ul>
-<li>Generează un număr random între 1 și 100.</li>
-<li>Într-o buclă, cere utilizatorului să ghicească.</li>
-<li>Dă feedback: <strong>prea mic</strong> / <strong>prea mare</strong> / <strong>corect</strong>.</li>
-<li>La sfârșit, afișează câte încercări au fost necesare.</li>
+<li>Generate a random number between 1 and 100.</li>
+<li>In a loop, ask the user to guess.</li>
+<li>Give feedback: <strong>too small</strong> / <strong>too big</strong> / <strong>correct</strong>.</li>
+<li>At the end, show how many tries were needed.</li>
 </ul>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// Număr random între 1 și 100</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">tinta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// Random number between 1 and 100</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="kd">let</span><span class="w"> </span><span class="nx">incercari</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="kd">let</span><span class="w"> </span><span class="nx">ghicit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="kd">let</span><span class="w"> </span><span class="nx">attempts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="kd">let</span><span class="w"> </span><span class="nx">guessed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ghicit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">raspuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Ghicește un număr între 1 și 100:&quot;</span><span class="p">));</span>
-</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">  </span><span class="nx">incercari</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">guessed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Guess a number between 1 and 100:&quot;</span><span class="p">));</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">  </span><span class="nx">attempts</span><span class="o">++</span><span class="p">;</span>
 </span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
-</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">raspuns</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">tinta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">    </span><span class="nx">ghicit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`Felicitări! Ai ghicit în </span><span class="si">${</span><span class="nx">incercari</span><span class="si">}</span><span class="sb"> încercări.`</span><span class="p">);</span>
-</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">raspuns</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">tinta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Prea mic. Mai încearcă!&quot;</span><span class="p">);</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">answer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">    </span><span class="nx">guessed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`Congratulations! You guessed in </span><span class="si">${</span><span class="nx">attempts</span><span class="si">}</span><span class="sb"> attempts.`</span><span class="p">);</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">answer</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Too small. Try again!&quot;</span><span class="p">);</span>
 </span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Prea mare. Mai încearcă!&quot;</span><span class="p">);</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Too big. Try again!&quot;</span><span class="p">);</span>
 </span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="p">}</span>
 </span></code></pre></div>
-<p><code>Math.random()</code> returnează <code>[0, 1)</code>. Înmulțit cu 100 și rotunjit în jos cu <code>Math.floor</code>, apoi <code>+1</code>, dă întreg <code>[1, 100]</code>.</p>
+<p><code>Math.random()</code> returns <code>[0, 1)</code>. Multiplied by 100 and floored with <code>Math.floor</code>, then <code>+1</code>, gives an integer <code>[1, 100]</code>.</p>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li><code>if / else if / else</code> — decizii ramificate.</li>
-<li>Folosește <strong><code>===</code></strong>, nu <code>==</code>. Așa eviți coerce-ul implicit de tip.</li>
-<li>Operatori logici: <code>&amp;&amp;</code> (și), <code>||</code> (sau), <code>!</code> (nu). Folosesc evaluare leneșă.</li>
-<li>Ternar <code>condiție ? a : b</code> — util pentru atribuiri simple.</li>
-<li><code>for</code> când știi câte iterații; <code>while</code> când nu știi.</li>
-<li><code>for...of</code> pentru parcurgerea elementelor unui array.</li>
-<li><code>break</code> iese, <code>continue</code> sare la iterația următoare.</li>
+<li><code>if / else if / else</code> — branching decisions.</li>
+<li>Use <strong><code>===</code></strong>, not <code>==</code>. This way you avoid implicit type coercion.</li>
+<li>Logical operators: <code>&amp;&amp;</code> (and), <code>||</code> (or), <code>!</code> (not). They use lazy evaluation.</li>
+<li>Ternary <code>condition ? a : b</code> — useful for simple assignments.</li>
+<li><code>for</code> when you know how many iterations; <code>while</code> when you don't.</li>
+<li><code>for...of</code> for going through the elements of an array.</li>
+<li><code>break</code> exits, <code>continue</code> jumps to the next iteration.</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../14-js-functii/">→ Lecția 14: Funcții</a></p>
+<p><strong>Next step:</strong> <a href="../14-js-functii/">→ Lesson 14: Functions</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -835,7 +835,7 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-13-conditii-si-bucle" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 13 · Condiții și bucle</a>
+                  <a href="#lesson-13-conditions-and-loops" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 13 · Conditions and loops</a>
                   
                   <ul class="space-y-1 mt-1">
                     
@@ -844,15 +844,15 @@
                       </li>
                     
                       <li>
-                        <a href="#operatori-de-comparatie" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatori de comparație</a>
+                        <a href="#comparison-operators" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Comparison operators</a>
                       </li>
                     
                       <li>
-                        <a href="#operatori-logici" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatori logici</a>
+                        <a href="#logical-operators" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Logical operators</a>
                       </li>
                     
                       <li>
-                        <a href="#operatorul-ternar" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatorul ternar</a>
+                        <a href="#ternary-operator" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ternary operator</a>
                       </li>
                     
                       <li>
@@ -860,39 +860,39 @@
                       </li>
                     
                       <li>
-                        <a href="#bucla-for" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Bucla for</a>
+                        <a href="#the-for-loop" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The for loop</a>
                       </li>
                     
                       <li>
-                        <a href="#bucla-while" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Bucla while</a>
+                        <a href="#the-while-loop" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The while loop</a>
                       </li>
                     
                       <li>
-                        <a href="#bucla-dowhile" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Bucla do...while</a>
+                        <a href="#the-dowhile-loop" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The do...while loop</a>
                       </li>
                     
                       <li>
-                        <a href="#break-si-continue" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">break și continue</a>
+                        <a href="#break-and-continue" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">break and continue</a>
                       </li>
                     
                       <li>
-                        <a href="#forof-pentru-iterare-peste-array" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">for...of — pentru iterare peste array</a>
+                        <a href="#forof-for-iterating-over-an-array" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">for...of — for iterating over an array</a>
                       </li>
                     
                       <li>
-                        <a href="#erori-frecvente" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Erori frecvente</a>
+                        <a href="#common-errors" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Common errors</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-ghiceste-numarul" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Ghicește numărul</a>
+                        <a href="#mini-project-guess-the-number" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Guess the number</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

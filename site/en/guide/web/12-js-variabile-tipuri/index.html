@@ -432,16 +432,16 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">12: Variabile și tipuri</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Variabile cu let și const, tipuri primitive, template literals și metode utile pentru string și number.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Variables with let and const, primitive types, template literals and useful methods for string and number.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">variabile</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">variables</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">tipuri</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">types</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">string</span>
                 
@@ -456,112 +456,112 @@
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-12-variabile-si-tipuri-de-date">Lecția 12 · Variabile și tipuri de date<a class="headerlink" href="#lectia-12-variabile-si-tipuri-de-date" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-12-variables-and-data-types">Lesson 12 · Variables and data types<a class="headerlink" href="#lesson-12-variables-and-data-types" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Diferența dintre <code>let</code>, <code>const</code> și <code>var</code></li>
-<li>Tipurile primitive: number, string, boolean, null, undefined</li>
-<li>Cum folosești <strong>template literals</strong> (string-uri cu backticks)</li>
-<li>Operatori aritmetici și capcanele cu string-uri</li>
-<li>Metode utile pentru string și number</li>
+<li>The difference between <code>let</code>, <code>const</code> and <code>var</code></li>
+<li>The primitive types: number, string, boolean, null, undefined</li>
+<li>How to use <strong>template literals</strong> (strings with backticks)</li>
+<li>Arithmetic operators and the pitfalls with strings</li>
+<li>Useful methods for string and number</li>
 </ul>
 </div>
 <hr />
-<h2 id="declararea-variabilelor">Declararea variabilelor<a class="headerlink" href="#declararea-variabilelor" title="Link to this section">&para;</a></h2>
-<p>În JavaScript modern folosim <strong><code>let</code></strong> și <strong><code>const</code></strong> pentru a declara variabile:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">;</span><span class="w">       </span><span class="c1">// valoare care se poate schimba</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">        </span><span class="c1">// valoare fixă (nu se poate reasigna)</span>
+<h2 id="declaring-variables">Declaring variables<a class="headerlink" href="#declaring-variables" title="Link to this section">&para;</a></h2>
+<p>In modern JavaScript we use <strong><code>let</code></strong> and <strong><code>const</code></strong> to declare variables:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">;</span><span class="w">       </span><span class="c1">// value that can change</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">        </span><span class="c1">// fixed value (cannot be reassigned)</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Maria&quot;</span><span class="p">;</span><span class="w">         </span><span class="c1">// OK</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// PI = 3.14159;        // Eroare! &quot;Assignment to constant variable&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Maria&quot;</span><span class="p">;</span><span class="w">         </span><span class="c1">// OK</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// PI = 3.14159;        // Error! &quot;Assignment to constant variable&quot;</span>
 </span></code></pre></div>
-<p><strong>Regula de aur:</strong> preferă <code>const</code>. Folosește <code>let</code> doar când știi că valoarea se va schimba.</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">maxIncercari</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">        </span><span class="c1">// constantă</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">incercari</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w">              </span><span class="c1">// contor — crește în timp</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">incercari</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">incercari</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<p><strong>The golden rule:</strong> prefer <code>const</code>. Use <code>let</code> only when you know the value will change.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">maxAttempts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">          </span><span class="c1">// constant</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">attempts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w">                </span><span class="c1">// counter — grows over time</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">attempts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">attempts</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
 </span></code></pre></div>
-<h3 id="ce-este-var">Ce este <code>var</code>?<a class="headerlink" href="#ce-este-var" title="Link to this section">&para;</a></h3>
-<p><code>var</code> este varianta <strong>veche</strong>, dinainte de 2015. Are reguli ciudate de scope (vom vedea în lecția de funcții). <strong>Nu îl folosi în cod nou</strong> — folosește <code>let</code> / <code>const</code>.</p>
-<h3 id="conventii-de-denumire">Convenții de denumire<a class="headerlink" href="#conventii-de-denumire" title="Link to this section">&para;</a></h3>
+<h3 id="what-is-var">What is <code>var</code>?<a class="headerlink" href="#what-is-var" title="Link to this section">&para;</a></h3>
+<p><code>var</code> is the <strong>old</strong> variant, from before 2015. It has weird scope rules (we'll see in the functions lesson). <strong>Don't use it in new code</strong> — use <code>let</code> / <code>const</code>.</p>
+<h3 id="naming-conventions">Naming conventions<a class="headerlink" href="#naming-conventions" title="Link to this section">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Stil</th>
-<th>Când se folosește</th>
-<th>Exemplu</th>
+<th>Style</th>
+<th>When to use</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>camelCase</code></td>
-<td>variabile și funcții</td>
-<td><code>numeleElevului</code>, <code>calculeazaMedia</code></td>
+<td>variables and functions</td>
+<td><code>studentName</code>, <code>calculateAverage</code></td>
 </tr>
 <tr>
 <td><code>PascalCase</code></td>
-<td>clase și componente</td>
-<td><code>Utilizator</code>, <code>CardProdus</code></td>
+<td>classes and components</td>
+<td><code>User</code>, <code>ProductCard</code></td>
 </tr>
 <tr>
 <td><code>UPPER_SNAKE</code></td>
-<td>constante „de sistem”</td>
-<td><code>MAX_SCOR</code>, <code>API_URL</code></td>
+<td>"system" constants</td>
+<td><code>MAX_SCORE</code>, <code>API_URL</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="reguli-pentru-nume">Reguli pentru nume<a class="headerlink" href="#reguli-pentru-nume" title="Link to this section">&para;</a></h3>
+<h3 id="naming-rules">Naming rules<a class="headerlink" href="#naming-rules" title="Link to this section">&para;</a></h3>
 <ul>
-<li>Pot începe cu literă, <code>_</code> sau <code>$</code>.</li>
-<li>Pot conține cifre, dar <strong>nu la început</strong>.</li>
-<li><strong>Sunt case-sensitive:</strong> <code>nume</code> și <code>Nume</code> sunt variabile diferite.</li>
-<li>Nu poți folosi cuvinte rezervate: <code>let</code>, <code>const</code>, <code>if</code>, <code>function</code>, <code>class</code>, etc.</li>
+<li>Can start with a letter, <code>_</code> or <code>$</code>.</li>
+<li>Can contain digits, but <strong>not at the beginning</strong>.</li>
+<li><strong>Are case-sensitive:</strong> <code>name</code> and <code>Name</code> are different variables.</li>
+<li>You can't use reserved words: <code>let</code>, <code>const</code>, <code>if</code>, <code>function</code>, <code>class</code>, etc.</li>
 </ul>
 <hr />
-<h2 id="tipuri-primitive">Tipuri primitive<a class="headerlink" href="#tipuri-primitive" title="Link to this section">&para;</a></h2>
-<p>JavaScript are câteva tipuri de bază numite <strong>primitive</strong>:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14</span><span class="p">;</span><span class="w">              </span><span class="c1">// Number</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">pret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">              </span><span class="c1">// Number (nu există tip separat pentru float)</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">;</span><span class="w">             </span><span class="c1">// String</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">esteMajor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">        </span><span class="c1">// Boolean</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nimic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">             </span><span class="c1">// null — „intenționat gol”</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">neinitializat</span><span class="p">;</span><span class="w">              </span><span class="c1">// undefined — „nu i-am dat valoare”</span>
+<h2 id="primitive-types">Primitive types<a class="headerlink" href="#primitive-types" title="Link to this section">&para;</a></h2>
+<p>JavaScript has a few basic types called <strong>primitives</strong>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14</span><span class="p">;</span><span class="w">                 </span><span class="c1">// Number</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">             </span><span class="c1">// Number (no separate type for float)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">;</span><span class="w">             </span><span class="c1">// String</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">isAdult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">          </span><span class="c1">// Boolean</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nothing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">           </span><span class="c1">// null — &quot;intentionally empty&quot;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kd">let</span><span class="w"> </span><span class="nx">uninitialized</span><span class="p">;</span><span class="w">              </span><span class="c1">// undefined — &quot;no value given&quot;</span>
 </span></code></pre></div>
 <h3 id="null-vs-undefined"><code>null</code> vs <code>undefined</code><a class="headerlink" href="#null-vs-undefined" title="Link to this section">&para;</a></h3>
 <ul>
-<li><strong><code>undefined</code></strong> — valoarea pe care o are o variabilă <strong>declarată dar fără valoare</strong>.</li>
-<li><strong><code>null</code></strong> — valoarea pe care o pui <strong>intenționat</strong> când vrei să spui „niciun obiect”.</li>
+<li><strong><code>undefined</code></strong> — the value of a variable <strong>declared but without a value</strong>.</li>
+<li><strong><code>null</code></strong> — the value you set <strong>intentionally</strong> when you want to say "no object".</li>
 </ul>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w">                  </span><span class="c1">// undefined (nu i-am dat valoare)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">           </span><span class="c1">// null (eu am zis: e gol)</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w">                  </span><span class="c1">// undefined (no value given)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">           </span><span class="c1">// null (I said: it&#39;s empty)</span>
 </span></code></pre></div>
 <hr />
 <h2 id="template-literals">Template literals<a class="headerlink" href="#template-literals" title="Link to this section">&para;</a></h2>
-<p>Cel mai elegant mod de a construi string-uri în JS modern: <strong>backticks</strong> <code>`</code>.</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mihai&quot;</span><span class="p">;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14</span><span class="p">;</span>
+<p>The most elegant way to build strings in modern JS: <strong>backticks</strong> <code>`</code>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mihai&quot;</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14</span><span class="p">;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// Varianta veche — concatenare cu +</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">vechi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Salut, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;! Ai &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; ani.&quot;</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// Old way — concatenation with +</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">oldWay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;! You are &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; years old.&quot;</span><span class="p">;</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// Varianta modernă — template literal</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nou</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">! Ai </span><span class="si">${</span><span class="nx">varsta</span><span class="si">}</span><span class="sb"> ani.`</span><span class="p">;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// Modern way — template literal</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">newWay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">! You are </span><span class="si">${</span><span class="nx">age</span><span class="si">}</span><span class="sb"> years old.`</span><span class="p">;</span>
 </span></code></pre></div>
-<p>Avantaje:</p>
+<p>Advantages:</p>
 <ul>
-<li><code>${expresie}</code> interpolează orice expresie JS.</li>
-<li>Funcționează pe <strong>mai multe linii</strong> fără <code>\n</code>:</li>
+<li><code>${expression}</code> interpolates any JS expression.</li>
+<li>Works on <strong>multiple lines</strong> without <code>\n</code>:</li>
 </ul>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">mesaj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Linia 1</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="sb">Linia 2</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="sb">Linia 3`</span><span class="p">;</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Line 1</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="sb">Line 2</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="sb">Line 3`</span><span class="p">;</span>
 </span></code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Când folosești backticks?</p>
-<p>Aproape mereu în JS modern. Chiar dacă nu ai interpolare, e lizibil și flexibil.</p>
+<p class="admonition-title">When do you use backticks?</p>
+<p>Almost always in modern JS. Even if you don't have interpolation, it's readable and flexible.</p>
 </div>
 <hr />
-<h2 id="operatori-aritmetici">Operatori aritmetici<a class="headerlink" href="#operatori-aritmetici" title="Link to this section">&para;</a></h2>
+<h2 id="arithmetic-operators">Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Link to this section">&para;</a></h2>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
@@ -569,46 +569,46 @@
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">    </span><span class="c1">// 7</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">    </span><span class="c1">// 30</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">    </span><span class="c1">// 3.3333...</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">    </span><span class="c1">// 1 — restul împărțirii (modulo)</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// 1000 — ridicare la putere (10³)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">    </span><span class="c1">// 1 — remainder of division (modulo)</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span><span class="w">   </span><span class="c1">// 1000 — exponentiation (10³)</span>
 </span></code></pre></div>
-<h3 id="capcana-cu-string-uri">Capcana cu string-uri<a class="headerlink" href="#capcana-cu-string-uri" title="Link to this section">&para;</a></h3>
-<p><code>+</code> are două sensuri în JS:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">        </span><span class="c1">// 4   — adunare numerică</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">      </span><span class="c1">// &quot;22&quot; — concatenare string!</span>
+<h3 id="the-pitfall-with-strings">The pitfall with strings<a class="headerlink" href="#the-pitfall-with-strings" title="Link to this section">&para;</a></h3>
+<p><code>+</code> has two meanings in JS:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">        </span><span class="c1">// 4   — numeric addition</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">      </span><span class="c1">// &quot;22&quot; — string concatenation!</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">);</span><span class="w">    </span><span class="c1">// &quot;22&quot;</span>
 </span></code></pre></div>
-<p>Dar operatorii <code>-</code>, <code>*</code>, <code>/</code> convertesc automat string la number:</p>
+<p>But the operators <code>-</code>, <code>*</code>, <code>/</code> automatically convert string to number:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w">     </span><span class="c1">// 8</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="p">);</span><span class="w">    </span><span class="c1">// 15</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Conversia implicită e o sursă clasică de bug-uri</p>
-<p>Dacă citești un număr dintr-un input HTML, acesta vine ca <strong>string</strong>. Convertește-l explicit înainte de calcule (vezi mai jos).</p>
+<p class="admonition-title">Implicit conversion is a classic source of bugs</p>
+<p>If you read a number from an HTML input, it comes as a <strong>string</strong>. Convert it explicitly before calculations (see below).</p>
 </div>
 <hr />
-<h2 id="metode-utile-pentru-string">Metode utile pentru string<a class="headerlink" href="#metode-utile-pentru-string" title="Link to this section">&para;</a></h2>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;  Salut, Ana!  &quot;</span><span class="p">;</span>
+<h2 id="useful-methods-for-string">Useful methods for string<a class="headerlink" href="#useful-methods-for-string" title="Link to this section">&para;</a></h2>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;  Hello, Ana!  &quot;</span><span class="p">;</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nx">text</span><span class="p">.</span><span class="nx">length</span><span class="w">              </span><span class="c1">// 15 — numărul de caractere (cu spații)</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="w">       </span><span class="c1">// &quot;  SALUT, ANA!  &quot;</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nx">text</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w">       </span><span class="c1">// &quot;  salut, ana!  &quot;</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nx">text</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span><span class="w">              </span><span class="c1">// &quot;Salut, Ana!&quot; — elimină spațiile de la capete</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nx">text</span><span class="p">.</span><span class="nx">length</span><span class="w">              </span><span class="c1">// 16 — number of characters (with spaces)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="w">       </span><span class="c1">// &quot;  HELLO, ANA!  &quot;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nx">text</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w">       </span><span class="c1">// &quot;  hello, ana!  &quot;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nx">text</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span><span class="w">              </span><span class="c1">// &quot;Hello, Ana!&quot; — removes leading/trailing spaces</span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">)</span><span class="w">     </span><span class="c1">// true</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nx">text</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w">         </span><span class="c1">// &quot;Salut&quot; — substring de la index 2 la 7 (exclusiv)</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Maria&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// &quot;  Salut, Maria!  &quot;</span>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="nx">text</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">// [&quot;  Salut&quot;, &quot; Ana!  &quot;] — împarte după virgulă</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nx">text</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w">         </span><span class="c1">// &quot;Hello&quot; — substring from index 2 to 7 (exclusive)</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Maria&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// &quot;  Hello, Maria!  &quot;</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="nx">text</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">// [&quot;  Hello&quot;, &quot; Ana!  &quot;] — splits by comma</span>
 </span></code></pre></div>
-<p>Metodele <strong>nu modifică</strong> string-ul original (string-urile sunt imutabile) — returnează unul nou.</p>
+<p>The methods <strong>do not modify</strong> the original string (strings are immutable) — they return a new one.</p>
 <hr />
-<h2 id="metode-utile-pentru-number">Metode utile pentru number<a class="headerlink" href="#metode-utile-pentru-number" title="Link to this section">&para;</a></h2>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">pret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">19.9876</span><span class="p">;</span>
+<h2 id="useful-methods-for-number">Useful methods for number<a class="headerlink" href="#useful-methods-for-number" title="Link to this section">&para;</a></h2>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">19.9876</span><span class="p">;</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">pret</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span><span class="w">            </span><span class="c1">// &quot;19.99&quot; — rotunjire la 2 zecimale (ATENȚIE: returnează string!)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">price</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span><span class="w">           </span><span class="c1">// &quot;19.99&quot; — round to 2 decimals (WARNING: returns string!)</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nb">Number</span><span class="p">.</span><span class="nb">parseInt</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">);</span><span class="w">      </span><span class="c1">// 42</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nb">Number</span><span class="p">.</span><span class="nb">parseFloat</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 3.14</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nb">Number</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">);</span><span class="w">             </span><span class="c1">// 3.14 — conversie directă</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nb">Number</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">);</span><span class="w">             </span><span class="c1">// 3.14 — direct conversion</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">3.6</span><span class="p">);</span><span class="w">     </span><span class="c1">// 4</span>
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mf">3.9</span><span class="p">);</span><span class="w">     </span><span class="c1">// 3</span>
@@ -616,144 +616,144 @@
 </span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">);</span><span class="w">        </span><span class="c1">// 5</span>
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span><span class="w">   </span><span class="c1">// 9</span>
 </span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span><span class="w">   </span><span class="c1">// 2</span>
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span><span class="w">       </span><span class="c1">// 0.7231... — număr aleatoriu în [0, 1)</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span><span class="w">       </span><span class="c1">// 0.7231... — random number in [0, 1)</span>
 </span></code></pre></div>
-<h3 id="conversie-string-number">Conversie string → number<a class="headerlink" href="#conversie-string-number" title="Link to this section">&para;</a></h3>
-<p>Când citești dintr-un input:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">textVarsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;14&quot;</span><span class="p">;</span><span class="w">               </span><span class="c1">// a venit ca string</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">textVarsta</span><span class="p">);</span><span class="w">      </span><span class="c1">// 14 ca number</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w">               </span><span class="c1">// 15 (corect!)</span>
+<h3 id="conversion-string-number">Conversion string → number<a class="headerlink" href="#conversion-string-number" title="Link to this section">&para;</a></h3>
+<p>When you read from an input:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ageText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;14&quot;</span><span class="p">;</span><span class="w">                   </span><span class="c1">// came as string</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">ageText</span><span class="p">);</span><span class="w">             </span><span class="c1">// 14 as number</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w">                   </span><span class="c1">// 15 (correct!)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="operatorul-typeof">Operatorul <code>typeof</code><a class="headerlink" href="#operatorul-typeof" title="Link to this section">&para;</a></h2>
-<p>Află tipul unei valori:</p>
+<h2 id="the-typeof-operator">The <code>typeof</code> operator<a class="headerlink" href="#the-typeof-operator" title="Link to this section">&para;</a></h2>
+<p>Find the type of a value:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ow">typeof</span><span class="w"> </span><span class="mf">42</span><span class="w">          </span><span class="c1">// &quot;number&quot;</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="ow">typeof</span><span class="w"> </span><span class="s2">&quot;ana&quot;</span><span class="w">       </span><span class="c1">// &quot;string&quot;</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="ow">typeof</span><span class="w"> </span><span class="kc">true</span><span class="w">        </span><span class="c1">// &quot;boolean&quot;</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="ow">typeof</span><span class="w"> </span><span class="kc">undefined</span><span class="w">   </span><span class="c1">// &quot;undefined&quot;</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="ow">typeof</span><span class="w"> </span><span class="kc">null</span><span class="w">        </span><span class="c1">// &quot;object&quot; — bug istoric în JS!</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="ow">typeof</span><span class="w"> </span><span class="kc">null</span><span class="w">        </span><span class="c1">// &quot;object&quot; — historic bug in JS!</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="ow">typeof</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]</span><span class="w">   </span><span class="c1">// &quot;object&quot;</span>
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="ow">typeof</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// &quot;object&quot;</span>
 </span></code></pre></div>
 <div class="admonition note">
-<p class="admonition-title"><code>typeof null</code> este <code>\"object\"</code></p>
-<p>Este un bug vechi din JavaScript care nu mai poate fi reparat fără să strice internetul. Reține că e o excepție.</p>
+<p class="admonition-title"><code>typeof null</code> is <code>\"object\"</code></p>
+<p>It's an old bug in JavaScript that can no longer be fixed without breaking the internet. Remember it's an exception.</p>
 </div>
 <hr />
-<h2 id="arrays-pe-scurt">Arrays — pe scurt<a class="headerlink" href="#arrays-pe-scurt" title="Link to this section">&para;</a></h2>
-<p>Un <strong>array</strong> stochează o listă ordonată de valori. Detalii în lecțiile următoare; pentru moment:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">culori</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;roșu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;verde&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;albastru&quot;</span><span class="p">];</span>
+<h2 id="arrays-briefly">Arrays — briefly<a class="headerlink" href="#arrays-briefly" title="Link to this section">&para;</a></h2>
+<p>An <strong>array</strong> stores an ordered list of values. Details in the next lessons; for now:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">];</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">culori</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">       </span><span class="c1">// &quot;roșu&quot;</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">culori</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span><span class="w">   </span><span class="c1">// 3</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">       </span><span class="c1">// &quot;red&quot;</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span><span class="w">   </span><span class="c1">// 3</span>
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nx">culori</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;galben&quot;</span><span class="p">);</span><span class="w">        </span><span class="c1">// adaugă la final</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">culori</span><span class="p">);</span><span class="w">           </span><span class="c1">// [&quot;roșu&quot;, &quot;verde&quot;, &quot;albastru&quot;, &quot;galben&quot;]</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nx">colors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;yellow&quot;</span><span class="p">);</span><span class="w">        </span><span class="c1">// adds at the end</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">);</span><span class="w">           </span><span class="c1">// [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;yellow&quot;]</span>
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ultim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">culori</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span><span class="w">   </span><span class="c1">// scoate ultimul element</span>
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ultim</span><span class="p">);</span><span class="w">            </span><span class="c1">// &quot;galben&quot;</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="kd">const</span><span class="w"> </span><span class="nx">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colors</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span><span class="w">    </span><span class="c1">// removes the last element</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">last</span><span class="p">);</span><span class="w">             </span><span class="c1">// &quot;yellow&quot;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="obiecte-pe-scurt">Obiecte — pe scurt<a class="headerlink" href="#obiecte-pe-scurt" title="Link to this section">&para;</a></h2>
-<p>Un <strong>obiect</strong> stochează perechi cheie-valoare:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">persoana</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nx">nume</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nx">varsta</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="p">,</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nx">clasa</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;8A&quot;</span>
+<h2 id="objects-briefly">Objects — briefly<a class="headerlink" href="#objects-briefly" title="Link to this section">&para;</a></h2>
+<p>An <strong>object</strong> stores key-value pairs:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="p">,</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nx">grade</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;8A&quot;</span>
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">};</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">persoana</span><span class="p">.</span><span class="nx">nume</span><span class="p">);</span><span class="w">     </span><span class="c1">// &quot;Ana&quot;</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">persoana</span><span class="p">[</span><span class="s2">&quot;varsta&quot;</span><span class="p">]);</span><span class="w"> </span><span class="c1">// 14</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span><span class="w">     </span><span class="c1">// &quot;Ana&quot;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]);</span><span class="w">   </span><span class="c1">// 14</span>
 </span></code></pre></div>
-<p>Vom reveni pe larg.</p>
+<p>We'll come back in detail.</p>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-prezentare-personala">Exercițiu 1 — Prezentare personală<a class="headerlink" href="#exercitiu-1-prezentare-personala" title="Link to this section">&para;</a></h3>
-<p>Creează variabilele <code>nume</code>, <code>varsta</code> și <code>student</code> (boolean). Afișează-le cu un template literal.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-personal-introduction">Exercise 1 — Personal introduction<a class="headerlink" href="#exercise-1-personal-introduction" title="Link to this section">&para;</a></h3>
+<p>Create the variables <code>name</code>, <code>age</code> and <code>student</code> (boolean). Display them with a template literal.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mihai&quot;</span><span class="p">;</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">varsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14</span><span class="p">;</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mihai&quot;</span><span class="p">;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14</span><span class="p">;</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Numele meu e </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">, am </span><span class="si">${</span><span class="nx">varsta</span><span class="si">}</span><span class="sb"> ani, student: </span><span class="si">${</span><span class="nx">student</span><span class="si">}</span><span class="sb">.`</span><span class="p">);</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1">// Numele meu e Mihai, am 14 ani, student: true.</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`My name is </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">, I&#39;m </span><span class="si">${</span><span class="nx">age</span><span class="si">}</span><span class="sb"> years old, student: </span><span class="si">${</span><span class="nx">student</span><span class="si">}</span><span class="sb">.`</span><span class="p">);</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1">// My name is Mihai, I&#39;m 14 years old, student: true.</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-curatare-string">Exercițiu 2 — Curățare string<a class="headerlink" href="#exercitiu-2-curatare-string" title="Link to this section">&para;</a></h3>
-<p>Pornind de la <code>"  Ana Pop  "</code>, obține varianta fără spații la capete și în majuscule.</p>
+<h3 id="exercise-2-cleaning-a-string">Exercise 2 — Cleaning a string<a class="headerlink" href="#exercise-2-cleaning-a-string" title="Link to this section">&para;</a></h3>
+<p>Starting from <code>"  Ana Pop  "</code>, get the version without leading/trailing spaces and in uppercase.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">original</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;  Ana Pop  &quot;</span><span class="p">;</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">curatat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">original</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toUpperCase</span><span class="p">();</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">curatat</span><span class="p">);</span><span class="w">   </span><span class="c1">// &quot;ANA POP&quot;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cleaned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">original</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toUpperCase</span><span class="p">();</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cleaned</span><span class="p">);</span><span class="w">   </span><span class="c1">// &quot;ANA POP&quot;</span>
 </span></code></pre></div>
-<p>Poți înlănțui metode: <code>trim()</code> returnează un string, pe care apelezi apoi <code>toUpperCase()</code>.</p>
+<p>You can chain methods: <code>trim()</code> returns a string, on which you then call <code>toUpperCase()</code>.</p>
 </details>
-<h3 id="exercitiu-3-conversie-si-adunare">Exercițiu 3 — Conversie și adunare<a class="headerlink" href="#exercitiu-3-conversie-si-adunare" title="Link to this section">&para;</a></h3>
-<p>Convertește string-ul <code>"42"</code> la număr și adună-i <code>8</code>. Afișează rezultatul.</p>
+<h3 id="exercise-3-convert-and-add">Exercise 3 — Convert and add<a class="headerlink" href="#exercise-3-convert-and-add" title="Link to this section">&para;</a></h3>
+<p>Convert the string <code>"42"</code> to a number and add <code>8</code> to it. Display the result.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;42&quot;</span><span class="p">;</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span><span class="w">      </span><span class="c1">// sau Number.parseInt(text)</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">rezultat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numar</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rezultat</span><span class="p">);</span><span class="w">            </span><span class="c1">// 50</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span><span class="w">     </span><span class="c1">// or Number.parseInt(text)</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span><span class="w">              </span><span class="c1">// 50</span>
 </span></code></pre></div>
-<p>Dacă uiți conversia: <code>"42" + 8</code> → <code>"428"</code> (concatenare). Clasic!</p>
+<p>If you forget the conversion: <code>"42" + 8</code> → <code>"428"</code> (concatenation). Classic!</p>
 </details>
-<h3 id="exercitiu-4-verifica-tipuri">Exercițiu 4 — Verifică tipuri<a class="headerlink" href="#exercitiu-4-verifica-tipuri" title="Link to this section">&para;</a></h3>
-<p>Ce afișează fiecare din aceste <code>console.log</code>?</p>
+<h3 id="exercise-4-check-types">Exercise 4 — Check types<a class="headerlink" href="#exercise-4-check-types" title="Link to this section">&para;</a></h3>
+<p>What does each of these <code>console.log</code> show?</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="s2">&quot;14&quot;</span><span class="p">);</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="mf">14</span><span class="p">);</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="p">(</span><span class="mf">14</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="kc">undefined</span><span class="p">);</span>
 </span></code></pre></div>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&quot;string&quot;
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>&quot;number&quot;
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>&quot;boolean&quot;   — comparația returnează true/false
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>&quot;boolean&quot;   — comparison returns true/false
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>&quot;undefined&quot;
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-calculator-de-arie">Mini-proiect: Calculator de arie<a class="headerlink" href="#mini-proiect-calculator-de-arie" title="Link to this section">&para;</a></h2>
-<p>Scrie un program care calculează aria unui dreptunghi și afișează rezultatul frumos.</p>
-<p><strong>Cerință:</strong></p>
+<h2 id="mini-project-area-calculator">Mini-project: Area calculator<a class="headerlink" href="#mini-project-area-calculator" title="Link to this section">&para;</a></h2>
+<p>Write a program that calculates the area of a rectangle and displays the result nicely.</p>
+<p><strong>Requirement:</strong></p>
 <ul>
-<li>Definește <code>lungime</code> și <code>latime</code> cu <code>let</code> / <code>const</code>.</li>
-<li>Calculează aria.</li>
-<li>Afișează cu template literal: <code>"Aria dreptunghiului de 5x3 este 15 m²"</code>.</li>
+<li>Define <code>length</code> and <code>width</code> with <code>let</code> / <code>const</code>.</li>
+<li>Calculate the area.</li>
+<li>Display with a template literal: <code>"The area of the 5x3 rectangle is 15 m²"</code>.</li>
 </ul>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">lungime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">latime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">arie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lungime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">latime</span><span class="p">;</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">width</span><span class="p">;</span>
 </span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Aria dreptunghiului de </span><span class="si">${</span><span class="nx">lungime</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">latime</span><span class="si">}</span><span class="sb"> este </span><span class="si">${</span><span class="nx">arie</span><span class="si">}</span><span class="sb"> m².`</span><span class="p">);</span>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1">// Aria dreptunghiului de 5x3 este 15 m².</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`The area of the </span><span class="si">${</span><span class="nx">length</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">width</span><span class="si">}</span><span class="sb"> rectangle is </span><span class="si">${</span><span class="nx">area</span><span class="si">}</span><span class="sb"> m².`</span><span class="p">);</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1">// The area of the 5x3 rectangle is 15 m².</span>
 </span></code></pre></div>
-<p><strong>Bonus:</strong> cere valorile de la utilizator cu <code>prompt()</code> și convertește-le cu <code>Number()</code>.</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">lungime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Lungime:&quot;</span><span class="p">));</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">latime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Lățime:&quot;</span><span class="p">));</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">arie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lungime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">latime</span><span class="p">;</span>
+<p><strong>Bonus:</strong> ask the user for the values with <code>prompt()</code> and convert them with <code>Number()</code>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Length:&quot;</span><span class="p">));</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Width:&quot;</span><span class="p">));</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">width</span><span class="p">;</span>
 </span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="nx">alert</span><span class="p">(</span><span class="sb">`Aria e </span><span class="si">${</span><span class="nx">arie</span><span class="si">}</span><span class="sb"> m².`</span><span class="p">);</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="nx">alert</span><span class="p">(</span><span class="sb">`The area is </span><span class="si">${</span><span class="nx">area</span><span class="si">}</span><span class="sb"> m².`</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li>Preferă <strong><code>const</code></strong>; folosește <strong><code>let</code></strong> doar când reasignezi; <strong>nu folosi <code>var</code></strong>.</li>
-<li>Tipuri primitive: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>.</li>
-<li>Template literals cu <code>`</code> și <code>${}</code> sunt modul modern de a construi string-uri.</li>
-<li><code>"2" + 2</code> este <code>"22"</code> (concatenare) — ai grijă la conversiile implicite.</li>
-<li><code>Number(x)</code>, <code>Number.parseInt(x)</code>, <code>Number.parseFloat(x)</code> convertesc string la number.</li>
-<li><code>typeof</code> îți spune tipul unei valori.</li>
+<li>Prefer <strong><code>const</code></strong>; use <strong><code>let</code></strong> only when you reassign; <strong>don't use <code>var</code></strong>.</li>
+<li>Primitive types: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>.</li>
+<li>Template literals with <code>`</code> and <code>${}</code> are the modern way to build strings.</li>
+<li><code>"2" + 2</code> is <code>"22"</code> (concatenation) — be careful with implicit conversions.</li>
+<li><code>Number(x)</code>, <code>Number.parseInt(x)</code>, <code>Number.parseFloat(x)</code> convert string to number.</li>
+<li><code>typeof</code> tells you the type of a value.</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../13-js-conditii-bucle/">→ Lecția 13: Condiții și bucle</a></p>
+<p><strong>Next step:</strong> <a href="../13-js-conditii-bucle/">→ Lesson 13: Conditions and loops</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -789,16 +789,16 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-12-variabile-si-tipuri-de-date" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 12 · Variabile și tipuri de date</a>
+                  <a href="#lesson-12-variables-and-data-types" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 12 · Variables and data types</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#declararea-variabilelor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Declararea variabilelor</a>
+                        <a href="#declaring-variables" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Declaring variables</a>
                       </li>
                     
                       <li>
-                        <a href="#tipuri-primitive" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Tipuri primitive</a>
+                        <a href="#primitive-types" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Primitive types</a>
                       </li>
                     
                       <li>
@@ -806,39 +806,39 @@
                       </li>
                     
                       <li>
-                        <a href="#operatori-aritmetici" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatori aritmetici</a>
+                        <a href="#arithmetic-operators" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arithmetic operators</a>
                       </li>
                     
                       <li>
-                        <a href="#metode-utile-pentru-string" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Metode utile pentru string</a>
+                        <a href="#useful-methods-for-string" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Useful methods for string</a>
                       </li>
                     
                       <li>
-                        <a href="#metode-utile-pentru-number" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Metode utile pentru number</a>
+                        <a href="#useful-methods-for-number" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Useful methods for number</a>
                       </li>
                     
                       <li>
-                        <a href="#operatorul-typeof" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatorul typeof</a>
+                        <a href="#the-typeof-operator" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The typeof operator</a>
                       </li>
                     
                       <li>
-                        <a href="#arrays-pe-scurt" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arrays — pe scurt</a>
+                        <a href="#arrays-briefly" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arrays — briefly</a>
                       </li>
                     
                       <li>
-                        <a href="#obiecte-pe-scurt" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Obiecte — pe scurt</a>
+                        <a href="#objects-briefly" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Objects — briefly</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-calculator-de-arie" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Calculator de arie</a>
+                        <a href="#mini-project-area-calculator" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Area calculator</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

@@ -432,14 +432,14 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">14: Funcții</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Funcții declarative, expresii de funcție și arrow functions — blocul de construcție al codului reutilizabil.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Function declarations, function expressions and arrow functions — the building block of reusable code.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">functii</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">functions</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">arrow</span>
                 
@@ -447,229 +447,229 @@
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">scope</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">parametri</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">parameters</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-14-functii">Lecția 14 · Funcții<a class="headerlink" href="#lectia-14-functii" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-14-functions">Lesson 14 · Functions<a class="headerlink" href="#lesson-14-functions" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>De ce avem nevoie de funcții (evitarea repetării, organizare)</li>
-<li>Trei moduri de a defini o funcție: declaration, expression, arrow</li>
-<li>Parametri cu valori default, parametri rest</li>
-<li><code>return</code> și multiple return-uri</li>
-<li>Ce este <strong>scope</strong>-ul: global, function, block</li>
-<li>Ce sunt <strong>callback</strong>-urile (preview pentru DOM events)</li>
+<li>Why we need functions (avoiding repetition, organization)</li>
+<li>Three ways to define a function: declaration, expression, arrow</li>
+<li>Default parameters, rest parameters</li>
+<li><code>return</code> and multiple returns</li>
+<li>What <strong>scope</strong> is: global, function, block</li>
+<li>What <strong>callbacks</strong> are (preview for DOM events)</li>
 </ul>
 </div>
 <hr />
-<h2 id="de-ce-functii">De ce funcții?<a class="headerlink" href="#de-ce-functii" title="Link to this section">&para;</a></h2>
-<p>O <strong>funcție</strong> e un bloc de cod pe care îl poți <strong>reutiliza</strong> dându-i un nume. Îl apelezi oriunde ai nevoie, cu date diferite.</p>
-<p>Fără funcții:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Calculează aria pentru trei dreptunghiuri — cod repetitiv</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">arie1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Dreptunghi 1: </span><span class="si">${</span><span class="nx">arie1</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<h2 id="why-functions">Why functions?<a class="headerlink" href="#why-functions" title="Link to this section">&para;</a></h2>
+<p>A <strong>function</strong> is a block of code that you can <strong>reuse</strong> by giving it a name. You call it wherever you need, with different data.</p>
+<p>Without functions:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Calculate the area for three rectangles — repetitive code</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">area1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Rectangle 1: </span><span class="si">${</span><span class="nx">area1</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">arie2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Dreptunghi 2: </span><span class="si">${</span><span class="nx">arie2</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">area2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Rectangle 2: </span><span class="si">${</span><span class="nx">area2</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">arie3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Dreptunghi 3: </span><span class="si">${</span><span class="nx">arie3</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">area3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Rectangle 3: </span><span class="si">${</span><span class="nx">area3</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Cu funcții:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">arie</span><span class="p">(</span><span class="nx">lungime</span><span class="p">,</span><span class="w"> </span><span class="nx">latime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">lungime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">latime</span><span class="p">;</span>
+<p>With functions:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">area</span><span class="p">(</span><span class="nx">length</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">width</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Dreptunghi 1: </span><span class="si">${</span><span class="nx">arie</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Dreptunghi 2: </span><span class="si">${</span><span class="nx">arie</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Dreptunghi 3: </span><span class="si">${</span><span class="nx">arie</span><span class="p">(</span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Rectangle 1: </span><span class="si">${</span><span class="nx">area</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Rectangle 2: </span><span class="si">${</span><span class="nx">area</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Rectangle 3: </span><span class="si">${</span><span class="nx">area</span><span class="p">(</span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Câștigi: <strong>mai puțin cod, mai puține greșeli, ușor de modificat</strong>.</p>
+<p>You gain: <strong>less code, fewer mistakes, easy to modify</strong>.</p>
 <hr />
 <h2 id="function-declaration">Function declaration<a class="headerlink" href="#function-declaration" title="Link to this section">&para;</a></h2>
-<p>Stilul „clasic”:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">salut</span><span class="p">(</span><span class="nx">nume</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<p>The "classic" style:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salut</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// &quot;Salut, Ana!&quot;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salut</span><span class="p">(</span><span class="s2">&quot;Mihai&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;Salut, Mihai!&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// &quot;Hello, Ana!&quot;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="s2">&quot;Mihai&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;Hello, Mihai!&quot;</span>
 </span></code></pre></div>
-<p>Părți:</p>
+<p>Parts:</p>
 <ul>
-<li><code>function</code> — cuvânt cheie.</li>
-<li><code>salut</code> — numele funcției.</li>
-<li><code>(nume)</code> — lista de parametri.</li>
-<li><code>{ ... }</code> — corpul funcției.</li>
-<li><code>return</code> — ce „returnează” (trimite înapoi) funcția.</li>
+<li><code>function</code> — keyword.</li>
+<li><code>greet</code> — function name.</li>
+<li><code>(name)</code> — parameter list.</li>
+<li><code>{ ... }</code> — function body.</li>
+<li><code>return</code> — what the function "returns" (sends back).</li>
 </ul>
 <hr />
 <h2 id="function-expression">Function expression<a class="headerlink" href="#function-expression" title="Link to this section">&para;</a></h2>
-<p>O funcție poate fi <strong>stocată într-o variabilă</strong>:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">salut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">nume</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<p>A function can be <strong>stored in a variable</strong>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">};</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salut</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">));</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">));</span>
 </span></code></pre></div>
-<p>Observă:</p>
+<p>Notice:</p>
 <ul>
-<li>Funcția nu are nume după <code>function</code> (se numește <strong>anonimă</strong>).</li>
-<li>Linia se termină cu <code>;</code> (pentru că e o expresie asignată unei variabile).</li>
+<li>The function has no name after <code>function</code> (it's called <strong>anonymous</strong>).</li>
+<li>The line ends with <code>;</code> (because it's an expression assigned to a variable).</li>
 </ul>
 <hr />
-<h2 id="arrow-function-functie-sageata">Arrow function (funcție săgeată)<a class="headerlink" href="#arrow-function-functie-sageata" title="Link to this section">&para;</a></h2>
-<p>Forma <strong>modernă</strong> și <strong>compactă</strong>, introdusă în ES6:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Versiunea lungă</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">salut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nume</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<h2 id="arrow-function">Arrow function<a class="headerlink" href="#arrow-function" title="Link to this section">&para;</a></h2>
+<p>The <strong>modern</strong> and <strong>compact</strong> form, introduced in ES6:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Long version</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">};</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">// Versiunea scurtă (implicit return)</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">salut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nume</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">// Short version (implicit return)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">// Un singur parametru — parantezele sunt opționale</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">salut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">// One parameter — parentheses are optional</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">// Fără parametri — parantezele sunt obligatorii</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ora</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleTimeString</span><span class="p">();</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">// No parameters — parentheses are required</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleTimeString</span><span class="p">();</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1">// Doi sau mai mulți parametri</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1">// Two or more parameters</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
 </span></code></pre></div>
-<p>Reguli:</p>
+<p>Rules:</p>
 <ul>
-<li>Un singur parametru: <code>()</code> opțional.</li>
-<li>Corp de o singură expresie: <code>{}</code> și <code>return</code> opționale (implicit return).</li>
-<li>Corp cu mai multe linii: <code>{}</code> și <code>return</code> explicit obligatorii.</li>
+<li>Single parameter: <code>()</code> optional.</li>
+<li>Body of a single expression: <code>{}</code> and <code>return</code> optional (implicit return).</li>
+<li>Body with multiple lines: <code>{}</code> and explicit <code>return</code> required.</li>
 </ul>
 <hr />
-<h2 id="arrow-vs-regular-ce-sa-alegi">Arrow vs regular — ce să alegi?<a class="headerlink" href="#arrow-vs-regular-ce-sa-alegi" title="Link to this section">&para;</a></h2>
+<h2 id="arrow-vs-regular-which-to-choose">Arrow vs regular — which to choose?<a class="headerlink" href="#arrow-vs-regular-which-to-choose" title="Link to this section">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Aspect</th>
-<th><code>function</code> tradițional</th>
+<th>Traditional <code>function</code></th>
 <th>Arrow <code>=&gt;</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Sintaxă</td>
-<td>mai verboasă</td>
-<td>mai compactă</td>
+<td>Syntax</td>
+<td>more verbose</td>
+<td>more compact</td>
 </tr>
 <tr>
-<td><code>this</code> propriu</td>
-<td>DA</td>
-<td>NU (moștenit din contextul părinte)</td>
+<td>Own <code>this</code></td>
+<td>YES</td>
+<td>NO (inherited from parent context)</td>
 </tr>
 <tr>
 <td>Hoisting</td>
-<td>DA (poți apela înainte de definire)</td>
-<td>NU</td>
+<td>YES (you can call before definition)</td>
+<td>NO</td>
 </tr>
 <tr>
-<td>Util pentru</td>
-<td>metode de obiect, funcții lungi</td>
-<td>callback-uri, funcții scurte</td>
+<td>Useful for</td>
+<td>object methods, long functions</td>
+<td>callbacks, short functions</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Despre <code>this</code></p>
-<p><code>this</code> într-o arrow e moștenit din contextul părinte. Asta e adesea <strong>ce vrei</strong> când scrii callback-uri pentru events și pentru metode de array (<code>.map</code>, <code>.filter</code>). Detalii pe larg când ajungem la obiecte și clase.</p>
+<p class="admonition-title">About <code>this</code></p>
+<p><code>this</code> in an arrow is inherited from the parent context. This is often <strong>what you want</strong> when writing callbacks for events and for array methods (<code>.map</code>, <code>.filter</code>). Details in depth when we get to objects and classes.</p>
 </div>
-<p>Pentru acum: folosește <strong>arrow</strong> pentru callback-uri și funcții scurte, <strong>function declaration</strong> pentru funcții lungi de top-level.</p>
+<p>For now: use <strong>arrow</strong> for callbacks and short functions, <strong>function declaration</strong> for long top-level functions.</p>
 <hr />
-<h2 id="parametri">Parametri<a class="headerlink" href="#parametri" title="Link to this section">&para;</a></h2>
-<h3 id="multipli">Multipli<a class="headerlink" href="#multipli" title="Link to this section">&para;</a></h3>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">suma</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w">   </span><span class="c1">// 6</span>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Link to this section">&para;</a></h2>
+<h3 id="multiple">Multiple<a class="headerlink" href="#multiple" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w">   </span><span class="c1">// 6</span>
 </span></code></pre></div>
 <h3 id="default-values">Default values<a class="headerlink" href="#default-values" title="Link to this section">&para;</a></h3>
-<p>Dacă apelezi fără argument, parametrul ia valoarea default:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">salut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prieten&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<p>If you call without an argument, the parameter takes the default value:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;friend&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salut</span><span class="p">());</span><span class="w">         </span><span class="c1">// &quot;Salut, prieten!&quot;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salut</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// &quot;Salut, Ana!&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">());</span><span class="w">         </span><span class="c1">// &quot;Hello, friend!&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// &quot;Hello, Ana!&quot;</span>
 </span></code></pre></div>
 <h3 id="rest-parameters">Rest parameters<a class="headerlink" href="#rest-parameters" title="Link to this section">&para;</a></h3>
-<p>Pentru număr <strong>variabil</strong> de argumente:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">numere</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<p>For a <strong>variable</strong> number of arguments:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">numere</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nx">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">total</span><span class="p">;</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">};</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">suma</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w">         </span><span class="c1">// 6</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">suma</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">));</span><span class="w">   </span><span class="c1">// 50</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w">         </span><span class="c1">// 6</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">));</span><span class="w">   </span><span class="c1">// 50</span>
 </span></code></pre></div>
-<p><code>...numere</code> strânge toate argumentele într-un array numit <code>numere</code>.</p>
+<p><code>...numbers</code> gathers all arguments into an array called <code>numbers</code>.</p>
 <hr />
 <h2 id="return"><code>return</code><a class="headerlink" href="#return" title="Link to this section">&para;</a></h2>
 <ul>
-<li>Fără <code>return</code>, funcția returnează <code>undefined</code>.</li>
-<li><code>return</code> oprește execuția funcției imediat.</li>
+<li>Without <code>return</code>, the function returns <code>undefined</code>.</li>
+<li><code>return</code> stops the function execution immediately.</li>
 </ul>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;înainte&quot;</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;before&quot;</span><span class="p">);</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="k">return</span><span class="p">;</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;după&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// nu se execută niciodată</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;after&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// never executes</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">};</span>
 </span></code></pre></div>
 <h3 id="early-exit">Early exit<a class="headerlink" href="#early-exit" title="Link to this section">&para;</a></h3>
-<p>Returnează devreme pentru a evita imbricarea profundă:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// GREU de citit</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">verificaVarsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;major&quot;</span><span class="p">;</span>
+<p>Return early to avoid deep nesting:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// HARD to read</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">checkAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;adult&quot;</span><span class="p">;</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;minor&quot;</span><span class="p">;</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;valoare invalidă&quot;</span><span class="p">;</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;invalid value&quot;</span><span class="p">;</span>
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="p">};</span>
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="c1">// CURAT cu early return</span>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">verificaVarsta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;valoare invalidă&quot;</span><span class="p">;</span>
-</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;major&quot;</span><span class="p">;</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="c1">// CLEAN with early return</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">checkAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;invalid value&quot;</span><span class="p">;</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;adult&quot;</span><span class="p">;</span>
 </span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;minor&quot;</span><span class="p">;</span>
 </span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr />
-<h2 id="scope-domeniu-de-vizibilitate">Scope (domeniu de vizibilitate)<a class="headerlink" href="#scope-domeniu-de-vizibilitate" title="Link to this section">&para;</a></h2>
-<p><strong>Scope</strong> = unde e <strong>vizibilă</strong> o variabilă.</p>
+<h2 id="scope-visibility-domain">Scope (visibility domain)<a class="headerlink" href="#scope-visibility-domain" title="Link to this section">&para;</a></h2>
+<p><strong>Scope</strong> = where a variable is <strong>visible</strong>.</p>
 <h3 id="global-scope">Global scope<a class="headerlink" href="#global-scope" title="Link to this section">&para;</a></h3>
-<p>Declarată în afara oricărei funcții — accesibilă de oriunde:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numeSit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Cercul de Informatică&quot;</span><span class="p">;</span>
+<p>Declared outside any function — accessible from anywhere:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">siteName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Computer Science Club&quot;</span><span class="p">;</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">afisare</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numeSit</span><span class="p">);</span><span class="w">   </span><span class="c1">// OK, o vede</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">show</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">siteName</span><span class="p">);</span><span class="w">   </span><span class="c1">// OK, sees it</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="function-scope">Function scope<a class="headerlink" href="#function-scope" title="Link to this section">&para;</a></h3>
-<p>Declarată <strong>în</strong> funcție — accesibilă doar în funcție:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">calcul</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<p>Declared <strong>inside</strong> a function — accessible only in the function:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">compute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">42</span><span class="p">;</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">secret</span><span class="p">);</span><span class="w">   </span><span class="c1">// OK</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">}</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nx">calcul</span><span class="p">();</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nx">compute</span><span class="p">();</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">secret</span><span class="p">);</span><span class="w">   </span><span class="c1">// ReferenceError!</span>
 </span></code></pre></div>
 <h3 id="block-scope-let-const">Block scope (<code>let</code> / <code>const</code>)<a class="headerlink" href="#block-scope-let-const" title="Link to this section">&para;</a></h3>
-<p><code>let</code> și <code>const</code> sunt <strong>block-scoped</strong> — limitate la cea mai apropiată pereche de <code>{}</code>:</p>
+<p><code>let</code> and <code>const</code> are <strong>block-scoped</strong> — limited to the nearest pair of <code>{}</code>:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><span class="w">   </span><span class="c1">// 10</span>
@@ -678,115 +678,115 @@
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><span class="w">   </span><span class="c1">// ReferenceError!</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title"><code>var</code> e function-scoped, nu block-scoped</p>
-<p>Asta înseamnă că <code>var</code> declarată într-un <code>if</code> e accesibilă în afara lui — exact opusul a ce te-ai aștepta. Încă un motiv să folosești <code>let</code>/<code>const</code>.</p>
+<p class="admonition-title"><code>var</code> is function-scoped, not block-scoped</p>
+<p>This means a <code>var</code> declared inside an <code>if</code> is accessible outside of it — exactly the opposite of what you'd expect. Another reason to use <code>let</code>/<code>const</code>.</p>
 </div>
 <hr />
 <h2 id="callback-functions">Callback functions<a class="headerlink" href="#callback-functions" title="Link to this section">&para;</a></h2>
-<p>Un <strong>callback</strong> e o funcție pe care o <strong>pasezi</strong> altei funcții ca argument, pentru a fi apelată mai târziu:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cuIntarziere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span><span class="w">   </span><span class="c1">// rulează callback după 1 secundă</span>
+<p>A <strong>callback</strong> is a function that you <strong>pass</strong> to another function as an argument, to be called later:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">withDelay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span><span class="w">   </span><span class="c1">// run callback after 1 second</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">};</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nx">cuIntarziere</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;A trecut o secundă!&quot;</span><span class="p">));</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nx">withDelay</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;A second has passed!&quot;</span><span class="p">));</span>
 </span></code></pre></div>
-<p>Callback-urile sunt peste tot în JS — le vei folosi intens pentru evenimente (lecția 16) și pentru fetch (lecția 18).</p>
+<p>Callbacks are everywhere in JS — you'll use them heavily for events (lesson 16) and for fetch (lesson 18).</p>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-functia-patrat">Exercițiu 1 — Funcția <code>patrat</code><a class="headerlink" href="#exercitiu-1-functia-patrat" title="Link to this section">&para;</a></h3>
-<p>Scrie o funcție <code>patrat(n)</code> care returnează <code>n²</code>.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-the-square-function">Exercise 1 — The <code>square</code> function<a class="headerlink" href="#exercise-1-the-square-function" title="Link to this section">&para;</a></h3>
+<p>Write a function <code>square(n)</code> that returns <code>n²</code>.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">patrat</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">square</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">}</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">patrat</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span><span class="w">   </span><span class="c1">// 25</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">square</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span><span class="w">   </span><span class="c1">// 25</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1">// Sau ca arrow:</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">patrat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1">// Or as an arrow:</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-salut-cu-default">Exercițiu 2 — Salut cu default<a class="headerlink" href="#exercitiu-2-salut-cu-default" title="Link to this section">&para;</a></h3>
-<p>Scrie <code>salut(nume = "prieten")</code> care afișează <code>"Salut, &lt;nume&gt;!"</code>.</p>
+<h3 id="exercise-2-greet-with-default">Exercise 2 — Greet with default<a class="headerlink" href="#exercise-2-greet-with-default" title="Link to this section">&para;</a></h3>
+<p>Write <code>greet(name = "friend")</code> that prints <code>"Hello, &lt;name&gt;!"</code>.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">salut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prieten&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;friend&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salut</span><span class="p">());</span><span class="w">         </span><span class="c1">// &quot;Salut, prieten!&quot;</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salut</span><span class="p">(</span><span class="s2">&quot;Maria&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;Salut, Maria!&quot;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">());</span><span class="w">         </span><span class="c1">// &quot;Hello, friend!&quot;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="s2">&quot;Maria&quot;</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;Hello, Maria!&quot;</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-cel-mai-mare-din-trei">Exercițiu 3 — Cel mai mare din trei<a class="headerlink" href="#exercitiu-3-cel-mai-mare-din-trei" title="Link to this section">&para;</a></h3>
-<p>Funcția <code>celMaiMare(a, b, c)</code> returnează cel mai mare din trei numere.</p>
+<h3 id="exercise-3-largest-of-three">Exercise 3 — Largest of three<a class="headerlink" href="#exercise-3-largest-of-three" title="Link to this section">&para;</a></h3>
+<p>The function <code>largest(a, b, c)</code> returns the largest of three numbers.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">celMaiMare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="p">;</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span>
 </span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">};</span>
 </span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">celMaiMare</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">));</span><span class="w">   </span><span class="c1">// 9</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">largest</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">));</span><span class="w">   </span><span class="c1">// 9</span>
 </span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c1">// Sau foarte scurt:</span>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">celMaiMare2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">);</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c1">// Or very short:</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">largest2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-4-rescriere-ca-arrow">Exercițiu 4 — Rescriere ca arrow<a class="headerlink" href="#exercitiu-4-rescriere-ca-arrow" title="Link to this section">&para;</a></h3>
-<p>Rescrie <code>patrat</code> și <code>salut</code> de mai sus folosind <strong>arrow functions</strong>, în formele cele mai scurte posibil.</p>
+<h3 id="exercise-4-rewrite-as-arrow">Exercise 4 — Rewrite as arrow<a class="headerlink" href="#exercise-4-rewrite-as-arrow" title="Link to this section">&para;</a></h3>
+<p>Rewrite <code>square</code> and <code>greet</code> above using <strong>arrow functions</strong>, in the shortest possible forms.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">patrat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">salut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prieten&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Salut, </span><span class="si">${</span><span class="nx">nume</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;friend&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
 </span></code></pre></div>
-<p>Pentru <code>patrat</code>, un singur parametru → fără paranteze. O singură expresie → fără <code>{}</code> și fără <code>return</code>.</p>
+<p>For <code>square</code>, a single parameter → no parentheses. A single expression → no <code>{}</code> and no <code>return</code>.</p>
 </details>
 <hr />
-<h2 id="mini-proiect-convertor-de-temperatura">Mini-proiect: Convertor de temperatură<a class="headerlink" href="#mini-proiect-convertor-de-temperatura" title="Link to this section">&para;</a></h2>
-<p>Scrie două funcții care convertesc temperaturi între Celsius și Fahrenheit.</p>
-<p><strong>Formule:</strong></p>
+<h2 id="mini-project-temperature-converter">Mini-project: Temperature converter<a class="headerlink" href="#mini-project-temperature-converter" title="Link to this section">&para;</a></h2>
+<p>Write two functions that convert temperatures between Celsius and Fahrenheit.</p>
+<p><strong>Formulas:</strong></p>
 <ul>
 <li>Celsius → Fahrenheit: <code>F = C * 9/5 + 32</code></li>
 <li>Fahrenheit → Celsius: <code>C = (F - 32) * 5/9</code></li>
 </ul>
-<p><strong>Cerințe:</strong></p>
+<p><strong>Requirements:</strong></p>
 <ul>
-<li>Două funcții: <code>celsiusInFahrenheit(c)</code> și <code>fahrenheitInCelsius(f)</code>.</li>
-<li>Apelează-le cu câteva valori.</li>
-<li>Afișează cu template literal: <code>"0 °C = 32 °F"</code>.</li>
+<li>Two functions: <code>celsiusToFahrenheit(c)</code> and <code>fahrenheitToCelsius(f)</code>.</li>
+<li>Call them with a few values.</li>
+<li>Display with a template literal: <code>"0 °C = 32 °F"</code>.</li>
 </ul>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Formule de conversie</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">celsiusInFahrenheit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">32</span><span class="p">;</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">fahrenheitInCelsius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">32</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">9</span><span class="p">;</span>
+<summary>Solution</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Conversion formulas</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">celsiusToFahrenheit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">32</span><span class="p">;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">fahrenheitToCelsius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">32</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">9</span><span class="p">;</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1">// Câteva teste</span>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`0 °C = </span><span class="si">${</span><span class="nx">celsiusInFahrenheit</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="si">}</span><span class="sb"> °F`</span><span class="p">);</span><span class="w">      </span><span class="c1">// 0 °C = 32 °F</span>
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`100 °C = </span><span class="si">${</span><span class="nx">celsiusInFahrenheit</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span><span class="si">}</span><span class="sb"> °F`</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100 °C = 212 °F</span>
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`32 °F = </span><span class="si">${</span><span class="nx">fahrenheitInCelsius</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span><span class="si">}</span><span class="sb"> °C`</span><span class="p">);</span><span class="w">    </span><span class="c1">// 32 °F = 0 °C</span>
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`212 °F = </span><span class="si">${</span><span class="nx">fahrenheitInCelsius</span><span class="p">(</span><span class="mf">212</span><span class="p">)</span><span class="si">}</span><span class="sb"> °C`</span><span class="p">);</span><span class="w">  </span><span class="c1">// 212 °F = 100 °C</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1">// A few tests</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`0 °C = </span><span class="si">${</span><span class="nx">celsiusToFahrenheit</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="si">}</span><span class="sb"> °F`</span><span class="p">);</span><span class="w">      </span><span class="c1">// 0 °C = 32 °F</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`100 °C = </span><span class="si">${</span><span class="nx">celsiusToFahrenheit</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span><span class="si">}</span><span class="sb"> °F`</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100 °C = 212 °F</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`32 °F = </span><span class="si">${</span><span class="nx">fahrenheitToCelsius</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span><span class="si">}</span><span class="sb"> °C`</span><span class="p">);</span><span class="w">    </span><span class="c1">// 32 °F = 0 °C</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`212 °F = </span><span class="si">${</span><span class="nx">fahrenheitToCelsius</span><span class="p">(</span><span class="mf">212</span><span class="p">)</span><span class="si">}</span><span class="sb"> °C`</span><span class="p">);</span><span class="w">  </span><span class="c1">// 212 °F = 100 °C</span>
 </span></code></pre></div>
-<p><strong>Bonus:</strong> cere temperatura de la utilizator:</p>
-<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Temperatura în °C:&quot;</span><span class="p">));</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">celsiusInFahrenheit</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+<p><strong>Bonus:</strong> ask the user for the temperature:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Temperature in °C:&quot;</span><span class="p">));</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">celsiusToFahrenheit</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nx">alert</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">c</span><span class="si">}</span><span class="sb"> °C = </span><span class="si">${</span><span class="nx">f</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb"> °F`</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li>Funcțiile îți permit să <strong>reutilizezi cod</strong> cu input-uri diferite.</li>
-<li>Trei forme: <strong>declaration</strong> (<code>function nume() {}</code>), <strong>expression</strong> (<code>const f = function() {}</code>), <strong>arrow</strong> (<code>const f = () =&gt; {}</code>).</li>
-<li>Arrow e compactă și preferată pentru callback-uri scurte.</li>
-<li>Parametrii pot avea <strong>default values</strong> și <strong>rest</strong> (<code>...</code>).</li>
-<li><code>return</code> oprește funcția și trimite înapoi o valoare. Folosește <strong>early return</strong> ca să eviți imbricarea.</li>
-<li><strong>Scope-ul</strong> <code>let</code>/<code>const</code> e block-scoped (<code>{}</code>), <code>var</code> e function-scoped (evit-o).</li>
-<li><strong>Callback</strong>-urile sunt funcții pasate ca argumente — le vei folosi mult la events.</li>
+<li>Functions let you <strong>reuse code</strong> with different inputs.</li>
+<li>Three forms: <strong>declaration</strong> (<code>function name() {}</code>), <strong>expression</strong> (<code>const f = function() {}</code>), <strong>arrow</strong> (<code>const f = () =&gt; {}</code>).</li>
+<li>Arrow is compact and preferred for short callbacks.</li>
+<li>Parameters can have <strong>default values</strong> and <strong>rest</strong> (<code>...</code>).</li>
+<li><code>return</code> stops the function and sends a value back. Use <strong>early return</strong> to avoid nesting.</li>
+<li>The <code>let</code>/<code>const</code> <strong>scope</strong> is block-scoped (<code>{}</code>), <code>var</code> is function-scoped (avoid it).</li>
+<li><strong>Callbacks</strong> are functions passed as arguments — you'll use them a lot for events.</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../15-js-dom/">→ Lecția 15: DOM — Manipulare HTML</a></p>
+<p><strong>Next step:</strong> <a href="../15-js-dom/">→ Lesson 15: DOM — HTML manipulation</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -822,12 +822,12 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-14-functii" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 14 · Funcții</a>
+                  <a href="#lesson-14-functions" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 14 · Functions</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#de-ce-functii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">De ce funcții?</a>
+                        <a href="#why-functions" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Why functions?</a>
                       </li>
                     
                       <li>
@@ -839,15 +839,15 @@
                       </li>
                     
                       <li>
-                        <a href="#arrow-function-functie-sageata" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arrow function (funcție săgeată)</a>
+                        <a href="#arrow-function" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arrow function</a>
                       </li>
                     
                       <li>
-                        <a href="#arrow-vs-regular-ce-sa-alegi" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arrow vs regular — ce să alegi?</a>
+                        <a href="#arrow-vs-regular-which-to-choose" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Arrow vs regular — which to choose?</a>
                       </li>
                     
                       <li>
-                        <a href="#parametri" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Parametri</a>
+                        <a href="#parameters" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Parameters</a>
                       </li>
                     
                       <li>
@@ -855,7 +855,7 @@
                       </li>
                     
                       <li>
-                        <a href="#scope-domeniu-de-vizibilitate" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Scope (domeniu de vizibilitate)</a>
+                        <a href="#scope-visibility-domain" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Scope (visibility domain)</a>
                       </li>
                     
                       <li>
@@ -863,15 +863,15 @@
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-convertor-de-temperatura" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Convertor de temperatură</a>
+                        <a href="#mini-project-temperature-converter" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Temperature converter</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

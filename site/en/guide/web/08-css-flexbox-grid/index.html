@@ -432,7 +432,7 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">08: Flexbox și Grid</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Construiește layout-uri moderne cu Flexbox (1D) și Grid (2D). Fără float-uri, fără hack-uri.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Build modern layouts with Flexbox (1D) and Grid (2D). No floats, no hacks.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
@@ -454,144 +454,144 @@
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-08-flexbox-si-grid">Lecția 08 · Flexbox și Grid<a class="headerlink" href="#lectia-08-flexbox-si-grid" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-08-flexbox-and-grid">Lesson 08 · Flexbox and Grid<a class="headerlink" href="#lesson-08-flexbox-and-grid" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>De ce Flexbox și Grid au înlocuit <code>float</code></li>
-<li>Cum aliniezi elemente pe o axă cu <strong>Flexbox</strong></li>
-<li>Cum construiești layout-uri 2D cu <strong>CSS Grid</strong></li>
-<li>Diferențele și când folosești fiecare</li>
-<li>Trucuri responsive (auto-fit + minmax)</li>
+<li>Why Flexbox and Grid replaced <code>float</code></li>
+<li>How to align elements on one axis with <strong>Flexbox</strong></li>
+<li>How to build 2D layouts with <strong>CSS Grid</strong></li>
+<li>The differences and when to use each</li>
+<li>Responsive tricks (auto-fit + minmax)</li>
 </ul>
 </div>
 <hr />
-<h2 id="problema-dinainte-de-2015">Problema dinainte de 2015<a class="headerlink" href="#problema-dinainte-de-2015" title="Link to this section">&para;</a></h2>
-<p>Layout-urile se construiau cu <code>float: left</code> + <code>clear: both</code> — hack-uri fragile moștenite de la aranjarea imaginilor în text. Centrarea verticală era <strong>imposibilă</strong> fără trucuri cu <code>table-cell</code> sau <code>transform</code>.</p>
-<p>Din 2015 încoace, CSS a primit două instrumente moderne:</p>
+<h2 id="the-problem-before-2015">The problem before 2015<a class="headerlink" href="#the-problem-before-2015" title="Link to this section">&para;</a></h2>
+<p>Layouts were built with <code>float: left</code> + <code>clear: both</code> — fragile hacks inherited from arranging images within text. Vertical centering was <strong>impossible</strong> without tricks involving <code>table-cell</code> or <code>transform</code>.</p>
+<p>Since 2015, CSS has gained two modern tools:</p>
 <ul>
-<li><strong>Flexbox</strong> — aliniere pe <strong>o axă</strong> (1D): ideal pentru meniuri, carduri pe rând, bare de navigație</li>
-<li><strong>Grid</strong> — layout-uri <strong>2D</strong>: galerii, dashboard-uri, pagini complete</li>
+<li><strong>Flexbox</strong> — alignment on <strong>one axis</strong> (1D): ideal for menus, cards in a row, navigation bars</li>
+<li><strong>Grid</strong> — <strong>2D</strong> layouts: galleries, dashboards, full pages</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Uită de <code>float</code> pentru layout</p>
-<p><code>float</code> este folosit azi <strong>exclusiv</strong> pentru a înfășura textul în jurul unei imagini. Orice altceva → Flexbox sau Grid.</p>
+<p class="admonition-title">Forget about <code>float</code> for layout</p>
+<p><code>float</code> is used today <strong>exclusively</strong> to wrap text around an image. Anything else → Flexbox or Grid.</p>
 </div>
 <hr />
-<h2 id="flexbox-aliniere-pe-o-axa">Flexbox — aliniere pe o axă<a class="headerlink" href="#flexbox-aliniere-pe-o-axa" title="Link to this section">&para;</a></h2>
-<p>Activezi Flexbox pe <strong>părinte</strong> cu <code>display: flex</code>:</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bara&quot;</span><span class="p">&gt;</span>
+<h2 id="flexbox-alignment-on-one-axis">Flexbox — alignment on one axis<a class="headerlink" href="#flexbox-alignment-on-one-axis" title="Link to this section">&para;</a></h2>
+<p>You enable Flexbox on the <strong>parent</strong> with <code>display: flex</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bar&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">.</span><span class="nc">bara</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span><span class="w">          </span><span class="c">/* activează flex pe copiii direcți */</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w">              </span><span class="c">/* spațiu între copii */</span>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">.</span><span class="nc">bar</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span><span class="w">          </span><span class="c">/* enables flex on direct children */</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w">              </span><span class="c">/* space between children */</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Copiii devin <strong>flex items</strong> aliniați orizontal.</p>
-<h3 id="proprietati-pe-parinte">Proprietăți pe părinte<a class="headerlink" href="#proprietati-pe-parinte" title="Link to this section">&para;</a></h3>
+<p>The children become <strong>flex items</strong> aligned horizontally.</p>
+<h3 id="properties-on-the-parent">Properties on the parent<a class="headerlink" href="#properties-on-the-parent" title="Link to this section">&para;</a></h3>
 <div class="language-css highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">row</span><span class="p">;</span><span class="w">           </span><span class="c">/* row (implicit) | column | row-reverse | column-reverse */</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">flex-start</span><span class="p">;</span><span class="w">   </span><span class="c">/* aliniere pe axa principală */</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">stretch</span><span class="p">;</span><span class="w">          </span><span class="c">/* aliniere pe axa perpendiculară */</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">nowrap</span><span class="p">;</span><span class="w">             </span><span class="c">/* nowrap (implicit) | wrap */</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w">                     </span><span class="c">/* spațiu între elemente */</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">row</span><span class="p">;</span><span class="w">           </span><span class="c">/* row (default) | column | row-reverse | column-reverse */</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">flex-start</span><span class="p">;</span><span class="w">   </span><span class="c">/* alignment on the main axis */</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">stretch</span><span class="p">;</span><span class="w">          </span><span class="c">/* alignment on the cross axis */</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">nowrap</span><span class="p">;</span><span class="w">             </span><span class="c">/* nowrap (default) | wrap */</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w">                     </span><span class="c">/* space between elements */</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="justify-content-axa-principala"><code>justify-content</code> — axa principală<a class="headerlink" href="#justify-content-axa-principala" title="Link to this section">&para;</a></h3>
+<h3 id="justify-content-main-axis"><code>justify-content</code> — main axis<a class="headerlink" href="#justify-content-main-axis" title="Link to this section">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Valoare</th>
-<th>Efect</th>
+<th>Value</th>
+<th>Effect</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>flex-start</code></td>
-<td>toate la început (stânga)</td>
+<td>all at the start (left)</td>
 </tr>
 <tr>
 <td><code>center</code></td>
-<td>centrat</td>
+<td>centered</td>
 </tr>
 <tr>
 <td><code>flex-end</code></td>
-<td>toate la final (dreapta)</td>
+<td>all at the end (right)</td>
 </tr>
 <tr>
 <td><code>space-between</code></td>
-<td>primul la început, ultimul la final, restul egal între</td>
+<td>first at the start, last at the end, the rest equally between</td>
 </tr>
 <tr>
 <td><code>space-around</code></td>
-<td>spațiu egal în jurul fiecărui element</td>
+<td>equal space around each element</td>
 </tr>
 <tr>
 <td><code>space-evenly</code></td>
-<td>spațiu egal între și la capete</td>
+<td>equal space between and at the edges</td>
 </tr>
 </tbody>
 </table>
-<h3 id="align-items-axa-perpendiculara"><code>align-items</code> — axa perpendiculară<a class="headerlink" href="#align-items-axa-perpendiculara" title="Link to this section">&para;</a></h3>
+<h3 id="align-items-cross-axis"><code>align-items</code> — cross axis<a class="headerlink" href="#align-items-cross-axis" title="Link to this section">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Valoare</th>
-<th>Efect</th>
+<th>Value</th>
+<th>Effect</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>stretch</code> (implicit)</td>
-<td>întinse să umple înălțimea</td>
+<td><code>stretch</code> (default)</td>
+<td>stretched to fill the height</td>
 </tr>
 <tr>
 <td><code>flex-start</code></td>
-<td>aliniate sus</td>
+<td>aligned at the top</td>
 </tr>
 <tr>
 <td><code>center</code></td>
-<td>centrate vertical</td>
+<td>vertically centered</td>
 </tr>
 <tr>
 <td><code>flex-end</code></td>
-<td>aliniate jos</td>
+<td>aligned at the bottom</td>
 </tr>
 <tr>
 <td><code>baseline</code></td>
-<td>aliniate după baza textului</td>
+<td>aligned to the text baseline</td>
 </tr>
 </tbody>
 </table>
-<h3 id="proprietati-pe-copii">Proprietăți pe copii<a class="headerlink" href="#proprietati-pe-copii" title="Link to this section">&para;</a></h3>
+<h3 id="properties-on-children">Properties on children<a class="headerlink" href="#properties-on-children" title="Link to this section">&para;</a></h3>
 <div class="language-css highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">.</span><span class="nc">element</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                 </span><span class="c">/* crește pentru a umple spațiul (shorthand pentru flex-grow: 1) */</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">flex-basis</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span><span class="w">       </span><span class="c">/* dimensiunea de bază */</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="k">flex-shrink</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">          </span><span class="c">/* 0 = nu se micșorează */</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="k">align-self</span><span class="p">:</span><span class="w"> </span><span class="kc">flex-end</span><span class="p">;</span><span class="w">    </span><span class="c">/* override pe align-items doar pentru acest element */</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                 </span><span class="c">/* grows to fill the space (shorthand for flex-grow: 1) */</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">flex-basis</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span><span class="w">       </span><span class="c">/* base size */</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="k">flex-shrink</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">          </span><span class="c">/* 0 = does not shrink */</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="k">align-self</span><span class="p">:</span><span class="w"> </span><span class="kc">flex-end</span><span class="p">;</span><span class="w">    </span><span class="c">/* override align-items just for this element */</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <hr />
-<h2 id="exemple-flexbox">Exemple Flexbox<a class="headerlink" href="#exemple-flexbox" title="Link to this section">&para;</a></h2>
-<h3 id="1-bara-de-navigatie-logo-stanga-link-uri-dreapta">1. Bară de navigație (logo stânga, link-uri dreapta)<a class="headerlink" href="#1-bara-de-navigatie-logo-stanga-link-uri-dreapta" title="Link to this section">&para;</a></h3>
+<h2 id="flexbox-examples">Flexbox examples<a class="headerlink" href="#flexbox-examples" title="Link to this section">&para;</a></h2>
+<h3 id="1-navigation-bar-logo-left-links-right">1. Navigation bar (logo left, links right)<a class="headerlink" href="#1-navigation-bar-logo-left-links-right" title="Link to this section">&para;</a></h3>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>Logo<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;links&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Acasă<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Despre<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <div class="language-css highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-between</span><span class="p">;</span><span class="w">   </span><span class="c">/* logo stânga, meniu dreapta */</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w">              </span><span class="c">/* aliniere verticală centrată */</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-between</span><span class="p">;</span><span class="w">   </span><span class="c">/* logo left, menu right */</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w">              </span><span class="c">/* vertically centered alignment */</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#1f2937</span><span class="p">;</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
@@ -610,41 +610,41 @@
 </span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">  </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
 </span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="2-trei-carduri-egale-pe-un-rand">2. Trei carduri egale pe un rând<a class="headerlink" href="#2-trei-carduri-egale-pe-un-rand" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carduri&quot;</span><span class="p">&gt;</span>
+<h3 id="2-three-equal-cards-on-a-row">2. Three equal cards on a row<a class="headerlink" href="#2-three-equal-cards-on-a-row" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;cards&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>Card 1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>Card 2<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>Card 3<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">.</span><span class="nc">carduri</span><span class="w"> </span><span class="p">{</span>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">.</span><span class="nc">cards</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">}</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                   </span><span class="c">/* fiecare card primește o cotă egală */</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                   </span><span class="c">/* each card gets an equal share */</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#f3f4f6</span><span class="p">;</span>
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="3-centrare-perfecta-orizontal-vertical">3. Centrare perfectă (orizontal + vertical)<a class="headerlink" href="#3-centrare-perfecta-orizontal-vertical" title="Link to this section">&para;</a></h3>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">.</span><span class="nc">centrat</span><span class="w"> </span><span class="p">{</span>
+<h3 id="3-perfect-centering-horizontal-vertical">3. Perfect centering (horizontal + vertical)<a class="headerlink" href="#3-perfect-centering-horizontal-vertical" title="Link to this section">&para;</a></h3>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">.</span><span class="nc">centered</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="k">min-height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span><span class="w">     </span><span class="c">/* 100% din înălțimea ferestrei */</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="k">min-height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span><span class="w">     </span><span class="c">/* 100% of the window&#39;s height */</span>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Cea mai simplă centrare din istoria CSS</p>
-<p>Înainte de Flexbox, centrarea verticală cerea 5–10 linii de hack-uri. Acum sunt trei proprietăți.</p>
+<p class="admonition-title">The simplest centering in CSS history</p>
+<p>Before Flexbox, vertical centering required 5–10 lines of hacks. Now it's three properties.</p>
 </div>
 <hr />
-<h2 id="grid-layouts-2d">Grid — layouts 2D<a class="headerlink" href="#grid-layouts-2d" title="Link to this section">&para;</a></h2>
-<p>Activezi Grid pe părinte cu <code>display: grid</code>:</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;galerie&quot;</span><span class="p">&gt;</span>
+<h2 id="grid-2d-layouts">Grid — 2D layouts<a class="headerlink" href="#grid-2d-layouts" title="Link to this section">&para;</a></h2>
+<p>You enable Grid on the parent with <code>display: grid</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;gallery&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;1.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;2.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;3.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
@@ -653,128 +653,128 @@
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;6.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">.</span><span class="nc">galerie</span><span class="w"> </span><span class="p">{</span>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">.</span><span class="nc">gallery</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span><span class="w">   </span><span class="c">/* 3 coloane egale */</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span><span class="w">   </span><span class="c">/* 3 equal columns */</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="grid-template-columns-defineste-coloanele"><code>grid-template-columns</code> — definește coloanele<a class="headerlink" href="#grid-template-columns-defineste-coloanele" title="Link to this section">&para;</a></h3>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c">/* 3 coloane egale */</span>
+<h3 id="grid-template-columns-defines-the-columns"><code>grid-template-columns</code> — defines the columns<a class="headerlink" href="#grid-template-columns-defines-the-columns" title="Link to this section">&para;</a></h3>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c">/* 3 equal columns */</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nt">grid-template-columns</span><span class="o">:</span><span class="w"> </span><span class="nt">1fr</span><span class="w"> </span><span class="nt">1fr</span><span class="w"> </span><span class="nt">1fr</span><span class="o">;</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c">/* Același lucru, shorthand */</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c">/* Same thing, shorthand */</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nt">grid-template-columns</span><span class="o">:</span><span class="w"> </span><span class="nt">repeat</span><span class="o">(</span><span class="nt">3</span><span class="o">,</span><span class="w"> </span><span class="nt">1fr</span><span class="o">);</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c">/* Proporții diferite: 1-2-1 (coloana din mijloc e dublă) */</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c">/* Different proportions: 1-2-1 (the middle column is double) */</span>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nt">grid-template-columns</span><span class="o">:</span><span class="w"> </span><span class="nt">1fr</span><span class="w"> </span><span class="nt">2fr</span><span class="w"> </span><span class="nt">1fr</span><span class="o">;</span>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c">/* Amestec: prima fixă, a doua flexibilă, a treia fixă */</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c">/* Mix: first fixed, second flexible, third fixed */</span>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nt">grid-template-columns</span><span class="o">:</span><span class="w"> </span><span class="nt">200px</span><span class="w"> </span><span class="nt">1fr</span><span class="w"> </span><span class="nt">200px</span><span class="o">;</span>
 </span></code></pre></div>
 <div class="admonition note">
-<p class="admonition-title"><code>fr</code> = fracție</p>
-<p>Unitatea <code>fr</code> distribuie <strong>spațiul rămas</strong>. <code>1fr 2fr</code> înseamnă &#8531; și &#8532; din spațiul disponibil.</p>
+<p class="admonition-title"><code>fr</code> = fraction</p>
+<p>The <code>fr</code> unit distributes <strong>the remaining space</strong>. <code>1fr 2fr</code> means &#8531; and &#8532; of the available space.</p>
 </div>
-<h3 id="grid-template-rows-defineste-randurile"><code>grid-template-rows</code> — definește rândurile<a class="headerlink" href="#grid-template-rows-defineste-randurile" title="Link to this section">&para;</a></h3>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">.</span><span class="nc">pagina</span><span class="w"> </span><span class="p">{</span>
+<h3 id="grid-template-rows-defines-the-rows"><code>grid-template-rows</code> — defines the rows<a class="headerlink" href="#grid-template-rows-defines-the-rows" title="Link to this section">&para;</a></h3>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">.</span><span class="nc">page</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="k">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w">   </span><span class="c">/* header, conținut, footer */</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="k">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w">   </span><span class="c">/* header, content, footer */</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="k">min-height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="gap-spatiu-intre-celule"><code>gap</code> — spațiu între celule<a class="headerlink" href="#gap-spatiu-intre-celule" title="Link to this section">&para;</a></h3>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">gap</span><span class="o">:</span><span class="w"> </span><span class="nt">1rem</span><span class="o">;</span><span class="w">              </span><span class="c">/* același spațiu pe ambele axe */</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">gap</span><span class="o">:</span><span class="w"> </span><span class="nt">1rem</span><span class="w"> </span><span class="nt">2rem</span><span class="o">;</span><span class="w">         </span><span class="c">/* rând 1rem, coloană 2rem */</span>
+<h3 id="gap-space-between-cells"><code>gap</code> — space between cells<a class="headerlink" href="#gap-space-between-cells" title="Link to this section">&para;</a></h3>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">gap</span><span class="o">:</span><span class="w"> </span><span class="nt">1rem</span><span class="o">;</span><span class="w">              </span><span class="c">/* same space on both axes */</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">gap</span><span class="o">:</span><span class="w"> </span><span class="nt">1rem</span><span class="w"> </span><span class="nt">2rem</span><span class="o">;</span><span class="w">         </span><span class="c">/* row 1rem, column 2rem */</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">row-gap</span><span class="o">:</span><span class="w"> </span><span class="nt">1rem</span><span class="o">;</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nt">column-gap</span><span class="o">:</span><span class="w"> </span><span class="nt">2rem</span><span class="o">;</span>
 </span></code></pre></div>
-<h3 id="grid-column-un-item-ocupa-mai-multe-coloane"><code>grid-column</code> — un item ocupă mai multe coloane<a class="headerlink" href="#grid-column-un-item-ocupa-mai-multe-coloane" title="Link to this section">&para;</a></h3>
+<h3 id="grid-column-an-item-spans-multiple-columns"><code>grid-column</code> — an item spans multiple columns<a class="headerlink" href="#grid-column-an-item-spans-multiple-columns" title="Link to this section">&para;</a></h3>
 <div class="language-css highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="n">span</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">     </span><span class="c">/* ocupă 2 coloane */</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="n">span</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">     </span><span class="c">/* spans 2 columns */</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">}</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">.</span><span class="nc">full-row</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w">     </span><span class="c">/* de la prima la ultima coloană */</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w">     </span><span class="c">/* from the first to the last column */</span>
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <hr />
-<h2 id="magia-auto-fit-minmax-responsive">Magia <code>auto-fit</code> + <code>minmax</code> (responsive)<a class="headerlink" href="#magia-auto-fit-minmax-responsive" title="Link to this section">&para;</a></h2>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">.</span><span class="nc">galerie</span><span class="w"> </span><span class="p">{</span>
+<h2 id="the-magic-of-auto-fit-minmax-responsive">The magic of <code>auto-fit</code> + <code>minmax</code> (responsive)<a class="headerlink" href="#the-magic-of-auto-fit-minmax-responsive" title="Link to this section">&para;</a></h2>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">.</span><span class="nc">gallery</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">250</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Ce se întâmplă:</p>
+<p>What happens:</p>
 <ul>
-<li>Fiecare coloană are <strong>minim 250px</strong>, <strong>maxim 1fr</strong> din spațiul disponibil</li>
-<li><code>auto-fit</code> împachetează <strong>atâtea coloane câte încap</strong> în container</li>
-<li>Pe desktop lat → 4 coloane. Pe tabletă → 3. Pe telefon → 1.</li>
+<li>Each column is at <strong>minimum 250px</strong>, <strong>maximum 1fr</strong> of the available space</li>
+<li><code>auto-fit</code> packs <strong>as many columns as fit</strong> in the container</li>
+<li>On wide desktop → 4 columns. On tablet → 3. On phone → 1.</li>
 </ul>
 <div class="admonition tip">
-<p class="admonition-title">Layout responsive fără media queries</p>
-<p>Această linie înlocuiește zeci de linii de breakpoints. Un truc obligatoriu în arsenalul oricărui dezvoltator web.</p>
+<p class="admonition-title">Responsive layout without media queries</p>
+<p>This line replaces dozens of lines of breakpoints. A must-have trick in any web developer's toolkit.</p>
 </div>
 <hr />
-<h2 id="flexbox-vs-grid-cand-folosesti-ce">Flexbox vs Grid — când folosești ce<a class="headerlink" href="#flexbox-vs-grid-cand-folosesti-ce" title="Link to this section">&para;</a></h2>
+<h2 id="flexbox-vs-grid-when-to-use-what">Flexbox vs Grid — when to use what<a class="headerlink" href="#flexbox-vs-grid-when-to-use-what" title="Link to this section">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Situație</th>
-<th>Instrumentul potrivit</th>
+<th>Situation</th>
+<th>Right tool</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Bară de navigație</td>
+<td>Navigation bar</td>
 <td><strong>Flexbox</strong></td>
 </tr>
 <tr>
-<td>Carduri pe un singur rând</td>
+<td>Cards on a single row</td>
 <td><strong>Flexbox</strong></td>
 </tr>
 <tr>
-<td>Centrare orizontală + verticală</td>
+<td>Horizontal + vertical centering</td>
 <td><strong>Flexbox</strong></td>
 </tr>
 <tr>
-<td>Aliniere butoane pe o linie</td>
+<td>Aligning buttons on a line</td>
 <td><strong>Flexbox</strong></td>
 </tr>
 <tr>
-<td>Galerie foto în rânduri și coloane</td>
+<td>Photo gallery in rows and columns</td>
 <td><strong>Grid</strong></td>
 </tr>
 <tr>
-<td>Layout întreaga pagină (header + sidebar + main + footer)</td>
+<td>Whole-page layout (header + sidebar + main + footer)</td>
 <td><strong>Grid</strong></td>
 </tr>
 <tr>
-<td>Dashboard cu widget-uri</td>
+<td>Dashboard with widgets</td>
 <td><strong>Grid</strong></td>
 </tr>
 <tr>
-<td>Formular cu etichete și câmpuri aliniate</td>
+<td>Form with aligned labels and fields</td>
 <td><strong>Grid</strong></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Le poți combina</p>
-<p>Cel mai des: <strong>Grid</strong> pentru aranjarea generală a paginii + <strong>Flexbox</strong> în interiorul fiecărei celule (ex. într-un card, flexbox aliniază avatar-ul și textul).</p>
+<p class="admonition-title">You can combine them</p>
+<p>Most often: <strong>Grid</strong> for the overall page layout + <strong>Flexbox</strong> inside each cell (e.g., inside a card, flexbox aligns the avatar and the text).</p>
 </div>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-bara-de-navigatie-cu-flexbox">Exercițiu 1 — Bară de navigație cu Flexbox<a class="headerlink" href="#exercitiu-1-bara-de-navigatie-cu-flexbox" title="Link to this section">&para;</a></h3>
-<p>Logo în stânga, 4 link-uri în dreapta, toate aliniate vertical.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-navigation-bar-with-flexbox">Exercise 1 — Navigation bar with Flexbox<a class="headerlink" href="#exercise-1-navigation-bar-with-flexbox" title="Link to this section">&para;</a></h3>
+<p>Logo on the left, 4 links on the right, all vertically aligned.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <p><div class="language-html highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>Site<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;links&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Acasă<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Servicii<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Services<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
@@ -813,16 +813,16 @@
 </span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="p">}</span>
 </span></code></pre></div></p>
 </details>
-<h3 id="exercitiu-2-trei-carduri-de-pret-egale">Exercițiu 2 — Trei carduri de preț egale<a class="headerlink" href="#exercitiu-2-trei-carduri-de-pret-egale" title="Link to this section">&para;</a></h3>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;preturi&quot;</span><span class="p">&gt;</span>
+<h3 id="exercise-2-three-equal-pricing-cards">Exercise 2 — Three equal pricing cards<a class="headerlink" href="#exercise-2-three-equal-pricing-cards" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pricing&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>Basic<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>Pro<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>Enterprise<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">.</span><span class="nc">preturi</span><span class="w"> </span><span class="p">{</span>
+<summary>Solution</summary>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">.</span><span class="nc">pricing</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
@@ -838,89 +838,89 @@
 </span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-galerie-3x3-cu-grid">Exercițiu 3 — Galerie 3x3 cu Grid<a class="headerlink" href="#exercitiu-3-galerie-3x3-cu-grid" title="Link to this section">&para;</a></h3>
-<p>9 imagini dispuse într-o grilă 3x3.</p>
+<h3 id="exercise-3-3x3-gallery-with-grid">Exercise 3 — 3x3 gallery with Grid<a class="headerlink" href="#exercise-3-3x3-gallery-with-grid" title="Link to this section">&para;</a></h3>
+<p>9 images arranged in a 3x3 grid.</p>
 <details class="success">
-<summary>Soluție</summary>
-<p><div class="language-html highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;galerie&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;1.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 1&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;2.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 2&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;3.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 3&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;4.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 4&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;5.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 5&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;6.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 6&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;7.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 7&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;8.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 8&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;9.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Foto 9&quot;</span><span class="p">&gt;</span>
+<summary>Solution</summary>
+<p><div class="language-html highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;gallery&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;1.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 1&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;2.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 2&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;3.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 3&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;4.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 4&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;5.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 5&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;6.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 6&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;7.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 7&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;8.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 8&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;9.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Photo 9&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<div class="language-css highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">.</span><span class="nc">galerie</span><span class="w"> </span><span class="p">{</span>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">.</span><span class="nc">gallery</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span>
 </span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">}</span>
 </span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
-</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="p">.</span><span class="nc">galerie</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="p">.</span><span class="nc">gallery</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">  </span><span class="k">aspect-ratio</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">       </span><span class="c">/* pătrat perfect */</span>
-</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">  </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span><span class="w">     </span><span class="c">/* fără deformare */</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">  </span><span class="k">aspect-ratio</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">       </span><span class="c">/* perfect square */</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">  </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span><span class="w">     </span><span class="c">/* no deformation */</span>
 </span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
 </span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="p">}</span>
 </span></code></pre></div></p>
 </details>
-<h3 id="exercitiu-4-galerie-responsive-cu-auto-fit">Exercițiu 4 — Galerie responsive cu <code>auto-fit</code><a class="headerlink" href="#exercitiu-4-galerie-responsive-cu-auto-fit" title="Link to this section">&para;</a></h3>
-<p>Aceeași galerie, dar coloanele se adaptează automat la mărimea ecranului.</p>
+<h3 id="exercise-4-responsive-gallery-with-auto-fit">Exercise 4 — Responsive gallery with <code>auto-fit</code><a class="headerlink" href="#exercise-4-responsive-gallery-with-auto-fit" title="Link to this section">&para;</a></h3>
+<p>The same gallery, but the columns adapt automatically to the screen size.</p>
 <details class="success">
-<summary>Soluție</summary>
-<p><div class="language-css highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">.</span><span class="nc">galerie</span><span class="w"> </span><span class="p">{</span>
+<summary>Solution</summary>
+<p><div class="language-css highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">.</span><span class="nc">gallery</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
 </span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
 </span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="p">}</span>
 </span></code></pre></div>
-Testează redimensionând fereastra — numărul de coloane se modifică automat.</p>
+Test by resizing the window — the number of columns changes automatically.</p>
 </details>
 <hr />
-<h2 id="mini-proiect-galerie-foto-tip-revista">Mini-proiect: Galerie foto tip revistă<a class="headerlink" href="#mini-proiect-galerie-foto-tip-revista" title="Link to this section">&para;</a></h2>
-<p>O galerie responsivă cu 3 coloane pe desktop, titlu suprapus pe imagine, efect hover subtil.</p>
+<h2 id="mini-project-magazine-style-photo-gallery">Mini-project: Magazine-style photo gallery<a class="headerlink" href="#mini-project-magazine-style-photo-gallery" title="Link to this section">&para;</a></h2>
+<p>A responsive gallery with 3 columns on desktop, title overlaid on the image, subtle hover effect.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <p><strong>index.html</strong>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ro&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Galerie<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Gallery<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;styles.css&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Galeria mea<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My gallery<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
-</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;galerie&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;gallery&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;foto1.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Răsărit peste munte&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Răsărit la 1500m<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;photo1.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Sunrise over the mountain&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Sunrise at 1500m<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
 </span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
 </span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    <span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;foto2.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Oraș noaptea&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Oraș noaptea<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;photo2.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;City at night&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>City at night<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
 </span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>    <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
 </span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    <span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;foto3.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Pădure toamna&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Pădure toamna<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;photo3.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Forest in autumn&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Forest in autumn<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
 </span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>    <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
 </span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>    <span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;foto4.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Plajă tropicală&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Plajă tropicală<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;photo4.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Tropical beach&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Tropical beach<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
 </span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
 </span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>    <span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;foto5.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Deșert la apus&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Deșert la apus<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;photo5.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Desert at sunset&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Desert at sunset<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
 </span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>    <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
 </span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>    <span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;foto6.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Stradă cu felinare&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Stradă cu felinare<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;photo6.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Street with lanterns&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>      <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Street with lanterns<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
 </span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>    <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
 </span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
@@ -944,8 +944,8 @@ Testează redimensionând fereastra — numărul de coloane se modifică automat
 </span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#1f2937</span><span class="p">;</span>
 </span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="p">}</span>
 </span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>
-</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="c">/* Grid responsive — se adaptează automat */</span>
-</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="p">.</span><span class="nc">galerie</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="c">/* Responsive grid — adapts automatically */</span>
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="p">.</span><span class="nc">gallery</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
 </span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">260</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
 </span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
@@ -963,7 +963,7 @@ Testează redimensionând fereastra — numărul de coloane se modifică automat
 </span><span id="__span-24-34"><a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
 </span><span id="__span-24-35"><a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a><span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
 </span><span id="__span-24-36"><a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a><span class="w">  </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span>
-</span><span id="__span-24-37"><a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a><span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">0.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span><span class="w">   </span><span class="c">/* detalii în lecția 09 */</span>
+</span><span id="__span-24-37"><a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a><span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">0.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span><span class="w">   </span><span class="c">/* details in lesson 09 */</span>
 </span><span id="__span-24-38"><a id="__codelineno-24-38" name="__codelineno-24-38" href="#__codelineno-24-38"></a><span class="p">}</span>
 </span><span id="__span-24-39"><a id="__codelineno-24-39" name="__codelineno-24-39" href="#__codelineno-24-39"></a>
 </span><span id="__span-24-40"><a id="__codelineno-24-40" name="__codelineno-24-40" href="#__codelineno-24-40"></a><span class="p">.</span><span class="nc">card</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
@@ -987,18 +987,18 @@ Testează redimensionând fereastra — numărul de coloane se modifică automat
 </span></code></pre></div></p>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li><strong>Flexbox</strong> = aliniere pe <strong>o axă</strong> — perfect pentru meniuri, bare, carduri pe rând</li>
-<li><strong>Grid</strong> = layout-uri <strong>2D</strong> — galerii, dashboard-uri, structura paginii</li>
-<li>Proprietăți cheie Flexbox: <code>justify-content</code>, <code>align-items</code>, <code>gap</code>, <code>flex: 1</code></li>
-<li>Proprietăți cheie Grid: <code>grid-template-columns</code>, <code>repeat()</code>, <code>gap</code>, <code>fr</code></li>
-<li><code>repeat(auto-fit, minmax(250px, 1fr))</code> = layout responsive fără media queries</li>
-<li>Combinația <strong>Grid (structura) + Flexbox (în celule)</strong> acoperă 99% din cazuri</li>
-<li><strong>Nu mai folosi <code>float</code></strong> pentru layout</li>
+<li><strong>Flexbox</strong> = alignment on <strong>one axis</strong> — perfect for menus, bars, cards on a row</li>
+<li><strong>Grid</strong> = <strong>2D</strong> layouts — galleries, dashboards, page structure</li>
+<li>Key Flexbox properties: <code>justify-content</code>, <code>align-items</code>, <code>gap</code>, <code>flex: 1</code></li>
+<li>Key Grid properties: <code>grid-template-columns</code>, <code>repeat()</code>, <code>gap</code>, <code>fr</code></li>
+<li><code>repeat(auto-fit, minmax(250px, 1fr))</code> = responsive layout without media queries</li>
+<li>The combination <strong>Grid (structure) + Flexbox (in cells)</strong> covers 99% of cases</li>
+<li><strong>Stop using <code>float</code></strong> for layout</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../09-css-avansat/">→ Lecția 09: CSS avansat — pseudo-clase, tranziții și animații</a></p>
+<p><strong>Next step:</strong> <a href="../09-css-avansat/">→ Lesson 09: Advanced CSS — pseudo-classes, transitions, and animations</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -1034,44 +1034,44 @@ Testează redimensionând fereastra — numărul de coloane se modifică automat
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-08-flexbox-si-grid" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 08 · Flexbox și Grid</a>
+                  <a href="#lesson-08-flexbox-and-grid" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 08 · Flexbox and Grid</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#problema-dinainte-de-2015" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Problema dinainte de 2015</a>
+                        <a href="#the-problem-before-2015" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The problem before 2015</a>
                       </li>
                     
                       <li>
-                        <a href="#flexbox-aliniere-pe-o-axa" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Flexbox — aliniere pe o axă</a>
+                        <a href="#flexbox-alignment-on-one-axis" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Flexbox — alignment on one axis</a>
                       </li>
                     
                       <li>
-                        <a href="#exemple-flexbox" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exemple Flexbox</a>
+                        <a href="#flexbox-examples" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Flexbox examples</a>
                       </li>
                     
                       <li>
-                        <a href="#grid-layouts-2d" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Grid — layouts 2D</a>
+                        <a href="#grid-2d-layouts" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Grid — 2D layouts</a>
                       </li>
                     
                       <li>
-                        <a href="#magia-auto-fit-minmax-responsive" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Magia auto-fit + minmax (responsive)</a>
+                        <a href="#the-magic-of-auto-fit-minmax-responsive" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The magic of auto-fit + minmax (responsive)</a>
                       </li>
                     
                       <li>
-                        <a href="#flexbox-vs-grid-cand-folosesti-ce" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Flexbox vs Grid — când folosești ce</a>
+                        <a href="#flexbox-vs-grid-when-to-use-what" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Flexbox vs Grid — when to use what</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-galerie-foto-tip-revista" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Galerie foto tip revistă</a>
+                        <a href="#mini-project-magazine-style-photo-gallery" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Magazine-style photo gallery</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

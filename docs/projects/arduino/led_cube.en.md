@@ -10,6 +10,8 @@ featured: true
 
 A simplified version of the [8x8x8 LED Cube](https://www.instructables.com/8x8x8-Arduino-LED-Cube/) project, adapted for beginners.
 
+![Assembled 3x3x3 LED cube](../../assets/images/projects/arduino/3x3x3_led_cube.jpg)
+
 ## How It Works
 
 The cube uses **layer multiplexing**:

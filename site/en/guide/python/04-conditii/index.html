@@ -432,7 +432,7 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">04: Condiții</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Controlează ce face programul în funcție de condiții cu if, elif și else.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Control what your program does based on conditions with if, elif, and else.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
@@ -445,117 +445,117 @@
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">else</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">condiții</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">conditions</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">operatori-logici</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">logical-operators</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-04-conditii">Lecția 04 · Condiții<a class="headerlink" href="#lectia-04-conditii" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-04-conditions">Lesson 04 · Conditions<a class="headerlink" href="#lesson-04-conditions" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Structura <code>if / elif / else</code></li>
-<li>Operatorii de comparație: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
-<li>Operatorii logici: <code>and</code>, <code>or</code>, <code>not</code></li>
-<li>Condiții imbricate</li>
+<li>The <code>if / elif / else</code> structure</li>
+<li>Comparison operators: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li>Logical operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+<li>Nested conditions</li>
 </ul>
 </div>
 <hr />
-<h2 id="instructiunea-if">Instrucțiunea <code>if</code><a class="headerlink" href="#instructiunea-if" title="Link to this section">&para;</a></h2>
-<p><code>if</code> îți permite să execuți cod <strong>doar dacă o condiție este adevărată</strong>:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">temperatura</span> <span class="o">=</span> <span class="mi">35</span>
+<h2 id="the-if-statement">The <code>if</code> statement<a class="headerlink" href="#the-if-statement" title="Link to this section">&para;</a></h2>
+<p><code>if</code> lets you run code <strong>only when a condition is true</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">temperature</span> <span class="o">=</span> <span class="mi">35</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span> <span class="n">temperatura</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Este cald afară!&quot;</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s hot outside!&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p><strong>Output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Este cald afară!
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>It&#39;s hot outside!
 </span></code></pre></div></p>
-<p>Dacă <code>temperatura</code> ar fi <code>20</code>, nu s-ar afișa nimic.</p>
+<p>If <code>temperature</code> were <code>20</code>, nothing would be displayed.</p>
 <div class="admonition warning">
-<p class="admonition-title">Indentarea este obligatorie</p>
-<p>Codul din interiorul <code>if</code> trebuie indentat cu <strong>4 spații</strong> (sau un Tab). Python folosește indentarea pentru a ști ce face parte din bloc.
+<p class="admonition-title">Indentation is mandatory</p>
+<p>The code inside <code>if</code> must be indented by <strong>4 spaces</strong> (or one Tab). Python uses indentation to know what belongs to the block.
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Această linie face parte din if&quot;</span><span class="p">)</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Această linie rulează întotdeauna&quot;</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This line is inside the if&quot;</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This line always runs&quot;</span><span class="p">)</span>
 </span></code></pre></div></p>
 </div>
 <hr />
 <h2 id="if-else"><code>if / else</code><a class="headerlink" href="#if-else" title="Link to this section">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">varsta</span> <span class="o">=</span> <span class="mi">16</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">age</span> <span class="o">=</span> <span class="mi">16</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">if</span> <span class="n">varsta</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ești major.&quot;</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You are an adult.&quot;</span><span class="p">)</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ești minor.&quot;</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You are a minor.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<p><code>else</code> se execută când condiția din <code>if</code> este <strong>falsă</strong>.</p>
+<p><code>else</code> runs when the <code>if</code> condition is <strong>false</strong>.</p>
 <hr />
 <h2 id="if-elif-else"><code>if / elif / else</code><a class="headerlink" href="#if-elif-else" title="Link to this section">&para;</a></h2>
-<p><code>elif</code> (prescurtare de la "else if") verifică o condiție nouă dacă cea anterioară a fost falsă:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">nota</span> <span class="o">=</span> <span class="mf">8.5</span>
+<p><code>elif</code> (short for "else if") checks a new condition if the previous one was false:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">grade</span> <span class="o">=</span> <span class="mf">8.5</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">if</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mf">9.5</span><span class="p">:</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Foarte bine — calificativ: Excelent&quot;</span><span class="p">)</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">elif</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mf">8.5</span><span class="p">:</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bine — calificativ: Foarte bine&quot;</span><span class="p">)</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">elif</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">:</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Satisfăcător — calificativ: Bine&quot;</span><span class="p">)</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">elif</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calificativ: Suficient&quot;</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">if</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mf">9.5</span><span class="p">:</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Excellent — rating: Outstanding&quot;</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mf">8.5</span><span class="p">:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Great — rating: Very good&quot;</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">:</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Satisfactory — rating: Good&quot;</span><span class="p">)</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rating: Sufficient&quot;</span><span class="p">)</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calificativ: Insuficient&quot;</span><span class="p">)</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rating: Insufficient&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<p>Python verifică condițiile <strong>de sus în jos</strong> și se oprește la prima condiție adevărată.</p>
+<p>Python checks the conditions <strong>top to bottom</strong> and stops at the first true one.</p>
 <hr />
-<h2 id="operatorii-de-comparatie">Operatorii de comparație<a class="headerlink" href="#operatorii-de-comparatie" title="Link to this section">&para;</a></h2>
+<h2 id="comparison-operators">Comparison operators<a class="headerlink" href="#comparison-operators" title="Link to this section">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Operator</th>
-<th>Semnificație</th>
-<th>Exemplu</th>
-<th>Rezultat</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>==</code></td>
-<td>egal cu</td>
+<td>equal to</td>
 <td><code>5 == 5</code></td>
 <td><code>True</code></td>
 </tr>
 <tr>
 <td><code>!=</code></td>
-<td>diferit de</td>
+<td>different from</td>
 <td><code>5 != 3</code></td>
 <td><code>True</code></td>
 </tr>
 <tr>
 <td><code>&lt;</code></td>
-<td>mai mic</td>
+<td>less than</td>
 <td><code>3 &lt; 5</code></td>
 <td><code>True</code></td>
 </tr>
 <tr>
 <td><code>&gt;</code></td>
-<td>mai mare</td>
+<td>greater than</td>
 <td><code>5 &gt; 3</code></td>
 <td><code>True</code></td>
 </tr>
 <tr>
 <td><code>&lt;=</code></td>
-<td>mai mic sau egal</td>
+<td>less than or equal</td>
 <td><code>5 &lt;= 5</code></td>
 <td><code>True</code></td>
 </tr>
 <tr>
 <td><code>&gt;=</code></td>
-<td>mai mare sau egal</td>
+<td>greater than or equal</td>
 <td><code>6 &gt;= 5</code></td>
 <td><code>True</code></td>
 </tr>
@@ -563,133 +563,133 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">= vs ==</p>
-<p><code>=</code> atribuie valori. <code>==</code> compară valori.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>      <span class="c1"># atribuire</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span>     <span class="c1"># comparație → True</span>
+<p><code>=</code> assigns values. <code>==</code> compares values.
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>      <span class="c1"># assignment</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span>     <span class="c1"># comparison → True</span>
 </span></code></pre></div></p>
 </div>
 <hr />
-<h2 id="operatorii-logici">Operatorii logici<a class="headerlink" href="#operatorii-logici" title="Link to this section">&para;</a></h2>
-<h3 id="and-ambele-conditii-trebuie-sa-fie-adevarate"><code>and</code> — ambele condiții trebuie să fie adevărate<a class="headerlink" href="#and-ambele-conditii-trebuie-sa-fie-adevarate" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">varsta</span> <span class="o">=</span> <span class="mi">16</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">are_permis</span> <span class="o">=</span> <span class="kc">False</span>
+<h2 id="logical-operators">Logical operators<a class="headerlink" href="#logical-operators" title="Link to this section">&para;</a></h2>
+<h3 id="and-both-conditions-must-be-true"><code>and</code> — both conditions must be true<a class="headerlink" href="#and-both-conditions-must-be-true" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">age</span> <span class="o">=</span> <span class="mi">16</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">has_license</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">if</span> <span class="n">varsta</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">are_permis</span><span class="p">:</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Poate conduce.&quot;</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">has_license</span><span class="p">:</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can drive.&quot;</span><span class="p">)</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nu poate conduce.&quot;</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot drive.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h3 id="or-cel-putin-una-trebuie-sa-fie-adevarata"><code>or</code> — cel puțin una trebuie să fie adevărată<a class="headerlink" href="#or-cel-putin-una-trebuie-sa-fie-adevarata" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">este_weekend</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">este_sarbatoare</span> <span class="o">=</span> <span class="kc">False</span>
+<h3 id="or-at-least-one-must-be-true"><code>or</code> — at least one must be true<a class="headerlink" href="#or-at-least-one-must-be-true" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">is_weekend</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">is_holiday</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">if</span> <span class="n">este_weekend</span> <span class="ow">or</span> <span class="n">este_sarbatoare</span><span class="p">:</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nu e școală!&quot;</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">if</span> <span class="n">is_weekend</span> <span class="ow">or</span> <span class="n">is_holiday</span><span class="p">:</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No school!&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h3 id="not-neaga-conditia"><code>not</code> — neagă condiția<a class="headerlink" href="#not-neaga-conditia" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">ploua</span> <span class="o">=</span> <span class="kc">False</span>
+<h3 id="not-negates-the-condition"><code>not</code> — negates the condition<a class="headerlink" href="#not-negates-the-condition" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">is_raining</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">ploua</span><span class="p">:</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Putem ieși afară.&quot;</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">is_raining</span><span class="p">:</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We can go outside.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="conditii-imbricate">Condiții imbricate<a class="headerlink" href="#conditii-imbricate" title="Link to this section">&para;</a></h2>
-<p>Poți pune un <code>if</code> înăuntrul altui <code>if</code>:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">scor</span> <span class="o">=</span> <span class="mi">85</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">nivel</span> <span class="o">=</span> <span class="s2">&quot;avansat&quot;</span>
+<h2 id="nested-conditions">Nested conditions<a class="headerlink" href="#nested-conditions" title="Link to this section">&para;</a></h2>
+<p>You can place an <code>if</code> inside another <code>if</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">level</span> <span class="o">=</span> <span class="s2">&quot;advanced&quot;</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">if</span> <span class="n">scor</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ai trecut testul.&quot;</span><span class="p">)</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="k">if</span> <span class="n">nivel</span> <span class="o">==</span> <span class="s2">&quot;avansat&quot;</span><span class="p">:</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ai obținut certificatul avansat!&quot;</span><span class="p">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You passed the test.&quot;</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;advanced&quot;</span><span class="p">:</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You earned the advanced certificate!&quot;</span><span class="p">)</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ai obținut certificatul de bază.&quot;</span><span class="p">)</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You earned the basic certificate.&quot;</span><span class="p">)</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nu ai trecut testul.&quot;</span><span class="p">)</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You did not pass the test.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-pozitiv-negativ-sau-zero">Exercițiu 1 — Pozitiv, negativ sau zero?<a class="headerlink" href="#exercitiu-1-pozitiv-negativ-sau-zero" title="Link to this section">&para;</a></h3>
-<p>Cere un număr și afișează dacă este pozitiv, negativ sau zero.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-positive-negative-or-zero">Exercise 1 — Positive, negative, or zero?<a class="headerlink" href="#exercise-1-positive-negative-or-zero" title="Link to this section">&para;</a></h3>
+<p>Ask for a number and display whether it's positive, negative, or zero.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">numar</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introdu un număr: &quot;</span><span class="p">))</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">if</span> <span class="n">numar</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pozitiv&quot;</span><span class="p">)</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">elif</span> <span class="n">numar</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Negativ&quot;</span><span class="p">)</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">number</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">))</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Positive&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">elif</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Negative&quot;</span><span class="p">)</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">else</span><span class="p">:</span>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zero&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-cel-mai-mare">Exercițiu 2 — Cel mai mare<a class="headerlink" href="#exercitiu-2-cel-mai-mare" title="Link to this section">&para;</a></h3>
-<p>Cere două numere și afișează cel mai mare.</p>
+<h3 id="exercise-2-the-largest">Exercise 2 — The largest<a class="headerlink" href="#exercise-2-the-largest" title="Link to this section">&para;</a></h3>
+<p>Ask for two numbers and display the larger one.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Primul număr: &quot;</span><span class="p">))</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Al doilea număr: &quot;</span><span class="p">))</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;First number: &quot;</span><span class="p">))</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Second number: &quot;</span><span class="p">))</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cel mai mare este </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The largest is </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">elif</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cel mai mare este </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The largest is </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numerele sunt egale&quot;</span><span class="p">)</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The numbers are equal&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-divisibil">Exercițiu 3 — Divisibil?<a class="headerlink" href="#exercitiu-3-divisibil" title="Link to this section">&para;</a></h3>
-<p>Cere un număr și verifică dacă este divizibil cu 3 și cu 5 simultan.</p>
+<h3 id="exercise-3-divisible">Exercise 3 — Divisible?<a class="headerlink" href="#exercise-3-divisible" title="Link to this section">&para;</a></h3>
+<p>Ask for a number and check whether it is divisible by both 3 and 5.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Numărul: &quot;</span><span class="p">))</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Number: &quot;</span><span class="p">))</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> este divizibil cu 3 și cu 5&quot;</span><span class="p">)</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is divisible by 3 and 5&quot;</span><span class="p">)</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> nu este divizibil cu ambele&quot;</span><span class="p">)</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is not divisible by both&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-clasificator-de-note">Mini-proiect: Clasificator de note<a class="headerlink" href="#mini-proiect-clasificator-de-note" title="Link to this section">&para;</a></h2>
-<p>Cere o notă (1–10) și afișează calificativul și un mesaj motivațional.</p>
-<p><strong>Exemplu:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Nota ta: 9.2
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Calificativ: Foarte bine
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Felicitări! Ești aproape de perfecțiune!
+<h2 id="mini-project-grade-classifier">Mini-project: Grade classifier<a class="headerlink" href="#mini-project-grade-classifier" title="Link to this section">&para;</a></h2>
+<p>Ask for a grade (1–10) and display the rating with a motivational message.</p>
+<p><strong>Example:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Your grade: 9.2
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Rating: Very good
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Congratulations! You&#39;re close to perfection!
 </span></code></pre></div></p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nota ta: &quot;</span><span class="p">))</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">grade</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your grade: &quot;</span><span class="p">))</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">if</span> <span class="n">nota</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Notă invalidă. Introdu o valoare între 1 și 10.&quot;</span><span class="p">)</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">elif</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mf">9.5</span><span class="p">:</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calificativ: Excelent&quot;</span><span class="p">)</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extraordinar! Performanță de top!&quot;</span><span class="p">)</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">elif</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mf">8.5</span><span class="p">:</span>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calificativ: Foarte bine&quot;</span><span class="p">)</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Felicitări! Ești aproape de perfecțiune!&quot;</span><span class="p">)</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="k">elif</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">:</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calificativ: Bine&quot;</span><span class="p">)</span>
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rezultat bun! Continuă să exersezi.&quot;</span><span class="p">)</span>
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="k">elif</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calificativ: Suficient&quot;</span><span class="p">)</span>
-</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ai trecut, dar ai potențial pentru mai mult.&quot;</span><span class="p">)</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">if</span> <span class="n">grade</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">grade</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid grade. Enter a value between 1 and 10.&quot;</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mf">9.5</span><span class="p">:</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rating: Outstanding&quot;</span><span class="p">)</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extraordinary! Top performance!&quot;</span><span class="p">)</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mf">8.5</span><span class="p">:</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rating: Very good&quot;</span><span class="p">)</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Congratulations! You&#39;re close to perfection!&quot;</span><span class="p">)</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">:</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rating: Good&quot;</span><span class="p">)</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good result! Keep practicing.&quot;</span><span class="p">)</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rating: Sufficient&quot;</span><span class="p">)</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You passed, but you have potential for more.&quot;</span><span class="p">)</span>
 </span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calificativ: Insuficient&quot;</span><span class="p">)</span>
-</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nu-ți pierde curajul! Repetă materia și încearcă din nou.&quot;</span><span class="p">)</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rating: Insufficient&quot;</span><span class="p">)</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Don&#39;t lose heart! Review the material and try again.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li><code>if condiție:</code> — execută bloc dacă condiția e adevărată</li>
-<li><code>elif altă_condiție:</code> — verifică altă condiție dacă precedenta e falsă</li>
-<li><code>else:</code> — se execută când nicio condiție anterioară nu e adevărată</li>
-<li>Operatori de comparație: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
-<li>Operatori logici: <code>and</code>, <code>or</code>, <code>not</code></li>
-<li>Indentarea (4 spații) este obligatorie!</li>
+<li><code>if condition:</code> — run a block if the condition is true</li>
+<li><code>elif other_condition:</code> — check another condition if the previous one is false</li>
+<li><code>else:</code> — runs when no previous condition was true</li>
+<li>Comparison operators: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li>Logical operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+<li>Indentation (4 spaces) is mandatory!</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../05-bucle/">→ Lecția 05: Bucle</a></p>
+<p><strong>Next step:</strong> <a href="../05-bucle/">→ Lesson 05: Loops</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -725,12 +725,12 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-04-conditii" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 04 · Condiții</a>
+                  <a href="#lesson-04-conditions" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 04 · Conditions</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#instructiunea-if" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Instrucțiunea if</a>
+                        <a href="#the-if-statement" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The if statement</a>
                       </li>
                     
                       <li>
@@ -742,27 +742,27 @@
                       </li>
                     
                       <li>
-                        <a href="#operatorii-de-comparatie" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatorii de comparație</a>
+                        <a href="#comparison-operators" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Comparison operators</a>
                       </li>
                     
                       <li>
-                        <a href="#operatorii-logici" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operatorii logici</a>
+                        <a href="#logical-operators" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Logical operators</a>
                       </li>
                     
                       <li>
-                        <a href="#conditii-imbricate" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Condiții imbricate</a>
+                        <a href="#nested-conditions" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Nested conditions</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-clasificator-de-note" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Clasificator de note</a>
+                        <a href="#mini-project-grade-classifier" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Grade classifier</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

@@ -432,7 +432,7 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">03: Input și Output</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Fă programele interactive cu input() și formatează output-ul cu print().</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Make programs interactive with input() and format output with print().</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
@@ -443,125 +443,125 @@
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">output</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">interactivitate</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">interactivity</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-03-input-si-output">Lecția 03 · Input și Output<a class="headerlink" href="#lectia-03-input-si-output" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-03-input-and-output">Lesson 03 · Input and Output<a class="headerlink" href="#lesson-03-input-and-output" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Cum citești date de la utilizator cu <code>input()</code></li>
-<li>De ce <code>input()</code> returnează întotdeauna <code>str</code></li>
-<li>Cum convertești inputul în numere</li>
-<li>Formatarea avansată a output-ului</li>
+<li>How to read data from the user with <code>input()</code></li>
+<li>Why <code>input()</code> always returns <code>str</code></li>
+<li>How to convert input into numbers</li>
+<li>Advanced output formatting</li>
 </ul>
 </div>
 <hr />
-<h2 id="functia-input">Funcția <code>input()</code><a class="headerlink" href="#functia-input" title="Link to this section">&para;</a></h2>
-<p><code>input()</code> oprește programul și așteaptă ca utilizatorul să tasteze ceva și să apese Enter:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">nume</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Cum te numești? &quot;</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salut,&quot;</span><span class="p">,</span> <span class="n">nume</span><span class="p">)</span>
+<h2 id="the-input-function">The <code>input()</code> function<a class="headerlink" href="#the-input-function" title="Link to this section">&para;</a></h2>
+<p><code>input()</code> pauses the program and waits for the user to type something and press Enter:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello,&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </span></code></pre></div>
-<p><strong>Rulare:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Cum te numești? Andrei
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Salut, Andrei
+<p><strong>Run:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>What&#39;s your name? Andrew
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Hello, Andrew
 </span></code></pre></div></p>
-<p>Textul din paranteze este <strong>promptul</strong> — mesajul afișat utilizatorului.</p>
+<p>The text inside the parentheses is the <strong>prompt</strong> — the message shown to the user.</p>
 <hr />
-<h2 id="input-returneaza-intotdeauna-str"><code>input()</code> returnează ÎNTOTDEAUNA <code>str</code><a class="headerlink" href="#input-returneaza-intotdeauna-str" title="Link to this section">&para;</a></h2>
-<p>Aceasta este cea mai frecventă sursă de erori pentru începători:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">varsta</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Vârsta ta: &quot;</span><span class="p">)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">varsta</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+<h2 id="input-always-returns-str"><code>input()</code> ALWAYS returns <code>str</code><a class="headerlink" href="#input-always-returns-str" title="Link to this section">&para;</a></h2>
+<p>This is the most common source of errors for beginners:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your age: &quot;</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
 </span></code></pre></div>
-<p>Chiar dacă utilizatorul tastează <code>14</code>, Python primește șirul <code>"14"</code>, nu numărul <code>14</code>.</p>
-<h3 id="conversia-inputului">Conversia inputului<a class="headerlink" href="#conversia-inputului" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">varsta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Vârsta ta: &quot;</span><span class="p">))</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">varsta</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">varsta</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>     <span class="c1"># funcționează!</span>
+<p>Even if the user types <code>14</code>, Python receives the string <code>"14"</code>, not the number <code>14</code>.</p>
+<h3 id="converting-input">Converting input<a class="headerlink" href="#converting-input" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your age: &quot;</span><span class="p">))</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>     <span class="c1"># works!</span>
 </span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">inaltime</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Înălțimea ta (m): &quot;</span><span class="p">))</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Înălțimea în cm: </span><span class="si">{</span><span class="n">inaltime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">height</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your height (m): &quot;</span><span class="p">))</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Height in cm: </span><span class="si">{</span><span class="n">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Dacă utilizatorul tastează altceva</p>
-<p><code>int(input(...))</code> va genera o eroare dacă utilizatorul tastează text în loc de număr. Vom rezolva asta în lecția despre condiții și excepții.</p>
+<p class="admonition-title">If the user types something else</p>
+<p><code>int(input(...))</code> will raise an error if the user types text instead of a number. We'll solve that in the lesson on conditions and exceptions.</p>
 </div>
 <hr />
-<h2 id="functia-print-detalii">Funcția <code>print()</code> — detalii<a class="headerlink" href="#functia-print-detalii" title="Link to this section">&para;</a></h2>
-<h3 id="separatorul-sep">Separatorul <code>sep</code><a class="headerlink" href="#separatorul-sep" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;luni&quot;</span><span class="p">,</span> <span class="s2">&quot;marți&quot;</span><span class="p">,</span> <span class="s2">&quot;miercuri&quot;</span><span class="p">)</span>           <span class="c1"># luni marți miercuri</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;luni&quot;</span><span class="p">,</span> <span class="s2">&quot;marți&quot;</span><span class="p">,</span> <span class="s2">&quot;miercuri&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="p">)</span> <span class="c1"># luni, marți, miercuri</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;luni&quot;</span><span class="p">,</span> <span class="s2">&quot;marți&quot;</span><span class="p">,</span> <span class="s2">&quot;miercuri&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># fiecare pe linie nouă</span>
+<h2 id="the-print-function-details">The <code>print()</code> function — details<a class="headerlink" href="#the-print-function-details" title="Link to this section">&para;</a></h2>
+<h3 id="the-sep-separator">The <code>sep</code> separator<a class="headerlink" href="#the-sep-separator" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mon&quot;</span><span class="p">,</span> <span class="s2">&quot;Tue&quot;</span><span class="p">,</span> <span class="s2">&quot;Wed&quot;</span><span class="p">)</span>              <span class="c1"># Mon Tue Wed</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mon&quot;</span><span class="p">,</span> <span class="s2">&quot;Tue&quot;</span><span class="p">,</span> <span class="s2">&quot;Wed&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>    <span class="c1"># Mon, Tue, Wed</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mon&quot;</span><span class="p">,</span> <span class="s2">&quot;Tue&quot;</span><span class="p">,</span> <span class="s2">&quot;Wed&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># each on a new line</span>
 </span></code></pre></div>
-<h3 id="terminatorul-end">Terminatorul <code>end</code><a class="headerlink" href="#terminatorul-end" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unu&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doi&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trei&quot;</span><span class="p">)</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Unu Doi Trei — toate pe aceeași linie</span>
+<h3 id="the-end-terminator">The <code>end</code> terminator<a class="headerlink" href="#the-end-terminator" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;One&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Two&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Three&quot;</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># One Two Three — all on the same line</span>
 </span></code></pre></div>
-<h3 id="linie-goala">Linie goală<a class="headerlink" href="#linie-goala" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">()</span>   <span class="c1"># afișează o linie goală</span>
+<h3 id="empty-line">Empty line<a class="headerlink" href="#empty-line" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">()</span>   <span class="c1"># prints an empty line</span>
 </span></code></pre></div>
 <hr />
-<h2 id="exemple-combinate">Exemple combinate<a class="headerlink" href="#exemple-combinate" title="Link to this section">&para;</a></h2>
-<h3 id="program-simplu-de-salut">Program simplu de salut<a class="headerlink" href="#program-simplu-de-salut" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">prenume</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Prenumele tău: &quot;</span><span class="p">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">varsta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Vârsta ta: &quot;</span><span class="p">))</span>
+<h2 id="combined-examples">Combined examples<a class="headerlink" href="#combined-examples" title="Link to this section">&para;</a></h2>
+<h3 id="simple-greeting-program">Simple greeting program<a class="headerlink" href="#simple-greeting-program" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">first_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your first name: &quot;</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your age: &quot;</span><span class="p">))</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">print</span><span class="p">()</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Salut, </span><span class="si">{</span><span class="n">prenume</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anul viitor vei avea </span><span class="si">{</span><span class="n">varsta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> ani.&quot;</span><span class="p">)</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">first_name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Next year you will be </span><span class="si">{</span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h3 id="citire-mai-multor-valori">Citire mai multor valori<a class="headerlink" href="#citire-mai-multor-valori" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Primul număr: &quot;</span><span class="p">))</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Al doilea număr: &quot;</span><span class="p">))</span>
+<h3 id="reading-multiple-values">Reading multiple values<a class="headerlink" href="#reading-multiple-values" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;First number: &quot;</span><span class="p">))</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Second number: &quot;</span><span class="p">))</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-salut-personalizat">Exercițiu 1 — Salut personalizat<a class="headerlink" href="#exercitiu-1-salut-personalizat" title="Link to this section">&para;</a></h3>
-<p>Scrie un program care cere numele și vârsta, apoi afișează: <code>"Bună, [nume]! Ai [vârstă] ani."</code></p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-personalized-greeting">Exercise 1 — Personalized greeting<a class="headerlink" href="#exercise-1-personalized-greeting" title="Link to this section">&para;</a></h3>
+<p>Write a program that asks for name and age, then displays: <code>"Hi, [name]! You are [age] years old."</code></p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">nume</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Numele tău: &quot;</span><span class="p">)</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">varsta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Vârsta ta: &quot;</span><span class="p">))</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bună, </span><span class="si">{</span><span class="n">nume</span><span class="si">}</span><span class="s2">! Ai </span><span class="si">{</span><span class="n">varsta</span><span class="si">}</span><span class="s2"> ani.&quot;</span><span class="p">)</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your name: &quot;</span><span class="p">)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your age: &quot;</span><span class="p">))</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hi, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">! You are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-aria-dreptunghiului">Exercițiu 2 — Aria dreptunghiului<a class="headerlink" href="#exercitiu-2-aria-dreptunghiului" title="Link to this section">&para;</a></h3>
-<p>Cere lungimea și lățimea unui dreptunghi, calculează aria și perimetrul.</p>
+<h3 id="exercise-2-rectangle-area">Exercise 2 — Rectangle area<a class="headerlink" href="#exercise-2-rectangle-area" title="Link to this section">&para;</a></h3>
+<p>Ask for the length and width of a rectangle, calculate the area and the perimeter.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">lungime</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lungimea (m): &quot;</span><span class="p">))</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">latime</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lățimea (m): &quot;</span><span class="p">))</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">aria</span> <span class="o">=</span> <span class="n">lungime</span> <span class="o">*</span> <span class="n">latime</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">perimetru</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">lungime</span> <span class="o">+</span> <span class="n">latime</span><span class="p">)</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aria: </span><span class="si">{</span><span class="n">aria</span><span class="si">}</span><span class="s2"> m²&quot;</span><span class="p">)</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perimetrul: </span><span class="si">{</span><span class="n">perimetru</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">length</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Length (m): &quot;</span><span class="p">))</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">width</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Width (m): &quot;</span><span class="p">))</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">area</span> <span class="o">=</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">perimeter</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="n">width</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area: </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2"> m²&quot;</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perimeter: </span><span class="si">{</span><span class="n">perimeter</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-cate-secunde">Exercițiu 3 — Câte secunde?<a class="headerlink" href="#exercitiu-3-cate-secunde" title="Link to this section">&para;</a></h3>
-<p>Cere ore și minute, afișează totalul în secunde.</p>
+<h3 id="exercise-3-how-many-seconds">Exercise 3 — How many seconds?<a class="headerlink" href="#exercise-3-how-many-seconds" title="Link to this section">&para;</a></h3>
+<p>Ask for hours and minutes, display the total in seconds.</p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">ore</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ore: &quot;</span><span class="p">))</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">minute</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Minute: &quot;</span><span class="p">))</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">secunde</span> <span class="o">=</span> <span class="n">ore</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="n">minute</span> <span class="o">*</span> <span class="mi">60</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ore</span><span class="si">}</span><span class="s2">h </span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="s2">min = </span><span class="si">{</span><span class="n">secunde</span><span class="si">}</span><span class="s2"> secunde&quot;</span><span class="p">)</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">hours</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hours: &quot;</span><span class="p">))</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">minutes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Minutes: &quot;</span><span class="p">))</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">seconds</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="n">minutes</span> <span class="o">*</span> <span class="mi">60</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hours</span><span class="si">}</span><span class="s2">h </span><span class="si">{</span><span class="n">minutes</span><span class="si">}</span><span class="s2">min = </span><span class="si">{</span><span class="n">seconds</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-calculator-interactiv">Mini-proiect: Calculator interactiv<a class="headerlink" href="#mini-proiect-calculator-interactiv" title="Link to this section">&para;</a></h2>
-<p>Scrie un program care cere două numere și afișează toate operațiile de bază.</p>
-<p><strong>Exemplu de rulare:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Primul număr: 10
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Al doilea număr: 3
+<h2 id="mini-project-interactive-calculator">Mini-project: Interactive calculator<a class="headerlink" href="#mini-project-interactive-calculator" title="Link to this section">&para;</a></h2>
+<p>Write a program that asks for two numbers and displays all the basic operations.</p>
+<p><strong>Example run:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>First number: 10
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Second number: 3
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>10.0 + 3.0 = 13.0
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>10.0 - 3.0 = 7.0
@@ -572,9 +572,9 @@
 </span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>10.0 ^ 3.0 = 1000.0
 </span></code></pre></div></p>
 <details class="success">
-<summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Primul număr: &quot;</span><span class="p">))</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Al doilea număr: &quot;</span><span class="p">))</span>
+<summary>Solution</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;First number: &quot;</span><span class="p">))</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Second number: &quot;</span><span class="p">))</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nb">print</span><span class="p">()</span>
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -587,15 +587,15 @@
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li><code>input("mesaj")</code> citește text de la tastatură — returnează ÎNTOTDEAUNA <code>str</code></li>
-<li>Convertește cu <code>int(input(...))</code> sau <code>float(input(...))</code></li>
-<li><code>print(a, b, sep=", ")</code> controlează separatorul</li>
-<li><code>print("text", end="")</code> controlează ce vine după linie</li>
+<li><code>input("message")</code> reads text from the keyboard — ALWAYS returns <code>str</code></li>
+<li>Convert with <code>int(input(...))</code> or <code>float(input(...))</code></li>
+<li><code>print(a, b, sep=", ")</code> controls the separator</li>
+<li><code>print("text", end="")</code> controls what comes after the line</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../04-conditii/">→ Lecția 04: Condiții</a></p>
+<p><strong>Next step:</strong> <a href="../04-conditii/">→ Lesson 04: Conditions</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -631,36 +631,36 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-03-input-si-output" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 03 · Input și Output</a>
+                  <a href="#lesson-03-input-and-output" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 03 · Input and Output</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#functia-input" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Funcția input()</a>
+                        <a href="#the-input-function" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The input() function</a>
                       </li>
                     
                       <li>
-                        <a href="#input-returneaza-intotdeauna-str" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">input() returnează ÎNTOTDEAUNA str</a>
+                        <a href="#input-always-returns-str" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">input() ALWAYS returns str</a>
                       </li>
                     
                       <li>
-                        <a href="#functia-print-detalii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Funcția print() — detalii</a>
+                        <a href="#the-print-function-details" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The print() function — details</a>
                       </li>
                     
                       <li>
-                        <a href="#exemple-combinate" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exemple combinate</a>
+                        <a href="#combined-examples" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Combined examples</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-calculator-interactiv" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Calculator interactiv</a>
+                        <a href="#mini-project-interactive-calculator" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Interactive calculator</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>

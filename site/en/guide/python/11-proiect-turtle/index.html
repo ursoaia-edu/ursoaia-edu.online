@@ -432,7 +432,7 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">11: Proiect Grafice Turtle</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Proiect final — desenează forme geometrice și spirale cu modulul turtle.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Final project — draw geometric shapes and spirals with the turtle module.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
@@ -441,66 +441,66 @@
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">turtle</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">grafice</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">graphics</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">desen</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">drawing</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">animație</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">animation</span>
                 
               </div>
             
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-11-proiect-grafice-cu-turtle">Lecția 11 · Proiect: Grafice cu Turtle<a class="headerlink" href="#lectia-11-proiect-grafice-cu-turtle" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-11-project-turtle-graphics">Lesson 11 · Project: Turtle Graphics<a class="headerlink" href="#lesson-11-project-turtle-graphics" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei exersa</p>
+<p class="admonition-title">What you'll practice</p>
 <ul>
-<li>Modulul <code>turtle</code> pentru grafică vectorială</li>
-<li>Bucle <code>for</code> pentru a desena forme repetitive</li>
-<li>Funcții pentru forme reutilizabile</li>
-<li>Creativitate — îți creezi propria artă cu cod</li>
+<li>The <code>turtle</code> module for vector graphics</li>
+<li><code>for</code> loops to draw repeating shapes</li>
+<li>Functions for reusable shapes</li>
+<li>Creativity — making your own art with code</li>
 </ul>
 </div>
 <hr />
-<h2 id="ce-este-modulul-turtle">Ce este modulul <code>turtle</code>?<a class="headerlink" href="#ce-este-modulul-turtle" title="Link to this section">&para;</a></h2>
-<p><code>turtle</code> este un modul Python care simulează o "broască țestoasă" ce desenează pe ecran. O controlezi cu comenzi simple: <code>forward()</code>, <code>left()</code>, <code>right()</code>. Este instalat implicit cu Python.</p>
+<h2 id="what-is-the-turtle-module">What is the <code>turtle</code> module?<a class="headerlink" href="#what-is-the-turtle-module" title="Link to this section">&para;</a></h2>
+<p><code>turtle</code> is a Python module that simulates a "turtle" drawing on the screen. You control it with simple commands: <code>forward()</code>, <code>left()</code>, <code>right()</code>. It comes installed with Python by default.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>   <span class="c1"># creează broasca</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>        <span class="c1"># merge 100 pixeli înainte</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>            <span class="c1"># se întoarce 90° la stânga</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>        <span class="c1"># merge 100 pixeli înainte</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>   <span class="c1"># create the turtle</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>        <span class="c1"># move 100 pixels forward</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>            <span class="c1"># turn 90° left</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>        <span class="c1"># move 100 pixels forward</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>         <span class="c1"># menține fereastra deschisă</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>         <span class="c1"># keep the window open</span>
 </span></code></pre></div>
 <hr />
-<h2 id="comenzile-principale">Comenzile principale<a class="headerlink" href="#comenzile-principale" title="Link to this section">&para;</a></h2>
-<h3 id="miscare">Mișcare<a class="headerlink" href="#miscare" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>    <span class="c1"># merge n pixeli înainte</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">t</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="c1"># merge n pixeli înapoi</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span>  <span class="c1"># se întoarce la dreapta</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span>   <span class="c1"># se întoarce la stânga</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>    <span class="c1"># sare la coordonatele (x, y)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">t</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>        <span class="c1"># revine la origine (0, 0)</span>
+<h2 id="main-commands">Main commands<a class="headerlink" href="#main-commands" title="Link to this section">&para;</a></h2>
+<h3 id="movement">Movement<a class="headerlink" href="#movement" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>    <span class="c1"># move n pixels forward</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">t</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="c1"># move n pixels backward</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>    <span class="c1"># turn right</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>     <span class="c1"># turn left</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>    <span class="c1"># jump to coordinates (x, y)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">t</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>        <span class="c1"># return to the origin (0, 0)</span>
 </span></code></pre></div>
-<h3 id="controlul-creionului">Controlul creionului<a class="headerlink" href="#controlul-creionului" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>               <span class="c1"># ridică creionul (nu desenează la mișcare)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>             <span class="c1"># coboară creionul (desenează)</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>            <span class="c1"># grosimea liniei</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">t</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>       <span class="c1"># culoarea liniei</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>   <span class="c1"># culoarea de umplere</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">t</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>          <span class="c1"># start umplere</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">t</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>            <span class="c1"># stop umplere</span>
+<h3 id="pen-control">Pen control<a class="headerlink" href="#pen-control" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>               <span class="c1"># lift the pen (no drawing while moving)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>             <span class="c1"># put the pen down (draws)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>            <span class="c1"># line thickness</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">t</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>       <span class="c1"># line color</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>   <span class="c1"># fill color</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">t</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>          <span class="c1"># start filling</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">t</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>            <span class="c1"># stop filling</span>
 </span></code></pre></div>
-<h3 id="viteza-si-aspectul">Viteza și aspectul<a class="headerlink" href="#viteza-si-aspectul" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>              <span class="c1"># 0 = maxim, 1 = lent, 10 = rapid</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>          <span class="c1"># ascunde broasca (imagine mai curată)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">turtle</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span> <span class="c1"># culoarea fundalului</span>
+<h3 id="speed-and-appearance">Speed and appearance<a class="headerlink" href="#speed-and-appearance" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>              <span class="c1"># 0 = max, 1 = slow, 10 = fast</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>          <span class="c1"># hide the turtle (cleaner image)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">turtle</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span> <span class="c1"># background color</span>
 </span></code></pre></div>
 <hr />
-<h2 id="forme-de-baza">Forme de bază<a class="headerlink" href="#forme-de-baza" title="Link to this section">&para;</a></h2>
-<h3 id="patrat">Pătrat<a class="headerlink" href="#patrat" title="Link to this section">&para;</a></h3>
+<h2 id="basic-shapes">Basic shapes<a class="headerlink" href="#basic-shapes" title="Link to this section">&para;</a></h2>
+<h3 id="square">Square<a class="headerlink" href="#square" title="Link to this section">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -510,25 +510,25 @@
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
 </span></code></pre></div>
-<h3 id="triunghi-echilateral">Triunghi echilateral<a class="headerlink" href="#triunghi-echilateral" title="Link to this section">&para;</a></h3>
+<h3 id="equilateral-triangle">Equilateral triangle<a class="headerlink" href="#equilateral-triangle" title="Link to this section">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
 </span></code></pre></div>
-<h3 id="cerc">Cerc<a class="headerlink" href="#cerc" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>   <span class="c1"># cerc cu raza 50</span>
+<h3 id="circle">Circle<a class="headerlink" href="#circle" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>   <span class="c1"># circle with radius 50</span>
 </span></code></pre></div>
-<h3 id="poligon-regulat">Poligon regulat<a class="headerlink" href="#poligon-regulat" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">poligon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">latura</span><span class="p">):</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">unghi</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">/</span> <span class="n">n</span>
+<h3 id="regular-polygon">Regular polygon<a class="headerlink" href="#regular-polygon" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">polygon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">angle</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">/</span> <span class="n">n</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">latura</span><span class="p">)</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">unghi</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">side</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">poligon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>   <span class="c1"># hexagon cu latura 80</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">polygon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>   <span class="c1"># hexagon with side 80</span>
 </span></code></pre></div>
 <hr />
-<h2 id="spirale">Spirale<a class="headerlink" href="#spirale" title="Link to this section">&para;</a></h2>
+<h2 id="spirals">Spirals<a class="headerlink" href="#spirals" title="Link to this section">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -540,7 +540,7 @@
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
 </span></code></pre></div>
 <hr />
-<h2 id="steaua">Steaua<a class="headerlink" href="#steaua" title="Link to this section">&para;</a></h2>
+<h2 id="star">Star<a class="headerlink" href="#star" title="Link to this section">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
@@ -554,131 +554,131 @@
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
 </span></code></pre></div>
 <hr />
-<h2 id="proiect-floare-de-culori">Proiect: Floare de culori<a class="headerlink" href="#proiect-floare-de-culori" title="Link to this section">&para;</a></h2>
+<h2 id="project-colorful-flower">Project: Colorful flower<a class="headerlink" href="#project-colorful-flower" title="Link to this section">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">culori</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">]</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">]</span>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">36</span><span class="p">):</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">t</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="n">culori</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">culori</span><span class="p">)])</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">t</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)])</span>
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
 </span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
 </span></code></pre></div>
 <hr />
-<h2 id="proiect-panza-de-paianjen-colorata">Proiect: Pânza de păianjen colorată<a class="headerlink" href="#proiect-panza-de-paianjen-colorata" title="Link to this section">&para;</a></h2>
+<h2 id="project-colorful-spider-web">Project: Colorful spider web<a class="headerlink" href="#project-colorful-spider-web" title="Link to this section">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">turtle</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">culori</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;magenta&quot;</span><span class="p">,</span> <span class="s2">&quot;white&quot;</span><span class="p">]</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;magenta&quot;</span><span class="p">,</span> <span class="s2">&quot;white&quot;</span><span class="p">]</span>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">t</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="n">culori</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">])</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">t</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">])</span>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">)</span>
 </span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 </span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
 </span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
 </span></code></pre></div>
 <hr />
-<h2 id="proiect-complet-galerie-de-forme">Proiect complet: Galerie de forme<a class="headerlink" href="#proiect-complet-galerie-de-forme" title="Link to this section">&para;</a></h2>
-<p>Creează un program care desenează mai multe forme la poziții diferite:</p>
+<h2 id="complete-project-shape-gallery">Complete project: Shape gallery<a class="headerlink" href="#complete-project-shape-gallery" title="Link to this section">&para;</a></h2>
+<p>Build a program that draws several shapes at different positions:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">patrat</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">latura</span><span class="p">,</span> <span class="n">culoare</span><span class="p">):</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="n">culoare</span><span class="p">)</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="n">t</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">latura</span><span class="p">)</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">side</span><span class="p">)</span>
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    <span class="n">t</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">cerc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">raza</span><span class="p">,</span> <span class="n">culoare</span><span class="p">):</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
 </span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">raza</span><span class="p">)</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">radius</span><span class="p">)</span>
 </span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>    <span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    <span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="n">culoare</span><span class="p">)</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    <span class="n">t</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
 </span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>    <span class="n">t</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>
-</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">raza</span><span class="p">)</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
 </span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>    <span class="n">t</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>
 </span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>
-</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="n">ecran</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
-</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="n">ecran</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="n">screen</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>
 </span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
 </span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>
-</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="n">patrat</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
-</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="n">patrat</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
-</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="n">patrat</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="n">square</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="n">square</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="n">square</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
 </span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>
-</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="n">cerc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">160</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
-</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="n">cerc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">)</span>
-</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="n">cerc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="n">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">160</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="n">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="n">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">)</span>
 </span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>
 </span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
 </span></code></pre></div>
 <hr />
-<h2 id="idei-de-extindere">Idei de extindere<a class="headerlink" href="#idei-de-extindere" title="Link to this section">&para;</a></h2>
+<h2 id="ideas-for-extending-the-project">Ideas for extending the project<a class="headerlink" href="#ideas-for-extending-the-project" title="Link to this section">&para;</a></h2>
 <ul>
-<li>Desenează un peisaj (soare, nori, munți, copaci)</li>
-<li>Creează un sistem solar animat cu planete care orbitează</li>
-<li>Desenează literele numelui tău</li>
-<li>Implementează un fractal (ex: Triunghiul lui Sierpinski)</li>
-<li>Creează un joc simplu cu turtle (bila care ricoșează)</li>
+<li>Draw a landscape (sun, clouds, mountains, trees)</li>
+<li>Build an animated solar system with orbiting planets</li>
+<li>Draw the letters of your name</li>
+<li>Implement a fractal (e.g., Sierpinski triangle)</li>
+<li>Create a simple game with turtle (a bouncing ball)</li>
 </ul>
 <hr />
-<h2 id="rezumat-al-cursului">Rezumat al cursului<a class="headerlink" href="#rezumat-al-cursului" title="Link to this section">&para;</a></h2>
-<p>Felicitări! Ai parcurs toate lecțiile cursului de Python pentru începători:</p>
+<h2 id="course-summary">Course summary<a class="headerlink" href="#course-summary" title="Link to this section">&para;</a></h2>
+<p>Congratulations! You've completed all the lessons of the Python course for beginners:</p>
 <table>
 <thead>
 <tr>
-<th>Lecție</th>
-<th>Ce ai învățat</th>
+<th>Lesson</th>
+<th>What you learned</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>00–03</td>
-<td>Bazele: variabile, operații, input/output</td>
+<td>Basics: variables, operations, input/output</td>
 </tr>
 <tr>
 <td>04–05</td>
-<td>Controlul fluxului: condiții și bucle</td>
+<td>Flow control: conditions and loops</td>
 </tr>
 <tr>
 <td>06–07</td>
-<td>Colecții: liste și dicționare</td>
+<td>Collections: lists and dictionaries</td>
 </tr>
 <tr>
 <td>08</td>
-<td>Funcții: organizarea codului</td>
+<td>Functions: organizing code</td>
 </tr>
 <tr>
 <td>09</td>
-<td>Fișiere: persistența datelor</td>
+<td>Files: data persistence</td>
 </tr>
 <tr>
 <td>10–11</td>
-<td>Proiecte: joc text și grafice</td>
+<td>Projects: text game and graphics</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Unde mergi mai departe?</strong></p>
+<p><strong>Where to go next?</strong></p>
 <ul>
-<li>Încearcă să extinzi jocul de aventură cu mai multe camere</li>
-<li>Explorează modulele <code>random</code>, <code>math</code>, <code>datetime</code></li>
-<li>Încearcă <code>pygame</code> pentru jocuri 2D cu grafică</li>
-<li>Explorează <code>matplotlib</code> pentru grafice de date</li>
+<li>Try extending the adventure game with more rooms</li>
+<li>Explore the <code>random</code>, <code>math</code>, <code>datetime</code> modules</li>
+<li>Try <code>pygame</code> for 2D games with graphics</li>
+<li>Explore <code>matplotlib</code> for data charts</li>
 </ul>
           </div>
 
@@ -715,48 +715,48 @@
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-11-proiect-grafice-cu-turtle" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 11 · Proiect: Grafice cu Turtle</a>
+                  <a href="#lesson-11-project-turtle-graphics" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 11 · Project: Turtle Graphics</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#ce-este-modulul-turtle" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ce este modulul turtle?</a>
+                        <a href="#what-is-the-turtle-module" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">What is the turtle module?</a>
                       </li>
                     
                       <li>
-                        <a href="#comenzile-principale" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Comenzile principale</a>
+                        <a href="#main-commands" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Main commands</a>
                       </li>
                     
                       <li>
-                        <a href="#forme-de-baza" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Forme de bază</a>
+                        <a href="#basic-shapes" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Basic shapes</a>
                       </li>
                     
                       <li>
-                        <a href="#spirale" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Spirale</a>
+                        <a href="#spirals" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Spirals</a>
                       </li>
                     
                       <li>
-                        <a href="#steaua" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Steaua</a>
+                        <a href="#star" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Star</a>
                       </li>
                     
                       <li>
-                        <a href="#proiect-floare-de-culori" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Proiect: Floare de culori</a>
+                        <a href="#project-colorful-flower" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Project: Colorful flower</a>
                       </li>
                     
                       <li>
-                        <a href="#proiect-panza-de-paianjen-colorata" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Proiect: Pânza de păianjen colorată</a>
+                        <a href="#project-colorful-spider-web" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Project: Colorful spider web</a>
                       </li>
                     
                       <li>
-                        <a href="#proiect-complet-galerie-de-forme" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Proiect complet: Galerie de forme</a>
+                        <a href="#complete-project-shape-gallery" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Complete project: Shape gallery</a>
                       </li>
                     
                       <li>
-                        <a href="#idei-de-extindere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Idei de extindere</a>
+                        <a href="#ideas-for-extending-the-project" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ideas for extending the project</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat-al-cursului" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat al cursului</a>
+                        <a href="#course-summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Course summary</a>
                       </li>
                     
                   </ul>

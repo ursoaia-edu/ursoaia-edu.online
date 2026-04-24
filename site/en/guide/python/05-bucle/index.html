@@ -432,7 +432,7 @@
             
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">05: Bucle</h1>
             
-              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Repetă acțiuni cu buclele for și while. Controlează fluxul cu break și continue.</p>
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Repeat actions with for and while loops. Control the flow with break and continue.</p>
             
             
               <div class="flex flex-wrap gap-1.5 mt-5">
@@ -443,7 +443,7 @@
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">while</span>
                 
-                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">bucle</span>
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">loops</span>
                 
                   <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">break</span>
                 
@@ -456,19 +456,19 @@
           </header>
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <h1 id="lectia-05-bucle">Lecția 05 · Bucle<a class="headerlink" href="#lectia-05-bucle" title="Link to this section">&para;</a></h1>
+            <h1 id="lesson-05-loops">Lesson 05 · Loops<a class="headerlink" href="#lesson-05-loops" title="Link to this section">&para;</a></h1>
 <div class="admonition tip">
-<p class="admonition-title">Ce vei învăța</p>
+<p class="admonition-title">What you'll learn</p>
 <ul>
-<li>Bucla <code>for</code> cu <code>range()</code></li>
-<li>Bucla <code>while</code></li>
-<li>Instrucțiunile <code>break</code> și <code>continue</code></li>
-<li>Bucle imbricate</li>
+<li>The <code>for</code> loop with <code>range()</code></li>
+<li>The <code>while</code> loop</li>
+<li>The <code>break</code> and <code>continue</code> statements</li>
+<li>Nested loops</li>
 </ul>
 </div>
 <hr />
-<h2 id="bucla-for">Bucla <code>for</code><a class="headerlink" href="#bucla-for" title="Link to this section">&para;</a></h2>
-<p><code>for</code> repetă un bloc de cod pentru fiecare element dintr-o secvență:</p>
+<h2 id="the-for-loop">The <code>for</code> loop<a class="headerlink" href="#the-for-loop" title="Link to this section">&para;</a></h2>
+<p><code>for</code> repeats a block of code for each element in a sequence:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </span></code></pre></div>
@@ -479,12 +479,12 @@
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>3
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>4
 </span></code></pre></div></p>
-<h3 id="functia-range">Funcția <code>range()</code><a class="headerlink" href="#functia-range" title="Link to this section">&para;</a></h3>
+<h3 id="the-range-function">The <code>range()</code> function<a class="headerlink" href="#the-range-function" title="Link to this section">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Apel</th>
-<th>Valori generate</th>
+<th>Call</th>
+<th>Generated values</th>
 </tr>
 </thead>
 <tbody>
@@ -506,22 +506,22 @@
 </tr>
 </tbody>
 </table>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Numără de la 1 la 10</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Count from 1 to 10</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Numere pare de la 2 la 20</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Even numbers from 2 to 20</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Numără invers</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Count down</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start!&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h3 id="for-peste-un-sir-de-caractere"><code>for</code> peste un șir de caractere<a class="headerlink" href="#for-peste-un-sir-de-caractere" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">for</span> <span class="n">litera</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">:</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">litera</span><span class="p">)</span>
+<h3 id="for-over-a-string"><code>for</code> over a string<a class="headerlink" href="#for-over-a-string" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s2">&quot;Python&quot;</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># P</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># y</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># t</span>
@@ -530,12 +530,12 @@
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># n</span>
 </span></code></pre></div>
 <hr />
-<h2 id="bucla-while">Bucla <code>while</code><a class="headerlink" href="#bucla-while" title="Link to this section">&para;</a></h2>
-<p><code>while</code> repetă un bloc <strong>cât timp o condiție este adevărată</strong>:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">numar</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">while</span> <span class="n">numar</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">numar</span><span class="p">)</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">numar</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># numar = numar + 1</span>
+<h2 id="the-while-loop">The <code>while</code> loop<a class="headerlink" href="#the-while-loop" title="Link to this section">&para;</a></h2>
+<p><code>while</code> repeats a block <strong>as long as a condition is true</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">number</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">while</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># number = number + 1</span>
 </span></code></pre></div>
 <p><strong>Output:</strong>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>1
@@ -545,41 +545,41 @@
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>5
 </span></code></pre></div></p>
 <div class="admonition warning">
-<p class="admonition-title">Bucla infinită</p>
-<p>Dacă uiți să modifici variabila, bucla nu se mai oprește:
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># GREȘIT — buclă infinită!</span>
+<p class="admonition-title">Infinite loop</p>
+<p>If you forget to update the variable, the loop never ends:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># WRONG — infinite loop!</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="c1"># am uitat x += 1</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="c1"># forgot x += 1</span>
 </span></code></pre></div>
-Oprește programul cu <code>Ctrl+C</code>.</p>
+Stop the program with <code>Ctrl+C</code>.</p>
 </div>
-<h3 id="while-pentru-validarea-inputului"><code>while</code> pentru validarea inputului<a class="headerlink" href="#while-pentru-validarea-inputului" title="Link to this section">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">raspuns</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">while</span> <span class="n">raspuns</span> <span class="o">!=</span> <span class="s2">&quot;da&quot;</span> <span class="ow">and</span> <span class="n">raspuns</span> <span class="o">!=</span> <span class="s2">&quot;nu&quot;</span><span class="p">:</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">raspuns</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ai înțeles? (da/nu): &quot;</span><span class="p">)</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mulțumesc!&quot;</span><span class="p">)</span>
+<h3 id="while-for-input-validation"><code>while</code> for input validation<a class="headerlink" href="#while-for-input-validation" title="Link to this section">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">while</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s2">&quot;yes&quot;</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s2">&quot;no&quot;</span><span class="p">:</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Did you understand? (yes/no): &quot;</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thank you!&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="break-iesirea-fortata-din-bucla"><code>break</code> — ieșirea forțată din buclă<a class="headerlink" href="#break-iesirea-fortata-din-bucla" title="Link to this section">&para;</a></h2>
+<h2 id="break-forced-exit-from-the-loop"><code>break</code> — forced exit from the loop<a class="headerlink" href="#break-forced-exit-from-the-loop" title="Link to this section">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="k">break</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Afișează: 1, 2, 3, 4</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Prints: 1, 2, 3, 4</span>
 </span></code></pre></div>
 <hr />
-<h2 id="continue-sare-la-urmatoarea-iteratie"><code>continue</code> — sare la următoarea iterație<a class="headerlink" href="#continue-sare-la-urmatoarea-iteratie" title="Link to this section">&para;</a></h2>
+<h2 id="continue-skip-to-the-next-iteration"><code>continue</code> — skip to the next iteration<a class="headerlink" href="#continue-skip-to-the-next-iteration" title="Link to this section">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="k">continue</span>   <span class="c1"># sare peste numerele pare</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="k">continue</span>   <span class="c1"># skip even numbers</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Afișează: 1, 3, 5, 7, 9</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Prints: 1, 3, 5, 7, 9</span>
 </span></code></pre></div>
 <hr />
-<h2 id="bucle-imbricate">Bucle imbricate<a class="headerlink" href="#bucle-imbricate" title="Link to this section">&para;</a></h2>
-<p>O buclă înăuntrul altei bucle:</p>
+<h2 id="nested-loops">Nested loops<a class="headerlink" href="#nested-loops" title="Link to this section">&para;</a></h2>
+<p>A loop inside another loop:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -594,81 +594,81 @@ Oprește programul cu <code>Ctrl+C</code>.</p>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>...
 </span></code></pre></div></p>
 <hr />
-<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
-<h3 id="exercitiu-1-suma-de-la-1-la-n">Exercițiu 1 — Suma de la 1 la N<a class="headerlink" href="#exercitiu-1-suma-de-la-1-la-n" title="Link to this section">&para;</a></h3>
-<p>Cere un număr N și calculează suma 1 + 2 + ... + N.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-sum-from-1-to-n">Exercise 1 — Sum from 1 to N<a class="headerlink" href="#exercise-1-sum-from-1-to-n" title="Link to this section">&para;</a></h3>
+<p>Ask for a number N and calculate the sum 1 + 2 + ... + N.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;N = &quot;</span><span class="p">))</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">suma</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">suma</span> <span class="o">+=</span> <span class="n">i</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Suma = </span><span class="si">{</span><span class="n">suma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sum = </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-2-numere-prime">Exercițiu 2 — Numere prime<a class="headerlink" href="#exercitiu-2-numere-prime" title="Link to this section">&para;</a></h3>
-<p>Afișează toate numerele prime mai mici decât 50.</p>
+<h3 id="exercise-2-prime-numbers">Exercise 2 — Prime numbers<a class="headerlink" href="#exercise-2-prime-numbers" title="Link to this section">&para;</a></h3>
+<p>Display all prime numbers smaller than 50.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">este_prim</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">is_prime</span> <span class="o">=</span> <span class="kc">True</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>            <span class="n">este_prim</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>            <span class="n">is_prime</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>            <span class="k">break</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="k">if</span> <span class="n">este_prim</span><span class="p">:</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="k">if</span> <span class="n">is_prime</span><span class="p">:</span>
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
-<h3 id="exercitiu-3-ghiceste-numarul">Exercițiu 3 — Ghicește numărul<a class="headerlink" href="#exercitiu-3-ghiceste-numarul" title="Link to this section">&para;</a></h3>
-<p>Generează un număr "secret" (folosit hardcodat) și lasă utilizatorul să ghicească cu feedback.</p>
+<h3 id="exercise-3-guess-the-number">Exercise 3 — Guess the number<a class="headerlink" href="#exercise-3-guess-the-number" title="Link to this section">&para;</a></h3>
+<p>Generate a "secret" number (hardcoded) and let the user guess with feedback.</p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">secret</span> <span class="o">=</span> <span class="mi">42</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">incercari</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">ghicit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ghicește numărul (1-100): &quot;</span><span class="p">))</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">incercari</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="k">if</span> <span class="n">ghicit</span> <span class="o">&lt;</span> <span class="n">secret</span><span class="p">:</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prea mic!&quot;</span><span class="p">)</span>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="k">elif</span> <span class="n">ghicit</span> <span class="o">&gt;</span> <span class="n">secret</span><span class="p">:</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prea mare!&quot;</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Guess the number (1-100): &quot;</span><span class="p">))</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">secret</span><span class="p">:</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too low!&quot;</span><span class="p">)</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">secret</span><span class="p">:</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too high!&quot;</span><span class="p">)</span>
 </span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corect! Ai ghicit în </span><span class="si">{</span><span class="n">incercari</span><span class="si">}</span><span class="s2"> încercări.&quot;</span><span class="p">)</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correct! You guessed in </span><span class="si">{</span><span class="n">attempts</span><span class="si">}</span><span class="s2"> attempts.&quot;</span><span class="p">)</span>
 </span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>        <span class="k">break</span>
 </span></code></pre></div>
 </details>
 <hr />
-<h2 id="mini-proiect-tabla-inmultirii">Mini-proiect: Tabla înmulțirii<a class="headerlink" href="#mini-proiect-tabla-inmultirii" title="Link to this section">&para;</a></h2>
-<p>Afișează tabla înmulțirii pentru numerele 1–10 în format tabelar.</p>
-<p><strong>Output (primele rânduri):</strong>
+<h2 id="mini-project-multiplication-table">Mini-project: Multiplication table<a class="headerlink" href="#mini-project-multiplication-table" title="Link to this section">&para;</a></h2>
+<p>Display the multiplication table for numbers 1–10 in a tabular format.</p>
+<p><strong>Output (first rows):</strong>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>   1   2   3   4   5   6   7   8   9  10
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>   2   4   6   8  10  12  14  16  18  20
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>   3   6   9  12  15  18  21  24  27  30
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>...
 </span></code></pre></div></p>
 <details class="success">
-<summary>Soluție</summary>
+<summary>Solution</summary>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="nb">print</span><span class="p">()</span>
 </span></code></pre></div>
-<code>{i*j:4}</code> formatează numărul pe 4 caractere pentru aliniere.</p>
+<code>{i*j:4}</code> formats the number across 4 characters for alignment.</p>
 </details>
 <hr />
-<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
 <ul>
-<li><code>for i in range(n):</code> — repetă de <code>n</code> ori</li>
-<li><code>range(start, stop, pas)</code> — generează secvențe de numere</li>
-<li><code>while condiție:</code> — repetă cât timp condiția e adevărată</li>
-<li><code>break</code> — ieșire forțată din buclă</li>
-<li><code>continue</code> — sare la iterația următoare</li>
-<li>Indentarea este obligatorie!</li>
+<li><code>for i in range(n):</code> — repeat <code>n</code> times</li>
+<li><code>range(start, stop, step)</code> — generate sequences of numbers</li>
+<li><code>while condition:</code> — repeat as long as the condition is true</li>
+<li><code>break</code> — forced exit from the loop</li>
+<li><code>continue</code> — skip to the next iteration</li>
+<li>Indentation is mandatory!</li>
 </ul>
 <hr />
-<p><strong>Pasul următor:</strong> <a href="../06-liste/">→ Lecția 06: Liste</a></p>
+<p><strong>Next step:</strong> <a href="../06-liste/">→ Lesson 06: Lists</a></p>
           </div>
 
           <!-- Prev / Next nav -->
@@ -704,40 +704,40 @@ Oprește programul cu <code>Ctrl+C</code>.</p>
             <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
               
                 <li>
-                  <a href="#lectia-05-bucle" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 05 · Bucle</a>
+                  <a href="#lesson-05-loops" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 05 · Loops</a>
                   
                   <ul class="space-y-1 mt-1">
                     
                       <li>
-                        <a href="#bucla-for" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Bucla for</a>
+                        <a href="#the-for-loop" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The for loop</a>
                       </li>
                     
                       <li>
-                        <a href="#bucla-while" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Bucla while</a>
+                        <a href="#the-while-loop" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The while loop</a>
                       </li>
                     
                       <li>
-                        <a href="#break-iesirea-fortata-din-bucla" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">break — ieșirea forțată din buclă</a>
+                        <a href="#break-forced-exit-from-the-loop" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">break — forced exit from the loop</a>
                       </li>
                     
                       <li>
-                        <a href="#continue-sare-la-urmatoarea-iteratie" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">continue — sare la următoarea iterație</a>
+                        <a href="#continue-skip-to-the-next-iteration" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">continue — skip to the next iteration</a>
                       </li>
                     
                       <li>
-                        <a href="#bucle-imbricate" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Bucle imbricate</a>
+                        <a href="#nested-loops" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Nested loops</a>
                       </li>
                     
                       <li>
-                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
                       </li>
                     
                       <li>
-                        <a href="#mini-proiect-tabla-inmultirii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Tabla înmulțirii</a>
+                        <a href="#mini-project-multiplication-table" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: Multiplication table</a>
                       </li>
                     
                       <li>
-                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
                       </li>
                     
                   </ul>
