@@ -866,90 +866,58 @@ ghiduri, cod sursă și scheme pentru Arduino, ESP32, LoPy și Raspberry Pi.</p>
 
   <!-- ==================== ABOUT SECTION ==================== -->
   <section id="about" class="relative py-24 sm:py-32">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="reveal grid md:grid-cols-5 gap-10 items-center">
-        <!-- Visual side -->
-        <div class="md:col-span-2 flex justify-center">
-          <div class="relative">
-            <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-3xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 shadow-2xl flex items-center justify-center overflow-hidden">
-              <!-- Decorative circuit -->
-              <svg viewBox="0 0 200 200" class="w-full h-full opacity-80">
-                <defs>
-                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#f97316"/>
-                    <stop offset="100%" stop-color="#fbbf24"/>
-                  </linearGradient>
-                </defs>
-                <rect x="60" y="60" width="80" height="80" rx="8" fill="none" stroke="url(#g1)" stroke-width="2"/>
-                <circle cx="100" cy="100" r="6" fill="url(#g1)"/>
-                <line x1="20" y1="100" x2="60" y2="100" stroke="url(#g1)" stroke-width="2" class="circuit-line"/>
-                <line x1="140" y1="100" x2="180" y2="100" stroke="url(#g1)" stroke-width="2" class="circuit-line" style="animation-delay:0.4s"/>
-                <line x1="100" y1="20" x2="100" y2="60" stroke="url(#g1)" stroke-width="2" class="circuit-line" style="animation-delay:0.8s"/>
-                <line x1="100" y1="140" x2="100" y2="180" stroke="url(#g1)" stroke-width="2" class="circuit-line" style="animation-delay:1.2s"/>
-                <circle cx="20" cy="100" r="4" fill="#f97316"/>
-                <circle cx="180" cy="100" r="4" fill="#f97316"/>
-                <circle cx="100" cy="20" r="4" fill="#f97316"/>
-                <circle cx="100" cy="180" r="4" fill="#f97316"/>
-              </svg>
-            </div>
-            <!-- Floating badge -->
-            <div class="absolute -bottom-3 -right-3 px-3 py-2 rounded-xl dark:glass-dark glass-light shadow-lg flex items-center gap-2">
-              <div class="w-6 h-6 rounded-md bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
-                <i data-lucide="git-branch" class="w-3.5 h-3.5 text-white"></i>
-              </div>
-              <div>
-                <div class="text-[10px] dark:text-zinc-400 text-zinc-500 font-medium">Sursă</div>
-                <div class="text-xs font-semibold dark:text-white text-zinc-900 font-mono">pe GitHub</div>
-              </div>
-            </div>
+    <!-- Background glow -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-orange-500/5 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <!-- Header -->
+      <div class="reveal max-w-2xl mx-auto text-center mb-16">
+        <div class="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-orange-500"></i>
+          <span class="text-[11px] font-semibold uppercase tracking-[0.15em] text-orange-500">Despre cerc</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 mb-5 leading-[1.1]">
+          Un cerc de informatică<br><span class="gradient-text">construit în jurul ciocanului de lipit</span>
+        </h2>
+        <p class="dark:text-zinc-400 text-zinc-500 text-base sm:text-lg leading-relaxed font-light">
+          Suntem un cerc condus de elevi care explorează sistemele embedded, IoT și dezvoltarea web prin proiecte reale — kit-uri Arduino, servere web pe ESP32, noduri LoRaWAN pe Pycom și Raspberry Pi Pico în C și MicroPython.
+        </p>
+      </div>
+
+      <!-- Value cards grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="wrench" class="w-5 h-5 text-orange-500"></i>
           </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Proiecte practice</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Fiecare proiect vine cu scheme de cablare, cod sursă și listă de componente — nu doar teorie pe slide-uri.</p>
         </div>
 
-        <!-- Text side -->
-        <div class="md:col-span-3">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
-              <i data-lucide="users" class="w-4 h-4 text-orange-500"></i>
-            </div>
-            <span class="text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">Despre cerc</span>
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="unlock" class="w-5 h-5 text-orange-500"></i>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-medium tracking-tight dark:text-white text-zinc-900 mb-4">
-            Un cerc de informatică<br>construit în jurul ciocanului de lipit
-          </h2>
-          <div class="space-y-4 dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed font-light">
-            <p>Suntem un cerc condus de elevi care explorează sistemele embedded și IoT prin proiecte reale: kit-uri de pornire Arduino, servere web pe ESP32, noduri LoRaWAN pe hardware Pycom și Raspberry Pi Pico în C și MicroPython.</p>
-            <p>Tot conținutul site-ului este open-source — scheme de cablare, cod sursă și tutoriale pas cu pas — astfel încât oricine poate clona un proiect, schimba componente sau adapta pentru ideile proprii.</p>
-          </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Open-source</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Tot codul, tutorialele și schemele sunt gratuite — le folosești, modifici, partajezi. Fără conturi, fără abonamente.</p>
+        </div>
 
-          <!-- Tech badges -->
-          <div class="flex flex-wrap gap-2 mt-6">
-            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
-              <i data-lucide="cpu" class="w-3 h-3 text-orange-500"></i> C/C++ embedded
-            </span>
-            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
-              <i data-lucide="code-2" class="w-3 h-3 text-orange-500"></i> MicroPython
-            </span>
-            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
-              <i data-lucide="wifi" class="w-3 h-3 text-orange-500"></i> Wi-Fi și LoRaWAN
-            </span>
-            <span class="px-3 py-1.5 rounded-lg dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-xs font-medium flex items-center gap-1.5">
-              <i data-lucide="thermometer" class="w-3 h-3 text-orange-500"></i> Senzori
-            </span>
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-orange-500"></i>
           </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Condus de elevi</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Construit de elevi pentru elevi — învățare între colegi cu ciocanul de lipit în mână, nu monolog profesoral.</p>
+        </div>
 
-          <!-- Repo links -->
-          <div class="flex items-center gap-3 mt-8">
-            
-            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-sm font-medium dark:hover:bg-white/10 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Repo-ul site-ului
-            </a>
-            
-            
-            <a href="https://github.com/ursoaia-edu" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 text-sm font-medium dark:hover:bg-white/10 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-all">
-              <i data-lucide="folder-git-2" class="w-4 h-4"></i> Repo-urile proiectelor
-            </a>
-            
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="trending-up" class="w-5 h-5 text-orange-500"></i>
           </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Progresie gradată</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">De la primul LED pe Arduino la servere Wi-Fi pe ESP32 și noduri LoRaWAN, plus cursuri de Python și Web.</p>
         </div>
       </div>
     </div>
@@ -979,7 +947,7 @@ ghiduri, cod sursă și scheme pentru Arduino, ESP32, LoPy și Raspberry Pi.</p>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Deschide repo-ul
             </a>
             
-            <a href="#projects" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 font-medium text-sm rounded-xl dark:hover:bg-white/10 hover:bg-zinc-200 dark:border-white/10 border-zinc-200 border transition-all whitespace-nowrap">
+            <a href="projects/" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 font-medium text-sm rounded-xl dark:hover:bg-white/10 hover:bg-zinc-200 dark:border-white/10 border-zinc-200 border transition-all whitespace-nowrap">
               Întâi vezi proiectele
             </a>
           </div>
