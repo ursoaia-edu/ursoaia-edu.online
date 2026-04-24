@@ -1,16 +1,83 @@
 site_name: Ursoaia Edu Online
-site_description: "Ursoaia Edu Online is a platform for online education and learning resources."
+site_description: "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi."
 site_author: "Ursoaia Edu Team"
 site_url: "https://ursoaia-edu.online"
 repo_url: "https://github.com/ursoaia-edu/ursoaia-edu.online.git"
+repo_name: "ursoaia-edu/ursoaia-edu.online"
 
 theme:
   name: null
   custom_dir: custom_theme
 
 extra:
-  status_badge_text: "Currently building"
-  status_badge_highlight: "Smart Greenhouse v2"
+  status_badge_text: "Now in the lab"
+  status_badge_highlight: "ESP32 Web Server"
+  org_url: "https://github.com/ursoaia-edu"
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: false
+      reconfigure_search: true
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+          site_name: "Ursoaia Edu Online"
+        - locale: ro
+          name: Română
+          build: true
+          site_name: "Ursoaia Edu Online"
+          nav_translations:
+            Home: Acasă
+            Guide: Ghid
+            Setup: Instalare
+            Projects: Proiecte
+            Arduino: Arduino
+            "LED Cube": Cub de LED-uri
+            "Starter Kits": Kit-uri de pornire
+            ESP32: ESP32
+            "LED Blink": LED intermitent
+            "Temperature & Humidity": Temperatură și umiditate
+            "Temperature Web Server": Server web temperatură
+            LoPy: LoPy
+            "LoRaWAN Node": Nod LoRaWAN
+            "Raspberry Pi": Raspberry Pi
+            Overview: Prezentare generală
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: "Link to this section"
+      toc_depth: 3
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 nav:
   - Home: index.md

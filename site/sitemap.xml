@@ -1,39 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-         <loc>https://ursoaia-edu.online/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/guide/setup/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/guide/setup/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/guide/setup/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/guide/setup/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/projects/arduino/kits/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/projects/arduino/kits/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/arduino/kits/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/arduino/kits/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/projects/arduino/led_cube/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/projects/arduino/led_cube/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/arduino/led_cube/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/arduino/led_cube/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/projects/esp32/led_blink/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/projects/esp32/led_blink/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/esp32/led_blink/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/esp32/led_blink/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/projects/esp32/temperature/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/projects/esp32/temperature/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/esp32/temperature/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/esp32/temperature/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/projects/esp32/temperature_web/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/projects/esp32/temperature_web/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/esp32/temperature_web/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/esp32/temperature_web/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/projects/lopy/lorawan_node/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/projects/lopy/lorawan_node/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/lopy/lorawan_node/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/lopy/lorawan_node/"/>
     </url>
     <url>
-         <loc>https://ursoaia-edu.online/projects/raspberry_pi/</loc>
-         <lastmod>2026-04-21</lastmod>
+        <loc>https://ursoaia-edu.online/projects/raspberry_pi/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/raspberry_pi/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/raspberry_pi/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/guide/setup/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/guide/setup/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/guide/setup/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/projects/arduino/kits/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/arduino/kits/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/arduino/kits/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/projects/arduino/led_cube/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/arduino/led_cube/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/arduino/led_cube/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/projects/esp32/led_blink/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/esp32/led_blink/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/esp32/led_blink/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/projects/esp32/temperature/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/esp32/temperature/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/esp32/temperature/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/projects/esp32/temperature_web/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/esp32/temperature_web/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/esp32/temperature_web/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/projects/lopy/lorawan_node/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/lopy/lorawan_node/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/lopy/lorawan_node/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/ro/projects/raspberry_pi/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/ro/projects/raspberry_pi/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/projects/raspberry_pi/"/>
     </url>
 </urlset>

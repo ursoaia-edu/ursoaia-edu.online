@@ -1,7 +1,24 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,16 +94,18 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Glass */
-    .glass-dark {
-      background: rgba(24, 24, 27, 0.6);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .glass-light {
+    /* Glass — adaptive: light by default, dark when html.dark is set.
+       (The HTML still passes `dark:glass-dark glass-light` for back-compat,
+       but `dark:` is inert on custom classes; the rules below drive theming.) */
+    .glass-light, .glass-dark {
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(0,0,0,0.06);
+    }
+    .dark .glass-light, .dark .glass-dark {
+      background: rgba(24, 24, 27, 0.7);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     /* Project card hover */
@@ -163,9 +182,51 @@
     }
 
     /* Typography Overrides */
-    .prose {
-      max-width: none;
+    .prose { max-width: none; }
+    .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      scroll-margin-top: 6rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 2.5em;
     }
+    .dark .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      border-top-color: rgba(255,255,255,0.06);
+    }
+    .prose :where(h3, h4):not(:where([class~="not-prose"] *)) { scroll-margin-top: 6rem; }
+    .prose :where(a):not(:where([class~="not-prose"] *)) {
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(249,115,22,0.5);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .prose :where(a):not(:where([class~="not-prose"] *)):hover {
+      border-bottom-color: rgba(249,115,22,1);
+      color: #f97316;
+    }
+    .prose :where(.headerlink):not(:where([class~="not-prose"] *)) {
+      opacity: 0;
+      margin-left: 0.5rem;
+      border-bottom: 0;
+      color: #f97316;
+      transition: opacity 0.2s;
+    }
+    .prose :where(h2:hover .headerlink, h3:hover .headerlink, h4:hover .headerlink):not(:where([class~="not-prose"] *)) { opacity: 1; }
+    .prose :where(table):not(:where([class~="not-prose"] *)) {
+      border-radius: 0.75rem; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .dark .prose :where(table):not(:where([class~="not-prose"] *)) { border-color: rgba(255,255,255,0.08); }
+    .prose :where(thead):not(:where([class~="not-prose"] *)) {
+      background: rgba(249,115,22,0.06);
+      border-bottom: 2px solid rgba(249,115,22,0.25);
+    }
+    .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.04);
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.75em 1.25em;
+      font-style: normal;
+    }
+
     .dark .prose {
       --tw-prose-body: theme('colors.zinc.400');
       --tw-prose-headings: theme('colors.white');
@@ -177,13 +238,91 @@
       --tw-prose-quotes: theme('colors.zinc.100');
       --tw-prose-quote-borders: theme('colors.zinc.700');
       --tw-prose-captions: theme('colors.zinc.400');
-      --tw-prose-code: theme('colors.white');
+      --tw-prose-code: theme('colors.orange.300');
       --tw-prose-pre-code: theme('colors.zinc.200');
-      --tw-prose-pre-bg: theme('colors.zinc.900');
+      --tw-prose-pre-bg: #0d0d10;
       --tw-prose-th-borders: theme('colors.zinc.700');
       --tw-prose-td-borders: theme('colors.zinc.800');
     }
+    .prose code {
+      background: rgba(249,115,22,0.1);
+      padding: 0.15em 0.4em;
+      border-radius: 0.35em;
+      font-weight: 500;
+      font-size: 0.875em;
+    }
+    .prose code::before, .prose code::after { content: ''; }
+    .prose pre {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 16px -4px rgba(0,0,0,0.25);
+    }
+    .prose pre code {
+      background: transparent !important;
+      padding: 0; font-weight: 400;
+      font-size: 0.875em;
+    }
+    .prose img { border-radius: 0.75rem; box-shadow: 0 4px 16px -4px rgba(0,0,0,0.2); }
+
+    /* Pygments — light + dark */
+    .highlight pre, pre.highlight { background: #fafafa; color: #383a42; }
+    .dark .highlight pre, .dark pre.highlight { background: #0d0d10; color: #e5e5e5; }
+    .highlight .linenos { color: #c0c0c0; padding-right: 12px; user-select: none; }
+    .dark .highlight .linenos { color: #525252; }
+    /* Light Pygments tokens (One Light) */
+    .highlight .k,  .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt { color: #a626a4; }
+    .highlight .s,  .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sx { color: #50a14f; }
+    .highlight .c,  .highlight .c1, .highlight .cm, .highlight .cs { color: #a0a1a7; font-style: italic; }
+    .highlight .n,  .highlight .na, .highlight .nb, .highlight .nf { color: #4078f2; }
+    .highlight .nc, .highlight .nn { color: #c18401; }
+    .highlight .o,  .highlight .ow { color: #0184bc; }
+    .highlight .mi, .highlight .mf, .highlight .m { color: #986801; }
+    .highlight .p { color: #383a42; }
+    /* Dark Pygments tokens (One Dark) */
+    .dark .highlight .k,  .dark .highlight .kd, .dark .highlight .kn, .dark .highlight .kr, .dark .highlight .kt { color: #c678dd; }
+    .dark .highlight .s,  .dark .highlight .s1, .dark .highlight .s2, .dark .highlight .sb, .dark .highlight .sx { color: #98c379; }
+    .dark .highlight .c,  .dark .highlight .c1, .dark .highlight .cm, .dark .highlight .cs { color: #6b7280; font-style: italic; }
+    .dark .highlight .n,  .dark .highlight .na, .dark .highlight .nb, .dark .highlight .nf { color: #61afef; }
+    .dark .highlight .nc, .dark .highlight .nn { color: #e5c07b; }
+    .dark .highlight .o,  .dark .highlight .ow { color: #56b6c2; }
+    .dark .highlight .mi, .dark .highlight .mf, .dark .highlight .m { color: #d19a66; }
+    .dark .highlight .p { color: #e5e5e5; }
+
+    /* Admonitions */
+    .admonition {
+      margin: 1.5em 0;
+      padding: 1em 1.25em 1em 1.25em;
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.05);
+      border-radius: 0 0.75rem 0.75rem 0;
+    }
+    .admonition-title {
+      font-weight: 600;
+      margin: 0 0 0.5em 0 !important;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: #f97316;
+    }
+    .admonition.note     { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+    .admonition.note    .admonition-title { color: #3b82f6; }
+    .admonition.warning  { border-color: #f59e0b; background: rgba(245,158,11,0.06); }
+    .admonition.warning .admonition-title { color: #f59e0b; }
+    .admonition.tip      { border-color: #10b981; background: rgba(16,185,129,0.06); }
+    .admonition.tip     .admonition-title { color: #10b981; }
+    .admonition.danger   { border-color: #ef4444; background: rgba(239,68,68,0.06); }
+    .admonition.danger  .admonition-title { color: #ef4444; }
   </style>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   
 </head>
 <body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
@@ -207,12 +346,18 @@
           
             <a href="../../../guide/setup/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Guide</a>
           
-            <a href="../../..#projects" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+            <a href="../../../#projects" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
           
         </div>
 
         <!-- Right side -->
         <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-500 text-white shadow-sm">EN</a>
+            <a href="../../../ro/projects/esp32/led_blink/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900">RO</a>
+          </div>
+
           <!-- Theme Toggle -->
           <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
             <div class="knob dark:bg-zinc-700 bg-white shadow-md">
@@ -223,8 +368,8 @@
 
           <!-- GitHub link -->
           
-          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
-            <i data-lucide="github" class="w-4 h-4 dark:text-zinc-400 text-zinc-500"></i>
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
           </a>
           
 
@@ -243,8 +388,13 @@
           
             <a href="../../../guide/setup/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Guide</a>
           
-            <a href="../../..#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+            <a href="../../../#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
           
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-500 text-white">EN</a>
+            <a href="../../../ro/projects/esp32/led_blink/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500">RO</a>
+          </div>
         </div>
       </div>
     </div>
@@ -252,85 +402,197 @@
 
   
 
-  <main class="pt-32 pb-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="reveal">
-        <h1 class="text-4xl font-medium tracking-tight mb-8 dark:text-white text-zinc-900">LED Blink</h1>
-        <div class="prose dark:prose-invert">
-          <h1 id="led-blink">LED Blink</h1>
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../.." class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          <span class="dark:text-zinc-400 text-zinc-500">Projects</span>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          <span class="dark:text-zinc-400 text-zinc-500">ESP32</span>
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">LED Blink</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+              <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-orange-500/10 text-orange-500 text-[10px] font-mono font-semibold uppercase tracking-wider">
+                <i data-lucide="circuit-board" class="w-3 h-3"></i> ESP32
+              </div>
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">LED Blink</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Hello World for ESP32: toggle the onboard LED with MicroPython.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LED</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Blink</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">MicroPython</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="led-blink">LED Blink<a class="headerlink" href="#led-blink" title="Link to this section">&para;</a></h1>
 <p>Blinks the ESP32's built-in LED (GPIO 2) on and off every second using MicroPython.</p>
-<h2 id="description">Description</h2>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Link to this section">&para;</a></h2>
 <p>This is a minimal MicroPython script that toggles the onboard LED of an ESP32 board in an infinite loop with a 1-second interval. It serves as the "Hello, World!" of embedded systems.</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-python">import machine
-import time
-
-# Pin 2 is the built-in LED on most ESP32 boards
-led = machine.Pin(2, machine.Pin.OUT)
-
-while True:
-    led.value(1) # Turn LED on
-    time.sleep(1)
-    led.value(0) # Turn LED off
-    time.sleep(1)
-</code></pre>
-<h2 id="getting-started">Getting Started</h2>
-<h3 id="prerequisites">Prerequisites</h3>
+<h2 id="code">Code<a class="headerlink" href="#code" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Pin 2 is the built-in LED on most ESP32 boards</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Turn LED on</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Turn LED off</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Link to this section">&para;</a></h2>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this section">&para;</a></h3>
 <ul>
 <li>ESP32 board with MicroPython firmware installed</li>
 <li><a href="https://thonny.org/">Thonny IDE</a> or any tool that supports uploading files to MicroPython devices (e.g., <code>ampy</code>, <code>rshell</code>, <code>mpremote</code>)</li>
 </ul>
-<h3 id="running-the-script">Running the Script</h3>
+<h3 id="running-the-script">Running the Script<a class="headerlink" href="#running-the-script" title="Link to this section">&para;</a></h3>
 <p><strong>Using Thonny:</strong>
 1. Open Thonny and connect your ESP32 via USB
 2. Create a new file and paste the code above
 3. Save it as <code>main.py</code> on the <strong>MicroPython device</strong>
 4. The script will run automatically on boot</p>
-<h2 id="connecting-an-external-led">Connecting an External LED</h2>
+<h2 id="connecting-an-external-led">Connecting an External LED<a class="headerlink" href="#connecting-an-external-led" title="Link to this section">&para;</a></h2>
 <p>You can connect an external LED to any available GPIO pin instead of (or in addition to) the built-in one.</p>
-<h3 id="components-needed">Components Needed</h3>
+<h3 id="components-needed">Components Needed<a class="headerlink" href="#components-needed" title="Link to this section">&para;</a></h3>
 <ul>
 <li>1x LED</li>
 <li>1x 220–330 Ω resistor</li>
 <li>Jumper wires</li>
 <li>Breadboard</li>
 </ul>
-<h3 id="wiring">Wiring</h3>
-<pre><code class="language-board">ESP32 GPIO pin  →  Resistor (220Ω)  →  LED anode (+, longer leg)
-LED cathode (-, shorter leg)  →  GND
-</code></pre>
+<h3 id="wiring">Wiring<a class="headerlink" href="#wiring" title="Link to this section">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ESP32 GPIO pin  →  Resistor (220Ω)  →  LED anode (+, longer leg)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>LED cathode (-, shorter leg)  →  GND
+</span></code></pre></div>
 <p>Example using GPIO 4:</p>
-<pre><code class="language-board">GPIO 4  ──[220Ω]──  LED+  →  LED-  ──  GND
-</code></pre>
-<h3 id="updating-the-code">Updating the Code</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>GPIO 4  ──[220Ω]──  LED+  →  LED-  ──  GND
+</span></code></pre></div>
+<h3 id="updating-the-code">Updating the Code<a class="headerlink" href="#updating-the-code" title="Link to this section">&para;</a></h3>
 <p>Change the pin number in your code to match the GPIO pin you wired the LED to:</p>
-<pre><code class="language-python">led = machine.Pin(4, machine.Pin.OUT)  # Replace 4 with your chosen GPIO pin
-</code></pre>
-<h2 id="led-chaser-example">LED Chaser Example</h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Replace 4 with your chosen GPIO pin</span>
+</span></code></pre></div>
+<h2 id="led-chaser-example">LED Chaser Example<a class="headerlink" href="#led-chaser-example" title="Link to this section">&para;</a></h2>
 <p>Wire several LEDs to consecutive GPIO pins and cycle through them in sequence:</p>
-<pre><code class="language-python">import machine
-import time
-
-pins = [12, 13, 14]
-leds = [machine.Pin(p, machine.Pin.OUT) for p in pins]
-
-while True:
-    for led in leds:
-        led.on()
-        time.sleep(0.2)
-        led.off()
-</code></pre>
-<h3 id="wiring-diagram">Wiring Diagram</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">leds</span> <span class="o">=</span> <span class="p">[</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pins</span><span class="p">]</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">for</span> <span class="n">led</span> <span class="ow">in</span> <span class="n">leds</span><span class="p">:</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="wiring-diagram">Wiring Diagram<a class="headerlink" href="#wiring-diagram" title="Link to this section">&para;</a></h3>
 <p><img alt="ESP32 LED Wiring Diagram" src="../../../assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg" /></p>
-<h3 id="led-chaser-in-action">LED Chaser in Action</h3>
+<h3 id="led-chaser-in-action">LED Chaser in Action<a class="headerlink" href="#led-chaser-in-action" title="Link to this section">&para;</a></h3>
 <p><img alt="ESP32 LED Chaser MicroPython" src="../../../assets/images/projects/esp32/esp32-led-chaser-micropython-upycraft-ide.webp" /></p>
 <hr />
-<h2 id="reference">Reference</h2>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Link to this section">&para;</a></h2>
 <ul>
 <li><a href="https://www.electromaker.io/project/view/blink-a-led-with-esp32-and-micropython">Blink A Led With Esp32 And Micropython</a></li>
 <li><a href="https://microcontrollerslab.com/esp32-esp8266-gpio-programming-micropython-led-blinking/">ESP32 and ESP8266 GPIO Programming with MicroPython – LED Blinking Example</a></li>
 </ul>
-        </div>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../../arduino/kits/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Starter Kits</span>
+              </a>
+            
+            
+              <a href="../temperature/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Temperature & Humidity</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#led-blink" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">LED Blink</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#description" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Description</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#code" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Code</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#getting-started" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Getting Started</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#connecting-an-external-led" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Connecting an External LED</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#led-chaser-example" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">LED Chaser Example</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#reference" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Reference</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
       </div>
     </div>
   </main>
@@ -356,13 +618,18 @@ while True:
           
             <a href="../../../guide/setup/" class="hover:text-orange-500 transition-colors">Guide</a>
           
-            <a href="../../..#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+            <a href="../../../#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
           
         </div>
 
         <!-- Copyright -->
         <p class="text-xs dark:text-zinc-600 text-zinc-400">
-          © 2024 Ursoaia Edu Online. Built with ☕ and solder fumes.
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
         </p>
       </div>
     </div>
@@ -395,11 +662,11 @@ while True:
       lucide.createIcons();
     }
 
-    // Load saved theme
+    // Load saved theme (default = light)
     (function() {
       const saved = localStorage.getItem('theme');
-      if (saved === 'light') {
-        document.documentElement.classList.remove('dark');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
       }
     })();
 
@@ -472,6 +739,32 @@ while True:
     });
   </script>
   
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
 
 
 </body>

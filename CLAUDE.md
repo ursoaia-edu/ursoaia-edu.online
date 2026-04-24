@@ -11,20 +11,21 @@ A MkDocs site (<https://ursoaia-edu.online>) documenting hands-on electronics / 
 Dependencies and environment are managed by `uv` (see `pyproject.toml`, `uv.lock`, `.venv/`).
 
 ```bash
-# Install / sync dependencies into .venv
+# Install / sync dependencies into .venv (also installs the local package
+# defined by pyproject.toml so the `serve` / `build` console scripts register).
 uv sync
 
 # Serve the site locally with live reload (http://127.0.0.1:8000)
-uv run mkdocs serve
+uv run serve            # equivalent: uv run mkdocs serve
 
 # Produce the static site in ./site
-uv run mkdocs build
+uv run build            # equivalent: uv run mkdocs build
 
 # Strict build (fail on warnings, e.g. broken links / missing nav files)
-uv run mkdocs build --strict
+uv run build --strict   # equivalent: uv run mkdocs build --strict
 ```
 
-Note: the `[project.scripts]` entry in `pyproject.toml` (`serve = "click-man --target pages mkdocs"`) is not a valid console-script spec and is not wired up — use `uv run mkdocs serve` directly, don't rely on `uv run serve`.
+The `serve` and `build` shortcuts come from `[project.scripts]` in `pyproject.toml`, wired to `src/ursoaia_edu_online/__init__.py`, which forwards argv to `mkdocs.__main__.cli`. They accept the same flags as the underlying `mkdocs serve` / `mkdocs build` commands.
 
 ## Architecture
 

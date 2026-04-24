@@ -3,15 +3,120 @@
   {%- elif item.children -%}{{ first_page_url(item.children[0]) }}
   {%- endif -%}
 {%- endmacro %}
+{# GitHub mark — inlined because Lucide removed brand icons. #}
+{% macro gh_icon(class_attr='w-4 h-4') -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ class_attr }}" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+{%- endmacro %}
+{% set _PROJECTS_TITLES = ('Projects', 'Proiecte') %}
+{# Treat any "index.md" / "index.ro.md" at docs root as the localized homepage #}
+{% set _src = page.file.src_uri if (page and page.file) else '' %}
+{% set is_home = page.is_homepage or _src in ('index.md', 'index.ro.md') %}
+{# Locale-aware homepage URL: stay within the current language. Ensure
+   trailing slash so concatenation with "#projects" yields a valid URL. #}
+{% set _raw_home = nav.homepage.url | url %}
+{% set _home_href = './' if is_home else (_raw_home if _raw_home.endswith('/') else _raw_home + '/') %}
 {% macro nav_href(item) -%}
-  {%- if item.is_section and item.title == 'Projects' -%}
-    {%- if page.is_homepage -%}#projects{%- else -%}{{ nav.homepage.url|url }}#projects{%- endif -%}
+  {%- if item.is_section and item.title in _PROJECTS_TITLES -%}
+    {%- if is_home -%}#projects{%- else -%}{{ _home_href }}#projects{%- endif -%}
   {%- elif item.is_section -%}{{ first_page_url(item)|url }}
   {%- else -%}{{ item.url|url }}
   {%- endif -%}
 {%- endmacro %}
+{% set lang = i18n_page_locale | default(i18n_current_language | default('en')) %}
+{% set _i18n = {
+  'en': {
+    'footer_tagline': 'Open-source and built with solder fumes.',
+    'switch_lang_label': 'Language',
+    'hero_h1_l1': 'Hands-on electronics',
+    'hero_h1_l2': 'for curious students',
+    'hero_h1_l3': 'one board at a time',
+    'cta_browse_projects': 'Browse projects',
+    'cta_setup_guide': 'Setup guide',
+    'stat_projects': 'Projects',
+    'stat_platforms': 'Platforms',
+    'stat_open_source': 'Open-source',
+    'scroll': 'Scroll',
+    'label_projects': 'Projects',
+    'projects_h2_l1': 'From breadboard',
+    'projects_h2_l2': 'to working prototype',
+    'projects_subtitle': 'Each project ships with wiring diagrams, full source code, and a bill of materials. Pick a microcontroller and start building.',
+    'all_projects': 'All Projects',
+    'tech_stack_label': 'Hardware & tools we use',
+    'label_about': 'About the circle',
+    'about_h2_l1': 'A computer-science circle',
+    'about_h2_l2': 'built around the soldering iron',
+    'about_p1': "We're a student-run circle exploring embedded systems and IoT through real builds: Arduino starter kits, ESP32 web servers, LoRaWAN nodes on Pycom hardware, and Raspberry Pi Pico in C and MicroPython.",
+    'about_p2': 'Everything on this site is open-source — wiring diagrams, source code, and step-by-step write-ups — so anyone can clone a project, swap parts, or fork it for their own ideas.',
+    'badge_embedded_cpp': 'Embedded C/C++',
+    'badge_micropython': 'MicroPython',
+    'badge_wifi_lora': 'Wi-Fi & LoRaWAN',
+    'badge_sensors': 'Sensors',
+    'source_badge_label': 'Source',
+    'source_badge_value': 'on GitHub',
+    'site_repo': 'Site repo',
+    'project_repos': 'Project repos',
+    'contribute_h2': 'Want to contribute a build?',
+    'contribute_p': 'New project ideas, fixes, or better wiring diagrams are welcome. Open an issue or send a pull request — every contribution helps the next student get unstuck faster.',
+    'open_repo': 'Open the repo',
+    'browse_first': 'Browse projects first',
+    'featured': 'Featured',
+    'view_details': 'View Details',
+    'breadcrumb_home': 'Home',
+    'on_this_page': 'On this page',
+    'previous': 'Previous',
+    'next': 'Next',
+  },
+  'ro': {
+    'footer_tagline': 'Open-source, construit cu fum de lipire.',
+    'switch_lang_label': 'Limbă',
+    'hero_h1_l1': 'Electronică practică',
+    'hero_h1_l2': 'pentru elevi curioși',
+    'hero_h1_l3': 'o placă pe rând',
+    'cta_browse_projects': 'Vezi proiectele',
+    'cta_setup_guide': 'Ghid de instalare',
+    'stat_projects': 'Proiecte',
+    'stat_platforms': 'Platforme',
+    'stat_open_source': 'Open-source',
+    'scroll': 'Derulează',
+    'label_projects': 'Proiecte',
+    'projects_h2_l1': 'De la breadboard',
+    'projects_h2_l2': 'la prototipul funcțional',
+    'projects_subtitle': 'Fiecare proiect include scheme de cablare, codul sursă complet și lista de componente. Alege un microcontroller și începe să construiești.',
+    'all_projects': 'Toate proiectele',
+    'tech_stack_label': 'Hardware și unelte folosite',
+    'label_about': 'Despre cerc',
+    'about_h2_l1': 'Un cerc de informatică',
+    'about_h2_l2': 'construit în jurul ciocanului de lipit',
+    'about_p1': 'Suntem un cerc condus de elevi care explorează sistemele embedded și IoT prin proiecte reale: kit-uri de pornire Arduino, servere web pe ESP32, noduri LoRaWAN pe hardware Pycom și Raspberry Pi Pico în C și MicroPython.',
+    'about_p2': 'Tot conținutul site-ului este open-source — scheme de cablare, cod sursă și tutoriale pas cu pas — astfel încât oricine poate clona un proiect, schimba componente sau adapta pentru ideile proprii.',
+    'badge_embedded_cpp': 'C/C++ embedded',
+    'badge_micropython': 'MicroPython',
+    'badge_wifi_lora': 'Wi-Fi și LoRaWAN',
+    'badge_sensors': 'Senzori',
+    'source_badge_label': 'Sursă',
+    'source_badge_value': 'pe GitHub',
+    'site_repo': 'Repo-ul site-ului',
+    'project_repos': 'Repo-urile proiectelor',
+    'contribute_h2': 'Vrei să contribui cu un proiect?',
+    'contribute_p': 'Idei noi de proiecte, corecturi sau scheme de cablare îmbunătățite sunt binevenite. Deschide un issue sau trimite un pull request — fiecare contribuție ajută următorul elev să se deblocheze mai repede.',
+    'open_repo': 'Deschide repo-ul',
+    'browse_first': 'Întâi vezi proiectele',
+    'featured': 'Recomandat',
+    'view_details': 'Vezi detalii',
+    'breadcrumb_home': 'Acasă',
+    'on_this_page': 'În această pagină',
+    'previous': 'Anterior',
+    'next': 'Următor',
+  }
+} %}
+{% set tt = _i18n.get(lang, _i18n['en']) %}
+{# Compute equivalent URLs for the language switcher #}
+{% set _page_url = page.url if page and page.url is not none else '' %}
+{% if _page_url.startswith('ro/') %}{% set _canonical_path = _page_url[3:] %}{% else %}{% set _canonical_path = _page_url %}{% endif %}
+{% set en_url = _canonical_path %}
+{% set ro_url = 'ro/' + _canonical_path %}
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="{{ lang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,16 +192,18 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Glass */
-    .glass-dark {
-      background: rgba(24, 24, 27, 0.6);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .glass-light {
+    /* Glass — adaptive: light by default, dark when html.dark is set.
+       (The HTML still passes `dark:glass-dark glass-light` for back-compat,
+       but `dark:` is inert on custom classes; the rules below drive theming.) */
+    .glass-light, .glass-dark {
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(0,0,0,0.06);
+    }
+    .dark .glass-light, .dark .glass-dark {
+      background: rgba(24, 24, 27, 0.7);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     /* Project card hover */
@@ -173,9 +280,51 @@
     }
 
     /* Typography Overrides */
-    .prose {
-      max-width: none;
+    .prose { max-width: none; }
+    .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      scroll-margin-top: 6rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 2.5em;
     }
+    .dark .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      border-top-color: rgba(255,255,255,0.06);
+    }
+    .prose :where(h3, h4):not(:where([class~="not-prose"] *)) { scroll-margin-top: 6rem; }
+    .prose :where(a):not(:where([class~="not-prose"] *)) {
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(249,115,22,0.5);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .prose :where(a):not(:where([class~="not-prose"] *)):hover {
+      border-bottom-color: rgba(249,115,22,1);
+      color: #f97316;
+    }
+    .prose :where(.headerlink):not(:where([class~="not-prose"] *)) {
+      opacity: 0;
+      margin-left: 0.5rem;
+      border-bottom: 0;
+      color: #f97316;
+      transition: opacity 0.2s;
+    }
+    .prose :where(h2:hover .headerlink, h3:hover .headerlink, h4:hover .headerlink):not(:where([class~="not-prose"] *)) { opacity: 1; }
+    .prose :where(table):not(:where([class~="not-prose"] *)) {
+      border-radius: 0.75rem; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .dark .prose :where(table):not(:where([class~="not-prose"] *)) { border-color: rgba(255,255,255,0.08); }
+    .prose :where(thead):not(:where([class~="not-prose"] *)) {
+      background: rgba(249,115,22,0.06);
+      border-bottom: 2px solid rgba(249,115,22,0.25);
+    }
+    .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.04);
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.75em 1.25em;
+      font-style: normal;
+    }
+
     .dark .prose {
       --tw-prose-body: theme('colors.zinc.400');
       --tw-prose-headings: theme('colors.white');
@@ -187,13 +336,91 @@
       --tw-prose-quotes: theme('colors.zinc.100');
       --tw-prose-quote-borders: theme('colors.zinc.700');
       --tw-prose-captions: theme('colors.zinc.400');
-      --tw-prose-code: theme('colors.white');
+      --tw-prose-code: theme('colors.orange.300');
       --tw-prose-pre-code: theme('colors.zinc.200');
-      --tw-prose-pre-bg: theme('colors.zinc.900');
+      --tw-prose-pre-bg: #0d0d10;
       --tw-prose-th-borders: theme('colors.zinc.700');
       --tw-prose-td-borders: theme('colors.zinc.800');
     }
+    .prose code {
+      background: rgba(249,115,22,0.1);
+      padding: 0.15em 0.4em;
+      border-radius: 0.35em;
+      font-weight: 500;
+      font-size: 0.875em;
+    }
+    .prose code::before, .prose code::after { content: ''; }
+    .prose pre {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 16px -4px rgba(0,0,0,0.25);
+    }
+    .prose pre code {
+      background: transparent !important;
+      padding: 0; font-weight: 400;
+      font-size: 0.875em;
+    }
+    .prose img { border-radius: 0.75rem; box-shadow: 0 4px 16px -4px rgba(0,0,0,0.2); }
+
+    /* Pygments — light + dark */
+    .highlight pre, pre.highlight { background: #fafafa; color: #383a42; }
+    .dark .highlight pre, .dark pre.highlight { background: #0d0d10; color: #e5e5e5; }
+    .highlight .linenos { color: #c0c0c0; padding-right: 12px; user-select: none; }
+    .dark .highlight .linenos { color: #525252; }
+    /* Light Pygments tokens (One Light) */
+    .highlight .k,  .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt { color: #a626a4; }
+    .highlight .s,  .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sx { color: #50a14f; }
+    .highlight .c,  .highlight .c1, .highlight .cm, .highlight .cs { color: #a0a1a7; font-style: italic; }
+    .highlight .n,  .highlight .na, .highlight .nb, .highlight .nf { color: #4078f2; }
+    .highlight .nc, .highlight .nn { color: #c18401; }
+    .highlight .o,  .highlight .ow { color: #0184bc; }
+    .highlight .mi, .highlight .mf, .highlight .m { color: #986801; }
+    .highlight .p { color: #383a42; }
+    /* Dark Pygments tokens (One Dark) */
+    .dark .highlight .k,  .dark .highlight .kd, .dark .highlight .kn, .dark .highlight .kr, .dark .highlight .kt { color: #c678dd; }
+    .dark .highlight .s,  .dark .highlight .s1, .dark .highlight .s2, .dark .highlight .sb, .dark .highlight .sx { color: #98c379; }
+    .dark .highlight .c,  .dark .highlight .c1, .dark .highlight .cm, .dark .highlight .cs { color: #6b7280; font-style: italic; }
+    .dark .highlight .n,  .dark .highlight .na, .dark .highlight .nb, .dark .highlight .nf { color: #61afef; }
+    .dark .highlight .nc, .dark .highlight .nn { color: #e5c07b; }
+    .dark .highlight .o,  .dark .highlight .ow { color: #56b6c2; }
+    .dark .highlight .mi, .dark .highlight .mf, .dark .highlight .m { color: #d19a66; }
+    .dark .highlight .p { color: #e5e5e5; }
+
+    /* Admonitions */
+    .admonition {
+      margin: 1.5em 0;
+      padding: 1em 1.25em 1em 1.25em;
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.05);
+      border-radius: 0 0.75rem 0.75rem 0;
+    }
+    .admonition-title {
+      font-weight: 600;
+      margin: 0 0 0.5em 0 !important;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: #f97316;
+    }
+    .admonition.note     { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+    .admonition.note    .admonition-title { color: #3b82f6; }
+    .admonition.warning  { border-color: #f59e0b; background: rgba(245,158,11,0.06); }
+    .admonition.warning .admonition-title { color: #f59e0b; }
+    .admonition.tip      { border-color: #10b981; background: rgba(16,185,129,0.06); }
+    .admonition.tip     .admonition-title { color: #10b981; }
+    .admonition.danger   { border-color: #ef4444; background: rgba(239,68,68,0.06); }
+    .admonition.danger  .admonition-title { color: #ef4444; }
   </style>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   {% block extrahead %}{% endblock %}
 </head>
 <body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
@@ -219,6 +446,12 @@
 
         <!-- Right side -->
         <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="{{ tt.switch_lang_label }}">
+            <a href="{{ en_url|url }}" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'en' %}bg-orange-500 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900{% endif %}">EN</a>
+            <a href="{{ ro_url|url }}" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'ro' %}bg-orange-500 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900{% endif %}">RO</a>
+          </div>
+
           <!-- Theme Toggle -->
           <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
             <div class="knob dark:bg-zinc-700 bg-white shadow-md">
@@ -229,8 +462,8 @@
 
           <!-- GitHub link -->
           {% if config.repo_url %}
-          <a href="{{ config.repo_url }}" class="hidden sm:flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-colors">
-            <i data-lucide="github" class="w-4 h-4 dark:text-zinc-400 text-zinc-500"></i>
+          <a href="{{ config.repo_url }}" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            {{ gh_icon('w-4 h-4 dark:text-zinc-400 text-zinc-500') }}
           </a>
           {% endif %}
 
@@ -247,6 +480,11 @@
           {% for nav_item in nav %}
             <a href="{{ nav_href(nav_item) }}" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">{{ nav_item.title }}</a>
           {% endfor %}
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">{{ tt.switch_lang_label }}</span>
+            <a href="{{ en_url|url }}" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'en' %}bg-orange-500 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500{% endif %}">EN</a>
+            <a href="{{ ro_url|url }}" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'ro' %}bg-orange-500 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500{% endif %}">RO</a>
+          </div>
         </div>
       </div>
     </div>
@@ -271,11 +509,16 @@
           {% for nav_item in nav %}
             <a href="{{ nav_href(nav_item) }}" class="hover:text-orange-500 transition-colors">{{ nav_item.title }}</a>
           {% endfor %}
+          {% if config.repo_url %}
+            <a href="{{ config.repo_url }}" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              {{ gh_icon('w-4 h-4') }}
+            </a>
+          {% endif %}
         </div>
 
         <!-- Copyright -->
         <p class="text-xs dark:text-zinc-600 text-zinc-400">
-          © 2024 {{ config.site_name }}. Built with ☕ and solder fumes.
+          © 2025 {{ config.site_name }} · {{ tt.footer_tagline }}
         </p>
       </div>
     </div>
@@ -308,11 +551,11 @@
       lucide.createIcons();
     }
 
-    // Load saved theme
+    // Load saved theme (default = light)
     (function() {
       const saved = localStorage.getItem('theme');
-      if (saved === 'light') {
-        document.documentElement.classList.remove('dark');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
       }
     })();
 
