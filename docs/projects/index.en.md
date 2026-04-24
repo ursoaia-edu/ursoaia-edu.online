@@ -14,7 +14,7 @@ summary: Hands-on projects with Arduino, ESP32, LoPy, and Raspberry Pi — full 
 5. **Experiment** — tweak parameters, add sensors, personalize
 
 !!! tip "Complete beginner?"
-    If you've never programmed before, start with the [Python course](../guide/python/index.md) in the Courses section. Many ESP32 projects use MicroPython — the syntax is identical.
+    If you've never programmed before, start with the [Python course](../courses/python/index.md) in the Courses section. Many ESP32 projects use MicroPython — the syntax is identical.
 
 !!! warning "Safety"
     Electronics work involves small currents, but watch out for:

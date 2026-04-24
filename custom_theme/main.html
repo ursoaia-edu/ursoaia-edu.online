@@ -131,7 +131,7 @@
           {{ tt.cta_browse_projects }}
           <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
         </a>
-        <a href="{{ 'guide/python/'|url }}" class="px-7 py-3.5 dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 font-medium text-sm rounded-full dark:hover:bg-white/10 hover:bg-zinc-200 dark:border-white/10 border-zinc-200 border transition-all duration-300 flex items-center gap-2">
+        <a href="{{ 'courses/python/'|url }}" class="px-7 py-3.5 dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 font-medium text-sm rounded-full dark:hover:bg-white/10 hover:bg-zinc-200 dark:border-white/10 border-zinc-200 border transition-all duration-300 flex items-center gap-2">
           <i data-lucide="rocket" class="w-4 h-4"></i>
           {{ tt.cta_setup_guide }}
         </a>
@@ -376,7 +376,12 @@
         </a>
         {% for ancestor in page.ancestors|reverse %}
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
-          <a href="{{ nav_href(ancestor) }}" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">{{ ancestor.title }}</a>
+          {% set ancestor_href = first_page_url(ancestor) %}
+          {% if ancestor_href and ancestor_href != page.url %}
+            <a href="{{ ancestor_href|url }}" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">{{ ancestor.title }}</a>
+          {% else %}
+            <span class="dark:text-zinc-400 text-zinc-500">{{ ancestor.title }}</span>
+          {% endif %}
         {% endfor %}
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
         <span class="dark:text-white text-zinc-900 font-semibold">{{ page.title }}</span>

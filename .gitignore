@@ -1,3 +1,4 @@
 .markdownlint.json
 .DS_Store
 .venv/
+.ruff_cache/

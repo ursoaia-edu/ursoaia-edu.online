@@ -14,7 +14,7 @@ summary: Proiecte hands-on cu Arduino, ESP32, LoPy și Raspberry Pi — scheme c
 5. **Experimentează** — modifică parametri, adaugă senzori, personalizează
 
 !!! tip "Ești complet începător?"
-    Dacă nu ai programat niciodată, începe mai întâi cu [cursul Python](../guide/python/index.md) din secțiunea Cursuri. Multe proiecte ESP32 folosesc MicroPython — sintaxa e identică.
+    Dacă nu ai programat niciodată, începe mai întâi cu [cursul Python](../courses/python/index.md) din secțiunea Cursuri. Multe proiecte ESP32 folosesc MicroPython — sintaxa e identică.
 
 !!! warning "Siguranță"
     Lucrul cu electronică implică curenți mici, dar atenție la:

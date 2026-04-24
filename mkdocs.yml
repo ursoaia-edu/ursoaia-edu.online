@@ -34,6 +34,7 @@ plugins:
             Arduino: Arduino
             "LED Cube": Cub de LED-uri
             "Starter Kits": Kit-uri de pornire
+            "Starter Kit": Kit de pornire
             ESP32: ESP32
             "LED Blink": LED intermitent
             "Temperature & Humidity": Temperatură și umiditate
@@ -81,55 +82,84 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Courses:
-      - Overview: guide/index.md
+      - Overview: courses/index.md
       - Web:
-          - Prezentare curs: guide/web/index.md
-          - "00: Cum funcționează web-ul": guide/web/00-introducere.md
-          - "01: Prima pagină": guide/web/01-prima-pagina.md
-          - "02: HTML bazele": guide/web/02-html-bazele.md
-          - "03: Liste și tabele": guide/web/03-html-liste-tabele.md
-          - "04: Formulare": guide/web/04-html-formulare.md
-          - "05: Multi-pagină": guide/web/05-html-multi-pagina.md
-          - "06: CSS introducere": guide/web/06-css-introducere.md
-          - "07: Box Model": guide/web/07-css-box-model.md
-          - "08: Flexbox și Grid": guide/web/08-css-flexbox-grid.md
-          - "09: CSS avansat": guide/web/09-css-avansat.md
-          - "10: Responsive": guide/web/10-css-responsive.md
-          - "11: JS introducere": guide/web/11-js-introducere.md
-          - "12: Variabile și tipuri": guide/web/12-js-variabile-tipuri.md
-          - "13: Condiții și bucle": guide/web/13-js-conditii-bucle.md
-          - "14: Funcții": guide/web/14-js-functii.md
-          - "15: DOM": guide/web/15-js-dom.md
-          - "16: Evenimente": guide/web/16-js-evenimente.md
-          - "17: Formulare validare": guide/web/17-js-formulare-validare.md
-          - "18: Fetch și API": guide/web/18-js-fetch-api.md
-          - "Proiect: Portofoliu": guide/web/19-proiect-portofoliu.md
-          - "Proiect: Quiz": guide/web/20-proiect-quiz.md
-          - "Proiect: Meteo": guide/web/21-proiect-meteo.md
+          - Prezentare curs: courses/web/index.md
+          - "00: Cum funcționează web-ul": courses/web/00-introducere.md
+          - "01: Prima pagină": courses/web/01-prima-pagina.md
+          - "02: HTML bazele": courses/web/02-html-bazele.md
+          - "03: Liste și tabele": courses/web/03-html-liste-tabele.md
+          - "04: Formulare": courses/web/04-html-formulare.md
+          - "05: Multi-pagină": courses/web/05-html-multi-pagina.md
+          - "06: CSS introducere": courses/web/06-css-introducere.md
+          - "07: Box Model": courses/web/07-css-box-model.md
+          - "08: Flexbox și Grid": courses/web/08-css-flexbox-grid.md
+          - "09: CSS avansat": courses/web/09-css-avansat.md
+          - "10: Responsive": courses/web/10-css-responsive.md
+          - "11: JS introducere": courses/web/11-js-introducere.md
+          - "12: Variabile și tipuri": courses/web/12-js-variabile-tipuri.md
+          - "13: Condiții și bucle": courses/web/13-js-conditii-bucle.md
+          - "14: Funcții": courses/web/14-js-functii.md
+          - "15: DOM": courses/web/15-js-dom.md
+          - "16: Evenimente": courses/web/16-js-evenimente.md
+          - "17: Formulare validare": courses/web/17-js-formulare-validare.md
+          - "18: Fetch și API": courses/web/18-js-fetch-api.md
+          - "Proiect: Portofoliu": courses/web/19-proiect-portofoliu.md
+          - "Proiect: Quiz": courses/web/20-proiect-quiz.md
+          - "Proiect: Meteo": courses/web/21-proiect-meteo.md
       - Python:
-          - Overview: guide/python/index.md
-          - "00: Pregătire": guide/python/00-pregatire.md
-          - "01: Variabile și tipuri": guide/python/01-variabile-si-tipuri.md
-          - "02: Operații și expresii": guide/python/02-operatii-expresii.md
-          - "03: Input și Output": guide/python/03-input-output.md
-          - "04: Condiții": guide/python/04-conditii.md
-          - "05: Bucle": guide/python/05-bucle.md
-          - "06: Liste": guide/python/06-liste.md
-          - "07: Dicționare": guide/python/07-dictionare.md
-          - "08: Funcții": guide/python/08-functii.md
-          - "09: Fișiere": guide/python/09-fisiere.md
-          - "10: Proiect Joc Aventură": guide/python/10-proiect-joc-aventura.md
-          - "11: Proiect Grafice Turtle": guide/python/11-proiect-turtle.md
+          - Overview: courses/python/index.md
+          - "00: Pregătire": courses/python/00-pregatire.md
+          - "01: Variabile și tipuri": courses/python/01-variabile-si-tipuri.md
+          - "02: Operații și expresii": courses/python/02-operatii-expresii.md
+          - "03: Input și Output": courses/python/03-input-output.md
+          - "04: Condiții": courses/python/04-conditii.md
+          - "05: Bucle": courses/python/05-bucle.md
+          - "06: Liste": courses/python/06-liste.md
+          - "07: Dicționare": courses/python/07-dictionare.md
+          - "08: Funcții": courses/python/08-functii.md
+          - "09: Fișiere": courses/python/09-fisiere.md
+          - "10: Proiect Joc Aventură": courses/python/10-proiect-joc-aventura.md
+          - "11: Proiect Grafice Turtle": courses/python/11-proiect-turtle.md
   - Projects:
       - Overview: projects/index.md
       - Arduino:
+          - Overview: projects/arduino/index.md
           - LED Cube: projects/arduino/led_cube.md
-          - Starter Kits: projects/arduino/kits.md
+          - "Starter Kit":
+              - Overview: projects/arduino/starter_kit/kits.md
+              - "01: Hello World": projects/arduino/starter_kit/01-hello-world.md
+              - "02: LED intermitent": projects/arduino/starter_kit/02-led-blinking.md
+              - "03: LED RGB": projects/arduino/starter_kit/03-rgb-led.md
+              - "04: Intrări digitale": projects/arduino/starter_kit/04-digital-inputs.md
+              - "05: Senzor cu bilă": projects/arduino/starter_kit/05-tilt-ball-switch.md
+              - "06: Buzzer activ": projects/arduino/starter_kit/06-active-buzzer.md
+              - "07: Buzzer pasiv": projects/arduino/starter_kit/07-passive-buzzer.md
+              - "08: Servomotor": projects/arduino/starter_kit/08-servo.md
+              - "09: Joystick": projects/arduino/starter_kit/09-joystick.md
+              - "10: Senzor ultrasonic": projects/arduino/starter_kit/10-ultrasonic-sensor.md
+              - "11: Modul releu": projects/arduino/starter_kit/11-relay.md
+              - "12: Receptor IR": projects/arduino/starter_kit/12-ir-receiver.md
+              - "13: Tastatură membrană": projects/arduino/starter_kit/13-membrane-switch.md
+              - "14: LCD1602 I2C": projects/arduino/starter_kit/14-lcd1602-i2c.md
+              - "15: Termometru": projects/arduino/starter_kit/15-thermometer.md
+              - "16: 8 LED-uri + 74HC595": projects/arduino/starter_kit/16-shift-register-leds.md
+              - "17: Monitorul Serial": projects/arduino/starter_kit/17-serial-monitor.md
+              - "18: Fotocelulă": projects/arduino/starter_kit/18-photocell.md
+              - "19: Afișaj 7 segmente": projects/arduino/starter_kit/19-seven-segment-display.md
+              - "20: Afișaj 4 cifre": projects/arduino/starter_kit/20-four-digit-display.md
+              - "21: Motor DC": projects/arduino/starter_kit/21-dc-motor.md
+              - "22: Motor pas cu pas": projects/arduino/starter_kit/22-stepper-motor.md
+              - "23: Stepper + telecomandă": projects/arduino/starter_kit/23-stepper-with-remote.md
+              - "24: Senzor nivel apă": projects/arduino/starter_kit/24-water-level-sensor.md
+              - "25: Senzor de sunet": projects/arduino/starter_kit/25-sound-sensor.md
       - ESP32:
+          - Overview: projects/esp32/index.md
           - LED Blink: projects/esp32/led_blink.md
           - Temperature & Humidity: projects/esp32/temperature.md
           - Temperature Web Server: projects/esp32/temperature_web.md
       - LoPy:
+          - Overview: projects/lopy/index.md
           - LoRaWAN Node: projects/lopy/lorawan_node.md
       - Raspberry Pi:
           - Overview: projects/raspberry_pi/index.md
