@@ -34,7 +34,6 @@ plugins:
           nav_translations:
             Home: Acasă
             Guide: Ghid
-            Setup: Instalare
             Projects: Proiecte
             Arduino: Arduino
             "LED Cube": Cub de LED-uri
@@ -82,7 +81,20 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Guide:
-      - Setup: guide/setup.md
+      - Python:
+          - Overview: guide/python/index.md
+          - "00: Pregătire": guide/python/00-pregatire.md
+          - "01: Variabile și tipuri": guide/python/01-variabile-si-tipuri.md
+          - "02: Operații și expresii": guide/python/02-operatii-expresii.md
+          - "03: Input și Output": guide/python/03-input-output.md
+          - "04: Condiții": guide/python/04-conditii.md
+          - "05: Bucle": guide/python/05-bucle.md
+          - "06: Liste": guide/python/06-liste.md
+          - "07: Dicționare": guide/python/07-dictionare.md
+          - "08: Funcții": guide/python/08-functii.md
+          - "09: Fișiere": guide/python/09-fisiere.md
+          - "10: Proiect Joc Aventură": guide/python/10-proiect-joc-aventura.md
+          - "11: Proiect Grafice Turtle": guide/python/11-proiect-turtle.md
   - Projects:
       - Arduino:
           - LED Cube: projects/arduino/led_cube.md

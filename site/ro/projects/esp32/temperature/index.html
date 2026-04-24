@@ -344,7 +344,7 @@
           
             <a href="../../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Acasă</a>
           
-            <a href="../../../guide/setup/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Ghid</a>
+            <a href="../../../guide/python/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Ghid</a>
           
             <a href="../../../#projects" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Proiecte</a>
           
@@ -386,7 +386,7 @@
           
             <a href="../../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Acasă</a>
           
-            <a href="../../../guide/setup/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Ghid</a>
+            <a href="../../../guide/python/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Ghid</a>
           
             <a href="../../../#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Proiecte</a>
           
@@ -454,10 +454,58 @@
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
             <h1 id="temperatura-si-umiditate">Temperatură și umiditate<a class="headerlink" href="#temperatura-si-umiditate" title="Link to this section">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Traducere în lucru</p>
-<p>Această pagină este un schelet. Versiunea în limba română urmează — a se vedea pagina engleză pentru conținutul complet.</p>
-</div>
+<p>Citește temperatura și umiditatea de la un senzor DHT22 (sau DHT11) conectat la un ESP32 și afișează valorile în consola serială la fiecare 2 secunde folosind MicroPython.</p>
+<h2 id="descriere">Descriere<a class="headerlink" href="#descriere" title="Link to this section">&para;</a></h2>
+<p>Acest script folosește biblioteca MicroPython integrată <code>dht</code> pentru a comunica cu un senzor DHT22 printr-un singur pin de date (GPIO 14). Citește temperatura în grade Celsius, o convertește în Fahrenheit și citește umiditatea relativă, afișând toate trei valorile într-o buclă.</p>
+<h2 id="cod">Cod<a class="headerlink" href="#cod" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">dht</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># DHT22 pe GPIO 14</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">sensor</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT22</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Decomentează pentru DHT11</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># sensor = dht.DHT11(Pin(14))</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">temp</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">()</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">hum</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">humidity</span><span class="p">()</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">temp_f</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mf">32.0</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Temperatura: </span><span class="si">%3.1f</span><span class="s1"> C&#39;</span> <span class="o">%</span><span class="n">temp</span><span class="p">)</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Temperatura: </span><span class="si">%3.1f</span><span class="s1"> F&#39;</span> <span class="o">%</span><span class="n">temp_f</span><span class="p">)</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Umiditate: </span><span class="si">%3.1f</span><span class="s1"> </span><span class="si">%%</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">hum</span><span class="p">)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>  <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eroare la citirea senzorului.&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="conectare">Conectare<a class="headerlink" href="#conectare" title="Link to this section">&para;</a></h2>
+<h3 id="dht22-sau-dht11-la-esp32">DHT22 (sau DHT11) la ESP32<a class="headerlink" href="#dht22-sau-dht11-la-esp32" title="Link to this section">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Pin DHT22  →  ESP32
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>---------     -----
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>VCC (1)    →  3.3V
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>DATA (2)   →  GPIO 14
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>GND (4)    →  GND
+</span></code></pre></div>
+<p>Se recomandă o rezistență pull-up de 10 kΩ între DATA și VCC pentru comunicare fiabilă.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>3.3V ──[10kΩ]──┬── GPIO 14
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>               │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>              Pinul DATA al senzorului
+</span></code></pre></div>
+<blockquote>
+<p><strong>DHT11 vs DHT22:</strong> DHT11 are o precizie mai mică (±2°C, ±5% RH) și un domeniu mai restrâns. DHT22 este mai precis (±0.5°C, ±2–5% RH) și suportă un domeniu mai larg de temperaturi.</p>
+</blockquote>
+<h3 id="scheme-de-conectare">Scheme de conectare<a class="headerlink" href="#scheme-de-conectare" title="Link to this section">&para;</a></h3>
+<p><img alt="ESP32 dht11" src="../../../../assets/images/projects/esp32/ESP32-interfacing-with-dht11.webp" /></p>
+<p><img alt="ESP32 dht22" src="../../../../assets/images/projects/esp32/esp32-micropython-dht22-temperature-humidity-sensor-wiring-diagram.jpg" /></p>
+<hr />
+<h2 id="referinte">Referințe<a class="headerlink" href="#referinte" title="Link to this section">&para;</a></h2>
+<ul>
+<li><a href="https://circuitdigest.com/microcontroller-projects/esp32-webserver-for-temperature-and-humidity-measurement-using-dht11-sensor">ESP32 Based Webserver for Temperature and Humidity Measurement using DHT11 Sensor</a></li>
+<li><a href="https://newbiely.com/tutorials/esp32-micropython/esp32-micropython-dht22-temperature-humidity-sensor">ESP32 MicroPython DHT22 Temperature Humidity Sensor</a></li>
+</ul>
           </div>
 
           <!-- Prev / Next nav -->
@@ -495,6 +543,26 @@
                 <li>
                   <a href="#temperatura-si-umiditate" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Temperatură și umiditate</a>
                   
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#descriere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Descriere</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#cod" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Cod</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#conectare" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Conectare</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#referinte" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Referințe</a>
+                      </li>
+                    
+                  </ul>
+                  
                 </li>
               
             </ul>
@@ -524,7 +592,7 @@
           
             <a href="../../../" class="hover:text-orange-500 transition-colors">Acasă</a>
           
-            <a href="../../../guide/setup/" class="hover:text-orange-500 transition-colors">Ghid</a>
+            <a href="../../../guide/python/" class="hover:text-orange-500 transition-colors">Ghid</a>
           
             <a href="../../../#projects" class="hover:text-orange-500 transition-colors">Proiecte</a>
           

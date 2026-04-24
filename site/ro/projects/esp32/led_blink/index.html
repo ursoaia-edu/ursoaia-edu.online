@@ -344,7 +344,7 @@
           
             <a href="../../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Acasă</a>
           
-            <a href="../../../guide/setup/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Ghid</a>
+            <a href="../../../guide/python/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Ghid</a>
           
             <a href="../../../#projects" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Proiecte</a>
           
@@ -386,7 +386,7 @@
           
             <a href="../../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Acasă</a>
           
-            <a href="../../../guide/setup/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Ghid</a>
+            <a href="../../../guide/python/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Ghid</a>
           
             <a href="../../../#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Proiecte</a>
           
@@ -450,10 +450,78 @@
 
           <div class="prose dark:prose-invert prose-zinc max-w-none">
             <h1 id="led-intermitent">LED intermitent<a class="headerlink" href="#led-intermitent" title="Link to this section">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Traducere în lucru</p>
-<p>Această pagină este un schelet. Versiunea în limba română urmează — a se vedea pagina engleză pentru conținutul complet.</p>
-</div>
+<p>Aprinde și stinge LED-ul integrat al ESP32 (GPIO 2) la fiecare secundă folosind MicroPython.</p>
+<h2 id="descriere">Descriere<a class="headerlink" href="#descriere" title="Link to this section">&para;</a></h2>
+<p>Acesta este un script MicroPython minimal care comută LED-ul de la bordul unui ESP32 în buclă infinită cu un interval de 1 secundă. Reprezintă echivalentul „Hello, World!" al sistemelor integrate.</p>
+<h2 id="cod">Cod<a class="headerlink" href="#cod" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Pinul 2 este LED-ul integrat pe majoritatea plăcilor ESP32</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Aprinde LED-ul</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Stinge LED-ul</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="primii-pasi">Primii pași<a class="headerlink" href="#primii-pasi" title="Link to this section">&para;</a></h2>
+<h3 id="cerinte-prealabile">Cerințe prealabile<a class="headerlink" href="#cerinte-prealabile" title="Link to this section">&para;</a></h3>
+<ul>
+<li>Placă ESP32 cu firmware MicroPython instalat</li>
+<li><a href="https://thonny.org/">Thonny IDE</a> sau orice instrument care suportă încărcarea fișierelor pe dispozitive MicroPython (ex.: <code>ampy</code>, <code>rshell</code>, <code>mpremote</code>)</li>
+</ul>
+<h3 id="rularea-scriptului">Rularea scriptului<a class="headerlink" href="#rularea-scriptului" title="Link to this section">&para;</a></h3>
+<p><strong>Cu Thonny:</strong>
+1. Deschide Thonny și conectează ESP32-ul prin USB
+2. Creează un fișier nou și lipește codul de mai sus
+3. Salvează-l ca <code>main.py</code> pe <strong>dispozitivul MicroPython</strong>
+4. Scriptul va rula automat la pornire</p>
+<h2 id="conectarea-unui-led-extern">Conectarea unui LED extern<a class="headerlink" href="#conectarea-unui-led-extern" title="Link to this section">&para;</a></h2>
+<p>Poți conecta un LED extern la orice pin GPIO disponibil în loc de (sau în plus față de) cel integrat.</p>
+<h3 id="componente-necesare">Componente necesare<a class="headerlink" href="#componente-necesare" title="Link to this section">&para;</a></h3>
+<ul>
+<li>1x LED</li>
+<li>1x rezistență de 220–330 Ω</li>
+<li>Fire jumper</li>
+<li>Breadboard</li>
+</ul>
+<h3 id="conectare">Conectare<a class="headerlink" href="#conectare" title="Link to this section">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Pin GPIO ESP32  →  Rezistență (220Ω)  →  Anod LED (+, piciorul mai lung)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Catod LED (-, piciorul mai scurt)  →  GND
+</span></code></pre></div>
+<p>Exemplu folosind GPIO 4:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>GPIO 4  ──[220Ω]──  LED+  →  LED-  ──  GND
+</span></code></pre></div>
+<h3 id="actualizarea-codului">Actualizarea codului<a class="headerlink" href="#actualizarea-codului" title="Link to this section">&para;</a></h3>
+<p>Modifică numărul pinului din cod pentru a corespunde pinului GPIO la care ai conectat LED-ul:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Înlocuiește 4 cu pinul GPIO ales</span>
+</span></code></pre></div>
+<h2 id="exemplu-led-uri-in-cascada">Exemplu: LED-uri în cascadă<a class="headerlink" href="#exemplu-led-uri-in-cascada" title="Link to this section">&para;</a></h2>
+<p>Conectează mai multe LED-uri la pini GPIO consecutivi și ciclează prin ele în ordine:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">pins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">leds</span> <span class="o">=</span> <span class="p">[</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pins</span><span class="p">]</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">for</span> <span class="n">led</span> <span class="ow">in</span> <span class="n">leds</span><span class="p">:</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="schema-de-conectare">Schemă de conectare<a class="headerlink" href="#schema-de-conectare" title="Link to this section">&para;</a></h3>
+<p><img alt="Schema de conectare LED ESP32" src="../../../../assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg" /></p>
+<h3 id="led-uri-in-cascada-in-actiune">LED-uri în cascadă în acțiune<a class="headerlink" href="#led-uri-in-cascada-in-actiune" title="Link to this section">&para;</a></h3>
+<p><img alt="LED Chaser ESP32 MicroPython" src="../../../../assets/images/projects/esp32/esp32-led-chaser-micropython-upycraft-ide.webp" /></p>
+<hr />
+<h2 id="referinte">Referințe<a class="headerlink" href="#referinte" title="Link to this section">&para;</a></h2>
+<ul>
+<li><a href="https://www.electromaker.io/project/view/blink-a-led-with-esp32-and-micropython">Blink A Led With Esp32 And Micropython</a></li>
+<li><a href="https://microcontrollerslab.com/esp32-esp8266-gpio-programming-micropython-led-blinking/">ESP32 and ESP8266 GPIO Programming with MicroPython – LED Blinking Example</a></li>
+</ul>
           </div>
 
           <!-- Prev / Next nav -->
@@ -491,6 +559,34 @@
                 <li>
                   <a href="#led-intermitent" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">LED intermitent</a>
                   
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#descriere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Descriere</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#cod" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Cod</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#primii-pasi" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Primii pași</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#conectarea-unui-led-extern" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Conectarea unui LED extern</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exemplu-led-uri-in-cascada" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exemplu: LED-uri în cascadă</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#referinte" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Referințe</a>
+                      </li>
+                    
+                  </ul>
+                  
                 </li>
               
             </ul>
@@ -520,7 +616,7 @@
           
             <a href="../../../" class="hover:text-orange-500 transition-colors">Acasă</a>
           
-            <a href="../../../guide/setup/" class="hover:text-orange-500 transition-colors">Ghid</a>
+            <a href="../../../guide/python/" class="hover:text-orange-500 transition-colors">Ghid</a>
           
             <a href="../../../#projects" class="hover:text-orange-500 transition-colors">Proiecte</a>
           
