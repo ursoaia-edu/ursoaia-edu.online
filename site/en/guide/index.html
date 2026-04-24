@@ -1,124 +1,28 @@
-{% macro first_page_url(item) -%}
-  {%- if item.url -%}{{ item.url }}
-  {%- elif item.children -%}{{ first_page_url(item.children[0]) }}
-  {%- endif -%}
-{%- endmacro %}
-{# GitHub mark — inlined because Lucide removed brand icons. #}
-{% macro gh_icon(class_attr='w-4 h-4') -%}
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ class_attr }}" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-{%- endmacro %}
-{% set _PROJECTS_TITLES = ('Projects', 'Proiecte') %}
-{# Treat any "index.md" / "index.ro.md" at docs root as the localized homepage #}
-{% set _src = page.file.src_uri if (page and page.file) else '' %}
-{% set is_home = page.is_homepage or _src in ('index.md', 'index.ro.md') %}
-{# Locale-aware homepage URL: stay within the current language. Ensure
-   trailing slash so concatenation with "#projects" yields a valid URL. #}
-{% set _raw_home = nav.homepage.url | url %}
-{% set _home_href = './' if is_home else (_raw_home if _raw_home.endswith('/') else _raw_home + '/') %}
-{% macro nav_href(item) -%}
-  {%- if item.is_section -%}{{ first_page_url(item)|url }}
-  {%- else -%}{{ item.url|url }}
-  {%- endif -%}
-{%- endmacro %}
-{% set lang = i18n_page_locale | default(i18n_current_language | default('en')) %}
-{% set _i18n = {
-  'en': {
-    'footer_tagline': 'Open-source and built with solder fumes.',
-    'switch_lang_label': 'Language',
-    'hero_h1_l1': 'Hands-on electronics',
-    'hero_h1_l2': 'for curious students',
-    'hero_h1_l3': 'one board at a time',
-    'cta_browse_projects': 'Browse projects',
-    'cta_setup_guide': 'Python course',
-    'stat_projects': 'Projects',
-    'stat_platforms': 'Platforms',
-    'stat_open_source': 'Open-source',
-    'scroll': 'Scroll',
-    'label_projects': 'Projects',
-    'projects_h2_l1': 'From breadboard',
-    'projects_h2_l2': 'to working prototype',
-    'projects_subtitle': 'Each project ships with wiring diagrams, full source code, and a bill of materials. Pick a microcontroller and start building.',
-    'all_projects': 'All Projects',
-    'tech_stack_label': 'Hardware & tools we use',
-    'label_about': 'About the circle',
-    'about_h2_l1': 'A computer-science circle',
-    'about_h2_l2': 'built around the soldering iron',
-    'about_p1': "We're a student-run circle exploring embedded systems and IoT through real builds: Arduino starter kits, ESP32 web servers, LoRaWAN nodes on Pycom hardware, and Raspberry Pi Pico in C and MicroPython.",
-    'about_p2': 'Everything on this site is open-source — wiring diagrams, source code, and step-by-step write-ups — so anyone can clone a project, swap parts, or fork it for their own ideas.',
-    'badge_embedded_cpp': 'Embedded C/C++',
-    'badge_micropython': 'MicroPython',
-    'badge_wifi_lora': 'Wi-Fi & LoRaWAN',
-    'badge_sensors': 'Sensors',
-    'source_badge_label': 'Source',
-    'source_badge_value': 'on GitHub',
-    'site_repo': 'Site repo',
-    'project_repos': 'Project repos',
-    'contribute_h2': 'Want to contribute a build?',
-    'contribute_p': 'New project ideas, fixes, or better wiring diagrams are welcome. Open an issue or send a pull request — every contribution helps the next student get unstuck faster.',
-    'open_repo': 'Open the repo',
-    'browse_first': 'Browse projects first',
-    'featured': 'Featured',
-    'view_details': 'View Details',
-    'breadcrumb_home': 'Home',
-    'on_this_page': 'On this page',
-    'previous': 'Previous',
-    'next': 'Next',
-  },
-  'ro': {
-    'footer_tagline': 'Open-source, construit cu fum de lipire.',
-    'switch_lang_label': 'Limbă',
-    'hero_h1_l1': 'Electronică practică',
-    'hero_h1_l2': 'pentru elevi curioși',
-    'hero_h1_l3': 'o placă pe rând',
-    'cta_browse_projects': 'Vezi proiectele',
-    'cta_setup_guide': 'Curs Python',
-    'stat_projects': 'Proiecte',
-    'stat_platforms': 'Platforme',
-    'stat_open_source': 'Open-source',
-    'scroll': 'Derulează',
-    'label_projects': 'Proiecte',
-    'projects_h2_l1': 'De la breadboard',
-    'projects_h2_l2': 'la prototipul funcțional',
-    'projects_subtitle': 'Fiecare proiect include scheme de cablare, codul sursă complet și lista de componente. Alege un microcontroller și începe să construiești.',
-    'all_projects': 'Toate proiectele',
-    'tech_stack_label': 'Hardware și unelte folosite',
-    'label_about': 'Despre cerc',
-    'about_h2_l1': 'Un cerc de informatică',
-    'about_h2_l2': 'construit în jurul ciocanului de lipit',
-    'about_p1': 'Suntem un cerc condus de elevi care explorează sistemele embedded și IoT prin proiecte reale: kit-uri de pornire Arduino, servere web pe ESP32, noduri LoRaWAN pe hardware Pycom și Raspberry Pi Pico în C și MicroPython.',
-    'about_p2': 'Tot conținutul site-ului este open-source — scheme de cablare, cod sursă și tutoriale pas cu pas — astfel încât oricine poate clona un proiect, schimba componente sau adapta pentru ideile proprii.',
-    'badge_embedded_cpp': 'C/C++ embedded',
-    'badge_micropython': 'MicroPython',
-    'badge_wifi_lora': 'Wi-Fi și LoRaWAN',
-    'badge_sensors': 'Senzori',
-    'source_badge_label': 'Sursă',
-    'source_badge_value': 'pe GitHub',
-    'site_repo': 'Repo-ul site-ului',
-    'project_repos': 'Repo-urile proiectelor',
-    'contribute_h2': 'Vrei să contribui cu un proiect?',
-    'contribute_p': 'Idei noi de proiecte, corecturi sau scheme de cablare îmbunătățite sunt binevenite. Deschide un issue sau trimite un pull request — fiecare contribuție ajută următorul elev să se deblocheze mai repede.',
-    'open_repo': 'Deschide repo-ul',
-    'browse_first': 'Întâi vezi proiectele',
-    'featured': 'Recomandat',
-    'view_details': 'Vezi detalii',
-    'breadcrumb_home': 'Acasă',
-    'on_this_page': 'În această pagină',
-    'previous': 'Anterior',
-    'next': 'Următor',
-  }
-} %}
-{% set tt = _i18n.get(lang, _i18n['en']) %}
-{# Compute equivalent URLs for the language switcher #}
-{% set _page_url = page.url if page and page.url is not none else '' %}
-{% if _page_url.startswith('en/') %}{% set _canonical_path = _page_url[3:] %}{% else %}{% set _canonical_path = _page_url %}{% endif %}
-{% set ro_url = _canonical_path %}
-{% set en_url = 'en/' + _canonical_path %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+  <title>Overview - Ursoaia Edu Online</title>
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -419,7 +323,7 @@
       } catch (e) {}
     })();
   </script>
-  {% block extrahead %}{% endblock %}
+  
 </head>
 <body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
 
@@ -428,26 +332,30 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
         <!-- Logo -->
-        <a href="{{ nav.homepage.url|url }}" class="flex items-center gap-3 group">
+        <a href="../" class="flex items-center gap-3 group">
           <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
             <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
           </div>
-          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </a>
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="nav-link {% if nav_item.active %}active{% endif %} px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="./" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Guide</a>
+          
+            <a href="../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
         </div>
 
         <!-- Right side -->
         <div class="flex items-center gap-3">
           <!-- Language switcher -->
-          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="{{ tt.switch_lang_label }}">
-            <a href="{{ en_url|url }}" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'en' %}bg-orange-500 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900{% endif %}">EN</a>
-            <a href="{{ ro_url|url }}" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'ro' %}bg-orange-500 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900{% endif %}">RO</a>
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-500 text-white shadow-sm">EN</a>
+            <a href="../../guide/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900">RO</a>
           </div>
 
           <!-- Theme Toggle -->
@@ -459,11 +367,11 @@
           </div>
 
           <!-- GitHub link -->
-          {% if config.repo_url %}
-          <a href="{{ config.repo_url }}" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
-            {{ gh_icon('w-4 h-4 dark:text-zinc-400 text-zinc-500') }}
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
           </a>
-          {% endif %}
+          
 
           <!-- Mobile hamburger -->
           <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
@@ -475,20 +383,204 @@
       <!-- Mobile Menu -->
       <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
         <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
+          
+            <a href="../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="./" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Guide</a>
+          
+            <a href="../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
           <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
-            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">{{ tt.switch_lang_label }}</span>
-            <a href="{{ en_url|url }}" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'en' %}bg-orange-500 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500{% endif %}">EN</a>
-            <a href="{{ ro_url|url }}" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'ro' %}bg-orange-500 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500{% endif %}">RO</a>
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-500 text-white">EN</a>
+            <a href="../../guide/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500">RO</a>
           </div>
         </div>
       </div>
     </div>
   </nav>
 
-  {% block content %}{% endblock %}
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          <a href="./" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Guide</a>
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">Overview</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">Overview</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Available courses for computer science club students — Web and Python.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">guide</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">courses</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="learning-guide">Learning Guide<a class="headerlink" href="#learning-guide" title="Link to this section">&para;</a></h1>
+<p>Complete courses for students who want to learn programming from scratch. Each course is structured weekly, with exercises and mini-projects at the end of every lesson.</p>
+<hr />
+<h2 id="available-courses">Available Courses<a class="headerlink" href="#available-courses" title="Link to this section">&para;</a></h2>
+<h3 id="web-development">Web Development<a class="headerlink" href="#web-development" title="Link to this section">&para;</a></h3>
+<p>Learn to build complete websites — HTML for structure, CSS for design, and JavaScript for interactivity. By the end you'll have an online portfolio, an interactive quiz, and a weather app connected to a real API.</p>
+<ul>
+<li><strong>Lessons:</strong> 22 (plus intro page)</li>
+<li><strong>Duration:</strong> ~1 school year (September – June), 90 min/week</li>
+<li><strong>Level:</strong> beginner</li>
+<li><strong>Tech:</strong> HTML5, CSS3, JavaScript ES6+</li>
+<li><strong>Capstone projects:</strong> Personal portfolio, Culture quiz, Weather app</li>
+</ul>
+<p><a href="web/"><strong>Start the Web course →</strong></a></p>
+<hr />
+<h3 id="python-programming">Python Programming<a class="headerlink" href="#python-programming" title="Link to this section">&para;</a></h3>
+<p>From <code>print("Hello")</code> to text adventures and graphics with <code>turtle</code>. Learn variables, conditionals, loops, functions, files, and essential data structures.</p>
+<ul>
+<li><strong>Lessons:</strong> 12 (plus intro page)</li>
+<li><strong>Duration:</strong> ~one semester, 1–2 hours/lesson</li>
+<li><strong>Level:</strong> beginner</li>
+<li><strong>Tech:</strong> Python 3, Thonny IDE</li>
+<li><strong>Capstone projects:</strong> Text adventure game, Turtle graphics</li>
+</ul>
+<p><a href="python/"><strong>Start the Python course →</strong></a></p>
+<hr />
+<h2 id="how-to-choose">How to choose?<a class="headerlink" href="#how-to-choose" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>If you want to...</th>
+<th>Pick</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build websites</td>
+<td><strong>Web</strong></td>
+</tr>
+<tr>
+<td>Learn algorithmic thinking fundamentals</td>
+<td><strong>Python</strong></td>
+</tr>
+<tr>
+<td>Work with data and automations</td>
+<td><strong>Python</strong></td>
+</tr>
+<tr>
+<td>See visual results immediately</td>
+<td><strong>Web</strong></td>
+</tr>
+<tr>
+<td>Prepare for microcontroller projects</td>
+<td><strong>Python</strong> (syntax carries over to MicroPython on ESP32)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">You can learn both</p>
+<p>Web and Python don't exclude each other — most professional developers use both. Start with whichever motivates you more, then add the other later.</p>
+</div>
+<hr />
+<h2 id="why-these-courses">Why these courses?<a class="headerlink" href="#why-these-courses" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>Free and open-source</strong> — all lessons are here, no registration</li>
+<li><strong>Clear explanations</strong> — no untranslated jargon</li>
+<li><strong>Concrete examples</strong> — real names and contexts students recognize</li>
+<li><strong>Immediate feedback</strong> — every lesson has exercises with solutions</li>
+<li><strong>Mini-projects</strong> — you build something tangible at the end of each lesson</li>
+</ul>
+<hr />
+<h2 id="hardware-projects">Hardware Projects<a class="headerlink" href="#hardware-projects" title="Link to this section">&para;</a></h2>
+<p>If you already have programming fundamentals and want to try electronics, see the <a href="../projects/">Projects section</a> — Arduino, ESP32, LoPy, and Raspberry Pi with full schematics and source code.</p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Home</span>
+              </a>
+            
+            
+              <a href="web/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Prezentare curs</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#learning-guide" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Learning Guide</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#available-courses" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Available Courses</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#how-to-choose" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">How to choose?</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#why-these-courses" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Why these courses?</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#hardware-projects" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Hardware Projects</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
@@ -499,24 +591,28 @@
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
             <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
           </div>
-          <span class="font-medium dark:text-white text-zinc-900">{{ config.site_name }}</span>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
         </div>
 
         <!-- Links -->
         <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
-          {% for nav_item in nav %}
-            <a href="{{ nav_href(nav_item) }}" class="hover:text-orange-500 transition-colors">{{ nav_item.title }}</a>
-          {% endfor %}
-          {% if config.repo_url %}
-            <a href="{{ config.repo_url }}" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
-              {{ gh_icon('w-4 h-4') }}
+          
+            <a href="../" class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="./" class="hover:text-orange-500 transition-colors">Guide</a>
+          
+            <a href="../projects/" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
             </a>
-          {% endif %}
+          
         </div>
 
         <!-- Copyright -->
         <p class="text-xs dark:text-zinc-600 text-zinc-400">
-          © 2025 {{ config.site_name }} · {{ tt.footer_tagline }}
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
         </p>
       </div>
     </div>
@@ -625,6 +721,34 @@
       lucide.createIcons();
     });
   </script>
-  {% block extra_scripts %}{% endblock %}
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
 </body>
 </html>

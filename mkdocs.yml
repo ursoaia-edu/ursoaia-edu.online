@@ -81,6 +81,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Guide:
+      - Overview: guide/index.md
       - Web:
           - Prezentare curs: guide/web/index.md
           - "00: Cum funcționează web-ul": guide/web/00-introducere.md
@@ -120,6 +121,7 @@ nav:
           - "10: Proiect Joc Aventură": guide/python/10-proiect-joc-aventura.md
           - "11: Proiect Grafice Turtle": guide/python/11-proiect-turtle.md
   - Projects:
+      - Overview: projects/index.md
       - Arduino:
           - LED Cube: projects/arduino/led_cube.md
           - Starter Kits: projects/arduino/kits.md

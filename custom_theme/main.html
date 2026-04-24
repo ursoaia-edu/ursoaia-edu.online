@@ -48,7 +48,7 @@
 
 {% macro flatten_pages(items) -%}
   {%- for it in items -%}
-    {%- if it.is_page -%}{% if it.meta.featured %}{{ render_project_card(it, true) }}{% endif %}{% if not it.meta.featured %}{{ render_project_card(it, false) }}{% endif %}
+    {%- if it.is_page and not it.meta.overview -%}{% if it.meta.featured %}{{ render_project_card(it, true) }}{% endif %}{% if not it.meta.featured %}{{ render_project_card(it, false) }}{% endif %}
     {%- elif it.is_section -%}{{ flatten_pages(it.children) }}
     {%- endif -%}
   {%- endfor -%}
@@ -82,6 +82,7 @@
 {# Treat any "index.md" / "index.ro.md" at docs root as the localized homepage #}
 {% set _src = page.file.src_uri if (page and page.file) else '' %}
 {% set is_home = page.is_homepage or _src in ('index.md', 'index.ro.md') %}
+{% set is_projects_landing = _src in ('projects/index.md', 'projects/index.en.md') %}
 {% block content %}
 {% if is_home %}
   <!-- ==================== HERO SECTION ==================== -->
@@ -341,6 +342,60 @@
     </div>
   </section>
 
+{% elif is_projects_landing %}
+  <!-- ==================== PROJECTS LANDING ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="{{ nav.homepage.url|url }}" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> {{ tt.breadcrumb_home }}
+        </a>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">{{ page.title }}</span>
+      </nav>
+
+      <!-- Section header (matches homepage projects block) -->
+      <div class="reveal max-w-2xl mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+            <i data-lucide="circuit-board" class="w-4 h-4 text-orange-500"></i>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">{{ tt.label_projects }}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight mb-4 dark:text-white text-zinc-900">
+          {{ tt.projects_h2_l1 }}<br>{{ tt.projects_h2_l2 }}
+        </h1>
+        <p class="dark:text-zinc-400 text-zinc-500 text-base leading-relaxed font-light">
+          {{ tt.projects_subtitle }}
+        </p>
+      </div>
+
+      <!-- Filter tags -->
+      <div class="reveal flex flex-wrap gap-2 mb-10" id="filterTags">
+        <button onclick="filterProjects('all')" class="tag active px-4 py-2 rounded-full text-xs font-medium bg-orange-500 text-white transition-all" data-filter="all">{{ tt.all_projects }}</button>
+        {% if projects_section.node %}{% for sub in projects_section.node.children %}
+        {% if sub.is_section %}
+        <button onclick="filterProjects('{{ category_slug(sub.title) }}')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="{{ category_slug(sub.title) }}">{{ sub.title }}</button>
+        {% endif %}
+        {% endfor %}{% endif %}
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16" id="projectsGrid">
+        {% if projects_section.node %}{{ flatten_pages(projects_section.node.children) }}{% endif %}
+      </div>
+
+      <!-- Optional intro content from markdown (for extra guidance/safety notes) -->
+      {% if page.content %}
+      <div class="reveal max-w-3xl prose dark:prose-invert prose-zinc mt-8 border-t dark:border-white/[0.08] border-zinc-200 pt-10">
+        {{ page.content }}
+      </div>
+      {% endif %}
+    </div>
+  </main>
+
 {% else %}
   <!-- ==================== INNER PAGE ==================== -->
   <main class="pt-28 pb-12">
@@ -353,7 +408,7 @@
         </a>
         {% for ancestor in page.ancestors|reverse %}
           <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
-          <span class="dark:text-zinc-400 text-zinc-500">{{ ancestor.title }}</span>
+          <a href="{{ nav_href(ancestor) }}" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">{{ ancestor.title }}</a>
         {% endfor %}
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
         <span class="dark:text-white text-zinc-900 font-semibold">{{ page.title }}</span>
@@ -441,7 +496,7 @@
 {% endblock %}
 
 {% block extra_scripts %}
-{% if is_home %}
+{% if is_home or is_projects_landing %}
 <script>
     // ========== PROJECT FILTER ==========
     function filterProjects(tag) {
