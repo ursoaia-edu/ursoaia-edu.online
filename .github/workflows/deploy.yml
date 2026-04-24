@@ -46,13 +46,6 @@ jobs:
             ./site/ \
             ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.SERVER_PATH }}/
 
-      - name: Reload nginx (optional)
-        if: ${{ secrets.RELOAD_NGINX == 'true' }}
-        run: |
-          ssh -i ~/.ssh/id_ed25519 \
-            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-            "sudo systemctl reload nginx"
-
       - name: Cleanup SSH
         if: always()
         run: rm -f ~/.ssh/id_ed25519
