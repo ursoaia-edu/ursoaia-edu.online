@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Acasă
 ---
-Open-source electronics and IoT builds from our computer science circle —
-guides, code, and schematics for Arduino, ESP32, LoPy, and Raspberry Pi.
+Proiecte open-source de electronică și IoT din cercul nostru de informatică —
+ghiduri, cod sursă și scheme pentru Arduino, ESP32, LoPy și Raspberry Pi.

@@ -1,60 +1,60 @@
 ---
 category: Arduino
-tags: [LED, Cube, Multiplexing, Arduino Uno]
-summary: Build a 27-LED cube with layer multiplexing and POV animations using Arduino Uno.
+tags: [LED, Cub, Multiplexare, Arduino Uno]
+summary: Construiește un cub cu 27 de LED-uri folosind multiplexarea pe straturi și animații POV pe Arduino Uno.
 image: assets/images/projects/arduino/led_cube_schematic.svg
 featured: true
 ---
 
-# 3x3x3 LED Cube
+# Cub de LED-uri 3x3x3
 
-A simplified version of the [8x8x8 LED Cube](https://www.instructables.com/8x8x8-Arduino-LED-Cube/) project, adapted for beginners.
+O versiune simplificată a proiectului [8x8x8 LED Cube](https://www.instructables.com/8x8x8-Arduino-LED-Cube/), adaptată pentru începători.
 
-## How It Works
+## Cum funcționează
 
-The cube uses **layer multiplexing**:
+Cubul folosește **multiplexarea pe straturi**:
 
-- **9 columns** (LED anodes) are connected to Arduino digital pins through 220 Ω resistors.
-- **3 layers** (LED cathodes) are controlled via NPN transistors (2N2222 / BC547).
-- Arduino rapidly switches layers (POV — persistence of vision), creating the illusion that all 27 LEDs are lit simultaneously.
+- **9 coloane** (anozii LED-urilor) sunt conectate la pinii digitali ai Arduino prin rezistențe de 220 Ω.
+- **3 straturi** (catozii LED-urilor) sunt controlate prin tranzistoare NPN (2N2222 / BC547).
+- Arduino comută rapid între straturi (POV — persistența vederii), creând iluzia că toate cele 27 de LED-uri sunt aprinse simultan.
 
 ```board
-     Top view (column numbering):
+     Vedere de sus (numerotarea coloanelor):
 
          C0   C1   C2
          C3   C4   C5
          C6   C7   C8
 
-     Layers (side view):
-         Layer 2 (top)
-         Layer 1 (middle)
-         Layer 0 (bottom)
+     Straturi (vedere laterală):
+         Stratul 2 (sus)
+         Stratul 1 (mijloc)
+         Stratul 0 (jos)
 ```
 
-## Bill of Materials
+## Listă de materiale
 
-| Component                | Quantity   | Notes                         |
-|--------------------------|------------|-------------------------------|
-| Arduino Uno (CH340)      | 1          | Or Nano                       |
-| LED 5mm (any color)      | 27         | Can use 3 colors, 9 each      |
-| 220 Ω resistor           | 9          | Current-limiting (columns)    |
-| 1 kΩ resistor            | 3          | For transistor bases (layers) |
-| NPN transistor 2N2222    | 3          | Or BC547/BC337                |
-| Breadboard               | 1          | 830 tie-points                |
-| Jumper wires             | ~20        | M-M                           |
+| Componentă                 | Cantitate | Note                              |
+|----------------------------|-----------|-----------------------------------|
+| Arduino Uno (CH340)        | 1         | Sau Nano                          |
+| LED 5mm (orice culoare)    | 27        | Poți folosi 3 culori, câte 9      |
+| Rezistență 220 Ω           | 9         | Limitare curent (coloane)         |
+| Rezistență 1 kΩ            | 3         | Baze tranzistoare (straturi)      |
+| Tranzistor NPN 2N2222      | 3         | Sau BC547/BC337                   |
+| Breadboard                 | 1         | 830 puncte de conexiune           |
+| Fire jumper                | ~20       | M-M                               |
 
-> All components are included in the **LA036 Super Starter Kit for Arduino UNO**.
+> Toate componentele sunt incluse în **Kit-ul Super Starter LA036 pentru Arduino UNO**.
 
-## Wiring Diagram
+## Schema de conectare
 
-![LED Cube Schematic](../../assets/images/projects/arduino/led_cube_schematic.svg)
+![Schema Cubului LED](../../assets/images/projects/arduino/led_cube_schematic.svg)
 
 ```board
                         Arduino Uno
                      ┌──────────────────┐
                      │                  │
-    Columns          │  D2  ──[220Ω]──── C0 (LED anode)
-    (anodes)         │  D3  ──[220Ω]──── C1
+    Coloane          │  D2  ──[220Ω]──── C0 (anod LED)
+    (anozi)          │  D3  ──[220Ω]──── C1
                      │  D4  ──[220Ω]──── C2
                      │  D5  ──[220Ω]──── C3
                      │  D6  ──[220Ω]──── C4
@@ -63,77 +63,77 @@ The cube uses **layer multiplexing**:
                      │  D9  ──[220Ω]──── C7
                      │  D10 ──[220Ω]──── C8
                      │                  │
-    Layers           │  D11 ──[1kΩ]──┐  │
-    (cathodes         │  D12 ──[1kΩ]──┤  │
-     via               │  D13 ──[1kΩ]──┤  │
-     transistors)    │                │  │
+    Straturi         │  D11 ──[1kΩ]──┐  │
+    (catozi           │  D12 ──[1kΩ]──┤  │
+     prin              │  D13 ──[1kΩ]──┤  │
+     tranzistoare)   │                │  │
                      │  GND ──────────┘  │
                      └──────────────────┘
 
-    2N2222 transistor (for each layer):
+    Tranzistor 2N2222 (pentru fiecare strat):
 
-        Arduino Pin ──[1kΩ]──► Base
-                               Collector ◄── Layer cathodes (all 9 LEDs)
-                               Emitter ──► GND
+        Pin Arduino ──[1kΩ]──► Bază
+                               Colector ◄── Catozi strat (toate cele 9 LED-uri)
+                               Emitor ──► GND
 ```
 
-### Pin Assignment
+### Atribuire pini
 
-| Arduino Pin | Function             |
-|-------------|----------------------|
-| D2          | Column 0 (anode)     |
-| D3          | Column 1             |
-| D4          | Column 2             |
-| D5          | Column 3             |
-| D6          | Column 4             |
-| D7          | Column 5             |
-| D8          | Column 6             |
-| D9          | Column 7             |
-| D10         | Column 8             |
-| D11         | Layer 0 (bottom)     |
-| D12         | Layer 1 (middle)     |
-| D13         | Layer 2 (top)        |
-| GND         | Transistor emitters  |
+| Pin Arduino | Funcție               |
+|-------------|-----------------------|
+| D2          | Coloana 0 (anod)      |
+| D3          | Coloana 1             |
+| D4          | Coloana 2             |
+| D5          | Coloana 3             |
+| D6          | Coloana 4             |
+| D7          | Coloana 5             |
+| D8          | Coloana 6             |
+| D9          | Coloana 7             |
+| D10         | Coloana 8             |
+| D11         | Stratul 0 (jos)       |
+| D12         | Stratul 1 (mijloc)    |
+| D13         | Stratul 2 (sus)       |
+| GND         | Emitoare tranzistoare |
 
-## Building the Cube
+## Construirea cubului
 
-### 1. Preparing the LEDs
+### 1. Pregătirea LED-urilor
 
-- Test each LED before soldering (with a 220 Ω resistor from 5V).
-- Identify polarity: long leg = anode (+), short leg = cathode (−).
-- Bend the cathode (−) of each LED at 90° — they will be connected horizontally to form a layer.
+- Testează fiecare LED înainte de lipire (cu o rezistență de 220 Ω la 5V).
+- Identifică polaritatea: piciorul lung = anod (+), piciorul scurt = catod (−).
+- Îndoaie catodul (−) al fiecărui LED la 90° — vor fi conectați orizontal pentru a forma un strat.
 
-### 2. Making a Jig
+### 2. Realizarea unui șablon
 
-- Draw a 3×3 grid on cardboard or plywood with ~20 mm spacing between centers.
-- Drill 9 holes with a 5 mm diameter.
+- Desenează o grilă 3×3 pe carton sau placaj cu ~20 mm spațiu între centre.
+- Găurește 9 orificii cu diametrul de 5 mm.
 
-### 3. Soldering the Layers
+### 3. Lipirea straturilor
 
-- Insert 9 LEDs into the jig.
-- Solder all cathodes (−) into a horizontal grid using copper wire.
-- Repeat for all 3 layers. Test each layer!
+- Inserează 9 LED-uri în șablon.
+- Lipește toți catozi (−) într-o grilă orizontală folosind fir de cupru.
+- Repetă pentru toate cele 3 straturi. Testează fiecare strat!
 
-### 4. Connecting the Columns
+### 4. Conectarea coloanelor
 
-- Place the bottom layer on the breadboard.
-- Solder the middle layer on top, connecting anodes (+) vertically.
-- Solder the top layer.
-- Use spacers of equal height between layers (~20 mm).
+- Plasează stratul de jos pe breadboard.
+- Lipește stratul din mijloc deasupra, conectând anozii (+) vertical.
+- Lipește stratul de sus.
+- Folosește distanțieri de înălțime egală între straturi (~20 mm).
 
-### 5. Connecting to Arduino
+### 5. Conectarea la Arduino
 
-- 9 anodes (columns) → through 220 Ω resistors → pins D2–D10.
-- 3 cathode layers → through 2N2222 transistors → pins D11–D13.
+- 9 anozi (coloane) → prin rezistențe de 220 Ω → pinii D2–D10.
+- 3 straturi catod → prin tranzistoare 2N2222 → pinii D11–D13.
 
-## Code
+## Cod
 
 ```cpp
 /*
- * 3x3x3 LED Cube — Arduino Uno
+ * Cub de LED-uri 3x3x3 — Arduino Uno
  */
 
-// === Pin configuration ===
+// === Configurare pini ===
 const byte COL_PINS[9] = {2, 3, 4, 5, 6, 7, 8, 9, 10};
 const byte LAYER_PINS[3] = {11, 12, 13};
 
@@ -172,9 +172,9 @@ void setLed(byte x, byte y, byte z, bool state) {
   else cube[z] &= ~(1 << col);
 }
 
-// Animations omitted for brevity in this snippet,
-// but you can add your own!
-// See full code for details.
+// Animațiile sunt omise pentru scurtarea acestui fragment,
+// dar poți adăuga propriile tale!
+// Vezi codul complet pentru detalii.
 
 void setup() {
   for (byte i = 0; i < NUM_COLS; i++) {
@@ -197,8 +197,8 @@ void loop() {
 }
 ```
 
-## References
+## Referințe
 
-- [Original 8x8x8 project](https://www.instructables.com/8x8x8-Arduino-LED-Cube/)
-- [Arduino Forum: Simple 3x3x3 cube](https://forum.arduino.cc/t/very-simple-3x3x3-cube-sketch/922655)
-- [Instructables: 3x3x3 LED Cube Arduino-UNO](https://www.instructables.com/3x3x3-LED-Cube-Arduino-UNO/)
+- [Proiectul original 8x8x8](https://www.instructables.com/8x8x8-Arduino-LED-Cube/)
+- [Forum Arduino: Cub simplu 3x3x3](https://forum.arduino.cc/t/very-simple-3x3x3-cube-sketch/922655)
+- [Instructables: Cub LED 3x3x3 Arduino UNO](https://www.instructables.com/3x3x3-LED-Cube-Arduino-UNO/)

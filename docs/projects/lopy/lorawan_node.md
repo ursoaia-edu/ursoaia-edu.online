@@ -1,22 +1,22 @@
 ---
 category: LoPy
 tags: [LoRa, LoRaWAN, ABP, IoT]
-summary: Configure a Pycom LoPy4 for the EU868 LoRaWAN network using ABP activation and send periodic payloads.
+summary: Configurează un Pycom LoPy4 pentru rețeaua LoRaWAN EU868 folosind activarea ABP și transmite payload-uri periodice.
 ---
 
-# LoPy LoRaWAN Node
+# Nod LoRaWAN pe LoPy
 
-Connecting a Pycom LoPy4 to a LoRaWAN network using ABP (Activation By Personalization) and sending data.
+Conectarea unui Pycom LoPy4 la o rețea LoRaWAN folosind ABP (Activation By Personalization) și trimiterea de date.
 
-## Description
+## Descriere
 
-This project demonstrates how to configure the LoPy4 to join a LoRaWAN network in the EU868 region. It uses ABP for quick activation and sends a simple 4-byte payload periodically.
+Acest proiect demonstrează cum să configurezi LoPy4 pentru a se alătura unei rețele LoRaWAN în regiunea EU868. Folosește ABP pentru activare rapidă și trimite un payload simplu de 4 octeți periodic.
 
-## Code
+## Cod
 
 ### boot.py
 
-The `boot.py` file handles the network joining process.
+Fișierul `boot.py` gestionează procesul de conectare la rețea.
 
 ```python
 import os
@@ -27,72 +27,72 @@ import pycom
 import struct
 from network import LoRa
 
-# Disable heartbeat LED
+# Dezactivează LED-ul heartbeat
 pycom.heartbeat(False)
 
-# LoRaWAN Configuration
+# Configurare LoRaWAN
 lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
 
-# ABP Credentials (replace with your own)
+# Credențiale ABP (înlocuiește cu ale tale)
 dev_addr = struct.unpack(">l", binascii.unhexlify('26011346'))[0]
 nwk_swkey = binascii.unhexlify('0619AB7D261950743D46D701AD9903DD')
 app_swkey = binascii.unhexlify('8FBE002AA5008BCC52638CF2D33A6A10')
 
-# Join network
+# Conectare la rețea
 lora.join(activation=LoRa.ABP, auth=(dev_addr, nwk_swkey, app_swkey))
 
-# Wait for join
-pycom.rgbled(0xffff00) # Yellow
+# Asteaptă conectarea
+pycom.rgbled(0xffff00) # Galben
 while not lora.has_joined():
     time.sleep(2.5)
-    print('Not joined yet...')
+    print('Nu s-a conectat inca...')
 
-print('Network joined!')
-pycom.rgbled(0x0000ff) # Blue
+print('Retea jonata!')
+pycom.rgbled(0x0000ff) # Albastru
 time.sleep(1)
 pycom.rgbled(0x000000)
 ```
 
 ### main.py
 
-The `main.py` file handles data transmission.
+Fișierul `main.py` gestionează transmisia de date.
 
 ```python
 import socket
 import pycom
 from time import sleep
 
-# Create a LoRa socket
+# Creează un socket LoRa
 s = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
 
-# Set the LoRaWAN data rate
+# Setează rata de date LoRaWAN
 s.setsockopt(socket.SOL_LORA, socket.SO_DR, 5)
 
 count = 0
 while True:
     s.setblocking(True)
-    # Send data (Example payload: 0x01, 0x67, 0x00, 0x96)
+    # Trimite date (Payload exemplu: 0x01, 0x67, 0x00, 0x96)
     s.send(bytes([0x01, 0x67, 0x00, 0x96]))
     s.setblocking(False)
 
-    print(f"Sent packet #{count}")
+    print(f"Pachet #{count} trimis")
 
-    # Receive downlink data (optional)
+    # Primește date downlink (opțional)
     data = s.recv(64)
     if data:
-        print(f"Received: {data}")
+        print(f"Primit: {data}")
 
     count += 1
-    sleep(10) # Wait before next transmission
+    sleep(10) # Asteaptă înainte de următoarea transmisie
 ```
 
-## How it works
+## Cum funcționează
 
-1. **LoRa Stack:** The `network.LoRa` module is used to initialize the LoRa radio in LoRaWAN mode.
-2. **ABP Joining:** Unlike OTAA (Over-the-Air Activation), ABP uses hardcoded session keys. It doesn't require a handshake with the gateway, making it faster but less secure for production.
-3. **Data Transmission:** A standard BSD-style socket is used to send data over the LoRa network.
-4. **Payload:** The sample payload `[0x01, 0x67, 0x00, 0x96]` is typical for Cayenne LPP (Low Power Payload) format, where `0x67` represents temperature.
+1. **Stiva LoRa:** Modulul `network.LoRa` este folosit pentru a inițializa radio-ul LoRa în modul LoRaWAN.
+2. **Conectare ABP:** Spre deosebire de OTAA (Over-the-Air Activation), ABP folosește chei de sesiune hardcodate. Nu necesită un handshake cu gateway-ul, ceea ce îl face mai rapid, dar mai puțin sigur pentru producție.
+3. **Transmisia datelor:** Un socket standard de tip BSD este folosit pentru a trimite date peste rețeaua LoRa.
+4. **Payload:** Payload-ul exemplu `[0x01, 0x67, 0x00, 0x96]` este tipic pentru formatul Cayenne LPP (Low Power Payload), unde `0x67` reprezintă temperatura.
 
-## Reference
+## Referințe
 
-- [Pycom Documentation: LoRaWAN](https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/)
+- [Documentația Pycom: LoRaWAN](https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/)

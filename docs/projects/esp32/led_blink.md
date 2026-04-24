@@ -1,84 +1,84 @@
 ---
 category: ESP32
-tags: [LED, Blink, MicroPython]
-summary: "Hello World for ESP32: toggle the onboard LED with MicroPython."
+tags: [LED, Intermitent, MicroPython]
+summary: "Hello World pentru ESP32: aprinde și stinge LED-ul integrat folosind MicroPython."
 image: assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg
 ---
 
-# LED Blink
+# LED intermitent
 
-Blinks the ESP32's built-in LED (GPIO 2) on and off every second using MicroPython.
+Aprinde și stinge LED-ul integrat al ESP32 (GPIO 2) la fiecare secundă folosind MicroPython.
 
-## Description
+## Descriere
 
-This is a minimal MicroPython script that toggles the onboard LED of an ESP32 board in an infinite loop with a 1-second interval. It serves as the "Hello, World!" of embedded systems.
+Acesta este un script MicroPython minimal care comută LED-ul de la bordul unui ESP32 în buclă infinită cu un interval de 1 secundă. Reprezintă echivalentul „Hello, World!" al sistemelor integrate.
 
-## Code
+## Cod
 
 ```python
 import machine
 import time
 
-# Pin 2 is the built-in LED on most ESP32 boards
+# Pinul 2 este LED-ul integrat pe majoritatea plăcilor ESP32
 led = machine.Pin(2, machine.Pin.OUT)
 
 while True:
-    led.value(1) # Turn LED on
+    led.value(1) # Aprinde LED-ul
     time.sleep(1)
-    led.value(0) # Turn LED off
+    led.value(0) # Stinge LED-ul
     time.sleep(1)
 ```
 
-## Getting Started
+## Primii pași
 
-### Prerequisites
+### Cerințe prealabile
 
-- ESP32 board with MicroPython firmware installed
-- [Thonny IDE](https://thonny.org/) or any tool that supports uploading files to MicroPython devices (e.g., `ampy`, `rshell`, `mpremote`)
+- Placă ESP32 cu firmware MicroPython instalat
+- [Thonny IDE](https://thonny.org/) sau orice instrument care suportă încărcarea fișierelor pe dispozitive MicroPython (ex.: `ampy`, `rshell`, `mpremote`)
 
-### Running the Script
+### Rularea scriptului
 
-**Using Thonny:**
-1. Open Thonny and connect your ESP32 via USB
-2. Create a new file and paste the code above
-3. Save it as `main.py` on the **MicroPython device**
-4. The script will run automatically on boot
+**Cu Thonny:**
+1. Deschide Thonny și conectează ESP32-ul prin USB
+2. Creează un fișier nou și lipește codul de mai sus
+3. Salvează-l ca `main.py` pe **dispozitivul MicroPython**
+4. Scriptul va rula automat la pornire
 
-## Connecting an External LED
+## Conectarea unui LED extern
 
-You can connect an external LED to any available GPIO pin instead of (or in addition to) the built-in one.
+Poți conecta un LED extern la orice pin GPIO disponibil în loc de (sau în plus față de) cel integrat.
 
-### Components Needed
+### Componente necesare
 
 - 1x LED
-- 1x 220–330 Ω resistor
-- Jumper wires
+- 1x rezistență de 220–330 Ω
+- Fire jumper
 - Breadboard
 
-### Wiring
+### Conectare
 
 ```board
-ESP32 GPIO pin  →  Resistor (220Ω)  →  LED anode (+, longer leg)
-LED cathode (-, shorter leg)  →  GND
+Pin GPIO ESP32  →  Rezistență (220Ω)  →  Anod LED (+, piciorul mai lung)
+Catod LED (-, piciorul mai scurt)  →  GND
 ```
 
-Example using GPIO 4:
+Exemplu folosind GPIO 4:
 
 ```board
 GPIO 4  ──[220Ω]──  LED+  →  LED-  ──  GND
 ```
 
-### Updating the Code
+### Actualizarea codului
 
-Change the pin number in your code to match the GPIO pin you wired the LED to:
+Modifică numărul pinului din cod pentru a corespunde pinului GPIO la care ai conectat LED-ul:
 
 ```python
-led = machine.Pin(4, machine.Pin.OUT)  # Replace 4 with your chosen GPIO pin
+led = machine.Pin(4, machine.Pin.OUT)  # Înlocuiește 4 cu pinul GPIO ales
 ```
 
-## LED Chaser Example
+## Exemplu: LED-uri în cascadă
 
-Wire several LEDs to consecutive GPIO pins and cycle through them in sequence:
+Conectează mai multe LED-uri la pini GPIO consecutivi și ciclează prin ele în ordine:
 
 ```python
 import machine
@@ -94,17 +94,17 @@ while True:
         led.off()
 ```
 
-### Wiring Diagram
+### Schemă de conectare
 
-![ESP32 LED Wiring Diagram](../../assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg)
+![Schema de conectare LED ESP32](../../assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg)
 
-### LED Chaser in Action
+### LED-uri în cascadă în acțiune
 
-![ESP32 LED Chaser MicroPython](../../assets/images/projects/esp32/esp32-led-chaser-micropython-upycraft-ide.webp)
+![LED Chaser ESP32 MicroPython](../../assets/images/projects/esp32/esp32-led-chaser-micropython-upycraft-ide.webp)
 
 ---
 
-## Reference
+## Referințe
 
 - [Blink A Led With Esp32 And Micropython](https://www.electromaker.io/project/view/blink-a-led-with-esp32-and-micropython)
 - [ESP32 and ESP8266 GPIO Programming with MicroPython – LED Blinking Example](https://microcontrollerslab.com/esp32-esp8266-gpio-programming-micropython-led-blinking/)

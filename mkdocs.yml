@@ -22,12 +22,8 @@ plugins:
       reconfigure_material: false
       reconfigure_search: true
       languages:
-        - locale: en
-          default: true
-          name: English
-          build: true
-          site_name: "Ursoaia Edu Online"
         - locale: ro
+          default: true
           name: Română
           build: true
           site_name: "Ursoaia Edu Online"
@@ -46,6 +42,10 @@ plugins:
             "LoRaWAN Node": Nod LoRaWAN
             "Raspberry Pi": Raspberry Pi
             Overview: Prezentare generală
+        - locale: en
+          name: English
+          build: true
+          site_name: "Ursoaia Edu Online"
 
 markdown_extensions:
   - abbr
