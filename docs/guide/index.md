@@ -3,7 +3,7 @@ tags: [ghid, cursuri]
 summary: Cursurile disponibile pentru elevii cercului de informatică — Web și Python.
 ---
 
-# Ghid de învățare
+# Cursuri
 
 Cursuri complete pentru elevii care vor să învețe programare de la zero. Fiecare curs e structurat săptămânal, cu exerciții și mini-proiecte la final de lecție.
 

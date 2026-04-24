@@ -29,7 +29,7 @@ plugins:
           site_name: "Ursoaia Edu Online"
           nav_translations:
             Home: Acasă
-            Guide: Ghid
+            Courses: Cursuri
             Projects: Proiecte
             Arduino: Arduino
             "LED Cube": Cub de LED-uri
@@ -80,7 +80,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Guide:
+  - Courses:
       - Overview: guide/index.md
       - Web:
           - Prezentare curs: guide/web/index.md

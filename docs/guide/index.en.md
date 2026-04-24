@@ -3,7 +3,7 @@ tags: [guide, courses]
 summary: Available courses for computer science club students — Web and Python.
 ---
 
-# Learning Guide
+# Courses
 
 Complete courses for students who want to learn programming from scratch. Each course is structured weekly, with exercises and mini-projects at the end of every lesson.
 
