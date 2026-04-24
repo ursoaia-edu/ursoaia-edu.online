@@ -16,6 +16,8 @@ summary: Instalează Thonny, înțelege ce este Python și scrie primul tău pro
 
 ## Ce este Python?
 
+<img src="../../assets/images/guide/python/python-logo.svg" alt="Logo Python" width="120" style="float: right; margin: 0 0 1rem 1rem;">
+
 **Python** este un limbaj de programare creat în 1991 de Guido van Rossum. Astăzi este unul dintre cele mai populare limbaje din lume — și din motive bune:
 
 - Se citește aproape ca engleza obișnuită
@@ -43,21 +45,12 @@ summary: Instalează Thonny, înțelege ce este Python și scrie primul tău pro
 
 ### Cum arată Thonny
 
-```
-┌─────────────────────────────────────────────────┐
-│  [Editor] — scrii codul aici                    │
-│                                                 │
-│  print("Salut, lume!")                          │
-│                                                 │
-├─────────────────────────────────────────────────┤
-│  [Shell] — vezi rezultatele când rulezi         │
-│                                                 │
-│  Salut, lume!                                   │
-└─────────────────────────────────────────────────┘
-```
+![Interfața Thonny IDE](../../assets/images/guide/python/thonny-ide.png)
+
+Interfața e împărțită în două zone principale:
 
 - **Editorul** (sus) — unde scrii programele
-- **Shell-ul** (jos) — unde apar rezultatele
+- **Shell-ul** (jos) — unde apar rezultatele când rulezi codul
 
 ---
 

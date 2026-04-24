@@ -462,6 +462,7 @@
 </div>
 <hr />
 <h2 id="ce-este-python">Ce este Python?<a class="headerlink" href="#ce-este-python" title="Link to this section">&para;</a></h2>
+<p><img src="../../assets/images/guide/python/python-logo.svg" alt="Logo Python" width="120" style="float: right; margin: 0 0 1rem 1rem;"></p>
 <p><strong>Python</strong> este un limbaj de programare creat în 1991 de Guido van Rossum. Astăzi este unul dintre cele mai populare limbaje din lume — și din motive bune:</p>
 <ul>
 <li>Se citește aproape ca engleza obișnuită</li>
@@ -487,49 +488,40 @@
 <p>Dacă nu poți instala programe, folosește <a href="https://repl.it">repl.it</a> — creează un cont gratuit și rulezi Python direct în browser.</p>
 </div>
 <h3 id="cum-arata-thonny">Cum arată Thonny<a class="headerlink" href="#cum-arata-thonny" title="Link to this section">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────┐
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  [Editor] — scrii codul aici                    │
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│                                                 │
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  print(&quot;Salut, lume!&quot;)                          │
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│                                                 │
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├─────────────────────────────────────────────────┤
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  [Shell] — vezi rezultatele când rulezi         │
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│                                                 │
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  Salut, lume!                                   │
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>└─────────────────────────────────────────────────┘
-</span></code></pre></div>
+<p><img alt="Interfața Thonny IDE" src="../../../assets/images/guide/python/thonny-ide.png" /></p>
+<p>Interfața e împărțită în două zone principale:</p>
 <ul>
 <li><strong>Editorul</strong> (sus) — unde scrii programele</li>
-<li><strong>Shell-ul</strong> (jos) — unde apar rezultatele</li>
+<li><strong>Shell-ul</strong> (jos) — unde apar rezultatele când rulezi codul</li>
 </ul>
 <hr />
 <h2 id="primul-program">Primul program<a class="headerlink" href="#primul-program" title="Link to this section">&para;</a></h2>
 <h3 id="1-scrie-codul">1. Scrie codul<a class="headerlink" href="#1-scrie-codul" title="Link to this section">&para;</a></h3>
 <p>În editorul Thonny, scrie exact:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="2-ruleaza">2. Rulează<a class="headerlink" href="#2-ruleaza" title="Link to this section">&para;</a></h3>
 <p>Apasă butonul <strong>▶ Run</strong> sau tasta <code>F5</code>.</p>
 <h3 id="3-priveste-rezultatul">3. Privește rezultatul<a class="headerlink" href="#3-priveste-rezultatul" title="Link to this section">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Salut, lume!
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Salut, lume!
 </span></code></pre></div>
 <p>Felicitări — ai scris primul tău program Python!</p>
 <hr />
 <h2 id="functia-print">Funcția <code>print()</code><a class="headerlink" href="#functia-print" title="Link to this section">&para;</a></h2>
 <p><code>print()</code> este o <strong>funcție</strong> — un bloc de cod gata făcut care face ceva. În cazul acesta, afișează text pe ecran.</p>
 <p>Textul se pune între <strong>ghilimele</strong> (simple <code>'</code> sau duble <code>"</code>) și <strong>între paranteze</strong>:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python este distractiv!&quot;</span><span class="p">)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Și eu pot programa.&#39;</span><span class="p">)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ursoaia Edu Online&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python este distractiv!&quot;</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Și eu pot programa.&#39;</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ursoaia Edu Online&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Fiecare <code>print()</code> afișează o linie nouă.</p>
 <hr />
 <h2 id="citirea-erorilor">Citirea erorilor<a class="headerlink" href="#citirea-erorilor" title="Link to this section">&para;</a></h2>
 <p>Greșelile sunt normale și inevitabile. Iată un exemplu:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span>
 </span></code></pre></div>
 <p>Python va afișa:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>SyntaxError: &#39;(&#39; was never closed
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>SyntaxError: &#39;(&#39; was never closed
 </span></code></pre></div>
 <p><strong>Traducere:</strong> paranteza <code>(</code> nu a fost niciodată închisă.</p>
 <p><strong>Soluție:</strong> adaugă <code>)</code> la final.</p>
@@ -540,10 +532,10 @@
 <hr />
 <h2 id="shell-ul-interactiv">Shell-ul interactiv<a class="headerlink" href="#shell-ul-interactiv" title="Link to this section">&para;</a></h2>
 <p>În zona de jos din Thonny poți testa comenzi Python direct, fără să salvezi un fișier:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="mi">5</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;Ana&quot;</span> <span class="o">+</span> <span class="s2">&quot; are &quot;</span> <span class="o">+</span> <span class="s2">&quot;mere&quot;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s1">&#39;Ana are mere&#39;</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="mi">5</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;Ana&quot;</span> <span class="o">+</span> <span class="s2">&quot; are &quot;</span> <span class="o">+</span> <span class="s2">&quot;mere&quot;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s1">&#39;Ana are mere&#39;</span>
 </span></code></pre></div>
 <p><code>&gt;&gt;&gt;</code> înseamnă că Python așteaptă o comandă. Ideal pentru a testa rapid idei.</p>
 <hr />
@@ -552,16 +544,16 @@
 <p>Scrie un program care afișează numele tău, vârsta și orașul natal, fiecare pe o linie separată.</p>
 <details class="success">
 <summary>Soluție</summary>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maria&quot;</span><span class="p">)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Timișoara&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maria&quot;</span><span class="p">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Timișoara&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
 <h3 id="exercitiu-2-cate-linii">Exercițiu 2 — Câte linii?<a class="headerlink" href="#exercitiu-2-cate-linii" title="Link to this section">&para;</a></h3>
 <p>Câte linii va afișa programul următor?</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unu&quot;</span><span class="p">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doi&quot;</span><span class="p">)</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trei&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unu&quot;</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doi&quot;</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trei&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <details class="success">
 <summary>Răspuns</summary>
@@ -569,33 +561,33 @@
 </details>
 <h3 id="exercitiu-3-gaseste-eroarea">Exercițiu 3 — Găsește eroarea<a class="headerlink" href="#exercitiu-3-gaseste-eroarea" title="Link to this section">&para;</a></h3>
 <p>Ce este greșit?</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bună ziua!</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bună ziua!</span>
 </span></code></pre></div>
 <details class="success">
 <summary>Răspuns</summary>
 <p>Lipsesc ghilimelele de închidere <code>"</code> și paraneza de închidere <code>)</code>.
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bună ziua!&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bună ziua!&quot;</span><span class="p">)</span>
 </span></code></pre></div></p>
 </details>
 <hr />
 <h2 id="mini-proiect-cartea-ta-de-vizita">Mini-proiect: Cartea ta de vizită<a class="headerlink" href="#mini-proiect-cartea-ta-de-vizita" title="Link to this section">&para;</a></h2>
 <p>Scrie un program care afișează o carte de vizită cu informații despre tine.</p>
 <p><strong>Exemplu de output:</strong>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>==============================
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  Numele meu: Maria Ionescu
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  Vârsta: 14 ani
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  Școala: Liceul Teoretic X
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  Hobby: programare, fotbal
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>==============================
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>==============================
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  Numele meu: Maria Ionescu
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  Vârsta: 14 ani
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  Școala: Liceul Teoretic X
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  Hobby: programare, fotbal
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>==============================
 </span></code></pre></div></p>
 <details class="success">
 <summary>Soluție</summary>
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==============================&quot;</span><span class="p">)</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Numele meu: Maria Ionescu&quot;</span><span class="p">)</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Vârsta: 14 ani&quot;</span><span class="p">)</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Școala: Liceul Teoretic X&quot;</span><span class="p">)</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Hobby: programare, fotbal&quot;</span><span class="p">)</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==============================&quot;</span><span class="p">)</span>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==============================&quot;</span><span class="p">)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Numele meu: Maria Ionescu&quot;</span><span class="p">)</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Vârsta: 14 ani&quot;</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Școala: Liceul Teoretic X&quot;</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Hobby: programare, fotbal&quot;</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==============================&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 Modifică cu datele tale reale!</p>
 </details>
