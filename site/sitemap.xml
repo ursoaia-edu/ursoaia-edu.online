@@ -99,6 +99,174 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/python/11-proiect-turtle/"/>
     </url>
     <url>
+        <loc>https://ursoaia-edu.online/guide/web/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/00-introducere/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/00-introducere/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/00-introducere/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/01-prima-pagina/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/01-prima-pagina/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/01-prima-pagina/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/02-html-bazele/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/02-html-bazele/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/02-html-bazele/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/03-html-liste-tabele/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/03-html-liste-tabele/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/03-html-liste-tabele/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/04-html-formulare/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/04-html-formulare/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/04-html-formulare/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/05-html-multi-pagina/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/05-html-multi-pagina/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/05-html-multi-pagina/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/06-css-introducere/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/06-css-introducere/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/06-css-introducere/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/07-css-box-model/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/07-css-box-model/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/07-css-box-model/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/08-css-flexbox-grid/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/08-css-flexbox-grid/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/08-css-flexbox-grid/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/09-css-avansat/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/09-css-avansat/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/09-css-avansat/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/10-css-responsive/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/10-css-responsive/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/10-css-responsive/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/11-js-introducere/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/11-js-introducere/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/11-js-introducere/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/12-js-variabile-tipuri/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/12-js-variabile-tipuri/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/12-js-variabile-tipuri/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/13-js-conditii-bucle/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/13-js-conditii-bucle/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/13-js-conditii-bucle/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/14-js-functii/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/14-js-functii/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/14-js-functii/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/15-js-dom/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/15-js-dom/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/15-js-dom/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/16-js-evenimente/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/16-js-evenimente/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/16-js-evenimente/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/17-js-formulare-validare/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/17-js-formulare-validare/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/17-js-formulare-validare/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/18-js-fetch-api/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/18-js-fetch-api/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/18-js-fetch-api/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/19-proiect-portofoliu/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/19-proiect-portofoliu/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/19-proiect-portofoliu/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/20-proiect-quiz/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/20-proiect-quiz/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/20-proiect-quiz/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/21-proiect-meteo/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/21-proiect-meteo/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/21-proiect-meteo/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/guide/web/init/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/init/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/init/"/>
+    </url>
+    <url>
         <loc>https://ursoaia-edu.online/projects/arduino/kits/</loc>
         <lastmod>2026-04-24</lastmod>
         <changefreq>daily</changefreq>
@@ -244,6 +412,174 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/python/11-proiect-turtle/"/>
         <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/python/11-proiect-turtle/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/00-introducere/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/00-introducere/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/00-introducere/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/01-prima-pagina/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/01-prima-pagina/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/01-prima-pagina/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/02-html-bazele/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/02-html-bazele/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/02-html-bazele/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/03-html-liste-tabele/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/03-html-liste-tabele/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/03-html-liste-tabele/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/04-html-formulare/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/04-html-formulare/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/04-html-formulare/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/05-html-multi-pagina/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/05-html-multi-pagina/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/05-html-multi-pagina/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/06-css-introducere/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/06-css-introducere/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/06-css-introducere/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/07-css-box-model/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/07-css-box-model/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/07-css-box-model/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/08-css-flexbox-grid/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/08-css-flexbox-grid/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/08-css-flexbox-grid/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/09-css-avansat/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/09-css-avansat/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/09-css-avansat/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/10-css-responsive/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/10-css-responsive/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/10-css-responsive/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/11-js-introducere/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/11-js-introducere/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/11-js-introducere/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/12-js-variabile-tipuri/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/12-js-variabile-tipuri/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/12-js-variabile-tipuri/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/13-js-conditii-bucle/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/13-js-conditii-bucle/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/13-js-conditii-bucle/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/14-js-functii/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/14-js-functii/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/14-js-functii/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/15-js-dom/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/15-js-dom/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/15-js-dom/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/16-js-evenimente/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/16-js-evenimente/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/16-js-evenimente/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/17-js-formulare-validare/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/17-js-formulare-validare/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/17-js-formulare-validare/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/18-js-fetch-api/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/18-js-fetch-api/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/18-js-fetch-api/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/19-proiect-portofoliu/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/19-proiect-portofoliu/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/19-proiect-portofoliu/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/20-proiect-quiz/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/20-proiect-quiz/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/20-proiect-quiz/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/21-proiect-meteo/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/21-proiect-meteo/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/21-proiect-meteo/"/>
+    </url>
+    <url>
+        <loc>https://ursoaia-edu.online/en/guide/web/init/</loc>
+        <lastmod>2026-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/guide/web/init/"/>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/guide/web/init/"/>
     </url>
     <url>
         <loc>https://ursoaia-edu.online/en/projects/arduino/kits/</loc>

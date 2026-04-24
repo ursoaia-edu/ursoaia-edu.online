@@ -1,0 +1,1261 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proiect: Meteo - Ursoaia Edu Online</title>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.4s, color 0.4s; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #525252; border-radius: 3px; }
+    .dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+
+    /* Animations */
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+    }
+    @keyframes float-1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-8px, -12px); }
+    }
+    @keyframes float-2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(6px, -8px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(249,115,22,0.3); }
+      50% { box-shadow: 0 0 20px rgba(249,115,22,0.6); }
+    }
+    @keyframes circuit-flow {
+      0% { stroke-dashoffset: 100; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #f97316; }
+    }
+
+    .animate-in { animation: fadeSlideIn 0.6s ease-out both; }
+    .animate-in-1 { animation: fadeSlideIn 0.6s ease-out 0.1s both; }
+    .animate-in-2 { animation: fadeSlideIn 0.6s ease-out 0.2s both; }
+    .animate-in-3 { animation: fadeSlideIn 0.6s ease-out 0.3s both; }
+    .animate-in-4 { animation: fadeSlideIn 0.6s ease-out 0.4s both; }
+    .animate-in-5 { animation: fadeSlideIn 0.6s ease-out 0.5s both; }
+    .float-1 { animation: float-1 4s ease-in-out infinite; }
+    .float-2 { animation: float-2 3.5s ease-in-out infinite; }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+    /* Intersection Observer driven */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Glass — adaptive: light by default, dark when html.dark is set.
+       (The HTML still passes `dark:glass-dark glass-light` for back-compat,
+       but `dark:` is inert on custom classes; the rules below drive theming.) */
+    .glass-light, .glass-dark {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .dark .glass-light, .dark .glass-dark {
+      background: rgba(24, 24, 27, 0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Project card hover */
+    .project-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .project-card:hover { transform: translateY(-6px); }
+    .dark .project-card:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    .project-card:hover { border-color: rgba(249,115,22,0.4); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+
+    /* Blog card */
+    .blog-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card:hover img { transform: scale(1.05); }
+    .blog-card img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Tag */
+    .tag { transition: all 0.2s; }
+    .tag:hover { transform: scale(1.05); }
+
+    /* Theme toggle */
+    .theme-toggle { position: relative; width: 56px; height: 28px; border-radius: 14px; cursor: pointer; transition: background 0.3s; }
+    .theme-toggle .knob {
+      position: absolute; top: 3px; left: 3px; width: 22px; height: 22px;
+      border-radius: 50%; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dark .theme-toggle .knob { left: 31px; }
+
+    /* Circuit SVG decoration */
+    .circuit-line {
+      stroke-dasharray: 10 5;
+      animation: circuit-flow 2s linear infinite;
+    }
+
+    /* Nav active indicator */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px;
+      background: #f97316; transition: all 0.3s; transform: translateX(-50%); border-radius: 1px;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    /* Mobile menu */
+    .mobile-menu { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Status dot */
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 8px rgba(34,197,94,0.5);
+      animation: pulse-glow-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow-green {
+      0%, 100% { box-shadow: 0 0 4px rgba(34,197,94,0.3); }
+      50% { box-shadow: 0 0 12px rgba(34,197,94,0.7); }
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Noise texture overlay */
+    .noise::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Typography Overrides */
+    .prose { max-width: none; }
+    .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      scroll-margin-top: 6rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 2.5em;
+    }
+    .dark .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      border-top-color: rgba(255,255,255,0.06);
+    }
+    .prose :where(h3, h4):not(:where([class~="not-prose"] *)) { scroll-margin-top: 6rem; }
+    .prose :where(a):not(:where([class~="not-prose"] *)) {
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(249,115,22,0.5);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .prose :where(a):not(:where([class~="not-prose"] *)):hover {
+      border-bottom-color: rgba(249,115,22,1);
+      color: #f97316;
+    }
+    .prose :where(.headerlink):not(:where([class~="not-prose"] *)) {
+      opacity: 0;
+      margin-left: 0.5rem;
+      border-bottom: 0;
+      color: #f97316;
+      transition: opacity 0.2s;
+    }
+    .prose :where(h2:hover .headerlink, h3:hover .headerlink, h4:hover .headerlink):not(:where([class~="not-prose"] *)) { opacity: 1; }
+    .prose :where(table):not(:where([class~="not-prose"] *)) {
+      border-radius: 0.75rem; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .dark .prose :where(table):not(:where([class~="not-prose"] *)) { border-color: rgba(255,255,255,0.08); }
+    .prose :where(thead):not(:where([class~="not-prose"] *)) {
+      background: rgba(249,115,22,0.06);
+      border-bottom: 2px solid rgba(249,115,22,0.25);
+    }
+    .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.04);
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.75em 1.25em;
+      font-style: normal;
+    }
+
+    .dark .prose {
+      --tw-prose-body: theme('colors.zinc.400');
+      --tw-prose-headings: theme('colors.white');
+      --tw-prose-links: theme('colors.orange.500');
+      --tw-prose-bold: theme('colors.white');
+      --tw-prose-counters: theme('colors.zinc.400');
+      --tw-prose-bullets: theme('colors.zinc.600');
+      --tw-prose-hr: theme('colors.zinc.800');
+      --tw-prose-quotes: theme('colors.zinc.100');
+      --tw-prose-quote-borders: theme('colors.zinc.700');
+      --tw-prose-captions: theme('colors.zinc.400');
+      --tw-prose-code: theme('colors.orange.300');
+      --tw-prose-pre-code: theme('colors.zinc.200');
+      --tw-prose-pre-bg: #0d0d10;
+      --tw-prose-th-borders: theme('colors.zinc.700');
+      --tw-prose-td-borders: theme('colors.zinc.800');
+    }
+    .prose code {
+      background: rgba(249,115,22,0.1);
+      padding: 0.15em 0.4em;
+      border-radius: 0.35em;
+      font-weight: 500;
+      font-size: 0.875em;
+    }
+    .prose code::before, .prose code::after { content: ''; }
+    .prose pre {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 16px -4px rgba(0,0,0,0.25);
+    }
+    .prose pre code {
+      background: transparent !important;
+      padding: 0; font-weight: 400;
+      font-size: 0.875em;
+    }
+    .prose img { border-radius: 0.75rem; box-shadow: 0 4px 16px -4px rgba(0,0,0,0.2); }
+
+    /* Pygments — light + dark */
+    .highlight pre, pre.highlight { background: #fafafa; color: #383a42; }
+    .dark .highlight pre, .dark pre.highlight { background: #0d0d10; color: #e5e5e5; }
+    .highlight .linenos { color: #c0c0c0; padding-right: 12px; user-select: none; }
+    .dark .highlight .linenos { color: #525252; }
+    /* Light Pygments tokens (One Light) */
+    .highlight .k,  .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt { color: #a626a4; }
+    .highlight .s,  .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sx { color: #50a14f; }
+    .highlight .c,  .highlight .c1, .highlight .cm, .highlight .cs { color: #a0a1a7; font-style: italic; }
+    .highlight .n,  .highlight .na, .highlight .nb, .highlight .nf { color: #4078f2; }
+    .highlight .nc, .highlight .nn { color: #c18401; }
+    .highlight .o,  .highlight .ow { color: #0184bc; }
+    .highlight .mi, .highlight .mf, .highlight .m { color: #986801; }
+    .highlight .p { color: #383a42; }
+    /* Dark Pygments tokens (One Dark) */
+    .dark .highlight .k,  .dark .highlight .kd, .dark .highlight .kn, .dark .highlight .kr, .dark .highlight .kt { color: #c678dd; }
+    .dark .highlight .s,  .dark .highlight .s1, .dark .highlight .s2, .dark .highlight .sb, .dark .highlight .sx { color: #98c379; }
+    .dark .highlight .c,  .dark .highlight .c1, .dark .highlight .cm, .dark .highlight .cs { color: #6b7280; font-style: italic; }
+    .dark .highlight .n,  .dark .highlight .na, .dark .highlight .nb, .dark .highlight .nf { color: #61afef; }
+    .dark .highlight .nc, .dark .highlight .nn { color: #e5c07b; }
+    .dark .highlight .o,  .dark .highlight .ow { color: #56b6c2; }
+    .dark .highlight .mi, .dark .highlight .mf, .dark .highlight .m { color: #d19a66; }
+    .dark .highlight .p { color: #e5e5e5; }
+
+    /* Admonitions */
+    .admonition {
+      margin: 1.5em 0;
+      padding: 1em 1.25em 1em 1.25em;
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.05);
+      border-radius: 0 0.75rem 0.75rem 0;
+    }
+    .admonition-title {
+      font-weight: 600;
+      margin: 0 0 0.5em 0 !important;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: #f97316;
+    }
+    .admonition.note     { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+    .admonition.note    .admonition-title { color: #3b82f6; }
+    .admonition.warning  { border-color: #f59e0b; background: rgba(245,158,11,0.06); }
+    .admonition.warning .admonition-title { color: #f59e0b; }
+    .admonition.tip      { border-color: #10b981; background: rgba(16,185,129,0.06); }
+    .admonition.tip     .admonition-title { color: #10b981; }
+    .admonition.danger   { border-color: #ef4444; background: rgba(239,68,68,0.06); }
+    .admonition.danger  .admonition-title { color: #ef4444; }
+  </style>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../.." class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Acasă</a>
+          
+            <a href="../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Ghid</a>
+          
+            <a href="../../../#projects" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Proiecte</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Limbă">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900">EN</a>
+            <a href="../../../ro/guide/web/21-proiect-meteo/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors bg-orange-500 text-white shadow-sm">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Acasă</a>
+          
+            <a href="../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Ghid</a>
+          
+            <a href="../../../#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Proiecte</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Limbă</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500">EN</a>
+            <a href="../../../ro/guide/web/21-proiect-meteo/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-500 text-white">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../.." class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Acasă
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          <span class="dark:text-zinc-400 text-zinc-500">Ghid</span>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          <span class="dark:text-zinc-400 text-zinc-500">Web</span>
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">Proiect: Meteo</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">Proiect: Meteo</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Proiect final — construiești o aplicație meteo care consumă un API public (Open-Meteo) cu fetch și async/await.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">web</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">proiect</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">meteo</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">api</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">fetch</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">async</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lectia-21-proiect-aplicatie-meteo">Lecția 21 · Proiect: Aplicație Meteo<a class="headerlink" href="#lectia-21-proiect-aplicatie-meteo" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Ce vei exersa</p>
+<ul>
+<li><code>fetch</code> și <code>async / await</code></li>
+<li>Lucrul cu JSON primit de la un API</li>
+<li>Actualizarea DOM-ului cu date dinamice</li>
+<li>Tratarea erorilor (conexiune pierdută, API indisponibil)</li>
+<li>Stările de interfață: loading, succes, eroare</li>
+</ul>
+</div>
+<hr />
+<h2 id="prezentarea-proiectului">Prezentarea proiectului<a class="headerlink" href="#prezentarea-proiectului" title="Link to this section">&para;</a></h2>
+<p>Vei construi o <strong>aplicație meteo</strong> care:</p>
+<ol>
+<li>Permite alegerea unui oraș dintr-un dropdown (7 orașe preconfigurate)</li>
+<li>La apăsarea butonului „Obține prognoza”, apelează un <strong>API public</strong></li>
+<li>Afișează temperatura, condiția meteo, viteza vântului și umiditatea</li>
+<li>Arată iconuri (emoji) în funcție de cod meteo</li>
+<li>Tratează elegant situațiile de eroare</li>
+</ol>
+<p><strong>Exemplu de interfață:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌────────────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  Meteo orașe                       │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│                                    │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  Oraș: [ București ▼ ]             │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│        [ Obține prognoza ]         │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│                                    │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  ─────── Rezultat ───────          │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│                                    │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│       🌤️                            │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│       21°C                         │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│     Parțial noros                  │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│                                    │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│  💨 Vânt:     12 km/h              │
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│  💧 Umiditate: 65%                 │
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>└────────────────────────────────────┘
+</span></code></pre></div>
+<hr />
+<h2 id="de-ce-open-meteo">De ce Open-Meteo?<a class="headerlink" href="#de-ce-open-meteo" title="Link to this section">&para;</a></h2>
+<p>Folosim <strong>Open-Meteo</strong> (<a href="https://open-meteo.com">https://open-meteo.com</a>) pentru că:</p>
+<ul>
+<li>Este <strong>gratuit</strong> pentru uz educațional și personal</li>
+<li><strong>Nu are nevoie de API key</strong> — te concentrezi pe cod, nu pe înregistrări</li>
+<li>Returnează <strong>JSON curat</strong> și bine documentat</li>
+<li>Endpoint-ul folosit: <code>https://api.open-meteo.com/v1/forecast</code></li>
+</ul>
+<p><strong>Exemplu URL:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://api.open-meteo.com/v1/forecast
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  ?latitude=44.43
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  &amp;longitude=26.10
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  &amp;current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  &amp;timezone=auto
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Parametrii</p>
+<ul>
+<li><code>latitude</code>, <code>longitude</code> — coordonatele orașului</li>
+<li><code>current</code> — câmpurile care te interesează (separate prin virgulă)</li>
+<li><code>timezone=auto</code> — orele întoarse în timezone-ul orașului</li>
+</ul>
+</div>
+<hr />
+<h2 id="pasul-1-structura-html">Pasul 1: Structura HTML<a class="headerlink" href="#pasul-1-structura-html" title="Link to this section">&para;</a></h2>
+<p>Creează <code>meteo/index.html</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ro&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Meteo · Open-Meteo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;styles.css&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  <span class="p">&lt;</span><span class="nt">main</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Meteo orașe<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;form-meteo&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;oras&quot;</span><span class="p">&gt;</span>Oraș<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>      <span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;oras&quot;</span> <span class="na">required</span><span class="p">&gt;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">disabled</span> <span class="na">selected</span><span class="p">&gt;</span>Alege un oraș…<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>      <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn&quot;</span><span class="p">&gt;</span>Obține prognoza<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;loading&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mesaj ascuns&quot;</span><span class="p">&gt;</span>Se încarcă…<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;eroare&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mesaj eroare ascuns&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;rezultat&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;rezultat ascuns&quot;</span> <span class="na">aria-live</span><span class="o">=</span><span class="s">&quot;polite&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Accesibilitate</p>
+<ul>
+<li><code>&lt;label for="oras"&gt;</code> leagă eticheta de câmp: click pe text focalizează dropdown-ul.</li>
+<li><code>role="alert"</code> pe eroare anunță cititoarele de ecran automat.</li>
+<li><code>aria-live="polite"</code> pe rezultat anunță datele noi fără a întrerupe utilizatorul.</li>
+</ul>
+</div>
+<hr />
+<h2 id="pasul-2-css-design-modern">Pasul 2: CSS — design modern<a class="headerlink" href="#pasul-2-css-design-modern" title="Link to this section">&para;</a></h2>
+<p>Creează <code>meteo/styles.css</code>:</p>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">*</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nv">--primara</span><span class="p">:</span><span class="w"> </span><span class="mh">#0ea5e9</span><span class="p">;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#f1f5f9</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nv">--text-moale</span><span class="p">:</span><span class="w"> </span><span class="mh">#cbd5e1</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nv">--eroare</span><span class="p">:</span><span class="w"> </span><span class="mh">#f87171</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nv">--radius</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="k">min-height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inter&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">linear-gradient</span><span class="p">(</span><span class="mi">135</span><span class="kt">deg</span><span class="p">,</span><span class="w"> </span><span class="mh">#0f172a</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mh">#1e3a8a</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mh">#0ea5e9</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">}</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">460</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.08</span><span class="p">);</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">  </span><span class="n">backdrop-filter</span><span class="p">:</span><span class="w"> </span><span class="nb">blur</span><span class="p">(</span><span class="mi">14</span><span class="kt">px</span><span class="p">);</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.15</span><span class="p">);</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">25</span><span class="kt">px</span><span class="w"> </span><span class="mi">60</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">);</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="p">}</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mf">1.75</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="p">}</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="p">.</span><span class="nc">form</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.65</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="p">}</span>
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="p">.</span><span class="nc">form</span><span class="w"> </span><span class="nt">label</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text-moale</span><span class="p">);</span>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="p">}</span>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="p">.</span><span class="nc">form</span><span class="w"> </span><span class="nt">select</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">);</span>
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radius</span><span class="p">);</span>
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">inherit</span><span class="p">;</span>
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="p">}</span>
+</span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>
+</span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="p">.</span><span class="nc">form</span><span class="w"> </span><span class="nt">select</span><span class="p">:</span><span class="nd">focus</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="w">  </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--primara</span><span class="p">);</span>
+</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="w">  </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-3-63"><a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="p">}</span>
+</span><span id="__span-3-64"><a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a>
+</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="p">.</span><span class="nc">btn</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-66"><a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-67"><a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="kt">rem</span><span class="w"> </span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-68"><a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--primara</span><span class="p">);</span>
+</span><span id="__span-3-69"><a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+</span><span id="__span-3-70"><a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+</span><span id="__span-3-71"><a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radius</span><span class="p">);</span>
+</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-73"><a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">;</span>
+</span><span id="__span-3-74"><a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="w">  </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
+</span><span id="__span-3-75"><a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a><span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">,</span><span class="w"> </span><span class="k">filter</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+</span><span id="__span-3-76"><a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="p">}</span>
+</span><span id="__span-3-77"><a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="p">.</span><span class="nc">btn</span><span class="p">:</span><span class="nd">hover</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">-2</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="k">filter</span><span class="p">:</span><span class="w"> </span><span class="nb">brightness</span><span class="p">(</span><span class="mf">1.1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-78"><a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="p">.</span><span class="nc">btn</span><span class="p">:</span><span class="nd">disabled</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span><span class="w"> </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">not-allowed</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-79"><a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a>
+</span><span id="__span-3-80"><a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a><span class="p">.</span><span class="nc">mesaj</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-81"><a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-82"><a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a><span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-3-83"><a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text-moale</span><span class="p">);</span>
+</span><span id="__span-3-84"><a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="p">}</span>
+</span><span id="__span-3-85"><a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="p">.</span><span class="nc">mesaj</span><span class="p">.</span><span class="nc">eroare</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--eroare</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-86"><a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a>
+</span><span id="__span-3-87"><a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a><span class="p">.</span><span class="nc">rezultat</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-88"><a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-89"><a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a><span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-3-90"><a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a><span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">aparitie</span><span class="w"> </span><span class="mf">0.4</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+</span><span id="__span-3-91"><a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a><span class="p">}</span>
+</span><span id="__span-3-92"><a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a>
+</span><span id="__span-3-93"><a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">aparitie</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-94"><a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a><span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-95"><a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a><span class="w">  </span><span class="nt">to</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-96"><a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a><span class="p">}</span>
+</span><span id="__span-3-97"><a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a>
+</span><span id="__span-3-98"><a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a><span class="p">.</span><span class="nc">rezultat</span><span class="w"> </span><span class="nt">h2</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text-moale</span><span class="p">);</span><span class="w"> </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w"> </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-99"><a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a><span class="p">.</span><span class="nc">rezultat</span><span class="w"> </span><span class="p">.</span><span class="nc">icon</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-100"><a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a><span class="p">.</span><span class="nc">rezultat</span><span class="w"> </span><span class="p">.</span><span class="nc">temp</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">3.5</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-101"><a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a><span class="p">.</span><span class="nc">rezultat</span><span class="w"> </span><span class="p">.</span><span class="nc">desc</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.15</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text-moale</span><span class="p">);</span><span class="w"> </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-102"><a id="__codelineno-3-102" name="__codelineno-3-102" href="#__codelineno-3-102"></a>
+</span><span id="__span-3-103"><a id="__codelineno-3-103" name="__codelineno-3-103" href="#__codelineno-3-103"></a><span class="p">.</span><span class="nc">rezultat</span><span class="w"> </span><span class="p">.</span><span class="nc">detalii</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-104"><a id="__codelineno-3-104" name="__codelineno-3-104" href="#__codelineno-3-104"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+</span><span id="__span-3-105"><a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+</span><span id="__span-3-106"><a id="__codelineno-3-106" name="__codelineno-3-106" href="#__codelineno-3-106"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-107"><a id="__codelineno-3-107" name="__codelineno-3-107" href="#__codelineno-3-107"></a><span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-108"><a id="__codelineno-3-108" name="__codelineno-3-108" href="#__codelineno-3-108"></a><span class="w">  </span><span class="k">padding-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-109"><a id="__codelineno-3-109" name="__codelineno-3-109" href="#__codelineno-3-109"></a><span class="w">  </span><span class="k">border-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.15</span><span class="p">);</span>
+</span><span id="__span-3-110"><a id="__codelineno-3-110" name="__codelineno-3-110" href="#__codelineno-3-110"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text-moale</span><span class="p">);</span>
+</span><span id="__span-3-111"><a id="__codelineno-3-111" name="__codelineno-3-111" href="#__codelineno-3-111"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-3-112"><a id="__codelineno-3-112" name="__codelineno-3-112" href="#__codelineno-3-112"></a><span class="p">}</span>
+</span><span id="__span-3-113"><a id="__codelineno-3-113" name="__codelineno-3-113" href="#__codelineno-3-113"></a>
+</span><span id="__span-3-114"><a id="__codelineno-3-114" name="__codelineno-3-114" href="#__codelineno-3-114"></a><span class="p">.</span><span class="nc">ascuns</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="pasul-3-datele-oraselor">Pasul 3: Datele orașelor<a class="headerlink" href="#pasul-3-datele-oraselor" title="Link to this section">&para;</a></h2>
+<p>În <code>meteo/app.js</code>, definim lista de orașe cu coordonatele lor:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">orase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="s2">&quot;Chișinău&quot;</span><span class="o">:</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">47.00</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">28.86</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="s2">&quot;București&quot;</span><span class="o">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">44.43</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">26.10</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="s2">&quot;Cluj-Napoca&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">46.77</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">23.60</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="s2">&quot;Iași&quot;</span><span class="o">:</span><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">47.16</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">27.58</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="s2">&quot;Timișoara&quot;</span><span class="o">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">45.76</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">21.22</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="s2">&quot;Constanța&quot;</span><span class="o">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">44.18</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">28.65</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="s2">&quot;Brașov&quot;</span><span class="o">:</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">45.66</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">25.61</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">};</span>
+</span></code></pre></div>
+<p>Populăm dropdown-ul la pornire:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">selectOras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;oras&quot;</span><span class="p">);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">orase</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;option&quot;</span><span class="p">);</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nx">opt</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nume</span><span class="p">;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nx">opt</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nume</span><span class="p">;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nx">selectOras</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">opt</span><span class="p">);</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr />
+<h2 id="pasul-4-maparea-codurilor-meteo-la-emoji">Pasul 4: Maparea codurilor meteo la emoji<a class="headerlink" href="#pasul-4-maparea-codurilor-meteo-la-emoji" title="Link to this section">&para;</a></h2>
+<p>Open-Meteo returnează câmpul <code>weather_code</code> (WMO). Îl traducem în ceva prietenos:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">codMeteo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="mf">0</span><span class="o">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Cer senin&quot;</span><span class="p">,</span><span class="w">          </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;☀️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="mf">1</span><span class="o">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aproape senin&quot;</span><span class="p">,</span><span class="w">      </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌤️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="mf">2</span><span class="o">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Parțial noros&quot;</span><span class="p">,</span><span class="w">      </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;⛅&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="mf">3</span><span class="o">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Înnorat&quot;</span><span class="p">,</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;☁️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="mf">45</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ceață&quot;</span><span class="p">,</span><span class="w">              </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌫️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="mf">48</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ceață cu chiciură&quot;</span><span class="p">,</span><span class="w">  </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌫️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="mf">51</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Burniță ușoară&quot;</span><span class="p">,</span><span class="w">     </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌦️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="mf">53</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Burniță moderată&quot;</span><span class="p">,</span><span class="w">   </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌦️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="mf">55</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Burniță densă&quot;</span><span class="p">,</span><span class="w">      </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="mf">61</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ploaie ușoară&quot;</span><span class="p">,</span><span class="w">      </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="mf">63</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ploaie moderată&quot;</span><span class="p">,</span><span class="w">    </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="mf">65</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ploaie intensă&quot;</span><span class="p">,</span><span class="w">     </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="mf">71</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zăpadă ușoară&quot;</span><span class="p">,</span><span class="w">      </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌨️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">  </span><span class="mf">73</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zăpadă moderată&quot;</span><span class="p">,</span><span class="w">    </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌨️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">  </span><span class="mf">75</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zăpadă intensă&quot;</span><span class="p">,</span><span class="w">     </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;❄️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">  </span><span class="mf">80</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Averse de ploaie&quot;</span><span class="p">,</span><span class="w">   </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌦️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">  </span><span class="mf">81</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Averse puternice&quot;</span><span class="p">,</span><span class="w">   </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">  </span><span class="mf">95</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Furtună&quot;</span><span class="p">,</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;⛈️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">  </span><span class="mf">96</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Furtună cu grindină&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;⛈️&quot;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="p">};</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Căutare cu valoare implicită</p>
+<p>Dacă serverul întoarce un cod pe care nu-l cunoaștem, vom folosi un obiect fallback: <code>codMeteo[x] || { descriere: "Necunoscut", icon: "❓" }</code>.</p>
+</div>
+<hr />
+<h2 id="pasul-5-functia-fetch-cu-async-await">Pasul 5: Funcția <code>fetch</code> cu <code>async / await</code><a class="headerlink" href="#pasul-5-functia-fetch-cu-async-await" title="Link to this section">&para;</a></h2>
+<p>Aceasta face apelul propriu-zis la API:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obținePrognoza</span><span class="p">(</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://api.open-meteo.com/v1/forecast`</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="sb">`?latitude=</span><span class="si">${</span><span class="nx">lat</span><span class="si">}</span><span class="sb">&amp;longitude=</span><span class="si">${</span><span class="nx">lon</span><span class="si">}</span><span class="sb">`</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="sb">`&amp;current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code`</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="sb">`&amp;timezone=auto`</span><span class="p">;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">raspuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">raspuns</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`API a returnat HTTP </span><span class="si">${</span><span class="nx">raspuns</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">raspuns</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">date</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span><span class="w">  </span><span class="c1">// ex.: { temperature_2m: 21.4, wind_speed_10m: 12, ... }</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title"><code>async / await</code> vs <code>.then()</code></p>
+<p><code>await</code> face codul să se citească ca și cum ar fi sincron, dar rulează tot asincron. <code>try / catch</code> în jurul lui tratează natural erorile — spre deosebire de lanțul <code>.then().catch()</code>.</p>
+</div>
+<hr />
+<h2 id="pasul-6-afisarea-datelor-in-dom">Pasul 6: Afișarea datelor în DOM<a class="headerlink" href="#pasul-6-afisarea-datelor-in-dom" title="Link to this section">&para;</a></h2>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">rezultatEl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;rezultat&quot;</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">afișeazăRezultat</span><span class="p">(</span><span class="nx">numeOras</span><span class="p">,</span><span class="w"> </span><span class="nx">date</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">codMeteo</span><span class="p">[</span><span class="nx">date</span><span class="p">.</span><span class="nx">weather_code</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Necunoscut&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;❓&quot;</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="nx">rezultatEl</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="sb">    &lt;h2&gt;</span><span class="si">${</span><span class="nx">numeOras</span><span class="si">}</span><span class="sb">&lt;/h2&gt;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="sb">    &lt;div class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;</span><span class="si">${</span><span class="nx">cod</span><span class="p">.</span><span class="nx">icon</span><span class="si">}</span><span class="sb">&lt;/div&gt;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="sb">    &lt;div class=&quot;temp&quot;&gt;</span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">date</span><span class="p">.</span><span class="nx">temperature_2m</span><span class="p">)</span><span class="si">}</span><span class="sb">°C&lt;/div&gt;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="sb">    &lt;div class=&quot;desc&quot;&gt;</span><span class="si">${</span><span class="nx">cod</span><span class="p">.</span><span class="nx">descriere</span><span class="si">}</span><span class="sb">&lt;/div&gt;</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="sb">    &lt;div class=&quot;detalii&quot;&gt;</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="sb">      &lt;div&gt;💨 Vânt: </span><span class="si">${</span><span class="nx">date</span><span class="p">.</span><span class="nx">wind_speed_10m</span><span class="si">}</span><span class="sb"> km/h&lt;/div&gt;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="sb">      &lt;div&gt;💧 Umiditate: </span><span class="si">${</span><span class="nx">date</span><span class="p">.</span><span class="nx">relative_humidity_2m</span><span class="si">}</span><span class="sb">%&lt;/div&gt;</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="sb">    &lt;/div&gt;</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="sb">  `</span><span class="p">;</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">  </span><span class="nx">rezultatEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Nu insera string-uri nesigure în <code>innerHTML</code></p>
+<p>Aici e sigur pentru că vin de la Open-Meteo (numere), iar <code>numeOras</code> e dintr-o listă pe care o controlăm tu. Pentru input liber de la utilizator, folosește <code>textContent</code> în loc de <code>innerHTML</code>.</p>
+</div>
+<hr />
+<h2 id="pasul-7-conectarea-formularului">Pasul 7: Conectarea formularului<a class="headerlink" href="#pasul-7-conectarea-formularului" title="Link to this section">&para;</a></h2>
+<p>Evenimentul <code>submit</code> apelează fetch-ul și afișează rezultatul:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">formEl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;form-meteo&quot;</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">loadingEl</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;loading&quot;</span><span class="p">);</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">eroareEl</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;eroare&quot;</span><span class="p">);</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nx">formEl</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">numeOras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">selectOras</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">numeOras</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">coord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">orase</span><span class="p">[</span><span class="nx">numeOras</span><span class="p">];</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="c1">// Resetăm interfața</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span><span class="nx">rezultatEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">  </span><span class="nx">eroareEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">  </span><span class="nx">loadingEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">obținePrognoza</span><span class="p">(</span><span class="nx">coord</span><span class="p">.</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">coord</span><span class="p">.</span><span class="nx">lon</span><span class="p">);</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span><span class="nx">afișeazăRezultat</span><span class="p">(</span><span class="nx">numeOras</span><span class="p">,</span><span class="w"> </span><span class="nx">date</span><span class="p">);</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">    </span><span class="nx">afișeazăEroare</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span><span class="nx">loadingEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="p">});</span>
+</span></code></pre></div>
+<hr />
+<h2 id="pasul-8-starea-se-incarca">Pasul 8: Starea „Se încarcă”<a class="headerlink" href="#pasul-8-starea-se-incarca" title="Link to this section">&para;</a></h2>
+<p>Ascunsă implicit, <code>#loading</code> devine vizibilă între click și răspuns. Am inclus-o deja în Pasul 7 cu <code>classList.remove("ascuns")</code> înainte de fetch și <code>classList.add("ascuns")</code> în <code>finally</code>, ca să se închidă indiferent dacă reușește sau eșuează.</p>
+<div class="admonition tip">
+<p class="admonition-title">De ce <code>finally</code>?</p>
+<p>Block-ul <code>finally</code> rulează mereu, fie că <code>try</code> se termină normal, fie că aruncă eroare. E locul perfect pentru curățare (oprire loading, resetare butoane, etc.).</p>
+</div>
+<hr />
+<h2 id="pasul-9-tratarea-erorilor">Pasul 9: Tratarea erorilor<a class="headerlink" href="#pasul-9-tratarea-erorilor" title="Link to this section">&para;</a></h2>
+<p>Adăugăm funcția de eroare:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">afișeazăEroare</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nx">eroareEl</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="s2">&quot;Nu am putut obține prognoza. Verifică conexiunea la internet și încearcă din nou.&quot;</span><span class="p">;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="nx">eroareEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Ce fel de erori pot apărea?</strong></p>
+<ul>
+<li><strong>Conexiune pierdută</strong> — <code>fetch</code> aruncă <code>TypeError: Failed to fetch</code>.</li>
+<li><strong>API indisponibil</strong> — <code>fetch</code> reușește dar întoarce HTTP 5xx — <code>response.ok</code> este <code>false</code> și noi aruncăm manual.</li>
+<li><strong>Răspuns invalid</strong> — <code>response.json()</code> aruncă dacă body-ul nu e JSON valid.</li>
+</ul>
+<p>Toate cele 3 ajung în același <code>catch</code>, ceea ce face codul simplu.</p>
+<hr />
+<h2 id="codul-complet">Codul complet<a class="headerlink" href="#codul-complet" title="Link to this section">&para;</a></h2>
+<h3 id="indexhtml"><code>index.html</code><a class="headerlink" href="#indexhtml" title="Link to this section">&para;</a></h3>
+<p>(Codul integral de la Pasul 1)</p>
+<h3 id="stylescss"><code>styles.css</code><a class="headerlink" href="#stylescss" title="Link to this section">&para;</a></h3>
+<p>(Codul integral de la Pasul 2)</p>
+<h3 id="appjs"><code>app.js</code><a class="headerlink" href="#appjs" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// === Date orașe ===</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">orase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="s2">&quot;Chișinău&quot;</span><span class="o">:</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">47.00</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">28.86</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="s2">&quot;București&quot;</span><span class="o">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">44.43</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">26.10</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="s2">&quot;Cluj-Napoca&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">46.77</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">23.60</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="s2">&quot;Iași&quot;</span><span class="o">:</span><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">47.16</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">27.58</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span><span class="s2">&quot;Timișoara&quot;</span><span class="o">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">45.76</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">21.22</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="s2">&quot;Constanța&quot;</span><span class="o">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">44.18</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">28.65</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span><span class="s2">&quot;Brașov&quot;</span><span class="o">:</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">lat</span><span class="o">:</span><span class="w"> </span><span class="mf">45.66</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="o">:</span><span class="w"> </span><span class="mf">25.61</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="p">};</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="c1">// === Mapare coduri WMO → iconuri / descrieri ===</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">codMeteo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">  </span><span class="mf">0</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Cer senin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;☀️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">  </span><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aproape senin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌤️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">  </span><span class="mf">2</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Parțial noros&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;⛅&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">  </span><span class="mf">3</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Înnorat&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;☁️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">  </span><span class="mf">45</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ceață&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌫️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">  </span><span class="mf">48</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ceață cu chiciură&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌫️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">  </span><span class="mf">51</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Burniță ușoară&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌦️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">  </span><span class="mf">53</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Burniță moderată&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌦️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">  </span><span class="mf">55</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Burniță densă&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">  </span><span class="mf">61</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ploaie ușoară&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">  </span><span class="mf">63</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ploaie moderată&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">  </span><span class="mf">65</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ploaie intensă&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">  </span><span class="mf">71</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zăpadă ușoară&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌨️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">  </span><span class="mf">73</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zăpadă moderată&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌨️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">  </span><span class="mf">75</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zăpadă intensă&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;❄️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">  </span><span class="mf">80</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Averse de ploaie&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌦️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">  </span><span class="mf">81</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Averse puternice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;🌧️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">  </span><span class="mf">95</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Furtună&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;⛈️&quot;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">  </span><span class="mf">96</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Furtună cu grindină&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;⛈️&quot;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="p">};</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="c1">// === Referințe DOM ===</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="kd">const</span><span class="w"> </span><span class="nx">formEl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;form-meteo&quot;</span><span class="p">);</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="kd">const</span><span class="w"> </span><span class="nx">selectOras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;oras&quot;</span><span class="p">);</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="kd">const</span><span class="w"> </span><span class="nx">loadingEl</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;loading&quot;</span><span class="p">);</span>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="kd">const</span><span class="w"> </span><span class="nx">eroareEl</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;eroare&quot;</span><span class="p">);</span>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="kd">const</span><span class="w"> </span><span class="nx">rezultatEl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;rezultat&quot;</span><span class="p">);</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="c1">// === Populare dropdown ===</span>
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">orase</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;option&quot;</span><span class="p">);</span>
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="w">  </span><span class="nx">opt</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nume</span><span class="p">;</span>
+</span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="w">  </span><span class="nx">opt</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nume</span><span class="p">;</span>
+</span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="w">  </span><span class="nx">selectOras</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">opt</span><span class="p">);</span>
+</span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a><span class="p">}</span>
+</span><span id="__span-11-49"><a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a>
+</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="c1">// === Fetch ===</span>
+</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obținePrognoza</span><span class="p">(</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">lon</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://api.open-meteo.com/v1/forecast`</span>
+</span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53" href="#__codelineno-11-53"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="sb">`?latitude=</span><span class="si">${</span><span class="nx">lat</span><span class="si">}</span><span class="sb">&amp;longitude=</span><span class="si">${</span><span class="nx">lon</span><span class="si">}</span><span class="sb">`</span>
+</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54" href="#__codelineno-11-54"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="sb">`&amp;current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code`</span>
+</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55" href="#__codelineno-11-55"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="sb">`&amp;timezone=auto`</span><span class="p">;</span>
+</span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56" href="#__codelineno-11-56"></a>
+</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57" href="#__codelineno-11-57"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">raspuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58" href="#__codelineno-11-58"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">raspuns</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`API a returnat HTTP </span><span class="si">${</span><span class="nx">raspuns</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59" href="#__codelineno-11-59"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">raspuns</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60" href="#__codelineno-11-60"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">date</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61" href="#__codelineno-11-61"></a><span class="p">}</span>
+</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62" href="#__codelineno-11-62"></a>
+</span><span id="__span-11-63"><a id="__codelineno-11-63" name="__codelineno-11-63" href="#__codelineno-11-63"></a><span class="c1">// === Afișare ===</span>
+</span><span id="__span-11-64"><a id="__codelineno-11-64" name="__codelineno-11-64" href="#__codelineno-11-64"></a><span class="kd">function</span><span class="w"> </span><span class="nx">afișeazăRezultat</span><span class="p">(</span><span class="nx">numeOras</span><span class="p">,</span><span class="w"> </span><span class="nx">date</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-65"><a id="__codelineno-11-65" name="__codelineno-11-65" href="#__codelineno-11-65"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">codMeteo</span><span class="p">[</span><span class="nx">date</span><span class="p">.</span><span class="nx">weather_code</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">descriere</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Necunoscut&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;❓&quot;</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-11-66"><a id="__codelineno-11-66" name="__codelineno-11-66" href="#__codelineno-11-66"></a><span class="w">  </span><span class="nx">rezultatEl</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+</span><span id="__span-11-67"><a id="__codelineno-11-67" name="__codelineno-11-67" href="#__codelineno-11-67"></a><span class="sb">    &lt;h2&gt;</span><span class="si">${</span><span class="nx">numeOras</span><span class="si">}</span><span class="sb">&lt;/h2&gt;</span>
+</span><span id="__span-11-68"><a id="__codelineno-11-68" name="__codelineno-11-68" href="#__codelineno-11-68"></a><span class="sb">    &lt;div class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;</span><span class="si">${</span><span class="nx">cod</span><span class="p">.</span><span class="nx">icon</span><span class="si">}</span><span class="sb">&lt;/div&gt;</span>
+</span><span id="__span-11-69"><a id="__codelineno-11-69" name="__codelineno-11-69" href="#__codelineno-11-69"></a><span class="sb">    &lt;div class=&quot;temp&quot;&gt;</span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">date</span><span class="p">.</span><span class="nx">temperature_2m</span><span class="p">)</span><span class="si">}</span><span class="sb">°C&lt;/div&gt;</span>
+</span><span id="__span-11-70"><a id="__codelineno-11-70" name="__codelineno-11-70" href="#__codelineno-11-70"></a><span class="sb">    &lt;div class=&quot;desc&quot;&gt;</span><span class="si">${</span><span class="nx">cod</span><span class="p">.</span><span class="nx">descriere</span><span class="si">}</span><span class="sb">&lt;/div&gt;</span>
+</span><span id="__span-11-71"><a id="__codelineno-11-71" name="__codelineno-11-71" href="#__codelineno-11-71"></a><span class="sb">    &lt;div class=&quot;detalii&quot;&gt;</span>
+</span><span id="__span-11-72"><a id="__codelineno-11-72" name="__codelineno-11-72" href="#__codelineno-11-72"></a><span class="sb">      &lt;div&gt;💨 Vânt: </span><span class="si">${</span><span class="nx">date</span><span class="p">.</span><span class="nx">wind_speed_10m</span><span class="si">}</span><span class="sb"> km/h&lt;/div&gt;</span>
+</span><span id="__span-11-73"><a id="__codelineno-11-73" name="__codelineno-11-73" href="#__codelineno-11-73"></a><span class="sb">      &lt;div&gt;💧 Umiditate: </span><span class="si">${</span><span class="nx">date</span><span class="p">.</span><span class="nx">relative_humidity_2m</span><span class="si">}</span><span class="sb">%&lt;/div&gt;</span>
+</span><span id="__span-11-74"><a id="__codelineno-11-74" name="__codelineno-11-74" href="#__codelineno-11-74"></a><span class="sb">    &lt;/div&gt;</span>
+</span><span id="__span-11-75"><a id="__codelineno-11-75" name="__codelineno-11-75" href="#__codelineno-11-75"></a><span class="sb">  `</span><span class="p">;</span>
+</span><span id="__span-11-76"><a id="__codelineno-11-76" name="__codelineno-11-76" href="#__codelineno-11-76"></a><span class="w">  </span><span class="nx">rezultatEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-11-77"><a id="__codelineno-11-77" name="__codelineno-11-77" href="#__codelineno-11-77"></a><span class="p">}</span>
+</span><span id="__span-11-78"><a id="__codelineno-11-78" name="__codelineno-11-78" href="#__codelineno-11-78"></a>
+</span><span id="__span-11-79"><a id="__codelineno-11-79" name="__codelineno-11-79" href="#__codelineno-11-79"></a><span class="kd">function</span><span class="w"> </span><span class="nx">afișeazăEroare</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-80"><a id="__codelineno-11-80" name="__codelineno-11-80" href="#__codelineno-11-80"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</span><span id="__span-11-81"><a id="__codelineno-11-81" name="__codelineno-11-81" href="#__codelineno-11-81"></a><span class="w">  </span><span class="nx">eroareEl</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-11-82"><a id="__codelineno-11-82" name="__codelineno-11-82" href="#__codelineno-11-82"></a><span class="w">    </span><span class="s2">&quot;Nu am putut obține prognoza. Verifică conexiunea la internet și încearcă din nou.&quot;</span><span class="p">;</span>
+</span><span id="__span-11-83"><a id="__codelineno-11-83" name="__codelineno-11-83" href="#__codelineno-11-83"></a><span class="w">  </span><span class="nx">eroareEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-11-84"><a id="__codelineno-11-84" name="__codelineno-11-84" href="#__codelineno-11-84"></a><span class="p">}</span>
+</span><span id="__span-11-85"><a id="__codelineno-11-85" name="__codelineno-11-85" href="#__codelineno-11-85"></a>
+</span><span id="__span-11-86"><a id="__codelineno-11-86" name="__codelineno-11-86" href="#__codelineno-11-86"></a><span class="c1">// === Submit ===</span>
+</span><span id="__span-11-87"><a id="__codelineno-11-87" name="__codelineno-11-87" href="#__codelineno-11-87"></a><span class="nx">formEl</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-88"><a id="__codelineno-11-88" name="__codelineno-11-88" href="#__codelineno-11-88"></a><span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span id="__span-11-89"><a id="__codelineno-11-89" name="__codelineno-11-89" href="#__codelineno-11-89"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">numeOras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">selectOras</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-11-90"><a id="__codelineno-11-90" name="__codelineno-11-90" href="#__codelineno-11-90"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">numeOras</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-11-91"><a id="__codelineno-11-91" name="__codelineno-11-91" href="#__codelineno-11-91"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">coord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">orase</span><span class="p">[</span><span class="nx">numeOras</span><span class="p">];</span>
+</span><span id="__span-11-92"><a id="__codelineno-11-92" name="__codelineno-11-92" href="#__codelineno-11-92"></a>
+</span><span id="__span-11-93"><a id="__codelineno-11-93" name="__codelineno-11-93" href="#__codelineno-11-93"></a><span class="w">  </span><span class="nx">rezultatEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-11-94"><a id="__codelineno-11-94" name="__codelineno-11-94" href="#__codelineno-11-94"></a><span class="w">  </span><span class="nx">eroareEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-11-95"><a id="__codelineno-11-95" name="__codelineno-11-95" href="#__codelineno-11-95"></a><span class="w">  </span><span class="nx">loadingEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-11-96"><a id="__codelineno-11-96" name="__codelineno-11-96" href="#__codelineno-11-96"></a>
+</span><span id="__span-11-97"><a id="__codelineno-11-97" name="__codelineno-11-97" href="#__codelineno-11-97"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-98"><a id="__codelineno-11-98" name="__codelineno-11-98" href="#__codelineno-11-98"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">obținePrognoza</span><span class="p">(</span><span class="nx">coord</span><span class="p">.</span><span class="nx">lat</span><span class="p">,</span><span class="w"> </span><span class="nx">coord</span><span class="p">.</span><span class="nx">lon</span><span class="p">);</span>
+</span><span id="__span-11-99"><a id="__codelineno-11-99" name="__codelineno-11-99" href="#__codelineno-11-99"></a><span class="w">    </span><span class="nx">afișeazăRezultat</span><span class="p">(</span><span class="nx">numeOras</span><span class="p">,</span><span class="w"> </span><span class="nx">date</span><span class="p">);</span>
+</span><span id="__span-11-100"><a id="__codelineno-11-100" name="__codelineno-11-100" href="#__codelineno-11-100"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-101"><a id="__codelineno-11-101" name="__codelineno-11-101" href="#__codelineno-11-101"></a><span class="w">    </span><span class="nx">afișeazăEroare</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</span><span id="__span-11-102"><a id="__codelineno-11-102" name="__codelineno-11-102" href="#__codelineno-11-102"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-103"><a id="__codelineno-11-103" name="__codelineno-11-103" href="#__codelineno-11-103"></a><span class="w">    </span><span class="nx">loadingEl</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;ascuns&quot;</span><span class="p">);</span>
+</span><span id="__span-11-104"><a id="__codelineno-11-104" name="__codelineno-11-104" href="#__codelineno-11-104"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-105"><a id="__codelineno-11-105" name="__codelineno-11-105" href="#__codelineno-11-105"></a><span class="p">});</span>
+</span></code></pre></div>
+<hr />
+<h2 id="idei-de-extindere">Idei de extindere<a class="headerlink" href="#idei-de-extindere" title="Link to this section">&para;</a></h2>
+<ol>
+<li><strong>Input liber de oraș</strong> — înlocuiește dropdown-ul cu un <code>&lt;input&gt;</code> și folosește <strong>Nominatim</strong> (OpenStreetMap) pentru geocoding.</li>
+<li><strong>Prognoza pe 7 zile</strong> — folosește parametrul <code>daily=temperature_2m_max,temperature_2m_min,weather_code</code> și randează 7 carduri.</li>
+<li><strong>Detectarea automată a locației</strong> — <code>navigator.geolocation.getCurrentPosition()</code> la prima încărcare.</li>
+<li><strong>Grafic cu temperaturile pe 24h</strong> — <code>hourly=temperature_2m</code> + o bibliotecă ușoară (Chart.js) sau pur SVG.</li>
+<li><strong>Oraș preferat salvat</strong> — <code>localStorage.setItem("orasPreferat", numeOras)</code> ca la reîncărcare să pornești de acolo.</li>
+<li><strong>Modul offline</strong> — <code>Service Worker</code> care cache-uiește ultima prognoză și o arată când nu ai internet.</li>
+<li><strong>Unități imperiale</strong> — toggle °C / °F folosind parametrul <code>temperature_unit=fahrenheit</code> în URL.</li>
+</ol>
+<hr />
+<h2 id="felicitari-ai-terminat-cursul">Felicitări — ai terminat cursul!<a class="headerlink" href="#felicitari-ai-terminat-cursul" title="Link to this section">&para;</a></h2>
+<p>Dacă ai ajuns până aici, felicitări. Ai învățat <strong>de la zero</strong>:</p>
+<ul>
+<li><strong>HTML</strong> — structură semantică, formulare, multi-pagină</li>
+<li><strong>CSS</strong> — variabile, Box Model, Flexbox, Grid, responsive design, animații</li>
+<li><strong>JavaScript</strong> — variabile, funcții, DOM, evenimente, <code>fetch</code>, <code>async/await</code></li>
+<li><strong>3 proiecte complete</strong> — portofoliu, quiz, aplicație meteo</li>
+</ul>
+<h3 id="unde-mergi-mai-departe">Unde mergi mai departe?<a class="headerlink" href="#unde-mergi-mai-departe" title="Link to this section">&para;</a></h3>
+<ul>
+<li><strong>Frameworks moderne</strong> — învață <a href="https://react.dev">React</a>, <a href="https://vuejs.org">Vue</a> sau <a href="https://svelte.dev">Svelte</a> după ce stăpânești bine vanilla JS.</li>
+<li><strong>Backend</strong> — <a href="https://nodejs.org">Node.js</a> + Express sau <a href="https://flask.palletsprojects.com">Python Flask</a> ca să construiești propriul API.</li>
+<li><strong>Bază de date</strong> — începe cu <a href="https://www.sqlite.org">SQLite</a> sau <a href="https://www.postgresql.org">PostgreSQL</a>.</li>
+<li><strong>Deploy gratuit</strong> — publică proiectele pe <a href="https://pages.github.com">GitHub Pages</a>, <a href="https://www.netlify.com">Netlify</a> sau <a href="https://vercel.com">Vercel</a>.</li>
+<li><strong>Git și GitHub</strong> — versionează tot ce scrii; orice angajator verifică profilul tău GitHub.</li>
+<li><strong>Accesibilitate (a11y)</strong> — citește <a href="https://www.w3.org/WAI/standards-guidelines/aria/">WAI-ARIA</a> și <a href="https://webaim.org">WebAIM</a>.</li>
+</ul>
+<h3 id="continua-sa-construiesti">Continuă să construiești<a class="headerlink" href="#continua-sa-construiesti" title="Link to this section">&para;</a></h3>
+<p>Cel mai bun mod de a învăța web development este să <strong>construiești lucruri reale</strong>:</p>
+<ol>
+<li>Alege o problemă de-a ta (o notă de școală, un orar, o colecție)</li>
+<li>Schițează interfața pe hârtie sau în <a href="https://www.figma.com">Figma</a></li>
+<li>Construiește prototipul cu HTML + CSS + JS</li>
+<li>Publică-l online și arată-l prietenilor</li>
+</ol>
+<p><strong>Mult succes pe mai departe!</strong> Web-ul este plin de posibilități — ai acum toate uneltele să contribui la el.</p>
+<hr />
+<p><strong>Pasul următor:</strong> <a href="../">← Înapoi la prezentarea cursului</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../20-proiect-quiz/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Anterior
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Proiect: Quiz</span>
+              </a>
+            
+            
+              <a href="../../python/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Următor <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Prezentare generală</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> În această pagină
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lectia-21-proiect-aplicatie-meteo" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 21 · Proiect: Aplicație Meteo</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#prezentarea-proiectului" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Prezentarea proiectului</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#de-ce-open-meteo" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">De ce Open-Meteo?</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-1-structura-html" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 1: Structura HTML</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-2-css-design-modern" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 2: CSS — design modern</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-3-datele-oraselor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 3: Datele orașelor</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-4-maparea-codurilor-meteo-la-emoji" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 4: Maparea codurilor meteo la emoji</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-5-functia-fetch-cu-async-await" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 5: Funcția fetch cu async / await</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-6-afisarea-datelor-in-dom" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 6: Afișarea datelor în DOM</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-7-conectarea-formularului" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 7: Conectarea formularului</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-8-starea-se-incarca" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 8: Starea „Se încarcă”</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#pasul-9-tratarea-erorilor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Pasul 9: Tratarea erorilor</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#codul-complet" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Codul complet</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#idei-de-extindere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Idei de extindere</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#felicitari-ai-terminat-cursul" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Felicitări — ai terminat cursul!</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
+          
+            <a href="../../.." class="hover:text-orange-500 transition-colors">Acasă</a>
+          
+            <a href="../" class="hover:text-orange-500 transition-colors">Ghid</a>
+          
+            <a href="../../../#projects" class="hover:text-orange-500 transition-colors">Proiecte</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-400">
+          © 2025 Ursoaia Edu Online · Open-source, construit cu fum de lipire.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

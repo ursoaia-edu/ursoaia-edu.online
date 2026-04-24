@@ -81,6 +81,30 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Guide:
+      - Web:
+          - Prezentare curs: guide/web/index.md
+          - "00: Cum funcționează web-ul": guide/web/00-introducere.md
+          - "01: Prima pagină": guide/web/01-prima-pagina.md
+          - "02: HTML bazele": guide/web/02-html-bazele.md
+          - "03: Liste și tabele": guide/web/03-html-liste-tabele.md
+          - "04: Formulare": guide/web/04-html-formulare.md
+          - "05: Multi-pagină": guide/web/05-html-multi-pagina.md
+          - "06: CSS introducere": guide/web/06-css-introducere.md
+          - "07: Box Model": guide/web/07-css-box-model.md
+          - "08: Flexbox și Grid": guide/web/08-css-flexbox-grid.md
+          - "09: CSS avansat": guide/web/09-css-avansat.md
+          - "10: Responsive": guide/web/10-css-responsive.md
+          - "11: JS introducere": guide/web/11-js-introducere.md
+          - "12: Variabile și tipuri": guide/web/12-js-variabile-tipuri.md
+          - "13: Condiții și bucle": guide/web/13-js-conditii-bucle.md
+          - "14: Funcții": guide/web/14-js-functii.md
+          - "15: DOM": guide/web/15-js-dom.md
+          - "16: Evenimente": guide/web/16-js-evenimente.md
+          - "17: Formulare validare": guide/web/17-js-formulare-validare.md
+          - "18: Fetch și API": guide/web/18-js-fetch-api.md
+          - "Proiect: Portofoliu": guide/web/19-proiect-portofoliu.md
+          - "Proiect: Quiz": guide/web/20-proiect-quiz.md
+          - "Proiect: Meteo": guide/web/21-proiect-meteo.md
       - Python:
           - Overview: guide/python/index.md
           - "00: Pregătire": guide/python/00-pregatire.md

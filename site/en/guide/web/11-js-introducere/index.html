@@ -1,0 +1,977 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11: JS introducere - Ursoaia Edu Online</title>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.4s, color 0.4s; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #525252; border-radius: 3px; }
+    .dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+
+    /* Animations */
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+    }
+    @keyframes float-1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-8px, -12px); }
+    }
+    @keyframes float-2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(6px, -8px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(249,115,22,0.3); }
+      50% { box-shadow: 0 0 20px rgba(249,115,22,0.6); }
+    }
+    @keyframes circuit-flow {
+      0% { stroke-dashoffset: 100; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #f97316; }
+    }
+
+    .animate-in { animation: fadeSlideIn 0.6s ease-out both; }
+    .animate-in-1 { animation: fadeSlideIn 0.6s ease-out 0.1s both; }
+    .animate-in-2 { animation: fadeSlideIn 0.6s ease-out 0.2s both; }
+    .animate-in-3 { animation: fadeSlideIn 0.6s ease-out 0.3s both; }
+    .animate-in-4 { animation: fadeSlideIn 0.6s ease-out 0.4s both; }
+    .animate-in-5 { animation: fadeSlideIn 0.6s ease-out 0.5s both; }
+    .float-1 { animation: float-1 4s ease-in-out infinite; }
+    .float-2 { animation: float-2 3.5s ease-in-out infinite; }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+    /* Intersection Observer driven */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Glass — adaptive: light by default, dark when html.dark is set.
+       (The HTML still passes `dark:glass-dark glass-light` for back-compat,
+       but `dark:` is inert on custom classes; the rules below drive theming.) */
+    .glass-light, .glass-dark {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .dark .glass-light, .dark .glass-dark {
+      background: rgba(24, 24, 27, 0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Project card hover */
+    .project-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .project-card:hover { transform: translateY(-6px); }
+    .dark .project-card:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    .project-card:hover { border-color: rgba(249,115,22,0.4); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+
+    /* Blog card */
+    .blog-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card:hover img { transform: scale(1.05); }
+    .blog-card img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Tag */
+    .tag { transition: all 0.2s; }
+    .tag:hover { transform: scale(1.05); }
+
+    /* Theme toggle */
+    .theme-toggle { position: relative; width: 56px; height: 28px; border-radius: 14px; cursor: pointer; transition: background 0.3s; }
+    .theme-toggle .knob {
+      position: absolute; top: 3px; left: 3px; width: 22px; height: 22px;
+      border-radius: 50%; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dark .theme-toggle .knob { left: 31px; }
+
+    /* Circuit SVG decoration */
+    .circuit-line {
+      stroke-dasharray: 10 5;
+      animation: circuit-flow 2s linear infinite;
+    }
+
+    /* Nav active indicator */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px;
+      background: #f97316; transition: all 0.3s; transform: translateX(-50%); border-radius: 1px;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    /* Mobile menu */
+    .mobile-menu { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Status dot */
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 8px rgba(34,197,94,0.5);
+      animation: pulse-glow-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow-green {
+      0%, 100% { box-shadow: 0 0 4px rgba(34,197,94,0.3); }
+      50% { box-shadow: 0 0 12px rgba(34,197,94,0.7); }
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Noise texture overlay */
+    .noise::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.03; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Typography Overrides */
+    .prose { max-width: none; }
+    .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      scroll-margin-top: 6rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 2.5em;
+    }
+    .dark .prose :where(h2):not(:where([class~="not-prose"] *)) {
+      border-top-color: rgba(255,255,255,0.06);
+    }
+    .prose :where(h3, h4):not(:where([class~="not-prose"] *)) { scroll-margin-top: 6rem; }
+    .prose :where(a):not(:where([class~="not-prose"] *)) {
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(249,115,22,0.5);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .prose :where(a):not(:where([class~="not-prose"] *)):hover {
+      border-bottom-color: rgba(249,115,22,1);
+      color: #f97316;
+    }
+    .prose :where(.headerlink):not(:where([class~="not-prose"] *)) {
+      opacity: 0;
+      margin-left: 0.5rem;
+      border-bottom: 0;
+      color: #f97316;
+      transition: opacity 0.2s;
+    }
+    .prose :where(h2:hover .headerlink, h3:hover .headerlink, h4:hover .headerlink):not(:where([class~="not-prose"] *)) { opacity: 1; }
+    .prose :where(table):not(:where([class~="not-prose"] *)) {
+      border-radius: 0.75rem; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .dark .prose :where(table):not(:where([class~="not-prose"] *)) { border-color: rgba(255,255,255,0.08); }
+    .prose :where(thead):not(:where([class~="not-prose"] *)) {
+      background: rgba(249,115,22,0.06);
+      border-bottom: 2px solid rgba(249,115,22,0.25);
+    }
+    .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.04);
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.75em 1.25em;
+      font-style: normal;
+    }
+
+    .dark .prose {
+      --tw-prose-body: theme('colors.zinc.400');
+      --tw-prose-headings: theme('colors.white');
+      --tw-prose-links: theme('colors.orange.500');
+      --tw-prose-bold: theme('colors.white');
+      --tw-prose-counters: theme('colors.zinc.400');
+      --tw-prose-bullets: theme('colors.zinc.600');
+      --tw-prose-hr: theme('colors.zinc.800');
+      --tw-prose-quotes: theme('colors.zinc.100');
+      --tw-prose-quote-borders: theme('colors.zinc.700');
+      --tw-prose-captions: theme('colors.zinc.400');
+      --tw-prose-code: theme('colors.orange.300');
+      --tw-prose-pre-code: theme('colors.zinc.200');
+      --tw-prose-pre-bg: #0d0d10;
+      --tw-prose-th-borders: theme('colors.zinc.700');
+      --tw-prose-td-borders: theme('colors.zinc.800');
+    }
+    .prose code {
+      background: rgba(249,115,22,0.1);
+      padding: 0.15em 0.4em;
+      border-radius: 0.35em;
+      font-weight: 500;
+      font-size: 0.875em;
+    }
+    .prose code::before, .prose code::after { content: ''; }
+    .prose pre {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 16px -4px rgba(0,0,0,0.25);
+    }
+    .prose pre code {
+      background: transparent !important;
+      padding: 0; font-weight: 400;
+      font-size: 0.875em;
+    }
+    .prose img { border-radius: 0.75rem; box-shadow: 0 4px 16px -4px rgba(0,0,0,0.2); }
+
+    /* Pygments — light + dark */
+    .highlight pre, pre.highlight { background: #fafafa; color: #383a42; }
+    .dark .highlight pre, .dark pre.highlight { background: #0d0d10; color: #e5e5e5; }
+    .highlight .linenos { color: #c0c0c0; padding-right: 12px; user-select: none; }
+    .dark .highlight .linenos { color: #525252; }
+    /* Light Pygments tokens (One Light) */
+    .highlight .k,  .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt { color: #a626a4; }
+    .highlight .s,  .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sx { color: #50a14f; }
+    .highlight .c,  .highlight .c1, .highlight .cm, .highlight .cs { color: #a0a1a7; font-style: italic; }
+    .highlight .n,  .highlight .na, .highlight .nb, .highlight .nf { color: #4078f2; }
+    .highlight .nc, .highlight .nn { color: #c18401; }
+    .highlight .o,  .highlight .ow { color: #0184bc; }
+    .highlight .mi, .highlight .mf, .highlight .m { color: #986801; }
+    .highlight .p { color: #383a42; }
+    /* Dark Pygments tokens (One Dark) */
+    .dark .highlight .k,  .dark .highlight .kd, .dark .highlight .kn, .dark .highlight .kr, .dark .highlight .kt { color: #c678dd; }
+    .dark .highlight .s,  .dark .highlight .s1, .dark .highlight .s2, .dark .highlight .sb, .dark .highlight .sx { color: #98c379; }
+    .dark .highlight .c,  .dark .highlight .c1, .dark .highlight .cm, .dark .highlight .cs { color: #6b7280; font-style: italic; }
+    .dark .highlight .n,  .dark .highlight .na, .dark .highlight .nb, .dark .highlight .nf { color: #61afef; }
+    .dark .highlight .nc, .dark .highlight .nn { color: #e5c07b; }
+    .dark .highlight .o,  .dark .highlight .ow { color: #56b6c2; }
+    .dark .highlight .mi, .dark .highlight .mf, .dark .highlight .m { color: #d19a66; }
+    .dark .highlight .p { color: #e5e5e5; }
+
+    /* Admonitions */
+    .admonition {
+      margin: 1.5em 0;
+      padding: 1em 1.25em 1em 1.25em;
+      border-left: 3px solid #f97316;
+      background: rgba(249,115,22,0.05);
+      border-radius: 0 0.75rem 0.75rem 0;
+    }
+    .admonition-title {
+      font-weight: 600;
+      margin: 0 0 0.5em 0 !important;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: #f97316;
+    }
+    .admonition.note     { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+    .admonition.note    .admonition-title { color: #3b82f6; }
+    .admonition.warning  { border-color: #f59e0b; background: rgba(245,158,11,0.06); }
+    .admonition.warning .admonition-title { color: #f59e0b; }
+    .admonition.tip      { border-color: #10b981; background: rgba(16,185,129,0.06); }
+    .admonition.tip     .admonition-title { color: #10b981; }
+    .admonition.danger   { border-color: #ef4444; background: rgba(239,68,68,0.06); }
+    .admonition.danger  .admonition-title { color: #ef4444; }
+  </style>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../../" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Guide</a>
+          
+            <a href="../../../#projects" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-500 text-white shadow-sm">EN</a>
+            <a href="../../../../ro/en/guide/web/11-js-introducere/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Guide</a>
+          
+            <a href="../../../#projects" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-500 text-white">EN</a>
+            <a href="../../../../ro/en/guide/web/11-js-introducere/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../../" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          <span class="dark:text-zinc-400 text-zinc-500">Guide</span>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          <span class="dark:text-zinc-400 text-zinc-500">Web</span>
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">11: JS introducere</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">11: JS introducere</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Primii pași în JavaScript — cum incluzi scripturi în pagină și cum folosești DevTools.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">introducere</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">console</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">devtools</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">script</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lectia-11-javascript-introducere">Lecția 11 · JavaScript: introducere<a class="headerlink" href="#lectia-11-javascript-introducere" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Ce vei învăța</p>
+<ul>
+<li>Ce este JavaScript și unde rulează</li>
+<li>Cele trei moduri de a include JS într-o pagină HTML</li>
+<li>Cum folosești <code>console.log()</code> și DevTools Console</li>
+<li>Funcții de bază: <code>alert</code>, <code>prompt</code>, <code>confirm</code></li>
+<li>Cum citești erorile din consolă</li>
+</ul>
+</div>
+<hr />
+<h2 id="ce-este-javascript">Ce este JavaScript?<a class="headerlink" href="#ce-este-javascript" title="Link to this section">&para;</a></h2>
+<p><strong>JavaScript</strong> (JS) este limbajul care <strong>aduce la viață</strong> paginile web. Dacă HTML-ul este „scheletul” și CSS-ul este „pielea”, JS-ul este „mușchiul” — el face paginile să reacționeze la clickuri, să valideze formulare, să încarce date din rețea și să se actualizeze fără reîncărcare.</p>
+<p>A fost creat în <strong>1995</strong> de Brendan Eich (la Netscape) în doar <strong>10 zile</strong>. Numele „JavaScript” este pur marketing — <strong>NU are nicio legătură cu limbajul Java</strong>. E ca și cum ai compara „ham” (șuncă) cu „hamster”.</p>
+<p>Astăzi, JS rulează pe <strong>aproape orice browser modern</strong> și este unul dintre cele mai populare limbaje din lume.</p>
+<hr />
+<h2 id="unde-ruleaza-javascript">Unde rulează JavaScript?<a class="headerlink" href="#unde-ruleaza-javascript" title="Link to this section">&para;</a></h2>
+<p>JS poate rula în două locuri principale:</p>
+<ul>
+<li><strong>În browser (client-side)</strong> — ce învățăm aici. Codul rulează pe calculatorul vizitatorului.</li>
+<li><strong>Pe server (Node.js)</strong> — vom discuta mai târziu. Codul rulează pe un server.</li>
+</ul>
+<p>În această secțiune a ghidului ne concentrăm pe JS în browser.</p>
+<hr />
+<h2 id="trei-moduri-de-a-include-js">Trei moduri de a include JS<a class="headerlink" href="#trei-moduri-de-a-include-js" title="Link to this section">&para;</a></h2>
+<h3 id="1-inline-in-atribut-html-evita">1. Inline, în atribut HTML (EVITĂ)<a class="headerlink" href="#1-inline-in-atribut-html-evita" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;alert(&#39;salut&#39;)&quot;</span><span class="p">&gt;</span>Apasă-mă<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>Funcționează, dar amestecă logica cu structura și devine imposibil de menținut pentru pagini mari. <strong>Nu folosi acest stil</strong> în proiecte reale.</p>
+<h3 id="2-in-html-cu-tag-script">2. În HTML, cu tag <code>&lt;script&gt;</code><a class="headerlink" href="#2-in-html-cu-tag-script" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Salut!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut din script intern!&quot;</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>Util pentru teste rapide, dar codul se amestecă cu HTML-ul.</p>
+<h3 id="3-fisier-js-extern-recomandat">3. Fișier JS extern (RECOMANDAT)<a class="headerlink" href="#3-fisier-js-extern-recomandat" title="Link to this section">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Prima mea pagină cu JS<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Salut!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>Și fișierul <code>app.js</code>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Primul meu cod JavaScript</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Ce face <code>defer</code>?</p>
+<p>Fără <code>defer</code>, browserul descarcă și rulează scriptul <strong>imediat</strong>, oprind parsarea HTML. Cu <code>defer</code>, browserul <strong>așteaptă</strong> să termine de parsat HTML-ul, apoi rulează scriptul. Rezultat: pagina se încarcă mai rapid și scriptul găsește toate elementele deja create.</p>
+</div>
+<hr />
+<h2 id="unde-pui-script">Unde pui <code>&lt;script&gt;</code>?<a class="headerlink" href="#unde-pui-script" title="Link to this section">&para;</a></h2>
+<p>Există două locuri bune:</p>
+<ul>
+<li><strong>În <code>&lt;head&gt;</code> cu <code>defer</code></strong> — curat, recomandat.</li>
+<li><strong>La sfârșitul <code>&lt;body&gt;</code></strong> — alternativă clasică (fără <code>defer</code>), tot funcționează pentru că HTML-ul de deasupra e deja parsat.</li>
+</ul>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">&lt;!-- Varianta 1: în head cu defer --&gt;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="cm">&lt;!-- Varianta 2: la sfârșitul body --&gt;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  <span class="cm">&lt;!-- ... conținut ... --&gt;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<hr />
+<h2 id="primul-tau-cod-js">Primul tău cod JS<a class="headerlink" href="#primul-tau-cod-js" title="Link to this section">&para;</a></h2>
+<p>Cea mai simplă instrucțiune: afișare în consolă.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut, lume!&quot;</span><span class="p">);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Am învățat JavaScript!&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<p><code>console.log(...)</code> nu apare pe pagină — apare în <strong>DevTools Console</strong>.</p>
+<hr />
+<h2 id="devtools-console">DevTools Console<a class="headerlink" href="#devtools-console" title="Link to this section">&para;</a></h2>
+<p>Fiecare browser modern are un set de unelte pentru dezvoltatori numite <strong>DevTools</strong>. Le deschizi cu:</p>
+<ul>
+<li><strong>F12</strong> (pe majoritatea browserelor)</li>
+<li><strong>Ctrl + Shift + I</strong> (Windows / Linux)</li>
+<li><strong>Cmd + Option + I</strong> (macOS)</li>
+<li>Click dreapta pe pagină → <strong>Inspect</strong> / <strong>Inspectează</strong></li>
+</ul>
+<p>Apoi dă click pe tab-ul <strong>Console</strong>.</p>
+<p>În Console:</p>
+<ul>
+<li>Vezi tot ce ai scris cu <code>console.log(...)</code>.</li>
+<li>Poți tasta <strong>direct comenzi JS</strong> și apăsa Enter.</li>
+</ul>
+<p>Încearcă să tastezi aceste comenzi în Console:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="w">                    </span><span class="c1">// 4</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s2">&quot;Ana&quot;</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="w">      </span><span class="c1">// &quot;ANA&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w">            </span><span class="c1">// un număr aleatoriu între 0 și 1</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">()</span><span class="w">               </span><span class="c1">// data și ora curentă</span>
+</span></code></pre></div>
+<hr />
+<h2 id="alte-functii-utile">Alte funcții utile<a class="headerlink" href="#alte-functii-utile" title="Link to this section">&para;</a></h2>
+<h3 id="alert-popup-informativ"><code>alert()</code> — popup informativ<a class="headerlink" href="#alert-popup-informativ" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Bună ziua!&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Deschide o fereastră popup cu un mesaj. Utilă pentru debug rapid, <strong>iritantă pentru utilizator</strong> — evit-o în aplicații reale.</p>
+<h3 id="prompt-cere-input"><code>prompt()</code> — cere input<a class="headerlink" href="#prompt-cere-input" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Cum te cheamă?&quot;</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Salut,&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">nume</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Returnează un <strong>string</strong> (sau <code>null</code> dacă utilizatorul apasă Cancel).</p>
+<h3 id="confirm-intreaba-da-nu"><code>confirm()</code> — întreabă da / nu<a class="headerlink" href="#confirm-intreaba-da-nu" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sigur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;Sigur vrei să continui?&quot;</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sigur</span><span class="p">);</span><span class="w">   </span><span class="c1">// true sau false</span>
+</span></code></pre></div>
+<h3 id="variante-de-console">Variante de <code>console</code><a class="headerlink" href="#variante-de-console" title="Link to this section">&para;</a></h3>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;mesaj normal&quot;</span><span class="p">);</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">&quot;avertisment galben&quot;</span><span class="p">);</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;eroare roșie&quot;</span><span class="p">);</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Fiecare apare cu o culoare / iconiță diferită în Console.</p>
+<hr />
+<h2 id="citirea-erorilor">Citirea erorilor<a class="headerlink" href="#citirea-erorilor" title="Link to this section">&para;</a></h2>
+<p>Când ceva nu merge, Console-ul îți afișează <strong>tipul erorii</strong> și <strong>linia</strong> pe care a apărut:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Uncaught ReferenceError: conzole is not defined
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    at app.js:3
+</span></code></pre></div>
+<p>Tipuri frecvente:</p>
+<ul>
+<li><strong><code>ReferenceError</code></strong> — ai folosit un nume care nu există (ex. <code>conzole</code> în loc de <code>console</code>).</li>
+<li><strong><code>TypeError</code></strong> — ai încercat o operație nepermisă pe un tip (ex. <code>null.length</code>).</li>
+<li><strong><code>SyntaxError</code></strong> — ai scris cod care nu respectă gramatica JS (paranteză lipsă, ghilimea nenchisă).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Citește mesajul de eroare!</p>
+<p>Mulți începători ignoră mesajul și se uită direct în cod. Mesajul îți spune <strong>unde</strong> și <strong>ce</strong> s-a stricat — e primul loc unde trebuie să te uiți.</p>
+</div>
+<hr />
+<h2 id="comentarii-in-js">Comentarii în JS<a class="headerlink" href="#comentarii-in-js" title="Link to this section">&para;</a></h2>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Acesta este un comentariu pe o singură linie</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="cm">/*</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="cm">   Acesta este un comentariu</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="cm">   pe mai multe linii.</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="cm">*/</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">   </span><span class="c1">// poți pune și la capăt de linie</span>
+</span></code></pre></div>
+<p>Comentariile nu sunt executate — sunt doar pentru tine și pentru colegii care citesc codul.</p>
+<hr />
+<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
+<h3 id="exercitiu-1-prima-pagina-cu-js">Exercițiu 1 — Prima pagină cu JS<a class="headerlink" href="#exercitiu-1-prima-pagina-cu-js" title="Link to this section">&para;</a></h3>
+<p>Creează un folder nou cu două fișiere: <code>index.html</code> și <code>app.js</code>. Leagă-le corect și afișează <code>"merge!"</code> în Console.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><code>index.html</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Test JS<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Verifică Console!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p><code>app.js</code>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;merge!&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Deschide <code>index.html</code> în browser, apasă F12 → Console și ar trebui să vezi <code>merge!</code>.</p>
+</details>
+<h3 id="exercitiu-2-experimente-in-console">Exercițiu 2 — Experimente în Console<a class="headerlink" href="#exercitiu-2-experimente-in-console" title="Link to this section">&para;</a></h3>
+<p>Deschide Console-ul pe orice pagină și tastează:</p>
+<ol>
+<li><code>5 + 5 * 2</code></li>
+<li><code>"salut".length</code></li>
+<li><code>prompt("Vârsta ta?")</code></li>
+</ol>
+<p>Ce observi?</p>
+<details class="success">
+<summary>Soluție</summary>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="mf">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="w">             </span><span class="c1">// 15 — înmulțirea are prioritate</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s2">&quot;salut&quot;</span><span class="p">.</span><span class="nx">length</span><span class="w">        </span><span class="c1">// 5 — numărul de caractere</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Vârsta ta?&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// deschide popup, returnează string (ex: &quot;14&quot;)</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercitiu-3-forteaza-o-eroare">Exercițiu 3 — Forțează o eroare<a class="headerlink" href="#exercitiu-3-forteaza-o-eroare" title="Link to this section">&para;</a></h3>
+<p>În <code>app.js</code>, scrie o linie greșită intenționat: <code>conzole.log("test")</code>. Reîncarcă pagina și citește mesajul din Console.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p>Vei vedea ceva de genul:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Uncaught ReferenceError: conzole is not defined
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    at app.js:1
+</span></code></pre></div>
+<p>Browserul îți spune exact linia (<code>app.js:1</code>) și motivul (<code>conzole</code> nu există). Corectezi la <code>console</code> și eroarea dispare.</p>
+</details>
+<hr />
+<h2 id="mini-proiect-banner-de-salut">Mini-proiect: Banner de salut<a class="headerlink" href="#mini-proiect-banner-de-salut" title="Link to this section">&para;</a></h2>
+<p>Pagina cere numele vizitatorului la încărcare și afișează un alert personalizat.</p>
+<p><strong>Cerință:</strong></p>
+<ul>
+<li>Folosește <code>prompt()</code> pentru a cere numele.</li>
+<li>Folosește <code>alert()</code> pentru a afișa un salut personalizat.</li>
+<li>Loghează în consolă numele introdus.</li>
+</ul>
+<details class="success">
+<summary>Soluție</summary>
+<p><code>index.html</code>:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Banner de salut<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Bun venit pe site!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p><code>app.js</code>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Cere numele vizitatorului</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Cum te cheamă?&quot;</span><span class="p">);</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">// Loghează în consolă pentru debug</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Nume introdus:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">nume</span><span class="p">);</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1">// Afișează un salut personalizat</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Salut, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nume</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;! Mă bucur să te văd.&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+</details>
+<hr />
+<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<ul>
+<li>JavaScript rulează în browser și face paginile interactive.</li>
+<li>Include scripturile cu <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code> în <code>&lt;head&gt;</code>.</li>
+<li><code>console.log(...)</code> afișează mesaje în <strong>DevTools Console</strong> (F12).</li>
+<li><code>alert</code>, <code>prompt</code>, <code>confirm</code> sunt popup-uri simple — utile pentru debug, nu pentru UI real.</li>
+<li>Citește <strong>tipul</strong> și <strong>linia</strong> erorii — sunt cel mai bun ghid când ceva nu merge.</li>
+<li><code>//</code> și <code>/* */</code> sunt comentarii, ignorate de browser.</li>
+</ul>
+<hr />
+<p><strong>Pasul următor:</strong> <a href="../12-js-variabile-tipuri/">→ Lecția 12: Variabile și tipuri de date</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../10-css-responsive/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">10: Responsive</span>
+              </a>
+            
+            
+              <a href="../12-js-variabile-tipuri/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">12: Variabile și tipuri</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lectia-11-javascript-introducere" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 11 · JavaScript: introducere</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#ce-este-javascript" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Ce este JavaScript?</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#unde-ruleaza-javascript" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Unde rulează JavaScript?</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#trei-moduri-de-a-include-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Trei moduri de a include JS</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#unde-pui-script" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Unde pui &lt;script&gt;?</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#primul-tau-cod-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Primul tău cod JS</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#devtools-console" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">DevTools Console</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#alte-functii-utile" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Alte funcții utile</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#citirea-erorilor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Citirea erorilor</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#comentarii-in-js" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Comentarii în JS</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-proiect-banner-de-salut" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: Banner de salut</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
+          
+            <a href="../../../" class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../" class="hover:text-orange-500 transition-colors">Guide</a>
+          
+            <a href="../../../#projects" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-400">
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>
