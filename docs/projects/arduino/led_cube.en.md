@@ -2,7 +2,7 @@
 category: Arduino
 tags: [LED, Cube, Multiplexing, Arduino Uno]
 summary: Build a 27-LED cube with layer multiplexing and POV animations using Arduino Uno.
-image: assets/images/projects/arduino/led_cube_schematic.svg
+image: assets/images/projects/arduino/3x3x3_led_cube.jpg
 featured: true
 ---
 

@@ -2,7 +2,7 @@
 category: Arduino
 tags: [LED, Cub, Multiplexare, Arduino Uno]
 summary: Construiește un cub cu 27 de LED-uri folosind multiplexarea pe straturi și animații POV pe Arduino Uno.
-image: assets/images/projects/arduino/led_cube_schematic.svg
+image: assets/images/projects/arduino/3x3x3_led_cube.jpg
 featured: true
 ---
 
