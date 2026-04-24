@@ -112,9 +112,9 @@
 {% set tt = _i18n.get(lang, _i18n['en']) %}
 {# Compute equivalent URLs for the language switcher #}
 {% set _page_url = page.url if page and page.url is not none else '' %}
-{% if _page_url.startswith('ro/') %}{% set _canonical_path = _page_url[3:] %}{% else %}{% set _canonical_path = _page_url %}{% endif %}
-{% set en_url = _canonical_path %}
-{% set ro_url = 'ro/' + _canonical_path %}
+{% if _page_url.startswith('en/') %}{% set _canonical_path = _page_url[3:] %}{% else %}{% set _canonical_path = _page_url %}{% endif %}
+{% set ro_url = _canonical_path %}
+{% set en_url = 'en/' + _canonical_path %}
 <!DOCTYPE html>
 <html lang="{{ lang }}">
 <head>
