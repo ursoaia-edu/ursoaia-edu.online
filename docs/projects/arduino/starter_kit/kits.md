@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Kit, Set de pornire, Uno, Arduino]
 summary: Ghid complet pentru Super Starter Kit Arduino Uno (CH340) — 25 de proiecte practice de electronică și programare.
+image: assets/images/projects/arduino/starter_kit/preview-starter-kit.jpg
 ---
 
 # Super Starter Kit Arduino UNO (CH340)
 
 Acest kit include un **Arduino Uno (CH340)** și toate componentele necesare pentru 25 de proiecte — de la primul "Hello World" până la motoare pas cu pas controlate prin telecomandă IR.
+
+![Super Starter Kit Arduino UNO — toate componentele](../../../assets/images/projects/arduino/starter_kit/preview-starter-kit.jpg)
 
 Fiecare proiect este construit peste cunoștințele celui anterior. Îți recomandăm să le parcurgi în ordine, dar poți sări peste cele care nu te interesează.
 
