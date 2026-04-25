@@ -1,4 +1,6 @@
 ---
+title: Starter Kit
+overview: true
 category: Arduino
 tags: [Kit, Set de pornire, Uno, Arduino]
 summary: Ghid complet pentru Super Starter Kit Arduino Uno (CH340) — 25 de proiecte practice de electronică și programare.
