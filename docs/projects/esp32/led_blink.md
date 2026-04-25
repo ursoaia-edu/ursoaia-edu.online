@@ -2,12 +2,14 @@
 category: ESP32
 tags: [LED, Intermitent, MicroPython]
 summary: "Hello World pentru ESP32: aprinde și stinge LED-ul integrat folosind MicroPython."
-image: assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg
+image: assets/images/projects/esp32/preview-led-blink.jpg
 ---
 
 # LED intermitent
 
 Aprinde și stinge LED-ul integrat al ESP32 (GPIO 2) la fiecare secundă folosind MicroPython.
+
+![LED intermitent — ESP32 cu LED ON/OFF](../../assets/images/projects/esp32/preview-led-blink.jpg)
 
 ## Descriere
 

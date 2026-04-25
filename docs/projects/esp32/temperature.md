@@ -2,12 +2,14 @@
 category: ESP32
 tags: [Senzor, Temperatură, Umiditate, DHT22, MicroPython]
 summary: Citește datele senzorului DHT22 / DHT11 pe un ESP32 și afișează valorile în consola serială la fiecare două secunde.
-image: assets/images/projects/esp32/ESP32-interfacing-with-dht11.webp
+image: assets/images/projects/esp32/preview-temperature.jpg
 ---
 
 # Temperatură și umiditate
 
 Citește temperatura și umiditatea de la un senzor DHT22 (sau DHT11) conectat la un ESP32 și afișează valorile în consola serială la fiecare 2 secunde folosind MicroPython.
+
+![Temperatură și umiditate — ESP32 cu senzor DHT22](../../assets/images/projects/esp32/preview-temperature.jpg)
 
 ## Descriere
 

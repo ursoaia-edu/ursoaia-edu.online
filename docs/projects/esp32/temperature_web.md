@@ -2,12 +2,14 @@
 category: ESP32
 tags: [Senzor, Server web, WiFi, MicroPython]
 summary: Servește citirile senzorului DHT22 / DHT11 prin Wi-Fi pe o pagină HTML stilizată găzduită de ESP32.
-image: assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png
+image: assets/images/projects/esp32/preview-temperature-web.jpg
 ---
 
 # Server web pentru temperatură și umiditate
 
 Citește temperatura și umiditatea de la un senzor DHT22 (sau DHT11) conectat la un ESP32 și servește valorile printr-o pagină web HTTP simplă folosind MicroPython.
+
+![Server web temperatură — ESP32 cu DHT22 servind dashboard live](../../assets/images/projects/esp32/preview-temperature-web.jpg)
 
 ## Descriere
 

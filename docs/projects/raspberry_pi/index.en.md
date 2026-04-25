@@ -3,11 +3,14 @@ title: Raspberry Pi
 category: Raspberry Pi
 tags: [C, MicroPython, Piper Make, Pico]
 summary: Resources for C / C++, MicroPython, and Piper Make development on the Raspberry Pi Pico.
+image: assets/images/projects/raspberry_pi/preview-raspberry-pi.jpg
 ---
 
 # Raspberry Pi Projects
 
 Educational resources for Raspberry Pi development using C, MicroPython, and Piper Make.
+
+![Raspberry Pi](../../assets/images/projects/raspberry_pi/preview-raspberry-pi.jpg)
 
 ## Development Paths
 

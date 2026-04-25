@@ -2,12 +2,14 @@
 category: ESP32
 tags: [Sensor, Temperature, Humidity, DHT22, MicroPython]
 summary: Read DHT22 / DHT11 sensor data on an ESP32 and print values to the serial console every two seconds.
-image: assets/images/projects/esp32/ESP32-interfacing-with-dht11.webp
+image: assets/images/projects/esp32/preview-temperature.jpg
 ---
 
 # Temperature and Humidity
 
 Reads temperature and humidity from a DHT22 (or DHT11) sensor connected to an ESP32 and prints the values to the serial console every 2 seconds using MicroPython.
+
+![Temperature & Humidity — ESP32 with DHT22 sensor](../../assets/images/projects/esp32/preview-temperature.jpg)
 
 ## Description
 

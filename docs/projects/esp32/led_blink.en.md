@@ -2,12 +2,14 @@
 category: ESP32
 tags: [LED, Blink, MicroPython]
 summary: "Hello World for ESP32: toggle the onboard LED with MicroPython."
-image: assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg
+image: assets/images/projects/esp32/preview-led-blink.jpg
 ---
 
 # LED Blink
 
 Blinks the ESP32's built-in LED (GPIO 2) on and off every second using MicroPython.
+
+![LED Blink — ESP32 with LED ON/OFF](../../assets/images/projects/esp32/preview-led-blink.jpg)
 
 ## Description
 

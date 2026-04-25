@@ -2,11 +2,14 @@
 category: LoPy
 tags: [LoRa, LoRaWAN, ABP, IoT]
 summary: Configure a Pycom LoPy4 for the EU868 LoRaWAN network using ABP activation and send periodic payloads.
+image: assets/images/projects/lopy/preview-lorawan-node.jpg
 ---
 
 # LoPy LoRaWAN Node
 
 Connecting a Pycom LoPy4 to a LoRaWAN network using ABP (Activation By Personalization) and sending data.
+
+![LoRaWAN Node — Pycom LoPy4 configured for EU868](../../assets/images/projects/lopy/preview-lorawan-node.jpg)
 
 ## Description
 

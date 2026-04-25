@@ -2,12 +2,14 @@
 category: ESP32
 tags: [Sensor, Web Server, WiFi, MicroPython]
 summary: Serve DHT22 / DHT11 sensor readings over Wi-Fi on a styled HTML page hosted by the ESP32.
-image: assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png
+image: assets/images/projects/esp32/preview-temperature-web.jpg
 ---
 
 # Temperature and Humidity Web Server
 
 Reads temperature and humidity from a DHT22 (or DHT11) sensor connected to an ESP32 and serves the values over a simple HTTP web page using MicroPython.
+
+![Temperature web server — ESP32 with DHT22 serving live dashboard](../../assets/images/projects/esp32/preview-temperature-web.jpg)
 
 ## Description
 
