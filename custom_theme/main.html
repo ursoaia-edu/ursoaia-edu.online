@@ -84,6 +84,7 @@
 {% set _src = page.file.src_uri if (page and page.file) else '' %}
 {% set is_home = page.is_homepage or _src in ('index.md', 'index.ro.md', 'index.en.md') %}
 {% set is_projects_landing = _src in ('projects/index.md', 'projects/index.en.md') %}
+{% set is_courses_landing = _src in ('courses/index.md', 'courses/index.en.md') %}
 {% block content %}
 {% if is_home %}
   <!-- ==================== HERO SECTION ==================== -->
@@ -310,6 +311,177 @@
       </div>
     </div>
   </section>
+
+{% elif is_courses_landing %}
+  <!-- ==================== COURSES LANDING ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="{{ nav.homepage.url|url }}" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> {{ tt.breadcrumb_home }}
+        </a>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">{{ page.title }}</span>
+      </nav>
+
+      <!-- Section header -->
+      <div class="reveal max-w-2xl mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+            <i data-lucide="graduation-cap" class="w-4 h-4 text-orange-500"></i>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">{{ tt.label_courses }}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight mb-4 dark:text-white text-zinc-900">
+          {{ tt.courses_h2_l1 }}<br>{{ tt.courses_h2_l2 }}
+        </h1>
+        <p class="dark:text-zinc-400 text-zinc-500 text-base leading-relaxed font-light">
+          {{ tt.courses_subtitle }}
+        </p>
+      </div>
+
+      <!-- Course cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+        <!-- Web course card -->
+        <a href="web/" class="reveal group project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col">
+          <div class="relative aspect-[16/9] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-sky-500/25 via-blue-500/15 to-transparent"></div>
+            <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30" xmlns="http://www.w3.org/2000/svg">
+              <line x1="10%" y1="20%" x2="40%" y2="20%" stroke="currentColor" stroke-width="1" class="circuit-line text-sky-500" />
+              <line x1="60%" y1="80%" x2="90%" y2="80%" stroke="currentColor" stroke-width="1" class="circuit-line text-sky-500" style="animation-delay: 0.6s" />
+              <circle cx="40%" cy="20%" r="3" fill="currentColor" class="text-sky-500" opacity="0.6" />
+              <circle cx="60%" cy="80%" r="3" fill="currentColor" class="text-sky-500" opacity="0.6" />
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-sky-500/30 to-blue-500/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-sky-500/10">
+                <i data-lucide="globe" class="w-12 h-12 text-sky-500"></i>
+              </div>
+            </div>
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Web</span>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="text-xl font-medium tracking-tight dark:text-white text-zinc-900 mb-2">{{ tt.course_web_title }}</h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-5 font-light">
+              {{ tt.course_web_desc }}
+            </p>
+            <div class="grid grid-cols-3 gap-2 mb-5">
+              <div class="rounded-lg dark:bg-white/5 bg-zinc-50 p-3 text-center">
+                <div class="text-lg font-semibold dark:text-white text-zinc-900 tabular-nums">22</div>
+                <div class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 mt-0.5">{{ tt.course_lessons }}</div>
+              </div>
+              <div class="rounded-lg dark:bg-white/5 bg-zinc-50 p-3 text-center flex flex-col justify-center">
+                <div class="text-xs font-semibold dark:text-white text-zinc-900 leading-tight">{{ tt.course_web_duration }}</div>
+                <div class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 mt-0.5">{{ tt.course_duration }}</div>
+              </div>
+              <div class="rounded-lg dark:bg-white/5 bg-zinc-50 p-3 text-center flex flex-col justify-center">
+                <div class="text-xs font-semibold dark:text-white text-zinc-900 leading-tight">{{ tt.course_level_beginner }}</div>
+                <div class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 mt-0.5">{{ tt.course_level }}</div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">
+                <i data-lucide="file-code-2" class="w-3 h-3"></i> HTML5
+              </span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">
+                <i data-lucide="palette" class="w-3 h-3"></i> CSS3
+              </span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">
+                <i data-lucide="braces" class="w-3 h-3"></i> JavaScript
+              </span>
+            </div>
+            <div class="flex items-center justify-end mt-auto pt-3 border-t dark:border-white/[0.06] border-zinc-100">
+              <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+                {{ tt.course_start }} <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Python course card -->
+        <a href="python/" class="reveal group project-card rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col">
+          <div class="relative aspect-[16/9] overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/25 via-teal-500/15 to-transparent"></div>
+            <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30" xmlns="http://www.w3.org/2000/svg">
+              <line x1="15%" y1="75%" x2="45%" y2="75%" stroke="currentColor" stroke-width="1" class="circuit-line text-emerald-500" style="animation-delay: 0.3s" />
+              <line x1="55%" y1="25%" x2="85%" y2="25%" stroke="currentColor" stroke-width="1" class="circuit-line text-emerald-500" style="animation-delay: 0.9s" />
+              <circle cx="45%" cy="75%" r="3" fill="currentColor" class="text-emerald-500" opacity="0.6" />
+              <circle cx="55%" cy="25%" r="3" fill="currentColor" class="text-emerald-500" opacity="0.6" />
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-teal-500/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-lg shadow-emerald-500/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 255" class="w-12 h-12" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="pyBlue" x1="12.959%" y1="12.039%" x2="79.639%" y2="78.201%">
+                      <stop stop-color="#387EB8" offset="0%"/>
+                      <stop stop-color="#366994" offset="100%"/>
+                    </linearGradient>
+                    <linearGradient id="pyYellow" x1="19.128%" y1="20.579%" x2="90.742%" y2="88.429%">
+                      <stop stop-color="#FFE052" offset="0%"/>
+                      <stop stop-color="#FFC331" offset="100%"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072zM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13z" fill="url(#pyBlue)"/>
+                  <path d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897zm34.114-19.586a11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.131 11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13z" fill="url(#pyYellow)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Python</span>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="text-xl font-medium tracking-tight dark:text-white text-zinc-900 mb-2">{{ tt.course_python_title }}</h3>
+            <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-5 font-light">
+              {{ tt.course_python_desc }}
+            </p>
+            <div class="grid grid-cols-3 gap-2 mb-5">
+              <div class="rounded-lg dark:bg-white/5 bg-zinc-50 p-3 text-center">
+                <div class="text-lg font-semibold dark:text-white text-zinc-900 tabular-nums">12</div>
+                <div class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 mt-0.5">{{ tt.course_lessons }}</div>
+              </div>
+              <div class="rounded-lg dark:bg-white/5 bg-zinc-50 p-3 text-center flex flex-col justify-center">
+                <div class="text-xs font-semibold dark:text-white text-zinc-900 leading-tight">{{ tt.course_python_duration }}</div>
+                <div class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 mt-0.5">{{ tt.course_duration }}</div>
+              </div>
+              <div class="rounded-lg dark:bg-white/5 bg-zinc-50 p-3 text-center flex flex-col justify-center">
+                <div class="text-xs font-semibold dark:text-white text-zinc-900 leading-tight">{{ tt.course_level_beginner }}</div>
+                <div class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 mt-0.5">{{ tt.course_level }}</div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">
+                <i data-lucide="code" class="w-3 h-3"></i> Python 3
+              </span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">
+                <i data-lucide="monitor" class="w-3 h-3"></i> Thonny IDE
+              </span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">
+                <i data-lucide="turtle" class="w-3 h-3"></i> Turtle
+              </span>
+            </div>
+            <div class="flex items-center justify-end mt-auto pt-3 border-t dark:border-white/[0.06] border-zinc-100">
+              <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+                {{ tt.course_start }} <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Markdown intro content (How to choose, Why these courses, Hardware projects) -->
+      {% if page.content %}
+      <div class="reveal max-w-3xl prose dark:prose-invert prose-zinc mt-8 border-t dark:border-white/[0.08] border-zinc-200 pt-10">
+        {{ page.content }}
+      </div>
+      {% endif %}
+    </div>
+  </main>
 
 {% elif is_projects_landing %}
   <!-- ==================== PROJECTS LANDING ==================== -->
