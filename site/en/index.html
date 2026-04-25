@@ -405,56 +405,1522 @@
 
   
 
-  <!-- ==================== INNER PAGE ==================== -->
-  <main class="pt-28 pb-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden noise">
+    <!-- Background effects -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-orange-500/10 dark:bg-orange-500/5 rounded-full blur-[120px] float-1"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-500/8 dark:bg-amber-500/5 rounded-full blur-[100px] float-2"></div>
+    </div>
 
-      <!-- Breadcrumbs -->
-      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
-        <a href="./" class="hover:text-orange-500 transition-colors flex items-center gap-1">
-          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
-        </a>
-        
-        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
-        <span class="dark:text-white text-zinc-900 font-semibold">Home</span>
-      </nav>
+    <!-- Circuit decoration SVG -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none dark:opacity-10 opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10%" y1="20%" x2="30%" y2="20%" stroke="currentColor" stroke-width="1" class="circuit-line" />
+      <line x1="30%" y1="20%" x2="30%" y2="50%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 0.5s" />
+      <line x1="70%" y1="30%" x2="90%" y2="30%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 1s" />
+      <line x1="70%" y1="30%" x2="70%" y2="70%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 0.3s" />
+      <line x1="20%" y1="70%" x2="50%" y2="70%" stroke="currentColor" stroke-width="1" class="circuit-line" style="animation-delay: 0.8s" />
+      <circle cx="30%" cy="20%" r="3" fill="currentColor" opacity="0.5" />
+      <circle cx="70%" cy="30%" r="3" fill="currentColor" opacity="0.5" />
+      <circle cx="70%" cy="70%" r="3" fill="currentColor" opacity="0.5" />
+    </svg>
 
-      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
-        <!-- Article -->
-        <article class="reveal min-w-0">
-          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
-            
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">Home</h1>
-            
-            
-          </header>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-20">
+      <!-- Status badge -->
+      <div class="animate-in inline-flex items-center gap-2 px-4 py-2 rounded-full dark:bg-white/5 bg-zinc-100 dark:border-white/10 border-zinc-200 border mb-8">
+        <span class="status-dot"></span>
+        <span class="text-xs font-medium dark:text-zinc-400 text-zinc-500 tracking-wide uppercase">Now in the lab</span>
+        <span class="text-xs font-mono text-orange-500 font-medium">ESP32 Web Server</span>
+      </div>
 
-          <div class="prose dark:prose-invert prose-zinc max-w-none">
-            <p>Open-source electronics and IoT builds from our computer science circle —
+      <!-- Main heading -->
+      <h1 class="animate-in-1 text-4xl sm:text-5xl lg:text-7xl font-medium tracking-tight leading-[1.08] mb-6">
+        Hands-on electronics<br>
+        <span class="gradient-text">for curious students</span><br>
+        <span class="dark:text-zinc-500 text-zinc-400">one board at a time</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <div class="animate-in-2 max-w-2xl mx-auto text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed mb-10 font-light prose dark:prose-invert">
+        <p>Open-source electronics and IoT builds from our computer science circle —
 guides, code, and schematics for Arduino, ESP32, LoPy, and Raspberry Pi.</p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="animate-in-3 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#projects" class="group px-7 py-3.5 bg-gradient-to-b from-orange-500 to-orange-600 text-white font-medium text-sm rounded-full shadow-[0_10px_25px_-5px_rgba(249,115,22,0.35)] hover:shadow-[0_15px_35px_-5px_rgba(249,115,22,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-2">
+          Browse projects
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="../courses/python/" class="px-7 py-3.5 dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 font-medium text-sm rounded-full dark:hover:bg-white/10 hover:bg-zinc-200 dark:border-white/10 border-zinc-200 border transition-all duration-300 flex items-center gap-2">
+          <i data-lucide="rocket" class="w-4 h-4"></i>
+          Python course
+        </a>
+      </div>
+
+      <!-- Stats row (computed from nav) -->
+      <div class="animate-in-4 flex items-center justify-center gap-8 sm:gap-14">
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-semibold dark:text-white text-zinc-900 tabular-nums">36</div>
+          <div class="text-xs dark:text-zinc-500 text-zinc-400 mt-1 uppercase tracking-wider font-medium">Projects</div>
+        </div>
+        <div class="w-px h-10 dark:bg-zinc-800 bg-zinc-200"></div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-semibold dark:text-white text-zinc-900 tabular-nums">5</div>
+          <div class="text-xs dark:text-zinc-500 text-zinc-400 mt-1 uppercase tracking-wider font-medium">Platforms</div>
+        </div>
+        <div class="w-px h-10 dark:bg-zinc-800 bg-zinc-200"></div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-semibold dark:text-white text-zinc-900 tabular-nums">100%</div>
+          <div class="text-xs dark:text-zinc-500 text-zinc-400 mt-1 uppercase tracking-wider font-medium">Open-source</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-in-5">
+      <span class="text-[10px] dark:text-zinc-600 text-zinc-400 uppercase tracking-[0.2em] font-medium">Scroll</span>
+      <div class="w-5 h-8 rounded-full dark:border-zinc-700 border-zinc-300 border-2 flex justify-center pt-1.5">
+        <div class="w-1 h-2 rounded-full bg-orange-500 animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROJECTS SECTION ==================== -->
+  <section id="projects" class="relative py-24 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <!-- Section header -->
+      <div class="reveal max-w-2xl mb-16">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+            <i data-lucide="circuit-board" class="w-4 h-4 text-orange-500"></i>
           </div>
+          <span class="text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">Projects</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-medium tracking-tight mb-4 dark:text-white text-zinc-900">
+          From breadboard<br>to working prototype
+        </h2>
+        <p class="dark:text-zinc-400 text-zinc-500 text-base leading-relaxed font-light">
+          Each project ships with wiring diagrams, full source code, and a bill of materials. Pick a microcontroller and start building.
+        </p>
+      </div>
 
-          <!-- Prev / Next nav -->
-          
-          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div></div>
-            
-              <a href="courses/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
-                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
-                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
-                </span>
-                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Overview</span>
-              </a>
-            
-          </nav>
-          
-        </article>
+      <!-- Filter tags -->
+      <div class="reveal flex flex-wrap gap-2 mb-10" id="filterTags">
+        <button onclick="filterProjects('all')" class="tag active px-4 py-2 rounded-full text-xs font-medium bg-orange-500 text-white transition-all" data-filter="all">All Projects</button>
+        
+        <button onclick="filterProjects('overview')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="overview">Overview</button>
+        
+        <button onclick="filterProjects('arduino')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="arduino">Arduino</button>
+        
+        <button onclick="filterProjects('esp32')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="esp32">ESP32</button>
+        
+        <button onclick="filterProjects('lopy')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="lopy">LoPy</button>
+        
+        <button onclick="filterProjects('raspberry_pi')" class="tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all" data-filter="raspberry_pi">Raspberry Pi</button>
+        
+      </div>
 
-        <!-- TOC sidebar (only when toc has items) -->
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="projectsGrid">
+        <a href="projects/arduino/led_cube/" class="reveal project-card md:col-span-2 lg:col-span-3 rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[21/9]">
+    
+      <img src="../assets/images/projects/arduino/3x3x3_led_cube.jpg" alt="LED Cube" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+        <span class="px-3 py-1.5 rounded-full bg-orange-500 text-white text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="star" class="w-3 h-3"></i> Featured
+        </span>
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">LED Cube</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Build a 27-LED cube with layer multiplexing and POV animations using Arduino Uno.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LED</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Cube</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Multiplexing</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino Uno</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/kits/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/10 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <i data-lucide="circuit-board" class="w-14 h-14 text-orange-500/70"></i>
+      </div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Overview</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Complete guide to the LA036 Super Starter Kit and Mega 2560 kit projects used in the computer science circle.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Kit</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Starter Kit</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Uno</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Mega</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/01-hello-world/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-hello-world.jpg" alt="01: Hello World" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">01: Hello World</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Primul proiect — trimiți "Hello World!" de la Arduino către PC prin portul serial și confirmi că totul funcționează.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Serial</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Începători</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Uno</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/02-led-blinking/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-led-blinking.jpg" alt="02: LED intermitent" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">02: LED intermitent</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Primul circuit pe breadboard — un LED conectat la un pin digital clipește cu o perioadă de o secundă.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LED</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">GPIO</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Breadboard</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Începători</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/03-rgb-led/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-rgb-led.jpg" alt="03: LED RGB" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">03: LED RGB</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Folosește PWM pentru a amesteca roșu, verde și albastru într-un LED RGB și a genera orice culoare.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LED</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">RGB</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">PWM</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Culoare</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/04-digital-inputs/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-digital-inputs.jpg" alt="04: Intrări digitale" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">04: Intrări digitale</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Folosește două butoane pentru a aprinde și stinge un LED — primul contact cu intrările digitale și rezistențele de pull-up.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Buton</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Digital Input</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Pull-up</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/05-tilt-ball-switch/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-tilt-ball-switch.jpg" alt="05: Senzor cu bilă" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">05: Senzor cu bilă</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Detectează înclinarea folosind un senzor cu bilă — un întrerupător mecanic simplu care se închide când este răsturnat.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Senzor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Înclinare</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Digital Input</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/06-active-buzzer/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-active-buzzer.jpg" alt="06: Buzzer activ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">06: Buzzer activ</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Generează primul sunet cu un buzzer activ — e nevoie doar să îi dai tensiune, oscilatorul intern face restul.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Buzzer</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Sunet</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Digital Output</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/07-passive-buzzer/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-passive-buzzer.jpg" alt="07: Buzzer pasiv" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">07: Buzzer pasiv</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Cântă o gamă muzicală cu un buzzer pasiv — învață legătura dintre frecvență și notele muzicale.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Buzzer</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Sunet</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">PWM</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Muzică</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/08-servo/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-servo.jpg" alt="08: Servomotor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">08: Servomotor</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Controlează un servomotor SG90 pe 180° folosind biblioteca Servo — primul pas spre roboți și brațe articulate.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Servo</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Motor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">PWM</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Bibliotecă</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/09-joystick/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-joystick.jpg" alt="09: Joystick" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">09: Joystick</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Citește axele X și Y ale unui joystick analogic și folosește butonul de click — input pe două axe cu o singură componentă.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Joystick</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Analog</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Potențiometru</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Input</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/10-ultrasonic-sensor/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-ultrasonic-sensor.jpg" alt="10: Senzor ultrasonic" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">10: Senzor ultrasonic</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Măsoară distanța până la obiecte cu HC-SR04 — senzor ultrasonic care folosește ecoul sunetului la 40 kHz.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Ultrasonic</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">HC-SR04</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Distanță</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Senzor</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/11-relay/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-relay.jpg" alt="11: Modul releu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">11: Modul releu</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Un modul releu permite Arduino să controleze aparate la 220V — becuri, motoare, ventilatoare — fără contact electric direct.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Releu</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Putere</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Siguranță</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/12-ir-receiver/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-ir-receiver.jpg" alt="12: Receptor IR" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">12: Receptor IR</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Decodează apăsările unei telecomenzi IR cu receptorul din kit și biblioteca IRremote.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">IR</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Telecomandă</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Senzor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">IRremote</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/13-membrane-switch/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-membrane-switch.jpg" alt="13: Tastatură membrană" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">13: Tastatură membrană</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Conectează o tastatură 4x4 cu membrană și citește caracterul apăsat folosind biblioteca Keypad.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Keypad</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Tastatură</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Matrix</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Input</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/14-lcd1602-i2c/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-lcd1602-i2c.jpg" alt="14: LCD1602 I2C" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">14: LCD1602 I2C</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Afișează text pe un LCD 16×2 folosind doar 2 fire de date (I2C) — mult mai simplu decât conectarea directă cu 6+ fire.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LCD</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">I2C</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Afișaj</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Bibliotecă</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/15-thermometer/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-thermometer.jpg" alt="15: Termometru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">15: Termometru</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Măsoară temperatura ambientală cu un termistor NTC și afișează-o pe LCD — primul senzor analogic de mediu.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Termistor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Temperatură</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LCD</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Analog</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/16-shift-register-leds/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-shift-register-leds.jpg" alt="16: 8 LED-uri + 74HC595" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">16: 8 LED-uri + 74HC595</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Controlează 8 LED-uri folosind un singur registru de deplasare 74HC595 — economisești pini Arduino pentru alte componente.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">74HC595</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Shift Register</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LED</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Bit</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/17-serial-monitor/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-serial-monitor.jpg" alt="17: Monitorul Serial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">17: Monitorul Serial</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Trimite comenzi text către Arduino prin Serial Monitor — aprinde un LED specific tastând numărul lui.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Serial</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Debug</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Input</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">74HC595</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/18-photocell/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-photocell.jpg" alt="18: Fotocelulă" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">18: Fotocelulă</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Folosește un fotorezistor ca să detectezi nivelul de lumină — afișează intensitatea pe un șir de 8 LED-uri.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Fotocelulă</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LDR</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Analog</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">74HC595</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/19-seven-segment-display/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-seven-segment-display.jpg" alt="19: Afișaj 7 segmente" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">19: Afișaj 7 segmente</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Afișează cifrele 0-9 pe un afișaj cu 7 segmente — controlat prin registrul de deplasare 74HC595.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">7-Segment</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">74HC595</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Afișaj</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Numere</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/20-four-digit-display/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-four-digit-display.jpg" alt="20: Afișaj 4 cifre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">20: Afișaj 4 cifre</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Afișează numere de 4 cifre folosind multiplexarea — o tehnică care face ochiul să creadă că toate cifrele sunt aprinse simultan.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">7-Segment</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">4 cifre</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Multiplexare</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">POV</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/21-dc-motor/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-dc-motor.jpg" alt="21: Motor DC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">21: Motor DC</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Controlează un motor DC — direcție și viteză — folosind cipul driver L293D (H-Bridge).</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Motor DC</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">L293D</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Ventilator</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">PWM</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/22-stepper-motor/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-stepper-motor.jpg" alt="22: Motor pas cu pas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">22: Motor pas cu pas</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Învață să controlezi un motor pas cu pas 28BYJ-48 cu driver-ul ULN2003 — rotație precisă fără senzori de poziție.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Stepper</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">28BYJ-48</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">ULN2003</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Motor</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/23-stepper-with-remote/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-stepper-with-remote.jpg" alt="23: Stepper + telecomandă" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">23: Stepper + telecomandă</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Combină motorul pas cu pas cu telecomanda IR — controlează rotirea stângă/dreapta printr-o apăsare de buton.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Stepper</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">IR</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Telecomandă</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">ULN2003</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/24-water-level-sensor/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-water-level-sensor.jpg" alt="24: Senzor nivel apă" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">24: Senzor nivel apă</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Detectează prezența și nivelul apei cu un senzor cu piste conductoare — util pentru alarme de inundație sau udare automată.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Apă</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Senzor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Analog</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Nivel</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/arduino/starter_kit/25-sound-sensor/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="arduino">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/arduino/starter_kit/preview-sound-sensor.jpg" alt="25: Senzor de sunet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Arduino</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">25: Senzor de sunet</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Detectează sunete (bătăi din palme, voci) cu un microfon electret și senzor dedicat — ieșire analogică sau digitală.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Arduino</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Sunet</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Microfon</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Senzor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Analog</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/esp32/led_blink/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="esp32">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/esp32/esp32-micropython-led-wiring-diagram.jpg" alt="LED Blink" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">ESP32</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">LED Blink</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Hello World for ESP32: toggle the onboard LED with MicroPython.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LED</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Blink</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">MicroPython</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/esp32/temperature/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="esp32">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/esp32/ESP32-interfacing-with-dht11.webp" alt="Temperature & Humidity" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">ESP32</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Temperature & Humidity</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Read DHT22 / DHT11 sensor data on an ESP32 and print values to the serial console every two seconds.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Sensor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Temperature</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Humidity</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">DHT22</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">MicroPython</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/esp32/temperature_web/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="esp32">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <img src="../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png" alt="Temperature Web Server" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">ESP32</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Temperature Web Server</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Serve DHT22 / DHT11 sensor readings over Wi-Fi on a styled HTML page hosted by the ESP32.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Sensor</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Web Server</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">WiFi</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">MicroPython</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/lopy/lorawan_node/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="lopy">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/10 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <i data-lucide="circuit-board" class="w-14 h-14 text-orange-500/70"></i>
+      </div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">LoPy</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">LoRaWAN Node</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Configure a Pycom LoPy4 for the EU868 LoRaWAN network using ABP activation and send periodic payloads.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LoRa</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">LoRaWAN</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">ABP</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">IoT</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a><a href="projects/raspberry_pi/" class="reveal project-card  rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="raspberry_pi">
+  <div class="relative overflow-hidden aspect-[16/10]">
+    
+      <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/10 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <i data-lucide="circuit-board" class="w-14 h-14 text-orange-500/70"></i>
+      </div>
+    
+    <div class="absolute top-4 left-4 flex gap-2">
+      
+      
+        <span class="px-2.5 py-1 rounded-md dark:bg-black/50 bg-white/85 backdrop-blur-sm text-[10px] font-mono font-medium dark:text-white text-zinc-700">Raspberry Pi</span>
+      
+    </div>
+  </div>
+  <div class="p-5 sm:p-6 flex flex-col flex-1">
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">Overview</h3>
+    
+    <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">Resources for C / C++, MicroPython, and Piper Make development on the Raspberry Pi Pico.</p>
+    
+    
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">C</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">MicroPython</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Piper Make</span>
+      
+        <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Pico</span>
+      
+    </div>
+    
+    <div class="flex items-center justify-end mt-auto">
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 group-hover:text-orange-400 transition-colors">
+        View Details <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+      </span>
+    </div>
+  </div>
+</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TECH STACK MARQUEE ==================== -->
+  <section class="py-16 overflow-hidden border-y dark:border-zinc-800 border-zinc-200">
+    <div class="reveal">
+      <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] dark:text-zinc-600 text-zinc-400 mb-10">Hardware & tools we use</p>
+      <div class="flex gap-12 animate-marquee whitespace-nowrap">
+        
+        
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Arduino Uno</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Arduino Mega</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">ESP32</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">MicroPython</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">LoRaWAN</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Pycom LoPy</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Raspberry Pi Pico</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">C / C++</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Python</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">DHT22</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Thonny</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">MkDocs</span>
+          
+        
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Arduino Uno</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Arduino Mega</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">ESP32</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">MicroPython</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">LoRaWAN</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Pycom LoPy</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Raspberry Pi Pico</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">C / C++</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Python</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">DHT22</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">Thonny</span>
+          
+            <span class="text-2xl font-semibold dark:text-zinc-800 text-zinc-200 tracking-tight">MkDocs</span>
+          
         
       </div>
     </div>
-  </main>
+    <style>
+      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      .animate-marquee { animation: marquee 40s linear infinite; }
+    </style>
+  </section>
+
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <section id="about" class="relative py-24 sm:py-32">
+    <!-- Background glow -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-orange-500/5 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <!-- Header -->
+      <div class="reveal max-w-2xl mx-auto text-center mb-16">
+        <div class="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-orange-500"></i>
+          <span class="text-[11px] font-semibold uppercase tracking-[0.15em] text-orange-500">About the circle</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 mb-5 leading-[1.1]">
+          A computer-science circle<br><span class="gradient-text">built around the soldering iron</span>
+        </h2>
+        <p class="dark:text-zinc-400 text-zinc-500 text-base sm:text-lg leading-relaxed font-light">
+          We're a student-run circle exploring embedded systems, IoT, and web development through real builds — Arduino starter kits, ESP32 web servers, LoRaWAN nodes on Pycom hardware, and Raspberry Pi Pico in C and MicroPython.
+        </p>
+      </div>
+
+      <!-- Value cards grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="wrench" class="w-5 h-5 text-orange-500"></i>
+          </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Hands-on builds</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Every project ships with wiring diagrams, source code, and a bill of materials — not just theory on a slide.</p>
+        </div>
+
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="unlock" class="w-5 h-5 text-orange-500"></i>
+          </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Open-source</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">All code, tutorials, and schematics are free to use, remix, and share. No accounts, no paywalls.</p>
+        </div>
+
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-orange-500"></i>
+          </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Student-led</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Run by students for students — peer-learning around a soldering iron, not a distant teacher monologue.</p>
+        </div>
+
+        <div class="reveal rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-6 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 flex items-center justify-center mb-5">
+            <i data-lucide="trending-up" class="w-5 h-5 text-orange-500"></i>
+          </div>
+          <h3 class="text-base font-semibold dark:text-white text-zinc-900 mb-2">Progressive curriculum</h3>
+          <p class="text-sm dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">From first LED blink on Arduino to Wi-Fi servers on ESP32 to LoRaWAN nodes, with Python and Web courses alongside.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTRIBUTE CTA ==================== -->
+  <section class="relative py-20 sm:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="reveal relative rounded-3xl dark:bg-zinc-900/80 bg-white border dark:border-white/[0.08] border-zinc-200 p-8 sm:p-12 overflow-hidden noise">
+        <!-- Background glow -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="relative z-10 text-center">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 flex items-center justify-center mx-auto mb-6">
+            <i data-lucide="git-pull-request" class="w-6 h-6 text-orange-500"></i>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-medium tracking-tight dark:text-white text-zinc-900 mb-3">
+            Want to contribute a build?
+          </h2>
+          <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-8 max-w-md mx-auto font-light">
+            New project ideas, fixes, or better wiring diagrams are welcome. Open an issue or send a pull request — every contribution helps the next student get unstuck faster.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-b from-orange-500 to-orange-600 text-white font-medium text-sm rounded-xl shadow-[0_8px_20px_-4px_rgba(249,115,22,0.3)] hover:shadow-[0_12px_30px_-4px_rgba(249,115,22,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Open the repo
+            </a>
+            
+            <a href="../projects/" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-600 font-medium text-sm rounded-xl dark:hover:bg-white/10 hover:bg-zinc-200 dark:border-white/10 border-zinc-200 border transition-all whitespace-nowrap">
+              Browse projects first
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 
 
@@ -600,29 +2066,51 @@ guides, code, and schematics for Arduino, ESP32, LoPy, and Raspberry Pi.</p>
   
 
 <script>
-    // ========== TOC SCROLL SPY ==========
-    (function() {
-      const tocLinks = document.querySelectorAll('.toc-link');
-      if (!tocLinks.length) return;
-      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
-      if (!headings.length) return;
+    // ========== PROJECT FILTER ==========
+    function filterProjects(tag) {
+      const cards = document.querySelectorAll('#projectsGrid .project-card');
+      const buttons = document.querySelectorAll('#filterTags button');
 
-      function setActive() {
-        const scrollY = window.scrollY + 140;
-        let active = headings[0];
-        for (const h of headings) {
-          if (h.offsetTop <= scrollY) active = h;
+      buttons.forEach(btn => {
+        if (btn.dataset.filter === tag) {
+          btn.className = 'tag active px-4 py-2 rounded-full text-xs font-medium bg-orange-500 text-white transition-all';
+        } else {
+          btn.className = 'tag px-4 py-2 rounded-full text-xs font-medium dark:bg-white/5 bg-zinc-100 dark:text-zinc-400 text-zinc-500 dark:hover:bg-white/10 hover:bg-zinc-200 transition-all';
         }
-        tocLinks.forEach(l => {
-          const isActive = l.getAttribute('href') === '#' + active.id;
-          l.classList.toggle('text-orange-500', isActive);
-          l.classList.toggle('border-orange-500', isActive);
-          l.classList.toggle('font-medium', isActive);
-        });
-      }
-      setActive();
-      window.addEventListener('scroll', setActive, { passive: true });
-    })();
+      });
+
+      cards.forEach(card => {
+        const tags = card.dataset.tags.split(',');
+        if (tag === 'all' || tags.includes(tag)) {
+          card.style.display = '';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          requestAnimationFrame(() => {
+            card.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // ========== ACTIVE NAV ON SCROLL ==========
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 200;
+        if (scrollY >= top) current = section.id;
+      });
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href') || '';
+        link.classList.toggle('active', current !== '' && (href === '#' + current || href.endsWith('#' + current)));
+      });
+    });
 </script>
 
 

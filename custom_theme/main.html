@@ -81,7 +81,7 @@
 
 {# Treat any "index.md" / "index.ro.md" at docs root as the localized homepage #}
 {% set _src = page.file.src_uri if (page and page.file) else '' %}
-{% set is_home = page.is_homepage or _src in ('index.md', 'index.ro.md') %}
+{% set is_home = page.is_homepage or _src in ('index.md', 'index.ro.md', 'index.en.md') %}
 {% set is_projects_landing = _src in ('projects/index.md', 'projects/index.en.md') %}
 {% block content %}
 {% if is_home %}
