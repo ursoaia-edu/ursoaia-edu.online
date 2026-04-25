@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Buton, Digital Input, Pull-up]
 summary: Folosește două butoane pentru a aprinde și stinge un LED — primul contact cu intrările digitale și rezistențele de pull-up.
+image: assets/images/projects/arduino/starter_kit/preview-digital-inputs.jpg
 ---
 
 # Proiect 04 — Intrări digitale (butoane)
 
 În proiectele anterioare ai trimis semnale **de la** Arduino către lume. Acum învățăm inversul: cum să **citim** o stare — apăsarea unui buton.
+
+![Intrări digitale — butoane controlând LED-uri](../../../assets/images/projects/arduino/starter_kit/preview-digital-inputs.jpg)
 
 ## Componente necesare
 

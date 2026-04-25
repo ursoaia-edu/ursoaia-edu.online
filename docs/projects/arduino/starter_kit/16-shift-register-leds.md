@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, 74HC595, Shift Register, LED, Bit]
 summary: Controlează 8 LED-uri folosind un singur registru de deplasare 74HC595 — economisești pini Arduino pentru alte componente.
+image: assets/images/projects/arduino/starter_kit/preview-shift-register-leds.jpg
 ---
 
 # Proiect 16 — Opt LED-uri cu 74HC595
 
 Cum controlezi 8 LED-uri folosind doar 3 pini Arduino? Răspunsul: **registrul de deplasare 74HC595**, un cip magic care transformă comunicația serială în 8 ieșiri paralele.
+
+![Shift register 74HC595 — Arduino UNO controlează 8 LED-uri](../../../assets/images/projects/arduino/starter_kit/preview-shift-register-leds.jpg)
 
 ## Componente necesare
 

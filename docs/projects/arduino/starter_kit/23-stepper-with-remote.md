@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Stepper, IR, Telecomandă, ULN2003]
 summary: Combină motorul pas cu pas cu telecomanda IR — controlează rotirea stângă/dreapta printr-o apăsare de buton.
+image: assets/images/projects/arduino/starter_kit/preview-stepper-with-remote.jpg
 ---
 
 # Proiect 23 — Motor pas cu pas cu telecomandă
 
 Acest proiect combină două concepte pe care le-ai învățat: **receptorul IR** (Proiect 12) și **motorul pas cu pas** (Proiect 22). Rezultatul: un mini-sistem care se rotește la comandă de pe telecomandă.
+
+![Stepper + telecomandă — Arduino UNO controlat IR](../../../assets/images/projects/arduino/starter_kit/preview-stepper-with-remote.jpg)
 
 ## Componente necesare
 

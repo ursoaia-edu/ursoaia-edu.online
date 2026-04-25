@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Stepper, 28BYJ-48, ULN2003, Motor]
 summary: Învață să controlezi un motor pas cu pas 28BYJ-48 cu driver-ul ULN2003 — rotație precisă fără senzori de poziție.
+image: assets/images/projects/arduino/starter_kit/preview-stepper-motor.jpg
 ---
 
 # Proiect 22 — Motor pas cu pas
 
 Un **motor pas cu pas** (stepper) se rotește cu pași discreți — exact atâtea grade câte îi comanzi, fără nevoia unui senzor de poziție. Este folosit în imprimante 3D, scannere, roboți și mai ales acolo unde ai nevoie de **poziționare precisă**.
+
+![Motor pas cu pas — Arduino UNO cu 28BYJ-48 și ULN2003](../../../assets/images/projects/arduino/starter_kit/preview-stepper-motor.jpg)
 
 ## Componente necesare
 

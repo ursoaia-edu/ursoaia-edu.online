@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Buzzer, Sunet, Digital Output]
 summary: Generează primul sunet cu un buzzer activ — e nevoie doar să îi dai tensiune, oscilatorul intern face restul.
+image: assets/images/projects/arduino/starter_kit/preview-active-buzzer.jpg
 ---
 
 # Proiect 06 — Buzzer activ
 
 Este momentul să faci Arduino să emită primul sunet. Buzzer-ul activ este cel mai simplu generator de sunete — îi dai tensiune și sună singur.
+
+![Buzzer activ — Arduino UNO emite sunet](../../../assets/images/projects/arduino/starter_kit/preview-active-buzzer.jpg)
 
 ## Componente necesare
 

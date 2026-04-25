@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Motor DC, L293D, Ventilator, PWM]
 summary: Controlează un motor DC — direcție și viteză — folosind cipul driver L293D (H-Bridge).
+image: assets/images/projects/arduino/starter_kit/preview-dc-motor.jpg
 ---
 
 # Proiect 21 — Motor DC
 
 Motoarele DC sunt peste tot: jucării, ventilatoare, mașinuțe, roboți. Ca să le poți controla **direcția și viteza** din Arduino, ai nevoie de un driver — **L293D**.
+
+![Motor DC — Arduino UNO controlând un motor](../../../assets/images/projects/arduino/starter_kit/preview-dc-motor.jpg)
 
 ## Componente necesare
 

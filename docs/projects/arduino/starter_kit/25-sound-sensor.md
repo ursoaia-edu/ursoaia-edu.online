@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Sunet, Microfon, Senzor, Analog]
 summary: Detectează sunete (bătăi din palme, voci) cu un microfon electret și senzor dedicat — ieșire analogică sau digitală.
+image: assets/images/projects/arduino/starter_kit/preview-sound-sensor.jpg
 ---
 
 # Proiect 25 — Senzor de sunet
 
 Ultimul proiect al kit-ului! Detectează sunete din mediu — perfect pentru alarme controlate prin voce, aprinsul la bătaie din palme sau vizualizatoare audio.
+
+![Senzor de sunet — Arduino UNO detectând sunete cu microfon](../../../assets/images/projects/arduino/starter_kit/preview-sound-sensor.jpg)
 
 ## Componente necesare
 

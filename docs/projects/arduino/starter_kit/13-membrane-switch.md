@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Keypad, Tastatură, Matrix, Input]
 summary: Conectează o tastatură 4x4 cu membrană și citește caracterul apăsat folosind biblioteca Keypad.
+image: assets/images/projects/arduino/starter_kit/preview-membrane-switch.jpg
 ---
 
 # Proiect 13 — Tastatură cu membrană
 
 Tastaturile matriciale sunt peste tot: telefoane, microunde, lacăte electronice, bancomate. Învață cum se conectează la Arduino — e mai elegant decât 16 butoane separate.
+
+![Tastatură cu membrană — Arduino UNO citește tastatura matricială](../../../assets/images/projects/arduino/starter_kit/preview-membrane-switch.jpg)
 
 ## Componente necesare
 

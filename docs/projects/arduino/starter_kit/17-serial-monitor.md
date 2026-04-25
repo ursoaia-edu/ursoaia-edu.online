@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Serial, Debug, Input, 74HC595]
 summary: Trimite comenzi text către Arduino prin Serial Monitor — aprinde un LED specific tastând numărul lui.
+image: assets/images/projects/arduino/starter_kit/preview-serial-monitor.jpg
 ---
 
 # Proiect 17 — Monitorul Serial
 
 Serial Monitor nu este doar pentru a citi mesaje de la Arduino — poți și **trimite comenzi** de la tastatură. În acest proiect extinzi montajul din **Proiect 16** ca să controlezi fiecare LED individual.
+
+![Serial Monitor — Arduino UNO comunicând bidirecțional](../../../assets/images/projects/arduino/starter_kit/preview-serial-monitor.jpg)
 
 ## Componente necesare
 

@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Releu, Putere, Siguranță]
 summary: Un modul releu permite Arduino să controleze aparate la 220V — becuri, motoare, ventilatoare — fără contact electric direct.
+image: assets/images/projects/arduino/starter_kit/preview-relay.jpg
 ---
 
 # Proiect 11 — Modul releu
 
 Un releu este ca un "buton comandat" electromagnetic. Arduino nu poate porni direct un bec de 220 V, dar poate comanda un releu care, la rândul lui, închide circuitul de înaltă tensiune.
+
+![Modul releu — Arduino UNO controlând aparate](../../../assets/images/projects/arduino/starter_kit/preview-relay.jpg)
 
 ## Componente necesare
 

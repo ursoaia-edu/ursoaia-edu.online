@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Fotocelulă, LDR, Analog, 74HC595]
 summary: Folosește un fotorezistor ca să detectezi nivelul de lumină — afișează intensitatea pe un șir de 8 LED-uri.
+image: assets/images/projects/arduino/starter_kit/preview-photocell.jpg
 ---
 
 # Proiect 18 — Fotocelulă (senzor de lumină)
 
 Un **fotorezistor** (LDR) îți permite să "simți" cantitatea de lumină din mediu. Îl combinăm cu șirul de 8 LED-uri ca să avem un **indicator vizual** de luminozitate.
+
+![Fotocelulă — Arduino UNO citește nivelul de lumină](../../../assets/images/projects/arduino/starter_kit/preview-photocell.jpg)
 
 ## Componente necesare
 

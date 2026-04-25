@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, LED, RGB, PWM, Culoare]
 summary: Folosește PWM pentru a amesteca roșu, verde și albastru într-un LED RGB și a genera orice culoare.
+image: assets/images/projects/arduino/starter_kit/preview-rgb-led.jpg
 ---
 
 # Proiect 03 — LED RGB
 
 Un **LED RGB** are trei LED-uri (roșu, verde, albastru) împachetate într-o singură carcasă. Controlând intensitatea fiecărei culori în parte, poți genera aproape orice culoare din spectrul vizibil.
+
+![LED RGB — Arduino UNO cu LED multicolor](../../../assets/images/projects/arduino/starter_kit/preview-rgb-led.jpg)
 
 ## Componente necesare
 

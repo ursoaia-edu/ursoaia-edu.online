@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Servo, Motor, PWM, Bibliotecă]
 summary: Controlează un servomotor SG90 pe 180° folosind biblioteca Servo — primul pas spre roboți și brațe articulate.
+image: assets/images/projects/arduino/starter_kit/preview-servo.jpg
 ---
 
 # Proiect 08 — Servomotor
 
 Un servomotor este un motor mic cu angrenaje care se rotește într-o poziție precisă — exact ce este nevoie pentru brațe robotizate, direcții de mașinuțe sau capace automate.
+
+![Servomotor — Arduino UNO controlând o mișcare precisă](../../../assets/images/projects/arduino/starter_kit/preview-servo.jpg)
 
 ## Componente necesare
 

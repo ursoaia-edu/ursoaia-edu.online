@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Senzor, Înclinare, Digital Input]
 summary: Detectează înclinarea folosind un senzor cu bilă — un întrerupător mecanic simplu care se închide când este răsturnat.
+image: assets/images/projects/arduino/starter_kit/preview-tilt-ball-switch.jpg
 ---
 
 # Proiect 05 — Senzor cu bilă (înclinare)
 
 Senzorul cu bilă este cea mai simplă formă de detector de orientare — practic, un întrerupător care se închide sau se deschide în funcție de poziția fizică a senzorului.
+
+![Senzor cu bilă — Arduino UNO cu detector de înclinare](../../../assets/images/projects/arduino/starter_kit/preview-tilt-ball-switch.jpg)
 
 ## Componente necesare
 

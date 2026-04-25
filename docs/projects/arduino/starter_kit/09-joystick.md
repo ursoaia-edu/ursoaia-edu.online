@@ -2,11 +2,14 @@
 category: Arduino
 tags: [Arduino, Joystick, Analog, Potențiometru, Input]
 summary: Citește axele X și Y ale unui joystick analogic și folosește butonul de click — input pe două axe cu o singură componentă.
+image: assets/images/projects/arduino/starter_kit/preview-joystick.jpg
 ---
 
 # Proiect 09 — Joystick analogic
 
 Un joystick analogic este, de fapt, două **potențiometre** — unul pentru axa X și unul pentru axa Y — plus un buton care se activează când apeși pe manșă.
+
+![Joystick analogic — Arduino UNO citind axele X și Y](../../../assets/images/projects/arduino/starter_kit/preview-joystick.jpg)
 
 ## Componente necesare
 
