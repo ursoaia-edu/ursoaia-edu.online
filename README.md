@@ -4,55 +4,55 @@
 
 # Ursoaia Edu Online
 
-**Cerc de informatică open-source — cursuri, proiecte și electronică pentru elevi curioși.**
+**Open-source computer-science circle — courses, projects, and electronics for curious students.**
 
 [![Live site](https://img.shields.io/badge/site-ursoaia--edu.online-f97316?style=flat-square&logo=googlechrome&logoColor=white)](https://ursoaia-edu.online)
 [![License](https://img.shields.io/badge/license-MIT_+_CC_BY_4.0-3b82f6?style=flat-square)](LICENSE)
-[![Languages](https://img.shields.io/badge/limbi-RO_%7C_EN-22c55e?style=flat-square)](https://ursoaia-edu.online)
+[![Languages](https://img.shields.io/badge/languages-RO_%7C_EN-22c55e?style=flat-square)](https://ursoaia-edu.online)
 [![MkDocs](https://img.shields.io/badge/built%20with-MkDocs-526CFE?style=flat-square)](https://www.mkdocs.org/)
 [![Python](https://img.shields.io/badge/python-3.12+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 
-[**Site live**](https://ursoaia-edu.online) · [Cursuri](https://ursoaia-edu.online/guide/) · [Proiecte](https://ursoaia-edu.online/projects/) · [Issues](https://github.com/ursoaia-edu/ursoaia-edu.online/issues)
+[**Live site**](https://ursoaia-edu.online) · [Courses](https://ursoaia-edu.online/courses/) · [Projects](https://ursoaia-edu.online/projects/) · [Issues](https://github.com/ursoaia-edu/ursoaia-edu.online/issues)
 
 </div>
 
 <br />
 
 <p align="center">
-  <img src="docs/assets/images/projects/arduino/3x3x3_led_cube.jpg" alt="Cub LED 3x3x3 — proiect Arduino" width="720" />
+  <img src="docs/assets/images/projects/arduino/3x3x3_led_cube.jpg" alt="3x3x3 LED cube — Arduino project" width="720" />
 </p>
 
 <br />
 
-## Despre
+## About
 
-Suntem un **cerc de informatică condus de elevi** care explorează dezvoltarea web, Python și electronică/IoT prin proiecte concrete. Tot conținutul site-ului — lecții, scheme de cablare, cod sursă, tutoriale pas cu pas — este open-source și disponibil în limba română și engleză.
+We are a **student-run computer-science circle** exploring web development, Python, and electronics/IoT through real-world projects. All site content — lessons, wiring diagrams, source code, step-by-step tutorials — is open-source and available in both Romanian and English.
 
-> Construit pentru elevi de gimnaziu și liceu (11–18 ani), folosit săptămânal în cercul de informatică.
+> Built for middle- and high-school students (ages 11–18), used weekly in the computer-science circle.
 
 ---
 
-## Ce conține
+## What's inside
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### Cursuri
+### Courses
 
-| Curs | Lecții | Subiecte cheie |
-|------|:------:|----------------|
-| [Dezvoltare Web](docs/guide/web/) | **22** | HTML, CSS, JavaScript, Fetch, API |
-| [Python](docs/guide/python/) | **12** | Variabile, bucle, funcții, fișiere, Turtle |
+| Course | Lessons | Key topics |
+|--------|:-------:|-----------|
+| [Web Development](docs/courses/web/) | **22** | HTML, CSS, JavaScript, Fetch, APIs |
+| [Python](docs/courses/python/) | **12** | Variables, loops, functions, files, Turtle |
 
 </td>
 <td width="50%" valign="top">
 
-### Proiecte hardware
+### Hardware projects
 
-| Platformă | Proiecte | Tehnologii |
-|-----------|:--------:|-----------|
-| [Arduino](docs/projects/arduino/) | 2 | C/C++, multiplexare LED |
+| Platform | Projects | Tech |
+|----------|:--------:|------|
+| [Arduino](docs/projects/arduino/) | 2 | C/C++, LED multiplexing |
 | [ESP32](docs/projects/esp32/) | 3 | MicroPython, Wi-Fi, DHT |
 | [LoPy](docs/projects/lopy/) | 1 | LoRaWAN, ABP |
 | [Raspberry Pi](docs/projects/raspberry_pi/) | — | Pi Pico, C, MicroPython |
@@ -61,130 +61,130 @@ Suntem un **cerc de informatică condus de elevi** care explorează dezvoltarea 
 </tr>
 </table>
 
-### Statistici
+### Stats
 
 |  |  |
 |---|---|
-| **35** lecții complete | **6+** proiecte hardware |
-| **2** limbi (RO + EN) | **4** platforme hardware |
-| **3** proiecte capstone web | **100%** open-source |
+| **35** complete lessons | **6+** hardware projects |
+| **2** languages (RO + EN) | **4** hardware platforms |
+| **3** web capstone projects | **100%** open-source |
 
 ---
 
-## Rulează site-ul local
+## Run the site locally
 
-Cerințe: **Python 3.12+** și [`uv`](https://docs.astral.sh/uv/) pentru gestionarea dependențelor.
+Requirements: **Python 3.12+** and [`uv`](https://docs.astral.sh/uv/) for dependency management.
 
 ```bash
-# Clonează repo-ul
+# Clone the repo
 git clone git@github.com:ursoaia-edu/ursoaia-edu.online.git
 cd ursoaia-edu.online
 
-# Instalează dependențele (creează .venv automat)
+# Install dependencies (creates .venv automatically)
 uv sync
 
-# Pornește serverul de dezvoltare cu live-reload
+# Start the dev server with live reload
 uv run serve
 # → http://127.0.0.1:8000
 
-# Sau construiește site-ul static în ./site
+# Or build the static site into ./site
 uv run build
 
-# Build strict (eșuează la avertismente — folosit în CI)
+# Strict build (fails on warnings — used in CI)
 uv run build --strict
 ```
 
 ---
 
-## Tehnologii
+## Tech stack
 
-- **[MkDocs](https://www.mkdocs.org/)** — generator de site static
-- **[mkdocs-static-i18n](https://github.com/ultrabug/mkdocs-static-i18n)** — internaționalizare RO + EN
-- **[Tailwind CSS](https://tailwindcss.com/)** + **[Lucide icons](https://lucide.dev/)** — styling și iconițe (via CDN)
-- **Custom theme** — Jinja2 templates în `custom_theme/`, fără temă MkDocs preconstruită
-- **[uv](https://docs.astral.sh/uv/)** — toolchain Python rapid
+- **[MkDocs](https://www.mkdocs.org/)** — static site generator
+- **[mkdocs-static-i18n](https://github.com/ultrabug/mkdocs-static-i18n)** — RO + EN internationalization
+- **[Tailwind CSS](https://tailwindcss.com/)** + **[Lucide icons](https://lucide.dev/)** — styling and icons (via CDN)
+- **Custom theme** — Jinja2 templates in `custom_theme/`, no prebuilt MkDocs theme
+- **[uv](https://docs.astral.sh/uv/)** — fast Python toolchain
 
 ---
 
-## Structura repo-ului
+## Repo structure
 
 ```
 .
-├── docs/                        # tot conținutul site-ului
+├── docs/                        # all site content
 │   ├── index.md / index.en.md   # homepage (RO / EN)
 │   ├── assets/
 │   │   ├── logo.png             # logo, favicons
-│   │   └── images/              # imagini lecții, scheme, foto proiecte
-│   ├── guide/                   # cursuri
-│   │   ├── index.md             # pagina overview
-│   │   ├── web/                 # 22 lecții HTML+CSS+JS
-│   │   └── python/              # 12 lecții
-│   └── projects/                # proiecte hardware
-│       ├── index.md             # pagina overview
+│   │   └── images/              # lesson images, schematics, project photos
+│   ├── courses/                 # courses
+│   │   ├── index.md             # overview page (Web + Python cards)
+│   │   ├── web/                 # 22 HTML+CSS+JS lessons
+│   │   └── python/              # 12 lessons
+│   └── projects/                # hardware projects
+│       ├── index.md             # overview page
 │       ├── arduino/
 │       ├── esp32/
 │       ├── lopy/
 │       └── raspberry_pi/
-├── custom_theme/                # template MkDocs custom
-│   ├── base.html                # shell HTML, nav, language switcher
+├── custom_theme/                # custom MkDocs templates
+│   ├── base.html                # HTML shell, nav, language switcher
 │   └── main.html                # homepage + inner page layouts
-├── mkdocs.yml                   # configurație principală
-├── pyproject.toml               # dependențe Python (uv)
+├── mkdocs.yml                   # main configuration
+├── pyproject.toml               # Python dependencies (uv)
 ├── LICENSE                      # MIT + CC BY 4.0
 └── README.md
 ```
 
 ---
 
-## Cum contribui
+## Contributing
 
-Contribuțiile sunt binevenite! Idei concrete:
+Contributions are welcome! Concrete ideas:
 
-- **Corecții** la lecții, erori de tipar, exemple greșite
-- **Proiecte noi** — Arduino, ESP32, LoPy, Raspberry Pi, alte platforme
-- **Lecții noi** — îmbunătățiri sau extinderi la cursurile existente
-- **Traduceri** — îmbunătățiri la versiunea EN sau alte limbi
-- **Design** — sugestii UI/UX pentru site
+- **Corrections** to lessons — typos, broken examples, unclear explanations
+- **New projects** — Arduino, ESP32, LoPy, Raspberry Pi, or other platforms
+- **New lessons** — improvements or extensions to existing courses
+- **Translations** — improvements to the EN version or new languages
+- **Design** — UI/UX suggestions for the site
 
 ```bash
 # Fork → branch → commit → PR
-git checkout -b feature/numele-tau
-# fă modificările
-uv run build --strict   # verifică că totul construiește
-git commit -m "feat: scurtă descriere"
-git push origin feature/numele-tau
-# deschide Pull Request pe GitHub
+git checkout -b feature/your-name
+# make changes
+uv run build --strict   # verify everything builds
+git commit -m "feat: short description"
+git push origin feature/your-name
+# open a Pull Request on GitHub
 ```
 
-Sau deschide un [issue](https://github.com/ursoaia-edu/ursoaia-edu.online/issues) cu o idee.
+Or open an [issue](https://github.com/ursoaia-edu/ursoaia-edu.online/issues) with an idea.
 
 ---
 
-## Licență
+## License
 
-Proiect **dual-licențiat** — vezi [`LICENSE`](LICENSE) pentru detalii.
+This project is **dual-licensed** — see [`LICENSE`](LICENSE) for details.
 
-| Material | Licență |
+| Material | License |
 |----------|---------|
-| Cod (template, scripts, exemple) | **[MIT](LICENSE)** |
-| Conținut educațional (lecții, scheme, exerciții) | **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)** |
+| Code (templates, scripts, examples) | **[MIT](LICENSE)** |
+| Educational content (lessons, schematics, exercises) | **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)** |
 
-Poți folosi, modifica și redistribui liber, cu atribuire.
+You may freely use, modify, and redistribute, with attribution.
 
 ---
 
-## Mulțumiri
+## Acknowledgments
 
-- **[Arduino](https://arduino.cc)**, **[Espressif](https://espressif.com)**, **[Pycom](https://pycom.io)**, **[Raspberry Pi Foundation](https://raspberrypi.com)** — hardware accesibil
-- **[Open-Meteo](https://open-meteo.com)** — API meteo gratuit folosit în cursul Web
-- **[Thonny](https://thonny.org)** — IDE Python ideal pentru începători
-- **Comunitatea MkDocs** și toți contribuitorii la i18n și theme tooling
-- **Toți elevii și mentorii** care contribuie la cerc
+- **[Arduino](https://arduino.cc)**, **[Espressif](https://espressif.com)**, **[Pycom](https://pycom.io)**, **[Raspberry Pi Foundation](https://raspberrypi.com)** — accessible hardware
+- **[Open-Meteo](https://open-meteo.com)** — free weather API used in the Web course
+- **[Thonny](https://thonny.org)** — Python IDE built for beginners
+- The **MkDocs community** and contributors to its i18n and theme tooling
+- All **students and mentors** who contribute to the circle
 
 ---
 
 <div align="center">
 
-Construit de cercul de informatică **Ursoaia** &middot; Site live: [ursoaia-edu.online](https://ursoaia-edu.online)
+Built by the **Ursoaia** computer-science circle &middot; Live site: [ursoaia-edu.online](https://ursoaia-edu.online)
 
 </div>
