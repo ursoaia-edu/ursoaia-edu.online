@@ -3,10 +3,11 @@
 {% macro category_slug(name) -%}{{ (name or '')|lower|replace(' ', '_') }}{%- endmacro %}
 
 {% macro render_project_card(p, featured) -%}
+{% set card_title = p.meta.title if p.meta.title else p.title %}
 <a href="{{ p.url|url }}" class="reveal project-card {% if featured %}md:col-span-2 lg:col-span-3{% endif %} rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 overflow-hidden flex flex-col group" data-tags="{{ category_slug(p.meta.category) }}">
   <div class="relative overflow-hidden {% if featured %}aspect-[21/9]{% else %}aspect-[16/10]{% endif %}">
     {% if p.meta.image %}
-      <img src="{{ p.meta.image|url }}" alt="{{ p.title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+      <img src="{{ p.meta.image|url }}" alt="{{ card_title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
     {% else %}
       <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/10 to-transparent"></div>
@@ -26,7 +27,7 @@
     </div>
   </div>
   <div class="p-5 sm:p-6 flex flex-col flex-1">
-    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">{{ p.title }}</h3>
+    <h3 class="text-lg font-medium tracking-tight dark:text-white text-zinc-900 mb-2">{{ card_title }}</h3>
     {% if p.meta.summary %}
     <p class="dark:text-zinc-400 text-zinc-500 text-sm leading-relaxed mb-4 font-light flex-1">{{ p.meta.summary }}</p>
     {% endif %}

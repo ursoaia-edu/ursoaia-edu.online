@@ -1,7 +1,9 @@
 ---
+title: Starter Kit
 category: Arduino
 tags: [Kit, Starter Kit, Uno, Mega]
 summary: Complete guide to the LA036 Super Starter Kit and Mega 2560 kit projects used in the computer science circle.
+image: assets/images/projects/arduino/starter_kit/preview-starter-kit.jpg
 ---
 
 # Arduino Starter Kits
