@@ -43,6 +43,7 @@ plugins:
             "LED Blink": LED intermitent
             "Temperature & Humidity": Temperatură și umiditate
             "Temperature Web Server": Server web temperatură
+            "Robot Car Remote": Telecomandă robot
             LoPy: LoPy
             "LoRaWAN Node": Nod LoRaWAN
             "Raspberry Pi": Raspberry Pi
@@ -162,6 +163,7 @@ nav:
           - LED Blink: projects/esp32/led_blink.md
           - Temperature & Humidity: projects/esp32/temperature.md
           - Temperature Web Server: projects/esp32/temperature_web.md
+          - Robot Car Remote: projects/esp32/robot_car_remote.md
       - LoPy:
           - Overview: projects/lopy/index.md
           - LoRaWAN Node: projects/lopy/lorawan_node.md
