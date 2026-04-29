@@ -13,6 +13,7 @@ extra:
   status_badge_text: "Now in the lab"
   status_badge_highlight: "ESP32 Web Server"
   org_url: "https://github.com/ursoaia-edu"
+  gtm_id: "GTM-WD9LXKB7"
 
 plugins:
   - search
