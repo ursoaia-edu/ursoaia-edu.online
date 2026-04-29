@@ -174,6 +174,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+
+  {# ==================== SEO ==================== #}
+  {% set _meta_desc = (page.meta.description if page and page.meta and page.meta.description else (page.meta.summary if page and page.meta and page.meta.summary else config.site_description)) %}
+  {% set _page_path = page.url if page and page.url is not none else '' %}
+  {% set _abs_url = config.site_url.rstrip('/') ~ '/' ~ _page_path %}
+  {% set _ro_abs = config.site_url.rstrip('/') ~ '/' ~ ro_url %}
+  {% set _en_abs = config.site_url.rstrip('/') ~ '/' ~ en_url %}
+  {% set _og_image = config.site_url.rstrip('/') ~ '/assets/logo.png' %}
+  {% set _full_title = (page.title ~ ' - ' ~ config.site_name) if page.title else config.site_name %}
+
+  <meta name="description" content="{{ _meta_desc }}">
+  <link rel="canonical" href="{{ _abs_url }}">
+  <link rel="alternate" hreflang="ro" href="{{ _ro_abs }}">
+  <link rel="alternate" hreflang="en" href="{{ _en_abs }}">
+  <link rel="alternate" hreflang="x-default" href="{{ _ro_abs }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ _full_title }}">
+  <meta property="og:description" content="{{ _meta_desc }}">
+  <meta property="og:url" content="{{ _abs_url }}">
+  <meta property="og:locale" content="{{ 'ro_RO' if lang == 'ro' else 'en_US' }}">
+  <meta property="og:locale:alternate" content="{{ 'en_US' if lang == 'ro' else 'ro_RO' }}">
+  <meta property="og:image" content="{{ _og_image }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ _full_title }}">
+  <meta name="twitter:description" content="{{ _meta_desc }}">
+  <meta name="twitter:image" content="{{ _og_image }}">
+
+  <!-- JSON-LD: WebSite + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "{{ config.site_url.rstrip('/') }}/#website",
+        "url": "{{ config.site_url.rstrip('/') }}/",
+        "name": "{{ config.site_name }}",
+        "description": "{{ config.site_description }}",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "{{ config.site_url.rstrip('/') }}/#org",
+        "name": "{{ config.site_name }}",
+        "url": "{{ config.site_url.rstrip('/') }}/",
+        "logo": "{{ _og_image }}"{% if config.extra.org_url %},
+        "sameAs": ["{{ config.extra.org_url }}"]{% endif %}
+      }
+    ]
+  }
+  </script>
+
   <link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/favicon-32.png'|url }}">
   <link rel="icon" type="image/png" sizes="192x192" href="{{ 'assets/logo.png'|url }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/apple-touch-icon.png'|url }}">
