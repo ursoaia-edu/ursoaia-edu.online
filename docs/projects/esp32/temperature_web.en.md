@@ -124,7 +124,7 @@ GND (4)    →  GND
 
 ### Wiring Diagram
 
-![ESP32 dht22 wifi](../../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png)
+![ESP32 wired to DHT22 sensor with Wi-Fi connection](../../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png)
 
 ---
 

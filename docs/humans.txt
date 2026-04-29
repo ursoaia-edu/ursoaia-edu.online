@@ -1,0 +1,19 @@
+/* TEAM */
+
+  Ursoaia Computer Science Circle
+  Site: https://ursoaia-edu.online
+  Source: https://github.com/ursoaia-edu
+
+  Built and maintained by students of the circle.
+  Contributions welcome — open an issue or pull request.
+
+/* SITE */
+
+  Last update: 2026-04
+  Language: Romanian / English
+  Doctype: HTML5
+  IDE: VS Code, Thonny, Arduino IDE
+  Generator: MkDocs (Python 3.12, uv)
+  Theme: Custom Tailwind-based theme
+  Hosting: GitHub
+  License: see LICENSE in the repository

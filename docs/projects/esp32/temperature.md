@@ -66,9 +66,9 @@ Se recomandă o rezistență pull-up de 10 kΩ între DATA și VCC pentru comuni
 
 ### Scheme de conectare
 
-![ESP32 dht11](../../assets/images/projects/esp32/ESP32-interfacing-with-dht11.webp)
+![Schema de cablare ESP32 cu senzor DHT11](../../assets/images/projects/esp32/ESP32-interfacing-with-dht11.webp)
 
-![ESP32 dht22](../../assets/images/projects/esp32/esp32-micropython-dht22-temperature-humidity-sensor-wiring-diagram.jpg)
+![Schema de cablare ESP32 cu senzor DHT22](../../assets/images/projects/esp32/esp32-micropython-dht22-temperature-humidity-sensor-wiring-diagram.jpg)
 
 ---
 

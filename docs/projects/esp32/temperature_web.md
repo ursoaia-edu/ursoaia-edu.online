@@ -124,7 +124,7 @@ GND (4)    →  GND
 
 ### Schemă de conectare
 
-![ESP32 dht22 wifi](../../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png)
+![Schema ESP32 cu DHT22 și conexiune Wi-Fi](../../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png)
 
 ---
 

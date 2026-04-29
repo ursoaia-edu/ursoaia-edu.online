@@ -206,7 +206,13 @@
   <meta name="twitter:description" content="{{ _meta_desc }}">
   <meta name="twitter:image" content="{{ _og_image }}">
 
-  <!-- JSON-LD: WebSite + Organization -->
+  {# Detect content type for Course / Article schema #}
+  {% set _path = page.url if page and page.url else '' %}
+  {% set _path_no_lang = _path[3:] if _path.startswith('en/') else _path %}
+  {% set _is_course_page = _path_no_lang.startswith('courses/') and not _path_no_lang.endswith('courses/') %}
+  {% set _is_project_page = _path_no_lang.startswith('projects/') and not _path_no_lang.endswith('projects/') %}
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -226,10 +232,64 @@
         "url": "{{ config.site_url.rstrip('/') }}/",
         "logo": "{{ _og_image }}"{% if config.extra.org_url %},
         "sameAs": ["{{ config.extra.org_url }}"]{% endif %}
+      }{% if _is_course_page %},
+      {
+        "@type": "Course",
+        "@id": "{{ _abs_url }}#course",
+        "name": {{ _full_title|tojson }},
+        "description": {{ _meta_desc|tojson }},
+        "url": "{{ _abs_url }}",
+        "inLanguage": "{{ lang }}",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "{{ config.site_url.rstrip('/') }}/#org" }
+      }{% elif _is_project_page %},
+      {
+        "@type": "Article",
+        "@id": "{{ _abs_url }}#article",
+        "headline": {{ _full_title|tojson }},
+        "description": {{ _meta_desc|tojson }},
+        "url": "{{ _abs_url }}",
+        "inLanguage": "{{ lang }}",
+        "image": "{{ _og_image }}",
+        "author": { "@id": "{{ config.site_url.rstrip('/') }}/#org" },
+        "publisher": { "@id": "{{ config.site_url.rstrip('/') }}/#org" }{% if page.meta and page.meta.date %},
+        "datePublished": "{{ page.meta.date }}"{% endif %}
+      }{% endif %}
+    ]
+  }
+  </script>
+
+  {% if page and page.ancestors %}
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ tt.breadcrumb_home|tojson }},
+        "item": "{{ config.site_url.rstrip('/') }}/{{ '' if lang == 'ro' else 'en/' }}"
+      }{% for ancestor in page.ancestors|reverse %},
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index + 1 }},
+        "name": {{ ancestor.title|tojson }}{% if ancestor.url %},
+        "item": "{{ config.site_url.rstrip('/') }}/{{ ancestor.url }}"{% elif ancestor.is_section and ancestor.children %},
+        "item": "{{ config.site_url.rstrip('/') }}/{{ first_page_url(ancestor) }}"{% endif %}
+      }{% endfor %},
+      {
+        "@type": "ListItem",
+        "position": {{ page.ancestors|length + 2 }},
+        "name": {{ page.title|tojson }},
+        "item": "{{ _abs_url }}"
       }
     ]
   }
   </script>
+  {% endif %}
 
   <link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/favicon-32.png'|url }}">
   <link rel="icon" type="image/png" sizes="192x192" href="{{ 'assets/logo.png'|url }}">

@@ -10,7 +10,7 @@ image: assets/images/projects/raspberry_pi/preview-raspberry-pi.jpg
 
 Educational resources for Raspberry Pi development using C, MicroPython, and Piper Make.
 
-![Raspberry Pi](../../assets/images/projects/raspberry_pi/preview-raspberry-pi.jpg)
+![Raspberry Pi single-board computer](../../assets/images/projects/raspberry_pi/preview-raspberry-pi.jpg)
 
 ## Development Paths
 

@@ -15,6 +15,9 @@ extra:
   org_url: "https://github.com/ursoaia-edu"
   gtm_id: "GTM-WD9LXKB7"
 
+hooks:
+  - hooks/copy_well_known.py
+
 plugins:
   - search
   - i18n:
