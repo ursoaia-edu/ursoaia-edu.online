@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-serve = "ursoaia_edu_online:serve"
+dev = "ursoaia_edu_online:serve"
 build = "ursoaia_edu_online:build"
 
 [build-system]

@@ -3,3 +3,4 @@
 .venv/
 .ruff_cache/
 site/
+__pycache__

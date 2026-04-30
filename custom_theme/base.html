@@ -559,6 +559,32 @@
     .dark .highlight .mi, .dark .highlight .mf, .dark .highlight .m { color: #d19a66; }
     .dark .highlight .p { color: #e5e5e5; }
 
+    /* Copy button on code blocks */
+    .prose .highlight { position: relative; }
+    .code-copy-btn {
+      position: absolute; top: 8px; right: 8px;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 8px;
+      font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 500;
+      color: #71717a;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0; transition: opacity 0.15s, color 0.15s, background 0.15s;
+      z-index: 2;
+    }
+    .dark .code-copy-btn {
+      color: #a1a1aa;
+      background: rgba(24,24,27,0.7);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .highlight:hover .code-copy-btn { opacity: 1; }
+    .code-copy-btn:hover { color: #f97316; }
+    .code-copy-btn.copied { color: #22c55e; opacity: 1; }
+    .code-copy-btn svg { width: 12px; height: 12px; }
+
     /* Admonitions */
     .admonition {
       margin: 1.5em 0;
@@ -776,6 +802,51 @@
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 4000);
     }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
 
     // ========== SCROLL REVEAL ==========
     const observer = new IntersectionObserver((entries) => {
