@@ -13,7 +13,9 @@ dependencies = [
 
 [project.scripts]
 dev = "ursoaia_edu_online:serve"
+serve = "ursoaia_edu_online:serve"
 build = "ursoaia_edu_online:build"
+build-css = "ursoaia_edu_online:build_css"
 
 [build-system]
 requires = ["hatchling"]
