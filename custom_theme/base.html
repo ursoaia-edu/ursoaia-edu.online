@@ -340,8 +340,8 @@
         <div class="flex items-center gap-3">
           <!-- Language switcher -->
           <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="{{ tt.switch_lang_label }}">
-            <a href="{{ en_url|url }}" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'en' %}bg-orange-500 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900{% endif %}">EN</a>
-            <a href="{{ ro_url|url }}" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'ro' %}bg-orange-500 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-500 dark:hover:text-white hover:text-zinc-900{% endif %}">RO</a>
+            <a href="{{ en_url|url }}" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'en' %}bg-orange-600 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900{% endif %}">EN</a>
+            <a href="{{ ro_url|url }}" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors {% if lang == 'ro' %}bg-orange-600 text-white shadow-sm{% else %}dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900{% endif %}">RO</a>
           </div>
 
           <!-- Theme Toggle -->
@@ -374,8 +374,8 @@
           {% endfor %}
           <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
             <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">{{ tt.switch_lang_label }}</span>
-            <a href="{{ en_url|url }}" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'en' %}bg-orange-500 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500{% endif %}">EN</a>
-            <a href="{{ ro_url|url }}" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'ro' %}bg-orange-500 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-500{% endif %}">RO</a>
+            <a href="{{ en_url|url }}" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'en' %}bg-orange-600 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600{% endif %}">EN</a>
+            <a href="{{ ro_url|url }}" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors {% if lang == 'ro' %}bg-orange-600 text-white{% else %}dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600{% endif %}">RO</a>
           </div>
         </div>
       </div>
@@ -397,7 +397,7 @@
         </div>
 
         <!-- Links -->
-        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-400">
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
           {% for nav_item in nav %}
             <a href="{{ nav_href(nav_item) }}" class="hover:text-orange-500 transition-colors">{{ nav_item.title }}</a>
           {% endfor %}
@@ -409,7 +409,7 @@
         </div>
 
         <!-- Copyright -->
-        <p class="text-xs dark:text-zinc-600 text-zinc-400">
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
           © 2025 {{ config.site_name }} · {{ tt.footer_tagline }}
         </p>
       </div>
