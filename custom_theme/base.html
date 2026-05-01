@@ -294,6 +294,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/favicon-32.png'|url }}">
   <link rel="icon" type="image/png" sizes="192x192" href="{{ 'assets/logo.png'|url }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/apple-touch-icon.png'|url }}">
+  {# Preload Inter variable woff2 (latin + latin-ext cover all weights 300-700)
+     so the H1 LCP element doesn't wait for the CSS-parse → @font-face cascade. #}
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ 'assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2'|url }}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ 'assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2'|url }}">
   <link rel="stylesheet" href="{{ 'assets/tailwind.css'|url }}">
   <link rel="stylesheet" href="{{ 'assets/fonts.css'|url }}">
   <script src="{{ 'assets/lucide.min.js'|url }}"></script>
@@ -360,7 +364,7 @@
           {% endif %}
 
           <!-- Mobile hamburger -->
-          <button id="menuBtn" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+          <button id="menuBtn" aria-label="{% if lang == 'ro' %}Deschide meniul{% else %}Open menu{% endif %}" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
             <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
           </button>
         </div>
