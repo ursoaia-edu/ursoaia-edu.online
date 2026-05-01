@@ -26,9 +26,14 @@ uv run build --strict   # equivalent: uv run mkdocs build --strict
 
 # Rebuild only the Tailwind bundle (auto-runs as part of serve/build)
 uv run build-css
+
+# Regenerate .webp siblings for raster images (auto-runs as part of serve/build)
+uv run build-images
 ```
 
-The `serve` and `build` shortcuts come from `[project.scripts]` in `pyproject.toml`, wired to `src/ursoaia_edu_online/__init__.py`. They run `build_css` first (Tailwind standalone CLI → `custom_theme/assets/tailwind.css`), then forward argv to `mkdocs.__main__.cli`. Set `URSOAIA_SKIP_CSS=1` to skip the Tailwind step.
+The `serve` and `build` shortcuts come from `[project.scripts]` in `pyproject.toml`, wired to `src/ursoaia_edu_online/__init__.py`. They run `build_css` (Tailwind standalone CLI → `custom_theme/assets/tailwind.css`) and `build_images` (Pillow → `.webp` siblings of every `*.jpg/*.png` under `docs/`) first, then forward argv to `mkdocs.__main__.cli`. Set `URSOAIA_SKIP_CSS=1` or `URSOAIA_SKIP_IMAGES=1` to skip steps individually.
+
+The `hooks/lazy_images.py` MkDocs hook then wraps each `<img>` whose src ends in jpg/jpeg/png in a `<picture>` element so browsers prefer the .webp variant. Combined effect: ~80% smaller image payload (15.4 MB → 3.2 MB on the current asset set).
 
 ### Tailwind bundle (`tailwind/`)
 

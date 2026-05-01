@@ -1,8 +1,9 @@
 """Console-script wrappers so `uv run serve` / `uv run build` invoke mkdocs.
 
-`build_css` compiles Tailwind via the standalone CLI. `serve` and `build` run it
-first so the bundled stylesheet at ``custom_theme/assets/tailwind.css`` is always
-fresh before MkDocs copies it into the site.
+`build_css` compiles Tailwind via the standalone CLI; `build_images` writes a
+.webp sibling next to every raster image under docs/. `serve` and `build` run
+both first so the bundled stylesheet and WebP variants are fresh before MkDocs
+copies them into the site.
 """
 from __future__ import annotations
 
@@ -23,6 +24,10 @@ TAILWIND_BIN = TAILWIND_DIR / "bin" / "tailwindcss"
 TAILWIND_CONFIG = TAILWIND_DIR / "tailwind.config.js"
 TAILWIND_INPUT = TAILWIND_DIR / "input.css"
 TAILWIND_OUTPUT = PROJECT_ROOT / "custom_theme" / "assets" / "tailwind.css"
+
+DOCS_DIR = PROJECT_ROOT / "docs"
+WEBP_QUALITY = 80
+RASTER_EXTS = {".jpg", ".jpeg", ".png"}
 
 
 def _tailwind_asset() -> str:
@@ -64,13 +69,45 @@ def build_css() -> None:
     subprocess.run(cmd, cwd=PROJECT_ROOT, check=True)
 
 
+def build_images() -> None:
+    """Generate .webp siblings for every raster image under docs/.
+
+    Skips images whose .webp is newer than the source. Drops alpha by
+    flattening PNGs onto white before encoding so we always get the smallest
+    lossy WebP.
+    """
+    from PIL import Image
+
+    converted = 0
+    skipped = 0
+    for src in DOCS_DIR.rglob("*"):
+        if src.suffix.lower() not in RASTER_EXTS or not src.is_file():
+            continue
+        dst = src.with_suffix(".webp")
+        if dst.exists() and dst.stat().st_mtime >= src.stat().st_mtime:
+            skipped += 1
+            continue
+        with Image.open(src) as img:
+            if img.mode in ("RGBA", "LA", "P"):
+                img = img.convert("RGBA")
+            else:
+                img = img.convert("RGB")
+            img.save(dst, "WEBP", quality=WEBP_QUALITY, method=6)
+        converted += 1
+    print(f"WebP: converted {converted}, skipped {skipped} (up-to-date)", file=sys.stderr)
+
+
 def serve() -> None:
     if os.environ.get("URSOAIA_SKIP_CSS") != "1":
         build_css()
+    if os.environ.get("URSOAIA_SKIP_IMAGES") != "1":
+        build_images()
     cli.main(args=["serve", *sys.argv[1:]], prog_name="uv run serve", standalone_mode=True)
 
 
 def build() -> None:
     if os.environ.get("URSOAIA_SKIP_CSS") != "1":
         build_css()
+    if os.environ.get("URSOAIA_SKIP_IMAGES") != "1":
+        build_images()
     cli.main(args=["build", *sys.argv[1:]], prog_name="uv run build", standalone_mode=True)
