@@ -88,6 +88,7 @@ Toate răspund cu `OK` (`text/html`). Robotul mai expune `GET /capture` pentru o
 ```python
 import network
 import urequests
+import socket
 import time
 from machine import Pin, ADC
 
@@ -116,8 +117,8 @@ DEAD_LOW = 1400
 DEAD_HIGH = 2700
 
 # Timing (ms)
-LOOP_INTERVAL = 50
-REPEAT_INTERVAL = 500
+LOOP_INTERVAL = 20
+REPEAT_INTERVAL = 150
 DEBOUNCE_TIME = 200
 
 # Direcții
@@ -152,12 +153,17 @@ def connect_wifi():
 
 
 def send_command(cmd):
-    """Trimite GET la robot. Ignoră erorile ca să nu blocheze bucla."""
+    """Trimite GET la robot fire-and-forget — nu așteaptă răspunsul."""
+    print("-> send_command:", cmd)
     try:
-        r = urequests.get(ROBOT_IP + "/" + cmd, timeout=1)
-        r.close()
-    except:
-        pass
+        s = socket.socket()
+        s.settimeout(0.3)
+        s.connect(("192.168.4.1", 80))
+        req = "GET /" + cmd + " HTTP/1.1\r\nHost: 192.168.4.1\r\nConnection: close\r\n\r\n"
+        s.send(req.encode())
+        s.close()
+    except Exception as e:
+        print("   ERROR:", e)
 
 
 def read_direction():
@@ -170,6 +176,8 @@ def read_direction():
 
     x_outside = x < DEAD_LOW or x > DEAD_HIGH
     y_outside = y < DEAD_LOW or y > DEAD_HIGH
+
+    print("ADC x={} y={} dx={} dy={} x_out={} y_out={}".format(x, y, dx, dy, x_outside, y_outside))
 
     if not x_outside and not y_outside:
         return STOP
@@ -186,7 +194,9 @@ def handle_button():
     global last_button_time, light_on
 
     now = time.ticks_ms()
-    if button.value() == 0 and time.ticks_diff(now, last_button_time) > DEBOUNCE_TIME:
+    btn = button.value()
+    if btn == 0 and time.ticks_diff(now, last_button_time) > DEBOUNCE_TIME:
+        print("BUTTON pressed (raw={})".format(btn))
         last_button_time = now
         light_on = not light_on
         send_command("ledon" if light_on else "ledoff")
@@ -208,10 +218,12 @@ def main():
         direction = read_direction()
 
         if direction != prev_direction:
+            print("DIRECTION change: {} -> {}".format(prev_direction, direction))
             send_command(direction)
             prev_direction = direction
             last_command_time = now
         elif direction != STOP and time.ticks_diff(now, last_command_time) > REPEAT_INTERVAL:
+            print("DIRECTION repeat: {}".format(direction))
             send_command(direction)
             last_command_time = now
 

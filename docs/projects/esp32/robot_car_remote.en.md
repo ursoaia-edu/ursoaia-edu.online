@@ -88,46 +88,47 @@ All return `OK` (`text/html`). The robot also exposes `GET /capture` for a singl
 ```python
 import network
 import urequests
+import socket
 import time
 from machine import Pin, ADC
 
-# --- Hardware setup ---
+# --- Configurare hardware ---
 
-# Joystick on ADC1 (safe with Wi-Fi active)
+# Joystick pe ADC1 (sigur cu Wi-Fi activ)
 vrx = ADC(Pin(34))
 vry = ADC(Pin(35))
-vrx.atten(ADC.ATTN_11DB)  # Full range 0-3.3V
+vrx.atten(ADC.ATTN_11DB)  # Domeniu complet 0-3.3V
 vry.atten(ADC.ATTN_11DB)
 
-# Button (active LOW with internal pull-up)
+# Buton (active LOW cu pull-up intern)
 button = Pin(33, Pin.IN, Pin.PULL_UP)
 
-# Status LED (built-in on DevKit V1)
+# LED de stare (încorporat pe DevKit V1)
 led = Pin(2, Pin.OUT)
 
-# --- Constants ---
+# --- Constante ---
 
 ROBOT_IP = "http://192.168.4.1"
 WIFI_SSID = "ESP32-CAM Robot"
 WIFI_PASS = ""
 
-# Dead zone thresholds (center ~2048, ±30%)
+# Praguri zonă moartă (centru ~2048, ±30%)
 DEAD_LOW = 1400
 DEAD_HIGH = 2700
 
 # Timing (ms)
-LOOP_INTERVAL = 50
-REPEAT_INTERVAL = 500
+LOOP_INTERVAL = 20
+REPEAT_INTERVAL = 150
 DEBOUNCE_TIME = 200
 
-# Directions
+# Direcții
 STOP = "stop"
 FORWARD = "go"
 BACKWARD = "back"
 LEFT = "left"
 RIGHT = "right"
 
-# --- State ---
+# --- Stare ---
 
 prev_direction = None
 last_command_time = 0
@@ -137,7 +138,7 @@ wlan = None
 
 
 def connect_wifi():
-    """Connect to the robot's AP. Blinks the LED while searching."""
+    """Conectează la AP-ul robotului. Clipește LED-ul cât timp caută."""
     global wlan
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
@@ -147,21 +148,26 @@ def connect_wifi():
         led.value(not led.value())
         time.sleep_ms(500)
 
-    led.value(1)  # Solid ON = connected
+    led.value(1)  # Solid ON = conectat
     print("Connected:", wlan.ifconfig())
 
 
 def send_command(cmd):
-    """Send GET to the robot. Swallow errors so the loop keeps running."""
+    """Trimite GET la robot fire-and-forget — nu așteaptă răspunsul."""
+    print("-> send_command:", cmd)
     try:
-        r = urequests.get(ROBOT_IP + "/" + cmd, timeout=1)
-        r.close()
-    except:
-        pass
+        s = socket.socket()
+        s.settimeout(0.3)
+        s.connect(("192.168.4.1", 80))
+        req = "GET /" + cmd + " HTTP/1.1\r\nHost: 192.168.4.1\r\nConnection: close\r\n\r\n"
+        s.send(req.encode())
+        s.close()
+    except Exception as e:
+        print("   ERROR:", e)
 
 
 def read_direction():
-    """Read the joystick and return a direction string."""
+    """Citește joystick-ul și întoarce direcția."""
     x = vrx.read()
     y = vry.read()
 
@@ -171,10 +177,12 @@ def read_direction():
     x_outside = x < DEAD_LOW or x > DEAD_HIGH
     y_outside = y < DEAD_LOW or y > DEAD_HIGH
 
+    print("ADC x={} y={} dx={} dy={} x_out={} y_out={}".format(x, y, dx, dy, x_outside, y_outside))
+
     if not x_outside and not y_outside:
         return STOP
 
-    # Priority: axis with the larger deflection
+    # Prioritate: axa cu deflecția mai mare
     if abs(dx) >= abs(dy):
         return LEFT if x < DEAD_LOW else RIGHT
     else:
@@ -182,11 +190,13 @@ def read_direction():
 
 
 def handle_button():
-    """Check the button with debounce. Toggle the headlight."""
+    """Verifică butonul cu debounce. Comută proiectorul LED."""
     global last_button_time, light_on
 
     now = time.ticks_ms()
-    if button.value() == 0 and time.ticks_diff(now, last_button_time) > DEBOUNCE_TIME:
+    btn = button.value()
+    if btn == 0 and time.ticks_diff(now, last_button_time) > DEBOUNCE_TIME:
+        print("BUTTON pressed (raw={})".format(btn))
         last_button_time = now
         light_on = not light_on
         send_command("ledon" if light_on else "ledoff")
@@ -208,14 +218,16 @@ def main():
         direction = read_direction()
 
         if direction != prev_direction:
+            print("DIRECTION change: {} -> {}".format(prev_direction, direction))
             send_command(direction)
             prev_direction = direction
             last_command_time = now
         elif direction != STOP and time.ticks_diff(now, last_command_time) > REPEAT_INTERVAL:
+            print("DIRECTION repeat: {}".format(direction))
             send_command(direction)
             last_command_time = now
 
-        # --- Button ---
+        # --- Buton ---
         handle_button()
 
         time.sleep_ms(LOOP_INTERVAL)
