@@ -5,7 +5,7 @@ summary: Afișează cifrele 0-9 pe un afișaj cu 7 segmente — controlat prin r
 image: assets/images/projects/arduino/starter_kit/preview-seven-segment-display.jpg
 ---
 
-# Proiect 19 — Afișaj cu 7 segmente
+# Afișaj cu 7 segmente
 
 Afișajele cu 7 segmente sunt omniprezente: ceasuri digitale, microunde, cuptoare, afișaje de prețuri. Înveți cum să afișezi cifre pe ele.
 

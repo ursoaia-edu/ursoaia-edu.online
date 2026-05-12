@@ -5,7 +5,7 @@ summary: Detectează prezența și nivelul apei cu un senzor cu piste conductoar
 image: assets/images/projects/arduino/starter_kit/preview-water-level-sensor.jpg
 ---
 
-# Proiect 24 — Senzor nivel apă
+# Senzor nivel apă
 
 Acest senzor este extrem de util: detectează dacă apa atinge anumite linii pe placa lui și cât de mult este apă. Este perfect pentru **alarme anti-inundație**, **ghivece auto-udate** sau **detectoare de ploaie**.
 

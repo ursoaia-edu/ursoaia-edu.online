@@ -5,7 +5,7 @@ summary: Măsoară distanța până la obiecte cu HC-SR04 — senzor ultrasonic 
 image: assets/images/projects/arduino/starter_kit/preview-ultrasonic-sensor.jpg
 ---
 
-# Proiect 10 — Senzor ultrasonic (distanță)
+# Senzor ultrasonic (distanță)
 
 HC-SR04 este un senzor foarte popular: îl folosești ca să afli cât de departe este un obiect, fără contact. Este prezent în roboți care ocolesc obstacole și în sisteme de parcare.
 

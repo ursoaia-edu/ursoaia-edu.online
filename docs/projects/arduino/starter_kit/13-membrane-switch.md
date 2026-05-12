@@ -5,7 +5,7 @@ summary: Conectează o tastatură 4x4 cu membrană și citește caracterul apăs
 image: assets/images/projects/arduino/starter_kit/preview-membrane-switch.jpg
 ---
 
-# Proiect 13 — Tastatură cu membrană
+# Tastatură cu membrană
 
 Tastaturile matriciale sunt peste tot: telefoane, microunde, lacăte electronice, bancomate. Învață cum se conectează la Arduino — e mai elegant decât 16 butoane separate.
 

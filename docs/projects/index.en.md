@@ -5,6 +5,9 @@ tags: [projects, hardware, electronics, IoT]
 summary: Hands-on projects with Arduino, ESP32, LoPy, and Raspberry Pi — full schematics, source code, and bill of materials.
 ---
 
+!!! info "On Windows? Start here"
+    Before your first project, walk through the [**Windows setup**](windows_setup.md) guide — CH340 driver, Arduino IDE, and ESP32 support. It takes ~10 minutes and is a one-time thing.
+
 ## How to use the projects
 
 1. **Pick a platform** that matches your level and available parts

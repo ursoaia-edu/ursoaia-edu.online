@@ -5,7 +5,7 @@ summary: Măsoară temperatura ambientală cu un termistor NTC și afișează-o 
 image: assets/images/projects/arduino/starter_kit/preview-thermometer.jpg
 ---
 
-# Proiect 15 — Termometru cu termistor
+# Termometru cu termistor
 
 Construiește un termometru digital care afișează temperatura în timp real pe ecranul LCD. Folosești un **termistor** — o rezistență a cărei valoare scade cu temperatura.
 

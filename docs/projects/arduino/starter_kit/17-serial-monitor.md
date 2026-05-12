@@ -5,7 +5,7 @@ summary: Trimite comenzi text către Arduino prin Serial Monitor — aprinde un 
 image: assets/images/projects/arduino/starter_kit/preview-serial-monitor.jpg
 ---
 
-# Proiect 17 — Monitorul Serial
+# Monitorul Serial
 
 Serial Monitor nu este doar pentru a citi mesaje de la Arduino — poți și **trimite comenzi** de la tastatură. În acest proiect extinzi montajul din **Proiect 16** ca să controlezi fiecare LED individual.
 

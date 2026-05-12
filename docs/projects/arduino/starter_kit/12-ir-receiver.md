@@ -5,7 +5,7 @@ summary: Decodează apăsările unei telecomenzi IR cu receptorul din kit și bi
 image: assets/images/projects/arduino/starter_kit/preview-ir-receiver.jpg
 ---
 
-# Proiect 12 — Receptor IR (telecomandă)
+# Receptor IR (telecomandă)
 
 Fiecare televizor, DVD player sau aparat de aer condiționat are un senzor IR în față. În acest proiect înveți cum funcționează el și cum să folosești o telecomandă ca intrare pentru Arduino.
 

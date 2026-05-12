@@ -5,7 +5,7 @@ summary: Învață să controlezi un motor pas cu pas 28BYJ-48 cu driver-ul ULN2
 image: assets/images/projects/arduino/starter_kit/preview-stepper-motor.jpg
 ---
 
-# Proiect 22 — Motor pas cu pas
+# Motor pas cu pas
 
 Un **motor pas cu pas** (stepper) se rotește cu pași discreți — exact atâtea grade câte îi comanzi, fără nevoia unui senzor de poziție. Este folosit în imprimante 3D, scannere, roboți și mai ales acolo unde ai nevoie de **poziționare precisă**.
 

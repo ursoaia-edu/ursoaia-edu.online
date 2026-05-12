@@ -5,7 +5,7 @@ summary: Folosește două butoane pentru a aprinde și stinge un LED — primul 
 image: assets/images/projects/arduino/starter_kit/preview-digital-inputs.jpg
 ---
 
-# Proiect 04 — Intrări digitale (butoane)
+# Intrări digitale (butoane)
 
 În proiectele anterioare ai trimis semnale **de la** Arduino către lume. Acum învățăm inversul: cum să **citim** o stare — apăsarea unui buton.
 

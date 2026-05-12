@@ -5,7 +5,7 @@ summary: Detectează sunete (bătăi din palme, voci) cu un microfon electret ș
 image: assets/images/projects/arduino/starter_kit/preview-sound-sensor.jpg
 ---
 
-# Proiect 25 — Senzor de sunet
+# Senzor de sunet
 
 Ultimul proiect al kit-ului! Detectează sunete din mediu — perfect pentru alarme controlate prin voce, aprinsul la bătaie din palme sau vizualizatoare audio.
 

@@ -5,7 +5,7 @@ summary: Primul proiect — trimiți "Hello World!" de la Arduino către PC prin
 image: assets/images/projects/arduino/starter_kit/preview-hello-world.jpg
 ---
 
-# Proiect 01 — Hello World
+# Hello World
 
 Acesta este primul pas în lumea Arduino. Nu ai nevoie de nicio componentă în afară de placă și cablul USB. Vei învăța cum se face comunicarea serială între Arduino și calculator și vei folosi pentru prima dată **Serial Monitor**-ul din Arduino IDE.
 

@@ -5,7 +5,7 @@ summary: Controlează un servomotor SG90 pe 180° folosind biblioteca Servo — 
 image: assets/images/projects/arduino/starter_kit/preview-servo.jpg
 ---
 
-# Proiect 08 — Servomotor
+# Servomotor
 
 Un servomotor este un motor mic cu angrenaje care se rotește într-o poziție precisă — exact ce este nevoie pentru brațe robotizate, direcții de mașinuțe sau capace automate.
 

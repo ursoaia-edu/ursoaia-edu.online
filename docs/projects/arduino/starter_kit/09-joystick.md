@@ -5,7 +5,7 @@ summary: Citește axele X și Y ale unui joystick analogic și folosește butonu
 image: assets/images/projects/arduino/starter_kit/preview-joystick.jpg
 ---
 
-# Proiect 09 — Joystick analogic
+# Joystick analogic
 
 Un joystick analogic este, de fapt, două **potențiometre** — unul pentru axa X și unul pentru axa Y — plus un buton care se activează când apeși pe manșă.
 

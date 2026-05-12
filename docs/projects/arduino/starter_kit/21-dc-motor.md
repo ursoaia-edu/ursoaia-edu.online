@@ -5,7 +5,7 @@ summary: Controlează un motor DC — direcție și viteză — folosind cipul d
 image: assets/images/projects/arduino/starter_kit/preview-dc-motor.jpg
 ---
 
-# Proiect 21 — Motor DC
+# Motor DC
 
 Motoarele DC sunt peste tot: jucării, ventilatoare, mașinuțe, roboți. Ca să le poți controla **direcția și viteza** din Arduino, ai nevoie de un driver — **L293D**.
 

@@ -36,15 +36,21 @@ plugins:
             Home: Acasă
             Courses: Cursuri
             Projects: Proiecte
+            "Windows setup": Pregătire Windows
             Arduino: Arduino
             "LED Cube": Cub de LED-uri
             "Starter Kits": Kit-uri de pornire
             "Starter Kit": Kit de pornire
             ESP32: ESP32
             "LED Blink": LED intermitent
+            "RGB LED": LED RGB
+            Servo: Servomotor
             "Temperature & Humidity": Temperatură și umiditate
             "Temperature Web Server": Server web temperatură
             "Robot Car Remote": Telecomandă robot
+            "ESP-NOW Messaging": Mesagerie ESP-NOW
+            "Ultrasonic Sensor": Senzor ultrasonic
+            "Sound Sensor": Senzor de sunet
             LoPy: LoPy
             "LoRaWAN Node": Nod LoRaWAN
             "Raspberry Pi": Raspberry Pi
@@ -129,42 +135,49 @@ nav:
           - "11: Proiect Grafice Turtle": courses/python/11-proiect-turtle.md
   - Projects:
       - Overview: projects/index.md
+      - Windows setup: projects/windows_setup.md
       - Arduino:
           - Overview: projects/arduino/index.md
           - LED Cube: projects/arduino/led_cube.md
           - "Starter Kit":
               - Overview: projects/arduino/starter_kit/kits.md
-              - "01: Hello World": projects/arduino/starter_kit/01-hello-world.md
-              - "02: LED intermitent": projects/arduino/starter_kit/02-led-blinking.md
-              - "03: LED RGB": projects/arduino/starter_kit/03-rgb-led.md
-              - "04: Intrări digitale": projects/arduino/starter_kit/04-digital-inputs.md
-              - "05: Senzor cu bilă": projects/arduino/starter_kit/05-tilt-ball-switch.md
-              - "06: Buzzer activ": projects/arduino/starter_kit/06-active-buzzer.md
-              - "07: Buzzer pasiv": projects/arduino/starter_kit/07-passive-buzzer.md
-              - "08: Servomotor": projects/arduino/starter_kit/08-servo.md
-              - "09: Joystick": projects/arduino/starter_kit/09-joystick.md
-              - "10: Senzor ultrasonic": projects/arduino/starter_kit/10-ultrasonic-sensor.md
-              - "11: Modul releu": projects/arduino/starter_kit/11-relay.md
-              - "12: Receptor IR": projects/arduino/starter_kit/12-ir-receiver.md
-              - "13: Tastatură membrană": projects/arduino/starter_kit/13-membrane-switch.md
-              - "14: LCD1602 I2C": projects/arduino/starter_kit/14-lcd1602-i2c.md
-              - "15: Termometru": projects/arduino/starter_kit/15-thermometer.md
-              - "16: 8 LED-uri + 74HC595": projects/arduino/starter_kit/16-shift-register-leds.md
-              - "17: Monitorul Serial": projects/arduino/starter_kit/17-serial-monitor.md
-              - "18: Fotocelulă": projects/arduino/starter_kit/18-photocell.md
-              - "19: Afișaj 7 segmente": projects/arduino/starter_kit/19-seven-segment-display.md
-              - "20: Afișaj 4 cifre": projects/arduino/starter_kit/20-four-digit-display.md
-              - "21: Motor DC": projects/arduino/starter_kit/21-dc-motor.md
-              - "22: Motor pas cu pas": projects/arduino/starter_kit/22-stepper-motor.md
-              - "23: Stepper + telecomandă": projects/arduino/starter_kit/23-stepper-with-remote.md
-              - "24: Senzor nivel apă": projects/arduino/starter_kit/24-water-level-sensor.md
-              - "25: Senzor de sunet": projects/arduino/starter_kit/25-sound-sensor.md
+              - Hello World: projects/arduino/starter_kit/01-hello-world.md
+              - LED intermitent: projects/arduino/starter_kit/02-led-blinking.md
+              - LED RGB: projects/arduino/starter_kit/03-rgb-led.md
+              - "Intrări digitale": projects/arduino/starter_kit/04-digital-inputs.md
+              - "Senzor cu bilă": projects/arduino/starter_kit/05-tilt-ball-switch.md
+              - Buzzer activ: projects/arduino/starter_kit/06-active-buzzer.md
+              - Buzzer pasiv: projects/arduino/starter_kit/07-passive-buzzer.md
+              - Servomotor: projects/arduino/starter_kit/08-servo.md
+              - Joystick: projects/arduino/starter_kit/09-joystick.md
+              - Senzor ultrasonic: projects/arduino/starter_kit/10-ultrasonic-sensor.md
+              - Modul releu: projects/arduino/starter_kit/11-relay.md
+              - Receptor IR: projects/arduino/starter_kit/12-ir-receiver.md
+              - "Tastatură membrană": projects/arduino/starter_kit/13-membrane-switch.md
+              - LCD1602 I2C: projects/arduino/starter_kit/14-lcd1602-i2c.md
+              - Termometru: projects/arduino/starter_kit/15-thermometer.md
+              - "8 LED-uri + 74HC595": projects/arduino/starter_kit/16-shift-register-leds.md
+              - Monitorul Serial: projects/arduino/starter_kit/17-serial-monitor.md
+              - "Fotocelulă": projects/arduino/starter_kit/18-photocell.md
+              - "Afișaj 7 segmente": projects/arduino/starter_kit/19-seven-segment-display.md
+              - "Afișaj 4 cifre": projects/arduino/starter_kit/20-four-digit-display.md
+              - Motor DC: projects/arduino/starter_kit/21-dc-motor.md
+              - "Motor pas cu pas": projects/arduino/starter_kit/22-stepper-motor.md
+              - "Stepper + telecomandă": projects/arduino/starter_kit/23-stepper-with-remote.md
+              - "Senzor nivel apă": projects/arduino/starter_kit/24-water-level-sensor.md
+              - Senzor de sunet: projects/arduino/starter_kit/25-sound-sensor.md
       - ESP32:
           - Overview: projects/esp32/index.md
           - LED Blink: projects/esp32/led_blink.md
+          - RGB LED: projects/esp32/rgb_led.md
+          - Servo: projects/esp32/servo.md
+          - Joystick: projects/esp32/joystick.md
+          - Ultrasonic Sensor: projects/esp32/ultrasonic.md
+          - Sound Sensor: projects/esp32/sound_sensor.md
           - Temperature & Humidity: projects/esp32/temperature.md
           - Temperature Web Server: projects/esp32/temperature_web.md
           - Robot Car Remote: projects/esp32/robot_car_remote.md
+          - "ESP-NOW Messaging": projects/esp32/esp_now.md
       - LoPy:
           - Overview: projects/lopy/index.md
           - LoRaWAN Node: projects/lopy/lorawan_node.md

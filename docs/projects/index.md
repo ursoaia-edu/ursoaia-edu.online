@@ -5,6 +5,9 @@ tags: [proiecte, hardware, electronică, IoT]
 summary: Proiecte hands-on cu Arduino, ESP32, LoPy și Raspberry Pi — scheme complete, cod sursă și liste de componente.
 ---
 
+!!! info "Lucrezi pe Windows? Începe aici"
+    Înainte de primul proiect, parcurge ghidul [**Pregătire Windows**](windows_setup.md) — driver CH340, Arduino IDE și suport ESP32. Durează ~10 minute și se face o singură dată.
+
 ## Cum folosești proiectele
 
 1. **Alege o platformă** care corespunde nivelului tău și componentelor disponibile

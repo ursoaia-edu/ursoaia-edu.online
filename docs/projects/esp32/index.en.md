@@ -21,6 +21,56 @@ The "Hello World" of embedded systems — toggles the on-board LED (GPIO 2) usin
 
 ---
 
+### [RGB LED](rgb_led.md)
+
+Drive an RGB LED with three **PWM** channels on the ESP32 — smooth fading between red, green, and blue, plus fixed-color and random-color examples. MicroPython code.
+
+- **Components:** ESP32, common-cathode RGB LED, 3× 220 Ω resistor
+- **Concepts:** 10-bit PWM, `duty()`, additive color mixing
+- **Difficulty:** beginner
+
+---
+
+### [Servo](servo.md)
+
+Drive an **SG90 servo** to a precise angle between 0° and 180° using PWM at 50 Hz. Includes a slow sweep, manual end-stop calibration, and power-supply tips to avoid resets.
+
+- **Components:** ESP32, SG90 servo, 5 V supply (Vin or external)
+- **Concepts:** 50 Hz PWM, angle → duty mapping, mechanical calibration
+- **Difficulty:** beginner-intermediate
+
+---
+
+### [Joystick](joystick.md)
+
+Read an analog joystick on **ADC1** (GPIO 34, 35) plus the push button — and turn the two axes into a direction (left / right / up / down) with a dead zone. Also includes a proportional −100…+100 mapping for games.
+
+- **Components:** ESP32, KY-023 joystick module, jumper wires
+- **Concepts:** 12-bit ADC, attenuation, dead zone, ADC1 vs ADC2 with Wi-Fi
+- **Difficulty:** beginner-intermediate
+
+---
+
+### [Ultrasonic Sensor](ultrasonic.md)
+
+Measure distance to objects with the **HC-SR04** — a 10 µs pulse on Trig, time the echo on Echo, compute centimetres. Includes the mandatory voltage divider for the 3.3 V ESP32, a median filter, and a proximity alarm.
+
+- **Components:** ESP32, HC-SR04 (or HC-SR04P), 1 kΩ + 2 kΩ resistors
+- **Concepts:** `time_pulse_us`, 5 V vs 3.3 V, voltage divider, median filter
+- **Difficulty:** beginner-intermediate
+
+---
+
+### [Sound Sensor](sound_sensor.md)
+
+Detect sound with a **KY-038** module (electret mic + LM393) — read both the analog level (AO) and the tunable-threshold digital output (DO). Examples: clap-to-LED and a clap-clap toggle.
+
+- **Components:** ESP32, KY-038 module, jumper wires
+- **Concepts:** LM393 comparator, ADC vs digital input, threshold calibration, sound debouncing
+- **Difficulty:** beginner-intermediate
+
+---
+
 ### [Temperature & Humidity](temperature.md)
 
 Reads a **DHT22** (or DHT11) sensor and prints values to the serial console every 2 seconds.
@@ -37,6 +87,16 @@ Combines ESP32's Wi-Fi with the DHT22 sensor — serves a **styled HTML page** w
 
 - **Components:** ESP32, DHT22, Wi-Fi connection
 - **Concepts:** TCP socket, basic HTTP, HTML string formatting
+- **Difficulty:** intermediate
+
+---
+
+### [ESP-NOW Messaging](esp_now.md)
+
+Two ESP32 boards exchange messages **directly, with no router and no internet**, using the ESP-NOW protocol. Sub-10 ms latency, up to 250 bytes per packet.
+
+- **Components:** 2× ESP32 (that's it)
+- **Concepts:** ESP-NOW peer-to-peer, MAC addressing, Wi-Fi channels, broadcast vs unicast
 - **Difficulty:** intermediate
 
 ---

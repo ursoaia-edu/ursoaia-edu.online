@@ -5,7 +5,7 @@ summary: Folosește PWM pentru a amesteca roșu, verde și albastru într-un LED
 image: assets/images/projects/arduino/starter_kit/preview-rgb-led.jpg
 ---
 
-# Proiect 03 — LED RGB
+# LED RGB
 
 Un **LED RGB** are trei LED-uri (roșu, verde, albastru) împachetate într-o singură carcasă. Controlând intensitatea fiecărei culori în parte, poți genera aproape orice culoare din spectrul vizibil.
 

@@ -5,7 +5,7 @@ summary: Primul circuit pe breadboard — un LED conectat la un pin digital clip
 image: assets/images/projects/arduino/starter_kit/preview-led-blinking.jpg
 ---
 
-# Proiect 02 — LED intermitent
+# LED intermitent
 
 După ce ai trimis "Hello World!" prin cablu, este timpul să scoți primul LED pe breadboard. Vei conecta un LED la un pin digital extern (nu LED-ul integrat) și îl vei face să clipească.
 

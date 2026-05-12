@@ -21,6 +21,56 @@ ESP32 este un microcontroller cu **Wi-Fi și Bluetooth integrate**, ideal pentru
 
 ---
 
+### [LED RGB](rgb_led.md)
+
+Comandă un LED RGB cu trei canale **PWM** pe ESP32 — fade lin între roșu, verde și albastru, plus exemple pentru culoare fixă și aleatoare. Cod MicroPython.
+
+- **Componente:** ESP32, LED RGB catod comun, 3× rezistență 220 Ω
+- **Concepte:** PWM 10 biți, `duty()`, amestec aditiv de culori
+- **Dificultate:** începător
+
+---
+
+### [Servomotor](servo.md)
+
+Rotește un **servo SG90** la unghi precis între 0° și 180° folosind PWM la 50 Hz. Include baleiere lentă, calibrare manuală a capetelor și sfaturi de alimentare pentru a evita reset-uri.
+
+- **Componente:** ESP32, servo SG90, alimentare 5 V (Vin sau sursă externă)
+- **Concepte:** PWM 50 Hz, mapare unghi → duty, calibrare mecanică
+- **Dificultate:** începător-mediu
+
+---
+
+### [Joystick](joystick.md)
+
+Citește un joystick analogic pe **ADC1** (GPIO 34, 35) plus butonul de click — și transformă cele două axe în direcție (stânga / dreapta / sus / jos) cu zonă moartă. Include și mapare proporțională −100…+100 pentru jocuri.
+
+- **Componente:** ESP32, modul joystick KY-023, fire jumper
+- **Concepte:** ADC 12 biți, atenuare, zonă moartă, ADC1 vs ADC2 cu Wi-Fi
+- **Dificultate:** începător-mediu
+
+---
+
+### [Senzor ultrasonic](ultrasonic.md)
+
+Măsoară distanța până la obiecte cu **HC-SR04** — un puls de 10 µs pe Trig, cronometrarea ecoului pe Echo, calcul în cm. Include divizor de tensiune obligatoriu pentru ESP32 (3,3 V), filtru median și alarmă de proximitate.
+
+- **Componente:** ESP32, HC-SR04 (sau HC-SR04P), rezistențe 1 kΩ + 2 kΩ
+- **Concepte:** `time_pulse_us`, 5 V vs 3,3 V, divizor de tensiune, median filter
+- **Dificultate:** începător-mediu
+
+---
+
+### [Senzor de sunet](sound_sensor.md)
+
+Detectează sunete cu un modul **KY-038** (microfon electret + LM393) — citește atât nivelul analogic (AO), cât și ieșirea digitală cu prag reglabil (DO). Exemple: bătaia din palme aprinde un LED, plus comutare „clap-clap".
+
+- **Componente:** ESP32, modul KY-038, fire jumper
+- **Concepte:** comparator LM393, ADC vs digital input, calibrare prag, debounce sonor
+- **Dificultate:** începător-mediu
+
+---
+
 ### [Temperatură și umiditate](temperature.md)
 
 Citește un senzor **DHT22** (sau DHT11) și afișează valorile pe consola serială la fiecare 2 secunde.
@@ -37,6 +87,16 @@ Combină Wi-Fi-ul ESP32 cu senzorul DHT22 — servește o **pagină HTML stiliza
 
 - **Componente:** ESP32, DHT22, conexiune Wi-Fi
 - **Concepte:** socket TCP, HTTP de bază, format string-uri HTML
+- **Dificultate:** mediu
+
+---
+
+### [Mesagerie ESP-NOW](esp_now.md)
+
+Două plăci ESP32 schimbă mesaje **direct, fără router și fără internet**, prin protocolul ESP-NOW. Latență sub 10 ms, până la 250 de octeți pe pachet.
+
+- **Componente:** 2× ESP32 (atât)
+- **Concepte:** ESP-NOW peer-to-peer, MAC addressing, canale Wi-Fi, broadcast vs unicast
 - **Dificultate:** mediu
 
 ---

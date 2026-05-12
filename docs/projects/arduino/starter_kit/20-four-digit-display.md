@@ -5,7 +5,7 @@ summary: Afișează numere de 4 cifre folosind multiplexarea — o tehnică care
 image: assets/images/projects/arduino/starter_kit/preview-four-digit-display.jpg
 ---
 
-# Proiect 20 — Afișaj cu 4 cifre și 7 segmente
+# Afișaj cu 4 cifre și 7 segmente
 
 Cum afișezi un număr precum `1234` pe un singur modul cu 4 cifre, când fiecare cifră are 7 segmente? Răspunsul magic: **multiplexarea** și **POV** (Persistence of Vision).
 

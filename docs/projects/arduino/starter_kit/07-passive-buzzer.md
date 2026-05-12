@@ -5,7 +5,7 @@ summary: Cântă o gamă muzicală cu un buzzer pasiv — învață legătura di
 image: assets/images/projects/arduino/starter_kit/preview-passive-buzzer.jpg
 ---
 
-# Proiect 07 — Buzzer pasiv (melodii)
+# Buzzer pasiv (melodii)
 
 Buzzer-ul pasiv nu are oscilator propriu, așa că tu trebuie să-i generezi semnalul. Avantajul? Poți controla **frecvența** și astfel poți cânta note muzicale reale.
 
