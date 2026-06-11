@@ -1,0 +1,747 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server web temperatură - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="Servește citirile senzorului DHT22 / DHT11 prin Wi-Fi pe o pagină HTML stilizată găzduită de ESP32.">
+  <link rel="canonical" href="https://ursoaia-edu.online/projects/esp32/temperature_web/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/projects/esp32/temperature_web/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/projects/esp32/temperature_web/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/projects/esp32/temperature_web/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="Server web temperatură - Ursoaia Edu Online">
+  <meta property="og:description" content="Servește citirile senzorului DHT22 / DHT11 prin Wi-Fi pe o pagină HTML stilizată găzduită de ESP32.">
+  <meta property="og:url" content="https://ursoaia-edu.online/projects/esp32/temperature_web/">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Server web temperatură - Ursoaia Edu Online">
+  <meta name="twitter:description" content="Servește citirile senzorului DHT22 / DHT11 prin Wi-Fi pe o pagină HTML stilizată găzduită de ESP32.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://ursoaia-edu.online/projects/esp32/temperature_web/#article",
+        "headline": "Server web temperatur\u0103 - Ursoaia Edu Online",
+        "description": "Serve\u0219te citirile senzorului DHT22 / DHT11 prin Wi-Fi pe o pagin\u0103 HTML stilizat\u0103 g\u0103zduit\u0103 de ESP32.",
+        "url": "https://ursoaia-edu.online/projects/esp32/temperature_web/",
+        "inLanguage": "ro",
+        "image": "https://ursoaia-edu.online/assets/logo.png",
+        "author": { "@id": "https://ursoaia-edu.online/#org" },
+        "publisher": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Acas\u0103",
+        "item": "https://ursoaia-edu.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Proiecte",
+        "item": "https://ursoaia-edu.online/projects/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ESP32",
+        "item": "https://ursoaia-edu.online/projects/esp32/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Server web temperatur\u0103",
+        "item": "https://ursoaia-edu.online/projects/esp32/temperature_web/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../assets/fonts.css">
+  <script src="../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../.." class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Acasă</a>
+          
+            <a href="../../../courses/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Cursuri</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Proiecte</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Limbă">
+            <a href="../../../en/projects/esp32/temperature_web/" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">EN</a>
+            <a href="./" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Acasă</a>
+          
+            <a href="../../../courses/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Cursuri</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Proiecte</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Limbă</span>
+            <a href="../../../en/projects/esp32/temperature_web/" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">EN</a>
+            <a href="./" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../.." class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Acasă
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Proiecte</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">ESP32</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">Server web temperatură</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+              <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-orange-500/10 text-orange-500 text-[10px] font-mono font-semibold uppercase tracking-wider">
+                <i data-lucide="circuit-board" class="w-3 h-3"></i> ESP32
+              </div>
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">Server web temperatură</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Servește citirile senzorului DHT22 / DHT11 prin Wi-Fi pe o pagină HTML stilizată găzduită de ESP32.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Senzor</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">Server web</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">WiFi</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">MicroPython</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="server-web-pentru-temperatura-si-umiditate">Server web pentru temperatură și umiditate<a class="headerlink" href="#server-web-pentru-temperatura-si-umiditate" title="Link to this section">&para;</a></h1>
+<p>Citește temperatura și umiditatea de la un senzor DHT22 (sau DHT11) conectat la un ESP32 și servește valorile printr-o pagină web HTTP simplă folosind MicroPython.</p>
+<p><picture><source srcset="../../../assets/images/projects/esp32/preview-temperature-web.webp" type="image/webp"><img loading="lazy" decoding="async" alt="Server web temperatură — ESP32 cu DHT22 servind dashboard live" src="../../../assets/images/projects/esp32/preview-temperature-web.jpg" /></picture></p>
+<h2 id="descriere">Descriere<a class="headerlink" href="#descriere" title="Link to this section">&para;</a></h2>
+<p>Proiectul constă dintr-un singur fișier <code>main.py</code> care:</p>
+<ol>
+<li>Conectează ESP32-ul la rețeaua Wi-Fi.</li>
+<li>Inițializează senzorul DHT11/DHT22.</li>
+<li>Deschide un socket TCP pe portul 80.</li>
+<li>Așteaptă conexiuni HTTP și răspunde cu o pagină HTML stilizată care afișează citirile curente ale senzorului.</li>
+</ol>
+<h2 id="cod">Cod<a class="headerlink" href="#cod" title="Link to this section">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  <span class="kn">import</span><span class="w"> </span><span class="nn">usocket</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">socket</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">except</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">dht</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">esp</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">esp</span><span class="o">.</span><span class="n">osdebug</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># Configurare</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">ssid</span> <span class="o">=</span> <span class="s1">&#39;INLOCUIESTE_CU_SSID_TAU&#39;</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;INLOCUIESTE_CU_PAROLA_TA&#39;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># Conectare la Wi-Fi</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">station</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">station</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">station</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">station</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">station</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">max_wait</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">while</span> <span class="n">max_wait</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>  <span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="k">break</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>  <span class="n">max_wait</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;waiting for connection...&#39;</span><span class="p">)</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>  <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="k">if</span> <span class="n">station</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connection successful&#39;</span><span class="p">)</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">station</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">())</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connection failed&#39;</span><span class="p">)</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>  <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>  <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="c1"># Configurare senzor</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="n">sensor</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT11</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="c1">#sensor = dht.DHT22(Pin(4))</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_sensor</span><span class="p">():</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>  <span class="k">global</span> <span class="n">temp</span><span class="p">,</span> <span class="n">hum</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>  <span class="n">temp</span> <span class="o">=</span> <span class="n">hum</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>  <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>    <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    <span class="n">temp</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">()</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="n">hum</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">humidity</span><span class="p">()</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hum</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hum</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>      <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="si">{0:3.1f}</span><span class="s1">,</span><span class="si">{1:3.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">hum</span><span class="p">))</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>      <span class="c1"># uncomment for Fahrenheit</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>      <span class="c1">#temp = temp * (9/5) + 32.0</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>      <span class="n">hum</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">hum</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>      <span class="k">return</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>      <span class="k">return</span><span class="p">(</span><span class="s1">&#39;Invalid sensor readings.&#39;</span><span class="p">)</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>  <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>    <span class="k">return</span><span class="p">(</span><span class="s1">&#39;Failed to read sensor.&#39;</span><span class="p">)</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="k">def</span><span class="w"> </span><span class="nf">web_page</span><span class="p">():</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>  <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;!DOCTYPE HTML&gt;&lt;html&gt;</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="s2">&lt;head&gt;</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="s2">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="s2">  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://use.fontawesome.com/releases/v5.7.2/css/all.css&quot; integrity=&quot;sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="s2">  &lt;style&gt;</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="s2">    html {</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="s2">     font-family: Arial;</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="s2">     display: inline-block;</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="s2">     margin: 0px auto;</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="s2">     text-align: center;</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="s2">    }</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="s2">    h2 { font-size: 3.0rem; }</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="s2">    p { font-size: 3.0rem; }</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="s2">    .units { font-size: 1.2rem; }</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="s2">    .dht-labels{</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="s2">      font-size: 1.5rem;</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="s2">      vertical-align:middle;</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="s2">      padding-bottom: 15px;</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="s2">    }</span>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="s2">  &lt;/style&gt;</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="s2">&lt;/head&gt;</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="s2">&lt;body&gt;</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="s2">  &lt;h2&gt;ESP DHT Server&lt;/h2&gt;</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="s2">  &lt;p&gt;</span>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="s2">    &lt;i class=&quot;fas fa-thermometer-half&quot; style=&quot;color:#059e8a;&quot;&gt;&lt;/i&gt;</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="s2">    &lt;span class=&quot;dht-labels&quot;&gt;Temperature&lt;/span&gt;</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="s2">    &lt;span&gt;&quot;&quot;&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;&quot;&quot;&lt;/span&gt;</span>
+</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="s2">    &lt;sup class=&quot;units&quot;&gt;&amp;deg;C&lt;/sup&gt;</span>
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="s2">  &lt;/p&gt;</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="s2">  &lt;p&gt;</span>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="s2">    &lt;i class=&quot;fas fa-tint&quot; style=&quot;color:#00add6;&quot;&gt;&lt;/i&gt;</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="s2">    &lt;span class=&quot;dht-labels&quot;&gt;Humidity&lt;/span&gt;</span>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="s2">    &lt;span&gt;&quot;&quot;&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">hum</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;&quot;&quot;&lt;/span&gt;</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="s2">    &lt;sup class=&quot;units&quot;&gt;%&lt;/sup&gt;</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="s2">  &lt;/p&gt;</span>
+</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="s2">&lt;/body&gt;</span>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="s2">&lt;/html&gt;&quot;&quot;&quot;</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>  <span class="k">return</span> <span class="n">html</span>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>
+</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a><span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>
+</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>  <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>    <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Got a connection from </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">addr</span><span class="p">))</span>
+</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>    <span class="n">request</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</span><span id="__span-0-119"><a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Content = </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</span><span id="__span-0-120"><a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>    <span class="n">sensor_readings</span> <span class="o">=</span> <span class="n">read_sensor</span><span class="p">()</span>
+</span><span id="__span-0-121"><a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">sensor_readings</span><span class="p">)</span>
+</span><span id="__span-0-122"><a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">web_page</span><span class="p">()</span>
+</span><span id="__span-0-123"><a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>    <span class="n">response_bytes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span><span id="__span-0-124"><a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-0-125"><a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Content-Type: text/html</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-0-126"><a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Content-Length: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">response_bytes</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-0-127"><a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Connection: close</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-0-128"><a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">response_bytes</span><span class="p">)</span>
+</span><span id="__span-0-129"><a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>  <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-0-130"><a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</span><span id="__span-0-131"><a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>  <span class="k">finally</span><span class="p">:</span>
+</span><span id="__span-0-132"><a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+<h2 id="conectare">Conectare<a class="headerlink" href="#conectare" title="Link to this section">&para;</a></h2>
+<h3 id="dht22-sau-dht11-la-esp32">DHT22 (sau DHT11) la ESP32<a class="headerlink" href="#dht22-sau-dht11-la-esp32" title="Link to this section">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Pin DHT22  →  ESP32
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>---------     -----
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>VCC (1)    →  3.3V
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>DATA (2)   →  GPIO 4
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>GND (4)    →  GND
+</span></code></pre></div>
+<h3 id="schema-de-conectare">Schemă de conectare<a class="headerlink" href="#schema-de-conectare" title="Link to this section">&para;</a></h3>
+<p><picture><source srcset="../../../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.webp" type="image/webp"><img loading="lazy" decoding="async" alt="Schema ESP32 cu DHT22 și conexiune Wi-Fi" src="../../../assets/images/projects/esp32/016-esp32-micropython-wifi-ap-techtotinker-diagram.png" /></picture></p>
+<hr />
+<h2 id="referinte">Referințe<a class="headerlink" href="#referinte" title="Link to this section">&para;</a></h2>
+<ul>
+<li><a href="https://techtotinker.com/016-esp32-micropython-web-server-esp32-access-point-mode-in-micropython/">016 - ESP32 MicroPython: Web Server | ESP32 Access Point</a></li>
+</ul>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../temperature/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Anterior
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Temperatură și umiditate</span>
+              </a>
+            
+            
+              <a href="../robot_car_remote/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Următor <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Telecomandă robot</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> În această pagină
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#server-web-pentru-temperatura-si-umiditate" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Server web pentru temperatură și umiditate</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#descriere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Descriere</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#cod" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Cod</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#conectare" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Conectare</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#referinte" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Referințe</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../.." class="hover:text-orange-500 transition-colors">Acasă</a>
+          
+            <a href="../../../courses/" class="hover:text-orange-500 transition-colors">Cursuri</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Proiecte</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source, construit cu fum de lipire.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,825 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prezentare curs - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="Complete map of the web development course — 22 lessons of HTML + CSS + JavaScript with 3 final projects.">
+  <link rel="canonical" href="https://ursoaia-edu.online/en/courses/web/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/web/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/web/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/web/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="Prezentare curs - Ursoaia Edu Online">
+  <meta property="og:description" content="Complete map of the web development course — 22 lessons of HTML + CSS + JavaScript with 3 final projects.">
+  <meta property="og:url" content="https://ursoaia-edu.online/en/courses/web/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prezentare curs - Ursoaia Edu Online">
+  <meta name="twitter:description" content="Complete map of the web development course — 22 lessons of HTML + CSS + JavaScript with 3 final projects.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/en/courses/web/#course",
+        "name": "Prezentare curs - Ursoaia Edu Online",
+        "description": "Complete map of the web development course \u2014 22 lessons of HTML + CSS + JavaScript with 3 final projects.",
+        "url": "https://ursoaia-edu.online/en/courses/web/",
+        "inLanguage": "en",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ursoaia-edu.online/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://ursoaia-edu.online/en/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Web",
+        "item": "https://ursoaia-edu.online/en/courses/web/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Prezentare curs",
+        "item": "https://ursoaia-edu.online/en/courses/web/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../assets/fonts.css">
+  <script src="../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Courses</a>
+          
+            <a href="../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">EN</a>
+            <a href="../../../courses/web/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Courses</a>
+          
+            <a href="../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">EN</a>
+            <a href="../../../courses/web/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Courses</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <span class="dark:text-zinc-400 text-zinc-500">Web</span>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">Prezentare curs</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">Prezentare curs</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Complete map of the web development course — 22 lessons of HTML + CSS + JavaScript with 3 final projects.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">web</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">course</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">html</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">css</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">javascript</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">beginners</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="web-development-course-for-beginners">Web Development Course for Beginners<a class="headerlink" href="#web-development-course-for-beginners" title="Link to this section">&para;</a></h1>
+<p>Welcome! This course will teach you to build <strong>complete websites</strong> — from structure and design to interactivity. By the end, you'll have a personal online portfolio, an interactive quiz, and a weather app with real data.</p>
+<h2 id="what-youll-build">What you'll build<a class="headerlink" href="#what-youll-build" title="Link to this section">&para;</a></h2>
+<ul>
+<li>A <strong>personal "About me" page</strong> with photos, links and text</li>
+<li>A <strong>school timetable</strong> styled with hover effects and colors</li>
+<li>A <strong>responsive photo gallery</strong> that looks great on mobile</li>
+<li>A <strong>contact form</strong> with JavaScript validation</li>
+<li>An <strong>educational quiz</strong> with scoring</li>
+<li>A <strong>multi-page online portfolio</strong></li>
+<li>A <strong>weather app</strong> that fetches data from an API</li>
+</ul>
+<h2 id="course-map">Course map<a class="headerlink" href="#course-map" title="Link to this section">&para;</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nr</th>
+<th>Lesson</th>
+<th>What you learn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td><a href="00-introducere/">How the web works</a></td>
+<td>Internet, client-server, tools</td>
+</tr>
+<tr>
+<td>01</td>
+<td><a href="01-prima-pagina/">Your first page</a></td>
+<td><code>.html</code> file, basic structure</td>
+</tr>
+</tbody>
+</table>
+<h3 id="module-1-html-structure">Module 1 — HTML (Structure)<a class="headerlink" href="#module-1-html-structure" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nr</th>
+<th>Lesson</th>
+<th>What you learn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>02</td>
+<td><a href="02-html-bazele/">HTML basics</a></td>
+<td>Headings, paragraphs, links, images</td>
+</tr>
+<tr>
+<td>03</td>
+<td><a href="03-html-liste-tabele/">Lists and tables</a></td>
+<td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;table&gt;</code></td>
+</tr>
+<tr>
+<td>04</td>
+<td><a href="04-html-formulare/">Forms</a></td>
+<td><code>&lt;input&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;button&gt;</code></td>
+</tr>
+<tr>
+<td>05</td>
+<td><a href="05-html-multi-pagina/">Multi-page site</a></td>
+<td>Navigation between pages, <code>&lt;nav&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="module-2-css-design">Module 2 — CSS (Design)<a class="headerlink" href="#module-2-css-design" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nr</th>
+<th>Lesson</th>
+<th>What you learn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>06</td>
+<td><a href="06-css-introducere/">CSS introduction</a></td>
+<td>Selectors, colors, fonts</td>
+</tr>
+<tr>
+<td>07</td>
+<td><a href="07-css-box-model/">Box Model</a></td>
+<td>Margin, padding, border</td>
+</tr>
+<tr>
+<td>08</td>
+<td><a href="08-css-flexbox-grid/">Flexbox and Grid</a></td>
+<td>Modern layout</td>
+</tr>
+<tr>
+<td>09</td>
+<td><a href="09-css-avansat/">Advanced CSS</a></td>
+<td>Hover, transitions, animations</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="10-css-responsive/">Responsive design</a></td>
+<td>Phone, tablet, desktop</td>
+</tr>
+</tbody>
+</table>
+<h3 id="module-3-javascript-interactivity">Module 3 — JavaScript (Interactivity)<a class="headerlink" href="#module-3-javascript-interactivity" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nr</th>
+<th>Lesson</th>
+<th>What you learn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td><a href="11-js-introducere/">JavaScript introduction</a></td>
+<td>What JS is, <code>console.log</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="12-js-variabile-tipuri/">Variables and types</a></td>
+<td><code>let</code>, <code>const</code>, types</td>
+</tr>
+<tr>
+<td>13</td>
+<td><a href="13-js-conditii-bucle/">Conditions and loops</a></td>
+<td><code>if</code>, <code>for</code>, <code>while</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td><a href="14-js-functii/">Functions</a></td>
+<td>Arrow functions, parameters</td>
+</tr>
+<tr>
+<td>15</td>
+<td><a href="15-js-dom/">DOM</a></td>
+<td>Selecting and modifying HTML</td>
+</tr>
+<tr>
+<td>16</td>
+<td><a href="16-js-evenimente/">Events</a></td>
+<td>Click, input, submit</td>
+</tr>
+<tr>
+<td>17</td>
+<td><a href="17-js-formulare-validare/">Forms with validation</a></td>
+<td>Capture and validate data</td>
+</tr>
+<tr>
+<td>18</td>
+<td><a href="18-js-fetch-api/">Fetch and APIs</a></td>
+<td>JSON, <code>fetch</code>, async/await</td>
+</tr>
+</tbody>
+</table>
+<h3 id="final-projects">Final projects<a class="headerlink" href="#final-projects" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nr</th>
+<th>Project</th>
+<th>What you build</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19</td>
+<td><a href="19-proiect-portofoliu/">Personal portfolio</a></td>
+<td>Multi-section, responsive site</td>
+</tr>
+<tr>
+<td>20</td>
+<td><a href="20-proiect-quiz/">Quiz app</a></td>
+<td>Interactive quiz with scoring</td>
+</tr>
+<tr>
+<td>21</td>
+<td><a href="21-proiect-meteo/">Weather app</a></td>
+<td>Live data from the Open-Meteo API</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this section">&para;</a></h2>
+<ul>
+<li>A computer with Windows / macOS / Linux</li>
+<li>A code editor (<a href="https://code.visualstudio.com/">VS Code</a> recommended) — see lesson 00</li>
+<li>A modern browser (Chrome, Firefox, Edge)</li>
+<li>No prior experience required</li>
+</ul>
+<h2 id="estimated-duration">Estimated duration<a class="headerlink" href="#estimated-duration" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>~22 sessions</strong> of 90 minutes each</li>
+<li>Recommended pace: one lesson per week</li>
+<li>Period: September – June (one school year)</li>
+</ul>
+<h2 id="tools-used">Tools used<a class="headerlink" href="#tools-used" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What for</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VS Code</strong></td>
+<td>Code editor</td>
+<td><a href="https://code.visualstudio.com/">code.visualstudio.com</a></td>
+</tr>
+<tr>
+<td><strong>Live Server</strong> (VS Code extension)</td>
+<td>Auto-reload on save</td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">VS Code Marketplace</a></td>
+</tr>
+<tr>
+<td><strong>Chrome DevTools</strong></td>
+<td>Debugging in browser</td>
+<td>Built into Chrome</td>
+</tr>
+<tr>
+<td><strong>Open-Meteo</strong></td>
+<td>Weather API without a key</td>
+<td><a href="https://open-meteo.com/">open-meteo.com</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="admonition tip">
+<p class="admonition-title">How to use the course</p>
+<p>Don't rush. Type every piece of code with your own hands — don't copy from solutions. View the result in the browser at every step. If something doesn't work, <strong>open the Console in DevTools</strong> (F12) — that's where the browser tells you exactly what went wrong.</p>
+</div>
+<p><strong>Ready? Let's begin! →</strong> <a href="00-introducere/">Lesson 00: How the web works</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">Overview</span>
+              </a>
+            
+            
+              <a href="00-introducere/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">00: Cum funcționează web-ul</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#web-development-course-for-beginners" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Web Development Course for Beginners</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#what-youll-build" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">What you'll build</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#course-map" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Course map</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#prerequisites" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Prerequisites</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#estimated-duration" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Estimated duration</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#tools-used" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Tools used</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../" class="hover:text-orange-500 transition-colors">Courses</a>
+          
+            <a href="../../projects/" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>
