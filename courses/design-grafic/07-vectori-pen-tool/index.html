@@ -1,0 +1,1016 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07: Vectori și Pen Tool - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="Diferența dintre vector și raster, nodurile și mânerele Bézier, unealta Pen și operațiile booleene pentru construit pictograme.">
+  <link rel="canonical" href="https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/design-grafic/07-vectori-pen-tool/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="07: Vectori și Pen Tool - Ursoaia Edu Online">
+  <meta property="og:description" content="Diferența dintre vector și raster, nodurile și mânerele Bézier, unealta Pen și operațiile booleene pentru construit pictograme.">
+  <meta property="og:url" content="https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="07: Vectori și Pen Tool - Ursoaia Edu Online">
+  <meta name="twitter:description" content="Diferența dintre vector și raster, nodurile și mânerele Bézier, unealta Pen și operațiile booleene pentru construit pictograme.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/#course",
+        "name": "07: Vectori \u0219i Pen Tool - Ursoaia Edu Online",
+        "description": "Diferen\u021ba dintre vector \u0219i raster, nodurile \u0219i m\u00e2nerele B\u00e9zier, unealta Pen \u0219i opera\u021biile booleene pentru construit pictograme.",
+        "url": "https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/",
+        "inLanguage": "ro",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Acas\u0103",
+        "item": "https://ursoaia-edu.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cursuri",
+        "item": "https://ursoaia-edu.online/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Design Grafic",
+        "item": "https://ursoaia-edu.online/courses/design-grafic/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "07: Vectori \u0219i Pen Tool",
+        "item": "https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../assets/fonts.css">
+  <script src="../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../.." class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Acasă</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Cursuri</a>
+          
+            <a href="../../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Proiecte</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Limbă">
+            <a href="../../../en/courses/design-grafic/07-vectori-pen-tool/" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">EN</a>
+            <a href="./" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Acasă</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Cursuri</a>
+          
+            <a href="../../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Proiecte</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Limbă</span>
+            <a href="../../../en/courses/design-grafic/07-vectori-pen-tool/" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">EN</a>
+            <a href="./" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../.." class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Acasă
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Cursuri</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Design Grafic</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">07: Vectori și Pen Tool</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">07: Vectori și Pen Tool</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Diferența dintre vector și raster, nodurile și mânerele Bézier, unealta Pen și operațiile booleene pentru construit pictograme.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">figma</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">vectori</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">pen tool</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">bezier</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">svg</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">pictograme</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lectia-07-vectori-si-pen-tool">Lecția 07 · Vectori și Pen Tool<a class="headerlink" href="#lectia-07-vectori-si-pen-tool" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Ce vei învăța</p>
+<ul>
+<li>Diferența reală dintre <strong>vector</strong> și <strong>raster</strong></li>
+<li>Ce sunt <strong>nodurile</strong> și <strong>mânerele Bézier</strong></li>
+<li>Cum se folosește unealta <strong>Pen</strong> fără să înnebunești</li>
+<li><strong>Stroke</strong>: grosime, capete, colțuri și linii punctate</li>
+<li>Cum construiești un set de <strong>pictograme</strong> coerent</li>
+<li>Ce este <strong>SVG</strong> și de ce contează pentru web</li>
+</ul>
+</div>
+<hr />
+<h2 id="vector-vs-raster">Vector vs. raster<a class="headerlink" href="#vector-vs-raster" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vector</th>
+<th>Raster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cum e stocat</strong></td>
+<td>Formule matematice: puncte, curbe, umpleri</td>
+<td>O grilă de pixeli, fiecare cu culoarea lui</td>
+</tr>
+<tr>
+<td><strong>La mărire</strong></td>
+<td>Rămâne perfect clar la orice dimensiune</td>
+<td>Se pixelează</td>
+</tr>
+<tr>
+<td><strong>Mărime fișier</strong></td>
+<td>Mică, crește cu complexitatea formelor</td>
+<td>Mare, crește cu dimensiunea în pixeli</td>
+</tr>
+<tr>
+<td><strong>Bun pentru</strong></td>
+<td>Logo-uri, pictograme, ilustrații plate, text</td>
+<td>Fotografii, texturi, efecte complexe</td>
+</tr>
+<tr>
+<td><strong>Formate</strong></td>
+<td>SVG, AI, EPS, PDF</td>
+<td>PNG, JPG, WebP, GIF</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">De ce logo-ul trebuie să fie vector</p>
+<p>Logo-ul școlii tale va apărea pe o carte de vizită (2 cm) și pe un banner de intrare (2 m). Un PNG bun pentru banner ar avea zeci de MB; unul bun pentru carte de vizită ar fi neclar pe banner.</p>
+<p>Un SVG de 4 KB arată perfect în ambele cazuri. De asta lecția 12 cere logo-ul obligatoriu în vector.</p>
+</div>
+<p>Figma este, în esență, un editor vectorial. Tot ce desenezi cu Rectangle, Ellipse sau Pen este vector. Doar imaginile importate sunt raster.</p>
+<hr />
+<h2 id="noduri-si-manere">Noduri și mânere<a class="headerlink" href="#noduri-si-manere" title="Link to this section">&para;</a></h2>
+<p>Orice formă vectorială e definită de <strong>noduri</strong> (puncte) legate prin <strong>segmente</strong>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    ●────────────●        două noduri, segment drept
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>         ╭───╮
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ●───╯     ╰───●       două noduri, segment curb
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ●─ ─ ─○               nod (●) și mânerul lui (○)
+</span></code></pre></div>
+<h3 id="tipurile-de-nod">Tipurile de nod<a class="headerlink" href="#tipurile-de-nod" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tip</th>
+<th>Cum arată</th>
+<th>Efect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Colț</strong> (corner)</td>
+<td>Fără mânere, sau mânere independente</td>
+<td>Unghi ascuțit</td>
+</tr>
+<tr>
+<td><strong>Neted</strong> (mirrored)</td>
+<td>Două mânere simetrice, pe aceeași linie</td>
+<td>Curbă continuă, fără frângere</td>
+</tr>
+<tr>
+<td><strong>Asimetric</strong> (angle)</td>
+<td>Două mânere pe aceeași linie, lungimi diferite</td>
+<td>Curbă continuă, dar cu raze diferite</td>
+</tr>
+</tbody>
+</table>
+<p>În Figma, cu nodul selectat, panoul din dreapta îți arată tipul și îl poți schimba.</p>
+<div class="admonition tip">
+<p class="admonition-title">Mai puține noduri = curbă mai bună</p>
+<p>Regula practică a ilustratorilor: <strong>un nod la fiecare schimbare de direcție, niciunul în plus</strong>. Un cerc perfect are 4 noduri, nu 12. O curbă cu 20 de noduri va arăta întotdeauna „ondulată”, oricât ai ajusta-o.</p>
+<p>Dacă o formă a ieșit prost, de obicei nu trebuie ajustată — trebuie refăcută cu mai puține noduri.</p>
+</div>
+<hr />
+<h2 id="unealta-pen">Unealta Pen<a class="headerlink" href="#unealta-pen" title="Link to this section">&para;</a></h2>
+<p>Apasă <span class="keys"><kbd class="key-p">P</kbd></span>. Apoi:</p>
+<table>
+<thead>
+<tr>
+<th>Acțiune</th>
+<th>Rezultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Click</strong></td>
+<td>Adaugă un nod de colț — segment drept</td>
+</tr>
+<tr>
+<td><strong>Click și trage</strong></td>
+<td>Adaugă un nod neted — segment curb; lungimea tragerii dă raza curbei</td>
+</tr>
+<tr>
+<td><strong>Click pe primul nod</strong></td>
+<td>Închide forma</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-escape">Esc</kbd></span> sau <span class="keys"><kbd class="key-enter">Enter</kbd></span></td>
+<td>Termină forma deschisă</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-alt">Alt</kbd></span> + click pe un nod</td>
+<td>Transformă nod neted în nod de colț</td>
+</tr>
+</tbody>
+</table>
+<h3 id="editarea-unei-forme-existente">Editarea unei forme existente<a class="headerlink" href="#editarea-unei-forme-existente" title="Link to this section">&para;</a></h3>
+<p>Dublu-click pe formă → intri în <strong>modul de editare vectorială</strong>. Acum:</p>
+<ul>
+<li><span class="keys"><kbd class="key-v">V</kbd></span> (Move) mută nodurile individual.</li>
+<li><span class="keys"><kbd class="key-p">P</kbd></span> (Pen) adaugă noduri noi pe segmente.</li>
+<li>Tasta <span class="keys"><kbd class="key-delete">Del</kbd></span> șterge un nod și unește segmentele vecine.</li>
+<li><strong>Bend tool</strong> (<span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-b">B</kbd></span>) curbează un segment fără să adaugi noduri.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Pen-ul se învață în ore, nu în minute</p>
+<p>Nimeni nu desenează bine cu Pen din prima. Este singura unealtă din Figma care cere exercițiu muscular, nu doar înțelegere. Exercițiul 2 de mai jos e făcut exact pentru asta — fă-l de trei ori, nu o dată.</p>
+<p>Vestea bună: pentru 90% din munca ta reală vei folosi dreptunghiuri, cercuri și operații booleene, nu Pen.</p>
+</div>
+<hr />
+<h2 id="stroke-conturul">Stroke — conturul<a class="headerlink" href="#stroke-conturul" title="Link to this section">&para;</a></h2>
+<p>Orice formă vectorială poate avea <strong>Fill</strong> (umplere) și <strong>Stroke</strong> (contur), independent.</p>
+<h3 id="proprietatile-stroke-ului">Proprietățile stroke-ului<a class="headerlink" href="#proprietatile-stroke-ului" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Proprietate</th>
+<th>Opțiuni</th>
+<th>Când contează</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td>Grosimea în px</td>
+<td>Consistența unui set de pictograme</td>
+</tr>
+<tr>
+<td><strong>Align</strong></td>
+<td><code>Inside</code>, <code>Center</code>, <code>Outside</code></td>
+<td>Dimensiunea finală a formei</td>
+</tr>
+<tr>
+<td><strong>Cap</strong></td>
+<td><code>None</code>, <code>Round</code>, <code>Square</code>, <code>Arrow</code></td>
+<td>Capetele liniilor deschise</td>
+</tr>
+<tr>
+<td><strong>Join</strong></td>
+<td><code>Miter</code>, <code>Bevel</code>, <code>Round</code></td>
+<td>Aspectul colțurilor</td>
+</tr>
+<tr>
+<td><strong>Dash</strong></td>
+<td>Lungime linie / lungime gol</td>
+<td>Linii punctate</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Align schimbă dimensiunea reală</p>
+<p>Un pătrat de 100 × 100 px cu stroke de 10 px:
+- <code>Inside</code> → ocupă exact 100 × 100 px
+- <code>Center</code> → ocupă 110 × 110 px (5 px în afară pe fiecare parte)
+- <code>Outside</code> → ocupă 120 × 120 px</p>
+<p>Dacă aliniezi elemente și unul are stroke <code>Outside</code>, va părea decalat. Pentru pictograme, folosește <code>Center</code> peste tot, consecvent.</p>
+</div>
+<h3 id="convertirea-stroke-ului-in-forma">Convertirea stroke-ului în formă<a class="headerlink" href="#convertirea-stroke-ului-in-forma" title="Link to this section">&para;</a></h3>
+<p>Uneori ai nevoie ca un contur să devină o formă reală (de exemplu ca să-l scalezi fără să se îngroașe). Meniu: <strong>Object → Outline stroke</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-o">O</kbd></span>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Operația nu se poate anula ușor</p>
+<p>După <code>Outline stroke</code>, nu mai poți schimba grosimea — ai acum un contur al conturului. Fă-o <strong>la final</strong>, și păstrează o copie a versiunii editabile.</p>
+</div>
+<hr />
+<h2 id="operatiile-booleene-in-profunzime">Operațiile booleene în profunzime<a class="headerlink" href="#operatiile-booleene-in-profunzime" title="Link to this section">&para;</a></h2>
+<p>Le-am atins în lecția 02. Acum, detaliile care contează.</p>
+<table>
+<thead>
+<tr>
+<th>Operație</th>
+<th>Scurtătură</th>
+<th>Rezultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Union</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-u">U</kbd></span></td>
+<td>Reuniunea tuturor formelor</td>
+</tr>
+<tr>
+<td><strong>Subtract</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-s">S</kbd></span></td>
+<td>Prima formă minus toate cele de deasupra</td>
+</tr>
+<tr>
+<td><strong>Intersect</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-i">I</kbd></span></td>
+<td>Doar zona comună</td>
+</tr>
+<tr>
+<td><strong>Exclude</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-x">X</kbd></span></td>
+<td>Tot, mai puțin zona comună</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Operațiile rămân editabile</p>
+<p>Spre deosebire de alte programe, în Figma un grup boolean <strong>nu e distructiv</strong>: poți intra în el (dublu-click) și muta formele componente oricând. Rezultatul se recalculează.</p>
+<p>Când vrei să-l „îngheți” definitiv: <strong>Object → Flatten</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-e">E</kbd></span>). Fă-o doar la export.</p>
+</div>
+<h3 id="ordinea-conteaza-la-subtract">Ordinea contează la Subtract<a class="headerlink" href="#ordinea-conteaza-la-subtract" title="Link to this section">&para;</a></h3>
+<p><code>Subtract</code> scade <strong>formele de deasupra</strong> din <strong>cea de dedesubt</strong>. Dacă rezultatul e invers decât te așteptai, selectează forma de deasupra și apasă <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-bracket-left">[</kbd></span> pentru a o trimite în spate (sau rearanjează în panoul Layers).</p>
+<hr />
+<h2 id="construieste-un-set-de-pictograme">Construiește un set de pictograme<a class="headerlink" href="#construieste-un-set-de-pictograme" title="Link to this section">&para;</a></h2>
+<p>Un set de pictograme coerent nu înseamnă „desene frumoase”. Înseamnă <strong>reguli respectate identic</strong> în fiecare desen.</p>
+<h3 id="regulile-setului">Regulile setului<a class="headerlink" href="#regulile-setului" title="Link to this section">&para;</a></h3>
+<ol>
+<li><strong>Grilă fixă.</strong> Toate pictogramele se desenează într-un pătrat de aceeași mărime — standardul e <strong>24 × 24 px</strong>.</li>
+<li><strong>Zonă de siguranță.</strong> Desenul ocupă maximum <strong>20 × 20 px</strong> din cei 24; restul e margine. Astfel pictogramele nu se lipesc de text.</li>
+<li><strong>Grosime unică.</strong> Toate stroke-urile au aceeași grosime — de obicei <strong>2 px</strong> la o grilă de 24.</li>
+<li><strong>Aceleași capete și colțuri.</strong> <code>Cap: Round</code> și <code>Join: Round</code> peste tot, sau <code>Square</code> peste tot. Nu amestecat.</li>
+<li><strong>Aceeași rază de colț.</strong> Dacă un dreptunghi are 2 px rază, toate au 2 px.</li>
+<li><strong>Aliniere la pixel.</strong> Coordonatele sunt numere întregi. O linie de 2 px la X = 11.5 apare neclară.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">De ce 24 × 24 și stroke 2</p>
+<p>24 se împarte la 2, 3, 4, 6, 8 și 12, deci poți centra ușor orice. Stroke-ul de 2 px rămâne clar și la 16 px (se scalează la 1.33) și la 48 px (4 px). Este standardul folosit de Lucide, Feather și majoritatea bibliotecilor moderne.</p>
+</div>
+<h3 id="familia-vizuala">Familia vizuală<a class="headerlink" href="#familia-vizuala" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Stil</th>
+<th>Aspect</th>
+<th>Când</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Outline</strong></td>
+<td>Doar contur, fără umplere</td>
+<td>Navigație, interfețe, stări inactive</td>
+</tr>
+<tr>
+<td><strong>Filled</strong></td>
+<td>Umplute solid</td>
+<td>Stări active, accente</td>
+</tr>
+<tr>
+<td><strong>Duotone</strong></td>
+<td>Contur + umplere parțială cu opacitate</td>
+<td>Ilustrații mici, dashboard-uri</td>
+</tr>
+</tbody>
+</table>
+<p>Un set profesionist are <strong>outline pentru toate</strong> și, opțional, o variantă filled pentru starea „selectat”.</p>
+<hr />
+<h2 id="svg-si-exportul">SVG și exportul<a class="headerlink" href="#svg-si-exportul" title="Link to this section">&para;</a></h2>
+<p><strong>SVG</strong> (Scalable Vector Graphics) este format text — se poate deschide într-un editor și citi.</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">viewBox=</span><span class="s">&quot;0 0 24 24&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;none&quot;</span><span class="w"> </span><span class="na">stroke=</span><span class="s">&quot;currentColor&quot;</span><span class="w"> </span><span class="na">stroke-width=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&lt;circle</span><span class="w"> </span><span class="na">cx=</span><span class="s">&quot;12&quot;</span><span class="w"> </span><span class="na">cy=</span><span class="s">&quot;12&quot;</span><span class="w"> </span><span class="na">r=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M12 8v4l3 3&quot;</span><span class="nt">/&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">&lt;/svg&gt;</span>
+</span></code></pre></div>
+<p>Aceasta e o pictogramă de ceas: un cerc și două linii (acele). 150 de octeți.</p>
+<h3 id="de-ce-conteaza-currentcolor">De ce contează <code>currentColor</code><a class="headerlink" href="#de-ce-conteaza-currentcolor" title="Link to this section">&para;</a></h3>
+<p>Dacă atributul <code>stroke</code> este <code>currentColor</code>, pictograma <strong>preia culoarea textului din jur</strong> prin CSS. O singură pictogramă funcționează și pe fundal deschis, și pe fundal închis, fără să exporți două fișiere.</p>
+<h3 id="export-din-figma">Export din Figma<a class="headerlink" href="#export-din-figma" title="Link to this section">&para;</a></h3>
+<ol>
+<li>Selectează pictograma (frame-ul de 24 × 24, nu forma dinăuntru).</li>
+<li>În panoul din dreapta, jos, la <strong>Export</strong>, apasă <strong>+</strong>.</li>
+<li>Alege formatul <strong>SVG</strong>.</li>
+<li>Bifează <strong>Include "id" attribute</strong> doar dacă ai nevoie; de obicei nu.</li>
+<li><strong>Export</strong>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Curăță SVG-ul</p>
+<p>Figma exportă SVG cu atribute în plus (<code>width</code>, <code>height</code>, culori fixe). Pentru web, trece fișierul prin <a href="https://jakearchibald.github.io/svgomg/">SVGOMG</a> — reduce mărimea cu 30–60% și scoate gunoiul.</p>
+<p>Apoi înlocuiește manual culoarea fixă cu <code>currentColor</code>.</p>
+</div>
+<hr />
+<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
+<h3 id="exercitiu-1-trei-pictograme-pe-grila">Exercițiu 1 — Trei pictograme pe grilă<a class="headerlink" href="#exercitiu-1-trei-pictograme-pe-grila" title="Link to this section">&para;</a></h3>
+<p>Construiește, pe o grilă de 24 × 24 px cu stroke 2 px, <code>Cap: Round</code>, <code>Join: Round</code>: o pictogramă de <strong>casă</strong>, una de <strong>utilizator</strong> și una de <strong>setări</strong> (rotiță sau trei cursoare). Folosește doar forme primare și operații booleene — fără Pen.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><strong>Casa:</strong> un triunghi (Polygon cu 3 laturi) de 20 × 10 px pentru acoperiș, sus; un dreptunghi de 14 × 10 px dedesubt pentru pereți; un dreptunghi mic de 5 × 6 px pentru ușă, centrat jos. Toate cu Fill <code>none</code>, Stroke 2.</p>
+<p><strong>Utilizatorul:</strong> un cerc de 8 × 8 px pentru cap, centrat la X = 12, Y = 8; dedesubt, o formă de umeri făcută dintr-un cerc mare de 18 × 18 px din care scazi (Subtract) un dreptunghi care acoperă jumătatea de jos. Rezultă un arc.</p>
+<p><strong>Setările:</strong> varianta simplă cu trei cursoare — trei linii orizontale de 18 px la Y = 7, 12, 17, plus trei cercuri mici de 4 px așezate pe ele la poziții X diferite (8, 15, 10). Este mai ușor de făcut și mai lizibil la 16 px decât o rotiță dințată.</p>
+<p><strong>Verificare de consecvență:</strong> pune toate trei una lângă alta la 24 px și apoi la 16 px. Dacă una pare mai groasă sau mai plină decât celelalte, ai încălcat una dintre cele șase reguli.</p>
+</details>
+<h3 id="exercitiu-2-pen-tool-traseaza-o-litera">Exercițiu 2 — Pen Tool: trasează o literă<a class="headerlink" href="#exercitiu-2-pen-tool-traseaza-o-litera" title="Link to this section">&para;</a></h3>
+<p>Importă în Figma o captură cu litera <code>S</code> dintr-un font serif, la 400 px înălțime. Blochează imaginea (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-l">L</kbd></span>), scade-i opacitatea la 30% și trasează conturul literei cu Pen.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p>Metoda care funcționează:</p>
+<ol>
+<li>Începe cu nodurile de la <strong>extremele curbelor</strong> — punctele cele mai de sus, de jos, stânga și dreapta. Pentru un <code>S</code> sunt aproximativ 8 astfel de puncte.</li>
+<li>La fiecare, <strong>click și trage</strong> pe direcția tangentei (orizontal la extremele de sus/jos, vertical la cele de stânga/dreapta). Mânerele trebuie să fie <strong>orizontale sau verticale</strong>, nu oblice.</li>
+<li>Nu adăuga noduri „ca să iasă mai bine”. Dacă o curbă nu e corectă, ajustează <strong>mânerele</strong> nodurilor existente.</li>
+<li>Închide forma pe primul nod.</li>
+</ol>
+<p><strong>Verificare:</strong> ascunde imaginea de fundal. Litera ta trebuie să arate ca o literă și fără referință. Dacă are „umflături”, ai prea multe noduri sau mânere oblice.</p>
+<p>Fă exercițiul de trei ori, la zile diferite. Diferența dintre prima și a treia încercare va fi mai mare decât te aștepți.</p>
+</details>
+<h3 id="exercitiu-3-trei-forme-din-operatii-booleene">Exercițiu 3 — Trei forme din operații booleene<a class="headerlink" href="#exercitiu-3-trei-forme-din-operatii-booleene" title="Link to this section">&para;</a></h3>
+<p>Construiește, folosind doar dreptunghiuri și cercuri plus operații booleene: un <strong>semn de vorbire</strong> (bulă de dialog cu coadă), o <strong>pictogramă de descărcare</strong> (săgeată în jos peste o linie) și un <strong>marcaj de locație</strong> (picătura de hartă).</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><strong>Bula de dialog:</strong> dreptunghi 20 × 14 px cu rază 4, plus un triunghi mic de 5 × 5 px lipit de marginea de jos-stânga. <strong>Union</strong>.</p>
+<p><strong>Descărcarea:</strong> o linie verticală de 2 × 10 px, plus un triunghi de 10 × 6 px dedesubt (Union pentru săgeată), plus o linie orizontală separată de 16 × 2 px jos — aceasta rămâne separată, nu se unește.</p>
+<p><strong>Marcajul de locație:</strong> un cerc de 14 × 14 px sus, plus un triunghi de 14 × 10 px cu vârful în jos, suprapuse cu ~4 px. <strong>Union</strong> → rezultă picătura. Apoi un cerc mic de 5 × 5 px în centrul părții rotunde, selectat împreună cu forma → <strong>Subtract</strong> → rezultă gaura.</p>
+<p><strong>Observație:</strong> niciuna dintre cele trei nu a cerut Pen. Aceasta este regula generală — încearcă întâi cu forme primare, folosește Pen doar când chiar nu se poate altfel.</p>
+</details>
+<hr />
+<h2 id="mini-proiect-set-de-8-pictograme-pentru-cercul-de-informatica">Mini-proiect: set de 8 pictograme pentru cercul de informatică<a class="headerlink" href="#mini-proiect-set-de-8-pictograme-pentru-cercul-de-informatica" title="Link to this section">&para;</a></h2>
+<p>Construiește un set coerent de <strong>8 pictograme</strong> de 24 × 24 px pe teme legate de cerc: <code>cod</code>, <code>placă de dezvoltare</code>, <code>senzor</code>, <code>wifi</code>, <code>baterie</code>, <code>ciocan de lipit</code>, <code>calendar</code>, <code>utilizator</code>. Exportă-le în SVG.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><strong>Configurarea:</strong>
+1. Creează un frame de 24 × 24 px, redenumește-l <code>icon/cod</code>.
+2. Adaugă-i o grilă de layout: <code>Grid</code>, size 1, culoare foarte discretă — te ajută la alinierea pe pixel.
+3. Desenează în interiorul zonei de siguranță de 20 × 20 px (margine 2 px pe fiecare parte).
+4. Duplică frame-ul (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span>) pentru fiecare pictogramă nouă și redenumește.</p>
+<p><strong>Reguli aplicate identic:</strong> Stroke 2 px, <code>Align: Center</code>, <code>Cap: Round</code>, <code>Join: Round</code>, rază de colț 2 px, coordonate întregi.</p>
+<p><strong>Câteva construcții:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pictogramă</th>
+<th>Construcție</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cod</code></td>
+<td>Două perechi de linii formând <code>&lt;</code> și <code>&gt;</code>, plus o linie oblică la mijloc</td>
+</tr>
+<tr>
+<td><code>placă</code></td>
+<td>Dreptunghi 16 × 16 rază 2, plus 3 linii scurte pe fiecare latură (pinii), plus un pătrat mic 6 × 6 în centru (cipul)</td>
+</tr>
+<tr>
+<td><code>wifi</code></td>
+<td>Trei arce concentrice (cercuri din care scazi un dreptunghi pentru jumătatea de jos), plus un punct de 2 px</td>
+</tr>
+<tr>
+<td><code>baterie</code></td>
+<td>Dreptunghi 18 × 10 rază 2, plus un dreptunghi 2 × 4 lipit la dreapta (borna)</td>
+</tr>
+<tr>
+<td><code>calendar</code></td>
+<td>Dreptunghi 18 × 16 rază 2, o linie orizontală la 4 px de sus, două linii verticale scurte deasupra</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exportul:</strong>
+- Selectează toate cele 8 frame-uri.
+- <strong>Export → SVG → Export 8 layers</strong>. Figma le salvează cu numele frame-urilor.
+- Trece fișierele prin SVGOMG și înlocuiește culoarea cu <code>currentColor</code>.</p>
+<p><strong>Testul final de coerență:</strong> pune toate cele 8 pe un rând la 24 px, apoi fă o copie la 16 px și una la 48 px. Într-un set bun, toate cele opt par să aibă aceeași „densitate” la fiecare dimensiune. Dacă una pare mai grea, are prea multe detalii — simplific-o.</p>
+</details>
+<hr />
+<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>Vector</strong> = formule, se scalează perfect; <strong>raster</strong> = pixeli, se pixelează.</li>
+<li>Logo-urile și pictogramele sunt <strong>întotdeauna</strong> vector.</li>
+<li>O formă = <strong>noduri</strong> + <strong>segmente</strong>; nodurile pot fi de colț, netede sau asimetrice.</li>
+<li><strong>Mai puține noduri dau curbe mai bune.</strong> Un cerc are 4 noduri.</li>
+<li>Pen: <strong>click</strong> = colț, <strong>click și trage</strong> = curbă. Se învață prin repetiție.</li>
+<li><code>Stroke Align</code> schimbă <strong>dimensiunea reală</strong> a formei — folosește <code>Center</code> consecvent.</li>
+<li>Booleene: <strong>Union, Subtract, Intersect, Exclude</strong> — rămân editabile până la <code>Flatten</code>.</li>
+<li>Pictograme: grilă <strong>24 × 24</strong>, zonă de siguranță <strong>20 × 20</strong>, stroke <strong>2 px</strong>, capete și colțuri identice.</li>
+<li><strong>SVG</strong> cu <code>currentColor</code> funcționează pe orice fundal; curăță-l cu SVGOMG.</li>
+</ul>
+<hr />
+<p><strong>Pasul următor:</strong> <a href="../08-stiluri-si-componente/">→ Lecția 08: Stiluri și componente</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../06-ierarhie-vizuala/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Anterior
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">06: Ierarhie vizuală</span>
+              </a>
+            
+            
+              <a href="../08-stiluri-si-componente/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Următor <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">08: Stiluri și componente</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> În această pagină
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lectia-07-vectori-si-pen-tool" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 07 · Vectori și Pen Tool</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#vector-vs-raster" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Vector vs. raster</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#noduri-si-manere" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Noduri și mânere</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#unealta-pen" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Unealta Pen</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#stroke-conturul" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Stroke — conturul</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#operatiile-booleene-in-profunzime" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Operațiile booleene în profunzime</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#construieste-un-set-de-pictograme" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Construiește un set de pictograme</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#svg-si-exportul" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">SVG și exportul</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-proiect-set-de-8-pictograme-pentru-cercul-de-informatica" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: set de 8 pictograme pentru cercul de informatică</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../.." class="hover:text-orange-500 transition-colors">Acasă</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Cursuri</a>
+          
+            <a href="../../../projects/" class="hover:text-orange-500 transition-colors">Proiecte</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source, construit cu fum de lipire.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

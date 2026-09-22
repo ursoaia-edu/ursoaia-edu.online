@@ -1,0 +1,1333 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14: Design de interfață web - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="From wireframe to mockup, interface components, responsive design and what you hand over to HTML and CSS.">
+  <link rel="canonical" href="https://ursoaia-edu.online/en/courses/design-grafic/14-design-interfata-web/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/design-grafic/14-design-interfata-web/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="14: Design de interfață web - Ursoaia Edu Online">
+  <meta property="og:description" content="From wireframe to mockup, interface components, responsive design and what you hand over to HTML and CSS.">
+  <meta property="og:url" content="https://ursoaia-edu.online/en/courses/design-grafic/14-design-interfata-web/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="14: Design de interfață web - Ursoaia Edu Online">
+  <meta name="twitter:description" content="From wireframe to mockup, interface components, responsive design and what you hand over to HTML and CSS.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/en/courses/design-grafic/14-design-interfata-web/#course",
+        "name": "14: Design de interfa\u021b\u0103 web - Ursoaia Edu Online",
+        "description": "From wireframe to mockup, interface components, responsive design and what you hand over to HTML and CSS.",
+        "url": "https://ursoaia-edu.online/en/courses/design-grafic/14-design-interfata-web/",
+        "inLanguage": "en",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ursoaia-edu.online/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://ursoaia-edu.online/en/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Graphic Design",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "14: Design de interfa\u021b\u0103 web",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/14-design-interfata-web/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../../assets/fonts.css">
+  <script src="../../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../../" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Courses</a>
+          
+            <a href="../../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">EN</a>
+            <a href="../../../../courses/design-grafic/14-design-interfata-web/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">EN</a>
+            <a href="../../../../courses/design-grafic/14-design-interfata-web/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../../" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Courses</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Graphic Design</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">14: Design de interfață web</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">14: Design de interfață web</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">From wireframe to mockup, interface components, responsive design and what you hand over to HTML and CSS.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">ui</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">ux</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">wireframe</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">mockup</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">responsive</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">handoff</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lesson-14-web-interface-design">Lesson 14 · Web interface design<a class="headerlink" href="#lesson-14-web-interface-design" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">What you will learn</p>
+<ul>
+<li>The difference between <strong>UX</strong> and <strong>UI</strong>, without jargon</li>
+<li><strong>Wireframe</strong> → <strong>mockup</strong> → <strong>prototype</strong>: what happens at each stage</li>
+<li>The standard interface components and their <strong>states</strong></li>
+<li><strong>Responsive design</strong>: mobile-first, breakpoints, what changes</li>
+<li>Accessibility in interfaces: contrast, touch target, focus</li>
+<li><strong>Handoff</strong>: what the developer receives from you</li>
+</ul>
+</div>
+<hr />
+<h2 id="ux-and-ui">UX and UI<a class="headerlink" href="#ux-and-ui" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>UX (User Experience)</th>
+<th>UI (User Interface)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The question</strong></td>
+<td>What must the user be able to do, and in what order?</td>
+<td>How does each element look and behave?</td>
+</tr>
+<tr>
+<td><strong>Deliverables</strong></td>
+<td>Flows, screen maps, wireframes</td>
+<td>Mockups, components, styles, prototype</td>
+</tr>
+<tr>
+<td><strong>It goes wrong when</strong></td>
+<td>The flow has 7 steps instead of 3</td>
+<td>The button is beautiful but invisible</td>
+</tr>
+</tbody>
+</table>
+<p>Both matter. A perfect UI on a bad UX gives you a beautiful app nobody uses.</p>
+<div class="admonition note">
+<p class="admonition-title">The starting rule</p>
+<p>Before you draw a single screen, write the <strong>flow</strong> in words:</p>
+<blockquote>
+<p>A student wants to join the club.
+1. Lands on the site → sees the home page
+2. Presses "Join" → sees the form
+3. Fills in name, class, email → presses "Submit"
+4. Sees the confirmation</p>
+</blockquote>
+<p>Four steps, four screens. Now you know exactly what to draw.</p>
+</div>
+<hr />
+<h2 id="wireframe-mockup-prototype">Wireframe, mockup, prototype<a class="headerlink" href="#wireframe-mockup-prototype" title="Link to this section">&para;</a></h2>
+<h3 id="wireframe-the-structure">Wireframe — the structure<a class="headerlink" href="#wireframe-the-structure" title="Link to this section">&para;</a></h3>
+<p>Grey, no colours, no photos, no final fonts. Just rectangles and placeholder text.</p>
+<p><strong>The purpose:</strong> decide <strong>what</strong> is on screen and <strong>where</strong>, without being distracted by looks.</p>
+<table>
+<thead>
+<tr>
+<th>Convention</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rectangle with a diagonal X</td>
+<td>An image</td>
+</tr>
+<tr>
+<td>Grey horizontal lines</td>
+<td>A block of text</td>
+</tr>
+<tr>
+<td>Rounded rectangle + centred text</td>
+<td>A button</td>
+</tr>
+<tr>
+<td>Outlined rectangle + grey text</td>
+<td>A form field</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">A wireframe takes 15 minutes, not 2 hours</p>
+<p>If you spend a long time on a wireframe, you are making it too detailed. Its purpose is to be <strong>thrown away</strong> — if the structure does not work, you redo the wireframe in 10 minutes, not the mockup in 3 hours.</p>
+</div>
+<h3 id="mockup-the-appearance">Mockup — the appearance<a class="headerlink" href="#mockup-the-appearance" title="Link to this section">&para;</a></h3>
+<p>The wireframe + colours, typography, images, real spacing. It looks like the final product but does nothing.</p>
+<h3 id="prototype-the-behaviour">Prototype — the behaviour<a class="headerlink" href="#prototype-the-behaviour" title="Link to this section">&para;</a></h3>
+<p>The mockups linked together, with transitions. It can be clicked and navigated. We build it in lesson 16.</p>
+<hr />
+<h2 id="the-grid-and-breakpoints">The grid and breakpoints<a class="headerlink" href="#the-grid-and-breakpoints" title="Link to this section">&para;</a></h2>
+<h3 id="mobile-first">Mobile-first<a class="headerlink" href="#mobile-first" title="Link to this section">&para;</a></h3>
+<p>You design <strong>for the phone first</strong>, then expand. The reasons:</p>
+<ol>
+<li>Over 60% of web traffic comes from phones.</li>
+<li>The phone is the harshest constraint — if it fits there, it fits anywhere.</li>
+<li>Expanding is easier than compressing. A desktop design squeezed onto a phone almost always ends up cluttered.</li>
+</ol>
+<h3 id="standard-breakpoints">Standard breakpoints<a class="headerlink" href="#standard-breakpoints" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Frame width</th>
+<th>Columns</th>
+<th>Margin</th>
+<th>Gutter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phone</strong></td>
+<td>390 px</td>
+<td>4</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td><strong>Tablet</strong></td>
+<td>768 px</td>
+<td>8</td>
+<td>32</td>
+<td>24</td>
+</tr>
+<tr>
+<td><strong>Desktop</strong></td>
+<td>1440 px</td>
+<td>12</td>
+<td>96</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">What changes at each breakpoint</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Phone</th>
+<th>Desktop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigation</td>
+<td>Hamburger menu</td>
+<td>Visible horizontal links</td>
+</tr>
+<tr>
+<td>Content columns</td>
+<td>1</td>
+<td>2–3</td>
+</tr>
+<tr>
+<td>Cards</td>
+<td>Stacked</td>
+<td>A grid of 3</td>
+</tr>
+<tr>
+<td>Body text</td>
+<td>16 px</td>
+<td>16–18 px</td>
+</tr>
+<tr>
+<td>Main heading</td>
+<td>32 px</td>
+<td>48–64 px</td>
+</tr>
+<tr>
+<td>Margins</td>
+<td>16 px</td>
+<td>96 px</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h2 id="interface-components-and-their-states">Interface components and their states<a class="headerlink" href="#interface-components-and-their-states" title="Link to this section">&para;</a></h2>
+<p>An interface element <strong>is not an image</strong>. It has states, and each one must be drawn.</p>
+<h3 id="the-mandatory-states">The mandatory states<a class="headerlink" href="#the-mandatory-states" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>When it appears</th>
+<th>What typically changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Default</strong></td>
+<td>Normal</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Hover</strong></td>
+<td>Mouse over it (desktop only)</td>
+<td>A darker / lighter fill</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Selected with <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+<td><strong>A visible outline</strong> of 2–3 px</td>
+</tr>
+<tr>
+<td><strong>Active / pressed</strong></td>
+<td>While being pressed</td>
+<td>Slightly darker, sometimes slightly smaller</td>
+</tr>
+<tr>
+<td><strong>Disabled</strong></td>
+<td>Unavailable</td>
+<td>Reduced opacity, no pointer cursor</td>
+</tr>
+<tr>
+<td><strong>Loading</strong></td>
+<td>Waiting for a response</td>
+<td>An indicator, a changed label</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">The focus state is not optional</p>
+<p>Many people navigate with the keyboard — out of habit, for speed, or because they cannot use a mouse. If you remove the focus outline ("it looks ugly"), those people can no longer use the site at all.</p>
+<p>The focus outline is <strong>drawn deliberately</strong>, in the brand colour, 2–3 px thick with a 2 px offset. It is not removed.</p>
+</div>
+<h3 id="the-basic-components">The basic components<a class="headerlink" href="#the-basic-components" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>What must be drawn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Button</strong></td>
+<td>3 types (primary, secondary, ghost) × 5 states</td>
+</tr>
+<tr>
+<td><strong>Text field</strong></td>
+<td>default, focus, filled, error, disabled + label + error message</td>
+</tr>
+<tr>
+<td><strong>Card</strong></td>
+<td>With and without an image, with and without an action</td>
+</tr>
+<tr>
+<td><strong>Navigation</strong></td>
+<td>Desktop and mobile, with the "current page" state</td>
+</tr>
+<tr>
+<td><strong>System message</strong></td>
+<td>Success, warning, error, info</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-touch-target">The touch target<a class="headerlink" href="#the-touch-target" title="Link to this section">&para;</a></h3>
+<p>On a phone, any element that gets pressed must have at least <strong>44 × 44 px</strong> of active area — no matter how small the icon inside it is.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    ┌──────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    │   ┌──────┐   │   ← active area: 44 × 44
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    │   │ icon │   │   ← the icon: 24 × 24
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    │   │24×24 │   │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   └──────┘   │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    └──────────────┘
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">The classic mistake</p>
+<p>A "close" button drawn as a 16 px X with no padding. On a phone it is almost impossible to hit. Add padding up to 44 × 44, even if the extra area is transparent.</p>
+</div>
+<hr />
+<h2 id="accessibility-in-interfaces">Accessibility in interfaces<a class="headerlink" href="#accessibility-in-interfaces" title="Link to this section">&para;</a></h2>
+<p>On top of the contrast from lesson 03:</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>The rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text contrast</td>
+<td>4.5:1 normal, 3:1 for text ≥ 24 px</td>
+</tr>
+<tr>
+<td>Interactive element contrast</td>
+<td><strong>3:1</strong> for field outlines and functional icons</td>
+</tr>
+<tr>
+<td>Touch target</td>
+<td>At least 44 × 44 px</td>
+</tr>
+<tr>
+<td>Visible focus</td>
+<td>An outline of at least 2 px, 3:1 contrast against the background</td>
+</tr>
+<tr>
+<td>Form labels</td>
+<td><strong>Above</strong> the field, never placeholder only</td>
+</tr>
+<tr>
+<td>Errors</td>
+<td>Explicit text, not just a red outline</td>
+</tr>
+<tr>
+<td>Body text</td>
+<td>At least 16 px on mobile (below 16 px, iOS zooms automatically)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Why a placeholder is not a label</p>
+<p>If the only "Name" hint is the placeholder inside the field, it <strong>disappears</strong> the moment the user starts typing. Anyone who is interrupted and comes back no longer knows what they were filling in. The label sits above and stays.</p>
+</div>
+<hr />
+<h2 id="handoff-what-you-give-the-developer">Handoff — what you give the developer<a class="headerlink" href="#handoff-what-you-give-the-developer" title="Link to this section">&para;</a></h2>
+<p>A badly handed-over design costs more time than doing it properly would have taken.</p>
+<h3 id="what-the-developer-receives">What the developer receives<a class="headerlink" href="#what-the-developer-receives" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Deliverable</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The Figma link</strong> with view rights</td>
+<td>Not screenshots</td>
+</tr>
+<tr>
+<td><strong>The Foundations page</strong></td>
+<td>Colours with style names, the type scale, the spacing system</td>
+</tr>
+<tr>
+<td><strong>The components</strong> with every state</td>
+<td>Not just the default state</td>
+</tr>
+<tr>
+<td><strong>The screens</strong> at all 3 breakpoints</td>
+<td>Phone, tablet, desktop</td>
+</tr>
+<tr>
+<td><strong>Exported assets</strong></td>
+<td>SVGs for icons and the logo, images at 2×</td>
+</tr>
+<tr>
+<td><strong>Notes</strong></td>
+<td>What happens on click, which texts are dynamic, what happens when the list is empty</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dev-mode">Dev Mode<a class="headerlink" href="#dev-mode" title="Link to this section">&para;</a></h3>
+<p>Figma has a dedicated mode (the toggle at the top right). A developer with access sees:</p>
+<ul>
+<li>Dimensions, spacing and colours as CSS, directly copyable</li>
+<li>Style and component names</li>
+<li>Distances between elements, measured automatically</li>
+<li>Assets to download</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Auto Layout does half the handoff</p>
+<p>A design built with Auto Layout (lesson 09) shows the developer <code>display: flex; gap: 16px; padding: 24px</code> directly. A design with manually positioned elements forces them to measure and guess.</p>
+</div>
+<h3 id="the-cases-everyone-forgets">The cases everyone forgets<a class="headerlink" href="#the-cases-everyone-forgets" title="Link to this section">&para;</a></h3>
+<p>Draw them, even if they look boring:</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>The question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Empty state</strong></td>
+<td>What is shown when there are no projects yet?</td>
+</tr>
+<tr>
+<td><strong>Long text</strong></td>
+<td>What happens with a 15-word title? Does it wrap or truncate with <code>…</code>?</td>
+</tr>
+<tr>
+<td><strong>Missing image</strong></td>
+<td>What appears in its place?</td>
+</tr>
+<tr>
+<td><strong>Network error</strong></td>
+<td>What does the user see?</td>
+</tr>
+<tr>
+<td><strong>Loading</strong></td>
+<td>A skeleton, a spinner, or nothing?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-flow-and-wireframe">Exercise 1 — Flow and wireframe<a class="headerlink" href="#exercise-1-flow-and-wireframe" title="Link to this section">&para;</a></h3>
+<p>Write the flow in words for "a visitor wants to see the details of a club project", then draw the wireframes of the screens, at 390 px wide.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>The flow:</strong></p>
+<blockquote>
+<ol>
+<li>Lands on the home page → sees a list of projects</li>
+<li>Presses a project → sees the project page</li>
+<li>Scrolls → sees the description, the schematic, the code</li>
+<li>(optional) Presses "View on GitHub" → leaves the site</li>
+</ol>
+</blockquote>
+<p>Three screens to draw (the fourth is external).</p>
+<p><strong>Wireframe screen 1 — the list:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│ ☰   Logo        🔍 │  ← header, 56 px
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├────────────────────┤
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│ Projects           │  ← page title
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│                    │
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│ ┌────────────────┐ │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│ │ ╲╱  Title      │ │  ← card: image + title + tag
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│ │ ╱╲  ▬▬▬▬ ▬▬    │ │
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│ └────────────────┘ │
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│ ┌────────────────┐ │
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│ │ ╲╱  Title      │ │
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│ │ ╱╲  ▬▬▬▬ ▬▬    │ │
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│ └────────────────┘ │
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└────────────────────┘
+</span></code></pre></div></p>
+<p><strong>Screen 2 — the project:</strong> a header with a "back" button, a large image, the title, tags, the description, a code section, a "View on GitHub" button.</p>
+<p><strong>Screen 3 = screen 2 scrolled.</strong> No separate wireframe needed — just note "scroll".</p>
+<p><strong>The check:</strong> can someone walk the flow looking only at the wireframes, with no explanation from you? If they ask "and where do I go from here?", a screen or a button is missing.</p>
+</details>
+<h3 id="exercise-2-one-form-field-every-state">Exercise 2 — One form field, every state<a class="headerlink" href="#exercise-2-one-form-field-every-state" title="Link to this section">&para;</a></h3>
+<p>Draw a labelled text field in all six mandatory states. Check the contrast of each.</p>
+<details class="success">
+<summary>Solution</summary>
+<p>The component structure (vertical Auto Layout, gap 6):
+- Label: 13 px Medium, <code>text/base</code>
+- Field: 44 px tall, 16 horizontal padding, 8 radius, 1 px border
+- Message (optional): 12 px Regular</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Border</th>
+<th>Fill</th>
+<th>Text</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default</td>
+<td>1 px <code>#334155</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/muted</code> (placeholder)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Hover</td>
+<td>1 px <code>#475569</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/muted</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>2 px <code>brand/primary</code> + 2 px offset</td>
+<td><code>#0F172A</code></td>
+<td><code>text/strong</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Filled</td>
+<td>1 px <code>#334155</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/strong</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>2 px <code>feedback/error</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/strong</code></td>
+<td><code>feedback/error</code>: "That email address is not valid"</td>
+</tr>
+<tr>
+<td>Disabled</td>
+<td>1 px <code>#1E293B</code></td>
+<td><code>#111827</code></td>
+<td><code>text/muted</code> 50%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The checks:</strong>
+- The default border: <code>#334155</code> on <code>#0F172A</code> → 2.1:1. It <strong>fails</strong> the 3:1 requirement for interactive elements. Fix: <code>#475569</code> → 3.4:1. Passes.
+- The error text: <code>#F87171</code> on <code>#0F172A</code> → 6.8:1. Passes.
+- The 44 px height meets the minimum touch target.</p>
+<p><strong>The mistake you avoided:</strong> marking the error state with the red border <strong>alone</strong>. With a text message it also works for anyone who cannot distinguish red.</p>
+</details>
+<h3 id="exercise-3-the-same-screen-at-three-widths">Exercise 3 — The same screen at three widths<a class="headerlink" href="#exercise-3-the-same-screen-at-three-widths" title="Link to this section">&para;</a></h3>
+<p>Take the list screen from exercise 1 and draw it at 390, 768 and 1440 px. Note exactly what changes at each threshold.</p>
+<details class="success">
+<summary>Solution</summary>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>390 px</th>
+<th>768 px</th>
+<th>1440 px</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigation</td>
+<td>Hamburger</td>
+<td>Hamburger</td>
+<td>4 horizontal links + a button</td>
+</tr>
+<tr>
+<td>Margin</td>
+<td>16</td>
+<td>32</td>
+<td>96</td>
+</tr>
+<tr>
+<td>Grid columns</td>
+<td>4</td>
+<td>8</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Cards per row</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Card width</td>
+<td>Fill (358 px)</td>
+<td>4 columns</td>
+<td>4 columns</td>
+</tr>
+<tr>
+<td>Page title</td>
+<td>32 px</td>
+<td>40 px</td>
+<td>48 px</td>
+</tr>
+<tr>
+<td>Body text</td>
+<td>16 px</td>
+<td>16 px</td>
+<td>16 px</td>
+</tr>
+<tr>
+<td>Card image</td>
+<td>16:9</td>
+<td>16:9</td>
+<td>16:9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What does NOT change:</strong> the palette, the fonts, the corner radii, the image ratios, the touch target heights.</p>
+<p><strong>The important observation:</strong> body text stays 16 px at every width. 20 px text on desktop looks "too big" to most readers. What changes is the <strong>line length</strong>, controlled through column width, not through letter size.</p>
+<p><strong>The Auto Layout check:</strong> if you built the cards on <code>Fill</code> inside a container with <code>Wrap</code>, the shift from 1 to 2 to 3 cards per row happens <strong>by itself</strong> when you change the screen width. If you had to move them by hand, the structure is incomplete.</p>
+</details>
+<hr />
+<h2 id="mini-project-the-clubs-project-page">Mini-project: the club's project page<a class="headerlink" href="#mini-project-the-clubs-project-page" title="Link to this section">&para;</a></h2>
+<p>Design <strong>three screens</strong> of a website for the computer science club — the home page, the project list and a single project page — at all three breakpoints, using the visual identity from lesson 12.</p>
+<details class="success">
+<summary>Deliverables and criteria</summary>
+<p><strong>The Figma file structure:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Flows</code></td>
+<td>The written flow + the screen map</td>
+</tr>
+<tr>
+<td><code>Wireframes</code></td>
+<td>The 3 screens × 390 px, in grey</td>
+</tr>
+<tr>
+<td><code>Components</code></td>
+<td>Button, field, card, navigation, badge — all with their states</td>
+</tr>
+<tr>
+<td><code>Screens</code></td>
+<td>3 screens × 3 breakpoints = 9 frames</td>
+</tr>
+<tr>
+<td><code>Handoff</code></td>
+<td>Notes for the developer, empty states, edge cases</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The minimum components, with all their states:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>States / variants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>button</code></td>
+<td>3 types × 5 states</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td>6 states</td>
+</tr>
+<tr>
+<td><code>card/project</code></td>
+<td>with image / without image</td>
+</tr>
+<tr>
+<td><code>nav</code></td>
+<td>mobile (closed / open) + desktop</td>
+</tr>
+<tr>
+<td><code>badge</code></td>
+<td>3 categories</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The edge cases to draw:</strong>
+- The <strong>empty</strong> project list ("No projects yet. Check back soon.")
+- A 12-word project title
+- A card with no image
+- The 404 error screen</p>
+<p><strong>The evaluation criteria:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Criterion</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The flow is written before drawing</td>
+<td>The <code>Flows</code> page exists</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mobile-first</td>
+<td>The wireframes are at 390 px</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Every state drawn</td>
+<td>Focus and disabled included</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Touch targets ≥ 44 px</td>
+<td>Measure the small buttons</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Text contrast ≥ 4.5:1, interactive ≥ 3:1</td>
+<td>The Contrast plugin</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Labels above the fields</td>
+<td>Not placeholder only</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Everything is Auto Layout</td>
+<td>Change a screen's width — does it adapt?</td>
+</tr>
+<tr>
+<td>8</td>
+<td>One primary button per screen</td>
+<td>Count them</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Edge cases drawn</td>
+<td>The 4 above</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Only styles, zero hand-typed HEX</td>
+<td>Check 10 random elements</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The link to the Web course:</strong> the screens you designed here get actually built in HTML and CSS. See <a href="../../web/08-css-flexbox-grid/">Flexbox and Grid</a> for the structure and <a href="../../web/10-css-responsive/">Responsive design</a> for the breakpoints. Your Auto Layout translates almost line for line.</p>
+</details>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>UX</strong> = what the user can do; <strong>UI</strong> = how it looks and behaves.</li>
+<li>Write the <strong>flow in words</strong> before drawing a screen.</li>
+<li><strong>Wireframe</strong> (structure, grey, 15 minutes) → <strong>mockup</strong> (appearance) → <strong>prototype</strong> (behaviour).</li>
+<li><strong>Mobile-first</strong>: 390 → 768 → 1440 px; 4 → 8 → 12 columns.</li>
+<li>Every component has <strong>6 states</strong>: default, hover, focus, active, disabled, loading.</li>
+<li><strong>The focus outline is never removed.</strong></li>
+<li>Minimum touch target: <strong>44 × 44 px</strong>.</li>
+<li>Contrast: <strong>4.5:1</strong> text, <strong>3:1</strong> interactive elements.</li>
+<li>The label sits <strong>above</strong> the field; a placeholder is not a label.</li>
+<li>Handoff = a Figma link + components with states + 3 breakpoints + assets + <strong>the edge cases</strong>.</li>
+</ul>
+<hr />
+<p><strong>Next step:</strong> <a href="../15-proiect-identitate-vizuala/">→ Lesson 15: Visual identity for the computer science club</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../13-proiect-social-media/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">13: Proiect Social Media</span>
+              </a>
+            
+            
+              <a href="../15-proiect-identitate-vizuala/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">15: Proiect Identitate vizuală</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lesson-14-web-interface-design" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 14 · Web interface design</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#ux-and-ui" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">UX and UI</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#wireframe-mockup-prototype" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Wireframe, mockup, prototype</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#the-grid-and-breakpoints" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The grid and breakpoints</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#interface-components-and-their-states" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Interface components and their states</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#accessibility-in-interfaces" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Accessibility in interfaces</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#handoff-what-you-give-the-developer" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Handoff — what you give the developer</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-project-the-clubs-project-page" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: the club's project page</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../../" class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

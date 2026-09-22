@@ -1,0 +1,1044 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09: Auto Layout - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="Aranjare automată, direcție, spațiere și padding, comportamentul de redimensionare și cum se leagă Auto Layout de CSS Flexbox.">
+  <link rel="canonical" href="https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/design-grafic/09-auto-layout/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="09: Auto Layout - Ursoaia Edu Online">
+  <meta property="og:description" content="Aranjare automată, direcție, spațiere și padding, comportamentul de redimensionare și cum se leagă Auto Layout de CSS Flexbox.">
+  <meta property="og:url" content="https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="09: Auto Layout - Ursoaia Edu Online">
+  <meta name="twitter:description" content="Aranjare automată, direcție, spațiere și padding, comportamentul de redimensionare și cum se leagă Auto Layout de CSS Flexbox.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/#course",
+        "name": "09: Auto Layout - Ursoaia Edu Online",
+        "description": "Aranjare automat\u0103, direc\u021bie, spa\u021biere \u0219i padding, comportamentul de redimensionare \u0219i cum se leag\u0103 Auto Layout de CSS Flexbox.",
+        "url": "https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/",
+        "inLanguage": "ro",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Acas\u0103",
+        "item": "https://ursoaia-edu.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cursuri",
+        "item": "https://ursoaia-edu.online/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Design Grafic",
+        "item": "https://ursoaia-edu.online/courses/design-grafic/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "09: Auto Layout",
+        "item": "https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../assets/fonts.css">
+  <script src="../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../.." class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Acasă</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Cursuri</a>
+          
+            <a href="../../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Proiecte</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Limbă">
+            <a href="../../../en/courses/design-grafic/09-auto-layout/" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">EN</a>
+            <a href="./" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Acasă</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Cursuri</a>
+          
+            <a href="../../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Proiecte</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Limbă</span>
+            <a href="../../../en/courses/design-grafic/09-auto-layout/" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">EN</a>
+            <a href="./" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../.." class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Acasă
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Cursuri</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Design Grafic</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">09: Auto Layout</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">09: Auto Layout</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Aranjare automată, direcție, spațiere și padding, comportamentul de redimensionare și cum se leagă Auto Layout de CSS Flexbox.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">figma</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">auto layout</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">flexbox</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">spațiere</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">responsive</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lectia-09-auto-layout">Lecția 09 · Auto Layout<a class="headerlink" href="#lectia-09-auto-layout" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Ce vei învăța</p>
+<ul>
+<li>Ce este <strong>Auto Layout</strong> și ce problemă rezolvă</li>
+<li><strong>Direcție</strong>, <strong>gap</strong> și <strong>padding</strong></li>
+<li><strong>Alinierea</strong> în interiorul containerului și <code>Space between</code></li>
+<li><strong>Hug</strong>, <strong>Fill</strong> și <strong>Fixed</strong> — cele trei comportamente de redimensionare</li>
+<li>Auto Layout <strong>imbricat</strong>, cel mai important concept al lecției</li>
+<li>Cum se traduce totul în <strong>CSS Flexbox</strong></li>
+</ul>
+</div>
+<hr />
+<h2 id="problema">Problema<a class="headerlink" href="#problema" title="Link to this section">&para;</a></h2>
+<p>Ai un buton cu textul „Salvează”. Îl faci frumos: text centrat, 16 px spațiu în jur. Apoi schimbi textul în „Salvează modificările”.</p>
+<p>Fără Auto Layout: textul iese din buton. Redimensionezi butonul manual, recentrezi textul, verifici spațiile. Apoi mai schimbi textul o dată.</p>
+<p>Cu Auto Layout: butonul crește singur. Spațiul rămâne exact 16 px.</p>
+<p>Aceeași problemă apare la orice listă la care adaugi elemente, la orice card cu text de lungime variabilă, la orice meniu. <strong>Auto Layout este ce transformă un desen static într-o structură.</strong></p>
+<hr />
+<h2 id="bazele">Bazele<a class="headerlink" href="#bazele" title="Link to this section">&para;</a></h2>
+<h3 id="cum-il-aplici">Cum îl aplici<a class="headerlink" href="#cum-il-aplici" title="Link to this section">&para;</a></h3>
+<p>Selectează unul sau mai multe elemente și apasă <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span>. Se creează un frame cu Auto Layout în jurul lor.</p>
+<p>Ca să-l scoți: <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-a">A</kbd></span>.</p>
+<h3 id="cele-patru-setari-de-baza">Cele patru setări de bază<a class="headerlink" href="#cele-patru-setari-de-baza" title="Link to this section">&para;</a></h3>
+<p>În panoul din dreapta apare o secțiune nouă, <strong>Auto layout</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Setare</th>
+<th>Ce face</th>
+<th>Valori</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Direction</strong></td>
+<td>Orientarea</td>
+<td>Vertical ↓, Orizontal →, Wrap</td>
+</tr>
+<tr>
+<td><strong>Gap</strong></td>
+<td>Spațiul dintre elemente</td>
+<td>Număr, sau <code>Auto</code></td>
+</tr>
+<tr>
+<td><strong>Padding</strong></td>
+<td>Spațiul interior, față de margini</td>
+<td>Un număr, sau 4 separate</td>
+</tr>
+<tr>
+<td><strong>Alignment</strong></td>
+<td>Cum se așază elementele în container</td>
+<td>O grilă de 9 puncte</td>
+</tr>
+</tbody>
+</table>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  padding-top                │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  ┌───────┐ gap ┌───────┐    │  padding-right
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  │  el 1 │─────│  el 2 │    │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  └───────┘     └───────┘    │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  padding-bottom             │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>└─────────────────────────────┘
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   padding-left
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Padding-uri separate</p>
+<p>Click pe iconița cu patru laturi de lângă câmpul de padding → se desfac în patru câmpuri: sus, dreapta, jos, stânga. Un buton are de obicei padding orizontal mai mare decât cel vertical (de ex. 24 pe orizontală, 12 pe verticală) — arată mai echilibrat.</p>
+</div>
+<h3 id="space-between">Space between<a class="headerlink" href="#space-between" title="Link to this section">&para;</a></h3>
+<p>Dacă setezi <strong>Gap</strong> la <code>Auto</code> (iconița cu săgeți opuse), elementele se împing la marginile containerului și spațiul se distribuie între ele. Este exact ce ai nevoie pentru o bară de navigație: logo la stânga, meniu la dreapta.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌────────────────────────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│ [logo]                    [meniu] [cta]│
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>└────────────────────────────────────────┘
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   gap = Auto
+</span></code></pre></div>
+<hr />
+<h2 id="comportamentul-de-redimensionare">Comportamentul de redimensionare<a class="headerlink" href="#comportamentul-de-redimensionare" title="Link to this section">&para;</a></h2>
+<p>Aceasta e partea care confundă pe toată lumea la început. Fiecare element dintr-un Auto Layout are două setări independente — una pentru lățime, una pentru înălțime.</p>
+<table>
+<thead>
+<tr>
+<th>Comportament</th>
+<th>Iconița</th>
+<th>Ce face</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hug contents</strong></td>
+<td>Săgeți spre interior</td>
+<td>Containerul se strânge exact pe conținut</td>
+</tr>
+<tr>
+<td><strong>Fill container</strong></td>
+<td>Săgeți spre exterior</td>
+<td>Elementul se întinde pe tot spațiul disponibil</td>
+</tr>
+<tr>
+<td><strong>Fixed</strong></td>
+<td>Număr</td>
+<td>Dimensiune fixă, nu se schimbă</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regulile-practice">Regulile practice<a class="headerlink" href="#regulile-practice" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Lățime</th>
+<th>Înălțime</th>
+<th>De ce</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buton</td>
+<td>Hug</td>
+<td>Hug</td>
+<td>Crește cu textul</td>
+</tr>
+<tr>
+<td>Buton pe toată lățimea</td>
+<td>Fill</td>
+<td>Hug</td>
+<td>Ocupă cardul, înălțimea urmează textul</td>
+</tr>
+<tr>
+<td>Card într-o grilă</td>
+<td>Fill</td>
+<td>Hug</td>
+<td>Lățimea vine de la grilă, înălțimea de la conținut</td>
+</tr>
+<tr>
+<td>Text într-un card</td>
+<td>Fill</td>
+<td>Hug</td>
+<td>Se rupe pe rânduri, crește în jos</td>
+</tr>
+<tr>
+<td>Pictogramă</td>
+<td>Fixed</td>
+<td>Fixed</td>
+<td>24 × 24, mereu</td>
+</tr>
+<tr>
+<td>Ecran / pagină</td>
+<td>Fixed</td>
+<td>Fixed sau Hug</td>
+<td>Formatul e dat</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title"><code>Fill</code> funcționează doar în interiorul unui Auto Layout</p>
+<p>Dacă opțiunea <code>Fill container</code> e gri, înseamnă că elementul <strong>nu</strong> e într-un frame cu Auto Layout. Aplică Auto Layout pe părinte întâi.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Hug + text = cel mai util cuplu</p>
+<p>Un card cu lățime <code>Fill</code> și înălțime <code>Hug</code>, conținând un text cu lățime <code>Fill</code> și înălțime <code>Hug</code>: dacă textul are 2 rânduri, cardul e scund; dacă are 6 rânduri, cardul crește. Nu atingi nimic.</p>
+</div>
+<hr />
+<h2 id="auto-layout-imbricat">Auto Layout imbricat<a class="headerlink" href="#auto-layout-imbricat" title="Link to this section">&para;</a></h2>
+<p>Aici stă toată puterea. Un frame cu Auto Layout poate conține alte frame-uri cu Auto Layout.</p>
+<p>Un card de proiect real:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>card/project                    ← Auto Layout vertical, gap 16, padding 24
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── header                      ← Auto Layout orizontal, gap 12, Fill
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── ◇ icon (24×24)          ← Fixed
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   └── title                   ← Fill
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── description                 ← Fill / Hug
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>└── footer                      ← Auto Layout orizontal, gap Auto, Fill
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    ├── tags                    ← Auto Layout orizontal, gap 8, Hug
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    │   ├── badge
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    │   └── badge
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    └── button                  ← Hug
+</span></code></pre></div>
+<p>Patru niveluri de Auto Layout. Rezultatul: schimbi titlul, descrierea, numărul de badge-uri sau textul butonului, iar cardul se rearanjează corect de fiecare dată, fără să atingi nimic.</p>
+<div class="admonition tip">
+<p class="admonition-title">Construiește de la interior spre exterior</p>
+<p>Nu încerca să faci structura de sus în jos. Fă întâi grupurile mici (badge-urile, apoi rândul de badge-uri), aplică-le Auto Layout, apoi grupează-le în rânduri mai mari, apoi în card.</p>
+<p><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> pe grupul mic, <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> pe grupul mai mare, și tot așa.</p>
+</div>
+<h3 id="redenumeste-frame-urile">Redenumește frame-urile<a class="headerlink" href="#redenumeste-frame-urile" title="Link to this section">&para;</a></h3>
+<p>Un Auto Layout imbricat cu straturi numite <code>Frame 12</code>, <code>Frame 13</code>, <code>Frame 14</code> devine imposibil de întreținut. Numește-le după rol: <code>header</code>, <code>content</code>, <code>footer</code>, <code>tags</code>, <code>actions</code>.</p>
+<hr />
+<h2 id="setari-avansate">Setări avansate<a class="headerlink" href="#setari-avansate" title="Link to this section">&para;</a></h2>
+<h3 id="absolute-position">Absolute position<a class="headerlink" href="#absolute-position" title="Link to this section">&para;</a></h3>
+<p>Uneori vrei un element <strong>în interiorul</strong> unui Auto Layout, dar care să nu participe la aranjare — de exemplu o bulină de notificare peste un avatar, sau o etichetă „Nou” în colțul unui card.</p>
+<p>Selectează elementul → în panoul din dreapta apare iconița cu un pătrat și un punct în colț → <strong>Absolute position</strong>. Elementul iese din flux și îl poziționezi liber, dar rămâne copil al containerului.</p>
+<h3 id="canvas-stacking">Canvas stacking<a class="headerlink" href="#canvas-stacking" title="Link to this section">&para;</a></h3>
+<p>Când elementele se suprapun (de exemplu avataruri în cascadă cu gap negativ), setarea <strong>Canvas stacking</strong> decide care e deasupra: primul sau ultimul.</p>
+<h3 id="strokes-included-excluded-in-layout">Strokes: included / excluded in layout<a class="headerlink" href="#strokes-included-excluded-in-layout" title="Link to this section">&para;</a></h3>
+<p>Implicit, Figma <strong>nu</strong> numără grosimea conturului în calculul spațierii. Dacă lucrezi cu butoane cu contur și vrei alinierea perfectă cu cele fără contur, comută la <code>Strokes: included in layout</code>.</p>
+<h3 id="wrap">Wrap<a class="headerlink" href="#wrap" title="Link to this section">&para;</a></h3>
+<p>Direcția a treia, <strong>Wrap</strong>, face ca elementele să treacă pe rândul următor când nu mai încap. Util pentru liste de etichete sau galerii care trebuie să se adapteze la lățimi diferite.</p>
+<hr />
+<h2 id="legatura-cu-css">Legătura cu CSS<a class="headerlink" href="#legatura-cu-css" title="Link to this section">&para;</a></h2>
+<p>Auto Layout este, practic, <strong>CSS Flexbox</strong> cu altă interfață. Dacă ai făcut cursul Web, îți e familiar.</p>
+<table>
+<thead>
+<tr>
+<th>Figma</th>
+<th>CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto layout</td>
+<td><code>display: flex</code></td>
+</tr>
+<tr>
+<td>Direction: Horizontal</td>
+<td><code>flex-direction: row</code></td>
+</tr>
+<tr>
+<td>Direction: Vertical</td>
+<td><code>flex-direction: column</code></td>
+</tr>
+<tr>
+<td>Direction: Wrap</td>
+<td><code>flex-wrap: wrap</code></td>
+</tr>
+<tr>
+<td>Gap</td>
+<td><code>gap</code></td>
+</tr>
+<tr>
+<td>Padding</td>
+<td><code>padding</code></td>
+</tr>
+<tr>
+<td>Gap: Auto</td>
+<td><code>justify-content: space-between</code></td>
+</tr>
+<tr>
+<td>Alignment (grila de 9)</td>
+<td><code>justify-content</code> + <code>align-items</code></td>
+</tr>
+<tr>
+<td>Fill container</td>
+<td><code>flex: 1</code></td>
+</tr>
+<tr>
+<td>Hug contents</td>
+<td><code>width: fit-content</code> / dimensiune implicită</td>
+</tr>
+<tr>
+<td>Fixed</td>
+<td><code>width: 320px</code></td>
+</tr>
+<tr>
+<td>Absolute position</td>
+<td><code>position: absolute</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">De ce contează</p>
+<p>Când predai un design unui programator (sau îl construiești tu, la lecția 14), un layout făcut cu Auto Layout se traduce <strong>direct</strong> în CSS. Un layout făcut cu elemente poziționate manual trebuie reinterpretat, iar reinterpretarea introduce diferențe.</p>
+<p>Vezi <a href="../../web/08-css-flexbox-grid/">lecția 08 din cursul Web</a> pentru partea de CSS.</p>
+</div>
+<hr />
+<h2 id="erori-frecvente">Erori frecvente<a class="headerlink" href="#erori-frecvente" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Simptom</th>
+<th>Cauză</th>
+<th>Reparație</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Textul iese din buton</td>
+<td>Butonul e <code>Fixed</code> pe lățime</td>
+<td>Setează lățimea pe <code>Hug</code></td>
+</tr>
+<tr>
+<td>Cardul nu crește cu textul</td>
+<td>Înălțimea e <code>Fixed</code></td>
+<td>Setează înălțimea pe <code>Hug</code></td>
+</tr>
+<tr>
+<td><code>Fill</code> e gri și nu se poate alege</td>
+<td>Părintele nu are Auto Layout</td>
+<td><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> pe părinte</td>
+</tr>
+<tr>
+<td>Spațiile arată inegale</td>
+<td>Unele elemente au margini proprii</td>
+<td>Șterge marginile, folosește gap</td>
+</tr>
+<tr>
+<td>Un element „sare” la redimensionare</td>
+<td>Are <code>Absolute position</code> fără constrângeri</td>
+<td>Setează constrângerile în panoul din dreapta</td>
+</tr>
+<tr>
+<td>Totul se strânge într-o coloană subțire</td>
+<td>Containerul e <code>Hug</code> pe lățime, dar ar trebui <code>Fixed</code></td>
+<td>Setează lățimea containerului</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Nu amesteca Auto Layout cu poziționare manuală</p>
+<p>Dacă jumătate din card e aranjată cu Auto Layout și jumătate cu elemente mutate cu mâna, la prima schimbare de conținut se strică jumătatea manuală. <strong>Ori tot, ori nimic</strong>, pe fiecare nivel.</p>
+</div>
+<hr />
+<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
+<h3 id="exercitiu-1-buton-care-creste">Exercițiu 1 — Buton care crește<a class="headerlink" href="#exercitiu-1-buton-care-creste" title="Link to this section">&para;</a></h3>
+<p>Construiește un buton cu Auto Layout: padding 12 vertical / 24 orizontal, gap 8, cu o pictogramă de 16 px și text. Testează cu textele <code>OK</code>, <code>Salvează</code> și <code>Salvează toate modificările</code>.</p>
+<details class="success">
+<summary>Soluție</summary>
+<ol>
+<li>Scrie textul, pune pictograma lângă el.</li>
+<li>Selectează ambele → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span>.</li>
+<li>Direction: <strong>Horizontal</strong>, Gap: <strong>8</strong>, Padding: <strong>12 / 24</strong>.</li>
+<li>Alignment: <strong>centru-stânga</strong> (punctul din mijloc-stânga al grilei de 9).</li>
+<li>Lățime și înălțime: ambele pe <strong>Hug</strong>.</li>
+<li>Adaugă Fill <code>brand/primary</code> și rază 8.</li>
+</ol>
+<p>Acum schimbă textul de trei ori. Butonul își schimbă lățimea, pictograma rămâne la 8 px de text, padding-ul rămâne 24. Nu ai atins nimic.</p>
+<p><strong>Greșeala de verificat:</strong> dacă ai lăsat pictograma pe <code>Fill</code> în loc de <code>Fixed</code>, ea se va întinde urât la texte scurte. Pictogramele sunt întotdeauna <code>Fixed</code>.</p>
+</details>
+<h3 id="exercitiu-2-bara-de-navigatie">Exercițiu 2 — Bară de navigație<a class="headerlink" href="#exercitiu-2-bara-de-navigatie" title="Link to this section">&para;</a></h3>
+<p>Construiește o bară de navigație de 1440 px lățime cu: logo la stânga, patru link-uri la mijloc-dreapta și un buton la extrema dreaptă. Trebuie să funcționeze corect și la 1024 px.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><strong>Structura:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>navbar                  ← Auto Layout orizontal, gap Auto,
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│                          padding 0/32, lățime Fixed 1440, înălțime Hug
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── logo                ← Hug
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>└── right               ← Auto Layout orizontal, gap 32, Hug
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    ├── links           ← Auto Layout orizontal, gap 24, Hug
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    │   ├── link × 4
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    └── ◇ button        ← Hug
+</span></code></pre></div>
+<p><strong>Pașii:</strong>
+1. Fă cele 4 link-uri, selectează-le → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → orizontal, gap 24. Redenumește <code>links</code>.
+2. Selectează <code>links</code> + butonul → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → orizontal, gap 32. Redenumește <code>right</code>.
+3. Selectează logo + <code>right</code> → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → orizontal, <strong>gap Auto</strong>. Redenumește <code>navbar</code>.
+4. Setează lățimea <code>navbar</code> la 1440, padding orizontal 32, alignment vertical centrat.</p>
+<p><strong>Testul:</strong> schimbă lățimea <code>navbar</code> la 1024. Logo-ul rămâne lipit de stânga, grupul din dreapta de dreapta, iar spațiul dintre ele se micșorează. Exact cum trebuie.</p>
+<p><strong>Fără gap Auto:</strong> ar fi trebuit să muți manual grupul din dreapta la fiecare schimbare de lățime.</p>
+</details>
+<h3 id="exercitiu-3-card-cu-auto-layout-imbricat">Exercițiu 3 — Card cu Auto Layout imbricat<a class="headerlink" href="#exercitiu-3-card-cu-auto-layout-imbricat" title="Link to this section">&para;</a></h3>
+<p>Construiește cardul de proiect din schema de mai sus (patru niveluri). Testează cu un titlu de 2 cuvinte și unul de 8 cuvinte, cu 1 badge și cu 4 badge-uri.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><strong>Construcția, de la interior spre exterior:</strong></p>
+<ol>
+<li><strong>Badge:</strong> text + Auto Layout, padding 4/10, rază 4, Hug/Hug.</li>
+<li><strong>Tags:</strong> selectează 2 badge-uri → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → orizontal, gap 8, Hug.</li>
+<li><strong>Footer:</strong> selectează <code>tags</code> + buton → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → orizontal, <strong>gap Auto</strong>, lățime <strong>Fill</strong>.</li>
+<li><strong>Header:</strong> pictogramă (Fixed 24×24) + titlu (Fill) → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → orizontal, gap 12, lățime Fill, alignment centrat vertical.</li>
+<li><strong>Card:</strong> selectează <code>header</code> + descriere + <code>footer</code> → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → vertical, gap 16, padding 24, lățime <strong>Fill</strong>, înălțime <strong>Hug</strong>.</li>
+</ol>
+<p><strong>Testele:</strong>
+- Titlu de 8 cuvinte → se rupe pe 2 rânduri, header-ul crește, cardul crește, footer-ul coboară. Corect.
+- 4 badge-uri → rândul de tags se lățește; dacă depășește spațiul, comută <code>tags</code> pe direcția <strong>Wrap</strong>.
+- Card pus într-o grilă de 3 coloane cu lățimi diferite → fiecare card își ajustează înălțimea la conținut.</p>
+<p><strong>Verificare finală:</strong> pune trei carduri într-un Auto Layout orizontal cu gap 24, fiecare pe <code>Fill</code>. Toate trei au aceeași lățime automat. Dacă schimbi lățimea containerului, cele trei se adaptează împreună.</p>
+</details>
+<hr />
+<h2 id="mini-proiect-ecran-de-aplicatie-complet-cu-auto-layout">Mini-proiect: ecran de aplicație complet cu Auto Layout<a class="headerlink" href="#mini-proiect-ecran-de-aplicatie-complet-cu-auto-layout" title="Link to this section">&para;</a></h2>
+<p>Construiește un ecran de <strong>390 × 844 px</strong> (iPhone 14) pentru o aplicație a cercului de informatică: antet cu titlu și avatar, o listă de 5 proiecte (carduri), și o bară de navigație jos cu 4 pictograme. <strong>Totul</strong> trebuie să fie Auto Layout — zero elemente poziționate manual.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><strong>Structura:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>screen                        ← Fixed 390 × 844, Auto Layout vertical, gap 0
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── header                    ← orizontal, gap Auto, padding 16/20, Fill
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   ├── title                 ← Hug
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│   └── ◇ avatar (40×40)      ← Fixed
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>├── content                   ← vertical, gap 12, padding 20, Fill / Fill
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│   └── ◇ card/project × 5    ← fiecare Fill / Hug
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>└── tabbar                    ← orizontal, gap Auto, padding 12/24, Fill
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    └── ◇ tab-item × 4        ← fiecare Hug
+</span></code></pre></div>
+<p><strong>Detaliile care contează:</strong></p>
+<ul>
+<li><code>content</code> are înălțimea pe <strong>Fill</strong> — ocupă tot spațiul rămas între header și tabbar. Aceasta e singura setare care face ca bara de jos să stea lipită de marginea ecranului indiferent de câte carduri ai.</li>
+<li>Fiecare <code>tab-item</code> este un Auto Layout vertical cu pictogramă 24 px + etichetă 10 px, gap 4, alignment centrat.</li>
+<li><code>tabbar</code> folosește gap <strong>Auto</strong> — cele 4 elemente se distribuie egal pe lățime.</li>
+<li>Cardurile sunt instanțe ale componentei din exercițiul 3.</li>
+</ul>
+<p><strong>Testele finale:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Rezultat corect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Șterge 2 carduri</td>
+<td>Cele 3 rămase urcă; tabbar rămâne jos</td>
+</tr>
+<tr>
+<td>Adaugă 3 carduri</td>
+<td>Lista crește; conținutul depășește ecranul (normal — se va scrolla)</td>
+</tr>
+<tr>
+<td>Schimbă lățimea ecranului la 320</td>
+<td>Toate cardurile se îngustează; nimic nu iese în afară</td>
+</tr>
+<tr>
+<td>Schimbă titlul unui card în unul lung</td>
+<td>Cardul crește în înălțime, cele de dedesubt coboară</td>
+</tr>
+<tr>
+<td>Schimbă padding-ul din <code>content</code> de la 20 la 24</td>
+<td>Toate cardurile se îngustează cu 8 px, uniform</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Criteriul de trecere:</strong> dacă la oricare dintre cele cinci teste a trebuit să muți manual ceva, undeva în structură există un element care nu e în Auto Layout sau are dimensiune <code>Fixed</code> unde ar trebui <code>Fill</code>.</p>
+</details>
+<hr />
+<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>Auto Layout</strong> (<span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span>) transformă un desen în structură care se adaptează la conținut.</li>
+<li>Patru setări de bază: <strong>direction, gap, padding, alignment</strong>.</li>
+<li><strong>Gap: Auto</strong> = <code>space-between</code> — elementele se împing la margini.</li>
+<li>Trei comportamente: <strong>Hug</strong> (strânge pe conținut), <strong>Fill</strong> (ocupă spațiul), <strong>Fixed</strong> (dimensiune fixă).</li>
+<li>Pictogramele sunt <strong>întotdeauna Fixed</strong>; textele sunt de obicei <strong>Fill / Hug</strong>.</li>
+<li><strong>Auto Layout imbricat</strong> e ce face un card real să funcționeze; construiește <strong>de la interior spre exterior</strong>.</li>
+<li><strong>Absolute position</strong> scoate un element din flux fără să-l scoată din container.</li>
+<li>Auto Layout ≈ <strong>CSS Flexbox</strong>; un design făcut așa se traduce direct în cod.</li>
+<li>Nu amesteca Auto Layout cu poziționare manuală pe același nivel.</li>
+</ul>
+<hr />
+<p><strong>Pasul următor:</strong> <a href="../10-imagini-masti-export/">→ Lecția 10: Imagini, măști și export</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../08-stiluri-si-componente/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Anterior
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">08: Stiluri și componente</span>
+              </a>
+            
+            
+              <a href="../10-imagini-masti-export/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Următor <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">10: Imagini, măști și export</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> În această pagină
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lectia-09-auto-layout" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 09 · Auto Layout</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#problema" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Problema</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#bazele" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Bazele</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#comportamentul-de-redimensionare" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Comportamentul de redimensionare</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#auto-layout-imbricat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Auto Layout imbricat</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#setari-avansate" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Setări avansate</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#legatura-cu-css" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Legătura cu CSS</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#erori-frecvente" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Erori frecvente</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-proiect-ecran-de-aplicatie-complet-cu-auto-layout" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: ecran de aplicație complet cu Auto Layout</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../.." class="hover:text-orange-500 transition-colors">Acasă</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Cursuri</a>
+          
+            <a href="../../../projects/" class="hover:text-orange-500 transition-colors">Proiecte</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source, construit cu fum de lipire.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

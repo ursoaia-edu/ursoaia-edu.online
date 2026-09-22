@@ -1,0 +1,1016 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07: Vectori și Pen Tool - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="The difference between vector and raster, nodes and Bézier handles, the Pen tool and boolean operations for building icons.">
+  <link rel="canonical" href="https://ursoaia-edu.online/en/courses/design-grafic/07-vectori-pen-tool/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/design-grafic/07-vectori-pen-tool/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/design-grafic/07-vectori-pen-tool/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="07: Vectori și Pen Tool - Ursoaia Edu Online">
+  <meta property="og:description" content="The difference between vector and raster, nodes and Bézier handles, the Pen tool and boolean operations for building icons.">
+  <meta property="og:url" content="https://ursoaia-edu.online/en/courses/design-grafic/07-vectori-pen-tool/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="07: Vectori și Pen Tool - Ursoaia Edu Online">
+  <meta name="twitter:description" content="The difference between vector and raster, nodes and Bézier handles, the Pen tool and boolean operations for building icons.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/en/courses/design-grafic/07-vectori-pen-tool/#course",
+        "name": "07: Vectori \u0219i Pen Tool - Ursoaia Edu Online",
+        "description": "The difference between vector and raster, nodes and B\u00e9zier handles, the Pen tool and boolean operations for building icons.",
+        "url": "https://ursoaia-edu.online/en/courses/design-grafic/07-vectori-pen-tool/",
+        "inLanguage": "en",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ursoaia-edu.online/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://ursoaia-edu.online/en/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Graphic Design",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "07: Vectori \u0219i Pen Tool",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/07-vectori-pen-tool/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../../assets/fonts.css">
+  <script src="../../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../../" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Courses</a>
+          
+            <a href="../../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">EN</a>
+            <a href="../../../../courses/design-grafic/07-vectori-pen-tool/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">EN</a>
+            <a href="../../../../courses/design-grafic/07-vectori-pen-tool/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../../" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Courses</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Graphic Design</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">07: Vectori și Pen Tool</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">07: Vectori și Pen Tool</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">The difference between vector and raster, nodes and Bézier handles, the Pen tool and boolean operations for building icons.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">figma</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">vectors</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">pen tool</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">bezier</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">svg</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">icons</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lesson-07-vectors-and-the-pen-tool">Lesson 07 · Vectors and the Pen Tool<a class="headerlink" href="#lesson-07-vectors-and-the-pen-tool" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">What you will learn</p>
+<ul>
+<li>The real difference between <strong>vector</strong> and <strong>raster</strong></li>
+<li>What <strong>nodes</strong> and <strong>Bézier handles</strong> are</li>
+<li>How to use the <strong>Pen</strong> tool without losing your mind</li>
+<li><strong>Stroke</strong>: weight, caps, joins and dashes</li>
+<li>How to build a coherent <strong>icon set</strong></li>
+<li>What <strong>SVG</strong> is and why it matters for the web</li>
+</ul>
+</div>
+<hr />
+<h2 id="vector-vs-raster">Vector vs. raster<a class="headerlink" href="#vector-vs-raster" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vector</th>
+<th>Raster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>How it is stored</strong></td>
+<td>Mathematical formulas: points, curves, fills</td>
+<td>A grid of pixels, each with its own colour</td>
+</tr>
+<tr>
+<td><strong>When enlarged</strong></td>
+<td>Stays perfectly sharp at any size</td>
+<td>Pixelates</td>
+</tr>
+<tr>
+<td><strong>File size</strong></td>
+<td>Small, grows with shape complexity</td>
+<td>Large, grows with pixel dimensions</td>
+</tr>
+<tr>
+<td><strong>Good for</strong></td>
+<td>Logos, icons, flat illustrations, text</td>
+<td>Photos, textures, complex effects</td>
+</tr>
+<tr>
+<td><strong>Formats</strong></td>
+<td>SVG, AI, EPS, PDF</td>
+<td>PNG, JPG, WebP, GIF</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Why a logo has to be vector</p>
+<p>Your school's logo will appear on a business card (2 cm) and on an entrance banner (2 m). A PNG good enough for the banner would be tens of MB; one good enough for the card would be blurry on the banner.</p>
+<p>A 4 KB SVG looks perfect in both cases. That is why lesson 12 requires the logo in vector form.</p>
+</div>
+<p>Figma is essentially a vector editor. Everything you draw with Rectangle, Ellipse or Pen is vector. Only imported images are raster.</p>
+<hr />
+<h2 id="nodes-and-handles">Nodes and handles<a class="headerlink" href="#nodes-and-handles" title="Link to this section">&para;</a></h2>
+<p>Any vector shape is defined by <strong>nodes</strong> (points) connected by <strong>segments</strong>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    ●────────────●        two nodes, straight segment
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>         ╭───╮
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ●───╯     ╰───●       two nodes, curved segment
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ●─ ─ ─○               a node (●) and its handle (○)
+</span></code></pre></div>
+<h3 id="the-node-types">The node types<a class="headerlink" href="#the-node-types" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it looks like</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Corner</strong></td>
+<td>No handles, or independent handles</td>
+<td>A sharp angle</td>
+</tr>
+<tr>
+<td><strong>Smooth</strong> (mirrored)</td>
+<td>Two symmetric handles on the same line</td>
+<td>A continuous curve, no kink</td>
+</tr>
+<tr>
+<td><strong>Asymmetric</strong> (angle)</td>
+<td>Two handles on the same line, different lengths</td>
+<td>A continuous curve, different radii</td>
+</tr>
+</tbody>
+</table>
+<p>In Figma, with the node selected, the right panel shows the type and lets you change it.</p>
+<div class="admonition tip">
+<p class="admonition-title">Fewer nodes = a better curve</p>
+<p>The illustrators' practical rule: <strong>one node at every change of direction, not one more</strong>. A perfect circle has 4 nodes, not 12. A curve with 20 nodes will always look "wobbly", no matter how much you adjust it.</p>
+<p>If a shape came out badly, it usually does not need adjusting — it needs redrawing with fewer nodes.</p>
+</div>
+<hr />
+<h2 id="the-pen-tool">The Pen tool<a class="headerlink" href="#the-pen-tool" title="Link to this section">&para;</a></h2>
+<p>Press <span class="keys"><kbd class="key-p">P</kbd></span>. Then:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Click</strong></td>
+<td>Adds a corner node — a straight segment</td>
+</tr>
+<tr>
+<td><strong>Click and drag</strong></td>
+<td>Adds a smooth node — a curved segment; the drag length sets the curve radius</td>
+</tr>
+<tr>
+<td><strong>Click on the first node</strong></td>
+<td>Closes the shape</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-escape">Esc</kbd></span> or <span class="keys"><kbd class="key-enter">Enter</kbd></span></td>
+<td>Ends an open shape</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-alt">Alt</kbd></span> + click on a node</td>
+<td>Turns a smooth node into a corner node</td>
+</tr>
+</tbody>
+</table>
+<h3 id="editing-an-existing-shape">Editing an existing shape<a class="headerlink" href="#editing-an-existing-shape" title="Link to this section">&para;</a></h3>
+<p>Double-click the shape → you enter <strong>vector edit mode</strong>. Now:</p>
+<ul>
+<li><span class="keys"><kbd class="key-v">V</kbd></span> (Move) moves individual nodes.</li>
+<li><span class="keys"><kbd class="key-p">P</kbd></span> (Pen) adds new nodes on segments.</li>
+<li>The <span class="keys"><kbd class="key-delete">Del</kbd></span> key removes a node and joins the neighbouring segments.</li>
+<li>The <strong>Bend tool</strong> (<span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-b">B</kbd></span>) curves a segment without adding nodes.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">The Pen takes hours to learn, not minutes</p>
+<p>Nobody draws well with the Pen on their first try. It is the one tool in Figma that requires muscle practice, not just understanding. Exercise 2 below exists exactly for that — do it three times, not once.</p>
+<p>The good news: for 90% of your real work you will use rectangles, circles and boolean operations, not the Pen.</p>
+</div>
+<hr />
+<h2 id="stroke-the-outline">Stroke — the outline<a class="headerlink" href="#stroke-the-outline" title="Link to this section">&para;</a></h2>
+<p>Any vector shape can have a <strong>Fill</strong> and a <strong>Stroke</strong>, independently.</p>
+<h3 id="stroke-properties">Stroke properties<a class="headerlink" href="#stroke-properties" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Options</th>
+<th>When it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td>Thickness in px</td>
+<td>The consistency of an icon set</td>
+</tr>
+<tr>
+<td><strong>Align</strong></td>
+<td><code>Inside</code>, <code>Center</code>, <code>Outside</code></td>
+<td>The final size of the shape</td>
+</tr>
+<tr>
+<td><strong>Cap</strong></td>
+<td><code>None</code>, <code>Round</code>, <code>Square</code>, <code>Arrow</code></td>
+<td>The ends of open lines</td>
+</tr>
+<tr>
+<td><strong>Join</strong></td>
+<td><code>Miter</code>, <code>Bevel</code>, <code>Round</code></td>
+<td>How corners look</td>
+</tr>
+<tr>
+<td><strong>Dash</strong></td>
+<td>Dash length / gap length</td>
+<td>Dashed lines</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Align changes the real size</p>
+<p>A 100 × 100 px square with a 10 px stroke:
+- <code>Inside</code> → occupies exactly 100 × 100 px
+- <code>Center</code> → occupies 110 × 110 px (5 px outside on each side)
+- <code>Outside</code> → occupies 120 × 120 px</p>
+<p>If you align elements and one has an <code>Outside</code> stroke, it will look offset. For icons, use <code>Center</code> everywhere, consistently.</p>
+</div>
+<h3 id="converting-a-stroke-into-a-shape">Converting a stroke into a shape<a class="headerlink" href="#converting-a-stroke-into-a-shape" title="Link to this section">&para;</a></h3>
+<p>Sometimes you need an outline to become a real shape (for example so you can scale it without it thickening). Menu: <strong>Object → Outline stroke</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-o">O</kbd></span>).</p>
+<div class="admonition warning">
+<p class="admonition-title">The operation is not easily undone</p>
+<p>After <code>Outline stroke</code> you can no longer change the weight — you now have an outline of the outline. Do it <strong>at the end</strong>, and keep a copy of the editable version.</p>
+</div>
+<hr />
+<h2 id="boolean-operations-in-depth">Boolean operations in depth<a class="headerlink" href="#boolean-operations-in-depth" title="Link to this section">&para;</a></h2>
+<p>We touched on them in lesson 02. Now, the details that matter.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Shortcut</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Union</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-u">U</kbd></span></td>
+<td>The union of all the shapes</td>
+</tr>
+<tr>
+<td><strong>Subtract</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-s">S</kbd></span></td>
+<td>The first shape minus all the ones above it</td>
+</tr>
+<tr>
+<td><strong>Intersect</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-i">I</kbd></span></td>
+<td>Only the common area</td>
+</tr>
+<tr>
+<td><strong>Exclude</strong></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-x">X</kbd></span></td>
+<td>Everything except the common area</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Boolean operations stay editable</p>
+<p>Unlike in other programs, in Figma a boolean group is <strong>not destructive</strong>: you can enter it (double-click) and move the component shapes at any time. The result recalculates.</p>
+<p>When you want to freeze it for good: <strong>Object → Flatten</strong> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-e">E</kbd></span>). Do it only at export time.</p>
+</div>
+<h3 id="order-matters-for-subtract">Order matters for Subtract<a class="headerlink" href="#order-matters-for-subtract" title="Link to this section">&para;</a></h3>
+<p><code>Subtract</code> subtracts <strong>the shapes above</strong> from <strong>the one beneath</strong>. If the result is the opposite of what you expected, select the top shape and press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-bracket-left">[</kbd></span> to send it back (or rearrange in the Layers panel).</p>
+<hr />
+<h2 id="build-an-icon-set">Build an icon set<a class="headerlink" href="#build-an-icon-set" title="Link to this section">&para;</a></h2>
+<p>A coherent icon set does not mean "pretty drawings". It means <strong>rules applied identically</strong> in every drawing.</p>
+<h3 id="the-sets-rules">The set's rules<a class="headerlink" href="#the-sets-rules" title="Link to this section">&para;</a></h3>
+<ol>
+<li><strong>A fixed grid.</strong> All icons are drawn inside a square of the same size — the standard is <strong>24 × 24 px</strong>.</li>
+<li><strong>A safe area.</strong> The drawing occupies at most <strong>20 × 20 px</strong> of the 24; the rest is margin. That keeps icons from sticking to the text.</li>
+<li><strong>A single weight.</strong> All strokes share the same weight — usually <strong>2 px</strong> on a 24 grid.</li>
+<li><strong>The same caps and joins.</strong> <code>Cap: Round</code> and <code>Join: Round</code> everywhere, or <code>Square</code> everywhere. Not mixed.</li>
+<li><strong>The same corner radius.</strong> If one rectangle has a 2 px radius, they all have 2 px.</li>
+<li><strong>Pixel alignment.</strong> Coordinates are whole numbers. A 2 px line at X = 11.5 renders blurry.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Why 24 × 24 and a 2 px stroke</p>
+<p>24 divides by 2, 3, 4, 6, 8 and 12, so you can centre anything easily. A 2 px stroke stays crisp at 16 px (it scales to 1.33) and at 48 px (4 px). It is the standard used by Lucide, Feather and most modern libraries.</p>
+</div>
+<h3 id="the-visual-family">The visual family<a class="headerlink" href="#the-visual-family" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Appearance</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Outline</strong></td>
+<td>Outline only, no fill</td>
+<td>Navigation, interfaces, inactive states</td>
+</tr>
+<tr>
+<td><strong>Filled</strong></td>
+<td>Solid fill</td>
+<td>Active states, accents</td>
+</tr>
+<tr>
+<td><strong>Duotone</strong></td>
+<td>Outline + partial fill with opacity</td>
+<td>Small illustrations, dashboards</td>
+</tr>
+</tbody>
+</table>
+<p>A professional set has <strong>outline for everything</strong> and, optionally, a filled variant for the "selected" state.</p>
+<hr />
+<h2 id="svg-and-exporting">SVG and exporting<a class="headerlink" href="#svg-and-exporting" title="Link to this section">&para;</a></h2>
+<p><strong>SVG</strong> (Scalable Vector Graphics) is a text format — you can open it in an editor and read it.</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">viewBox=</span><span class="s">&quot;0 0 24 24&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;none&quot;</span><span class="w"> </span><span class="na">stroke=</span><span class="s">&quot;currentColor&quot;</span><span class="w"> </span><span class="na">stroke-width=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&lt;circle</span><span class="w"> </span><span class="na">cx=</span><span class="s">&quot;12&quot;</span><span class="w"> </span><span class="na">cy=</span><span class="s">&quot;12&quot;</span><span class="w"> </span><span class="na">r=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M12 8v4l3 3&quot;</span><span class="nt">/&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">&lt;/svg&gt;</span>
+</span></code></pre></div>
+<p>This is a clock icon: a circle and two lines (the hands). 150 bytes.</p>
+<h3 id="why-currentcolor-matters">Why <code>currentColor</code> matters<a class="headerlink" href="#why-currentcolor-matters" title="Link to this section">&para;</a></h3>
+<p>If the <code>stroke</code> attribute is <code>currentColor</code>, the icon <strong>takes the surrounding text colour</strong> through CSS. One icon works on both light and dark backgrounds, without exporting two files.</p>
+<h3 id="exporting-from-figma">Exporting from Figma<a class="headerlink" href="#exporting-from-figma" title="Link to this section">&para;</a></h3>
+<ol>
+<li>Select the icon (the 24 × 24 frame, not the shape inside).</li>
+<li>In the right panel, at the bottom, under <strong>Export</strong>, press <strong>+</strong>.</li>
+<li>Choose the <strong>SVG</strong> format.</li>
+<li>Tick <strong>Include "id" attribute</strong> only if you need it; usually you do not.</li>
+<li><strong>Export</strong>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Clean up the SVG</p>
+<p>Figma exports SVG with extra attributes (<code>width</code>, <code>height</code>, hard-coded colours). For the web, run the file through <a href="https://jakearchibald.github.io/svgomg/">SVGOMG</a> — it cuts the size by 30–60% and strips the junk.</p>
+<p>Then manually replace the hard-coded colour with <code>currentColor</code>.</p>
+</div>
+<hr />
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-three-icons-on-the-grid">Exercise 1 — Three icons on the grid<a class="headerlink" href="#exercise-1-three-icons-on-the-grid" title="Link to this section">&para;</a></h3>
+<p>Build, on a 24 × 24 px grid with a 2 px stroke, <code>Cap: Round</code>, <code>Join: Round</code>: a <strong>house</strong> icon, a <strong>user</strong> icon and a <strong>settings</strong> icon (a cog or three sliders). Use only primary shapes and boolean operations — no Pen.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>The house:</strong> a triangle (Polygon with 3 sides) of 20 × 10 px for the roof, at the top; a 14 × 10 px rectangle underneath for the walls; a small 5 × 6 px rectangle for the door, centred at the bottom. All with Fill <code>none</code>, Stroke 2.</p>
+<p><strong>The user:</strong> an 8 × 8 px circle for the head, centred at X = 12, Y = 8; below it a shoulders shape made from an 18 × 18 px circle with a rectangle covering the lower half subtracted (Subtract). The result is an arc.</p>
+<p><strong>The settings:</strong> the simple three-slider version — three 18 px horizontal lines at Y = 7, 12, 17, plus three small 4 px circles sitting on them at different X positions (8, 15, 10). It is easier to build and more legible at 16 px than a toothed cog.</p>
+<p><strong>Consistency check:</strong> place all three side by side at 24 px and then at 16 px. If one looks thicker or denser than the others, you broke one of the six rules.</p>
+</details>
+<h3 id="exercise-2-pen-tool-trace-a-letter">Exercise 2 — Pen Tool: trace a letter<a class="headerlink" href="#exercise-2-pen-tool-trace-a-letter" title="Link to this section">&para;</a></h3>
+<p>Import into Figma a screenshot of the letter <code>S</code> from a serif font, 400 px tall. Lock the image (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-l">L</kbd></span>), drop its opacity to 30% and trace the letter's outline with the Pen.</p>
+<details class="success">
+<summary>Solution</summary>
+<p>The method that works:</p>
+<ol>
+<li>Start with the nodes at the <strong>curve extremes</strong> — the topmost, bottommost, leftmost and rightmost points. For an <code>S</code> there are roughly 8 such points.</li>
+<li>At each one, <strong>click and drag</strong> along the tangent direction (horizontal at the top/bottom extremes, vertical at the left/right ones). The handles should be <strong>horizontal or vertical</strong>, not slanted.</li>
+<li>Do not add nodes "to make it come out better". If a curve is wrong, adjust the <strong>handles</strong> of the existing nodes.</li>
+<li>Close the shape on the first node.</li>
+</ol>
+<p><strong>Check:</strong> hide the background image. Your letter must still look like a letter without the reference. If it has "bulges", you have too many nodes or slanted handles.</p>
+<p>Do the exercise three times, on different days. The difference between the first and the third attempt will be bigger than you expect.</p>
+</details>
+<h3 id="exercise-3-three-shapes-from-boolean-operations">Exercise 3 — Three shapes from boolean operations<a class="headerlink" href="#exercise-3-three-shapes-from-boolean-operations" title="Link to this section">&para;</a></h3>
+<p>Build, using only rectangles and circles plus boolean operations: a <strong>speech bubble</strong> (with a tail), a <strong>download icon</strong> (a down arrow over a line) and a <strong>location pin</strong> (the map teardrop).</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>The speech bubble:</strong> a 20 × 14 px rectangle with a 4 px radius, plus a small 5 × 5 px triangle attached to the bottom-left edge. <strong>Union</strong>.</p>
+<p><strong>The download:</strong> a 2 × 10 px vertical line, plus a 10 × 6 px triangle beneath it (Union for the arrow), plus a separate 16 × 2 px horizontal line at the bottom — this one stays separate, it is not merged.</p>
+<p><strong>The location pin:</strong> a 14 × 14 px circle at the top, plus a 14 × 10 px triangle pointing down, overlapping by ~4 px. <strong>Union</strong> → the teardrop. Then a small 5 × 5 px circle at the centre of the round part, selected together with the shape → <strong>Subtract</strong> → the hole.</p>
+<p><strong>Observation:</strong> none of the three required the Pen. That is the general rule — try primary shapes first, reach for the Pen only when there is genuinely no other way.</p>
+</details>
+<hr />
+<h2 id="mini-project-an-8-icon-set-for-the-computer-science-club">Mini-project: an 8-icon set for the computer science club<a class="headerlink" href="#mini-project-an-8-icon-set-for-the-computer-science-club" title="Link to this section">&para;</a></h2>
+<p>Build a coherent set of <strong>8 icons</strong> at 24 × 24 px on club-related themes: <code>code</code>, <code>dev board</code>, <code>sensor</code>, <code>wifi</code>, <code>battery</code>, <code>soldering iron</code>, <code>calendar</code>, <code>user</code>. Export them as SVG.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>The setup:</strong>
+1. Create a 24 × 24 px frame and rename it <code>icon/code</code>.
+2. Add a layout grid to it: <code>Grid</code>, size 1, a very discreet colour — it helps with pixel alignment.
+3. Draw inside the 20 × 20 px safe area (a 2 px margin on each side).
+4. Duplicate the frame (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span>) for each new icon and rename.</p>
+<p><strong>Rules applied identically:</strong> Stroke 2 px, <code>Align: Center</code>, <code>Cap: Round</code>, <code>Join: Round</code>, 2 px corner radius, whole-number coordinates.</p>
+<p><strong>A few constructions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Construction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td>Two pairs of lines forming <code>&lt;</code> and <code>&gt;</code>, plus a slanted line in the middle</td>
+</tr>
+<tr>
+<td><code>dev board</code></td>
+<td>A 16 × 16 rectangle with a 2 px radius, plus 3 short lines on each side (the pins), plus a small 6 × 6 square in the centre (the chip)</td>
+</tr>
+<tr>
+<td><code>wifi</code></td>
+<td>Three concentric arcs (circles with a rectangle subtracted for the lower half), plus a 2 px dot</td>
+</tr>
+<tr>
+<td><code>battery</code></td>
+<td>An 18 × 10 rectangle with a 2 px radius, plus a 2 × 4 rectangle attached on the right (the terminal)</td>
+</tr>
+<tr>
+<td><code>calendar</code></td>
+<td>An 18 × 16 rectangle with a 2 px radius, a horizontal line 4 px from the top, two short vertical lines above</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The export:</strong>
+- Select all 8 frames.
+- <strong>Export → SVG → Export 8 layers</strong>. Figma saves them under the frame names.
+- Run the files through SVGOMG and replace the colour with <code>currentColor</code>.</p>
+<p><strong>The final coherence test:</strong> line up all 8 at 24 px, then make a copy at 16 px and one at 48 px. In a good set, all eight appear to have the same "density" at every size. If one looks heavier, it has too much detail — simplify it.</p>
+</details>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>Vector</strong> = formulas, scales perfectly; <strong>raster</strong> = pixels, pixelates.</li>
+<li>Logos and icons are <strong>always</strong> vector.</li>
+<li>A shape = <strong>nodes</strong> + <strong>segments</strong>; nodes can be corner, smooth or asymmetric.</li>
+<li><strong>Fewer nodes give better curves.</strong> A circle has 4 nodes.</li>
+<li>Pen: <strong>click</strong> = corner, <strong>click and drag</strong> = curve. It is learned by repetition.</li>
+<li><code>Stroke Align</code> changes the <strong>real size</strong> of the shape — use <code>Center</code> consistently.</li>
+<li>Booleans: <strong>Union, Subtract, Intersect, Exclude</strong> — they stay editable until <code>Flatten</code>.</li>
+<li>Icons: a <strong>24 × 24</strong> grid, a <strong>20 × 20</strong> safe area, a <strong>2 px</strong> stroke, identical caps and joins.</li>
+<li><strong>SVG</strong> with <code>currentColor</code> works on any background; clean it with SVGOMG.</li>
+</ul>
+<hr />
+<p><strong>Next step:</strong> <a href="../08-stiluri-si-componente/">→ Lesson 08: Styles and components</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../06-ierarhie-vizuala/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">06: Ierarhie vizuală</span>
+              </a>
+            
+            
+              <a href="../08-stiluri-si-componente/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">08: Stiluri și componente</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lesson-07-vectors-and-the-pen-tool" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 07 · Vectors and the Pen Tool</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#vector-vs-raster" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Vector vs. raster</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#nodes-and-handles" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Nodes and handles</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#the-pen-tool" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The Pen tool</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#stroke-the-outline" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Stroke — the outline</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#boolean-operations-in-depth" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Boolean operations in depth</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#build-an-icon-set" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Build an icon set</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#svg-and-exporting" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">SVG and exporting</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-project-an-8-icon-set-for-the-computer-science-club" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: an 8-icon set for the computer science club</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../../" class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

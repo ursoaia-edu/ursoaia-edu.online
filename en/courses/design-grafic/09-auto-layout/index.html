@@ -1,0 +1,1044 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09: Auto Layout - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="Automatic arrangement, direction, spacing and padding, resizing behaviour and how Auto Layout maps onto CSS Flexbox.">
+  <link rel="canonical" href="https://ursoaia-edu.online/en/courses/design-grafic/09-auto-layout/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/design-grafic/09-auto-layout/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/design-grafic/09-auto-layout/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="09: Auto Layout - Ursoaia Edu Online">
+  <meta property="og:description" content="Automatic arrangement, direction, spacing and padding, resizing behaviour and how Auto Layout maps onto CSS Flexbox.">
+  <meta property="og:url" content="https://ursoaia-edu.online/en/courses/design-grafic/09-auto-layout/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="09: Auto Layout - Ursoaia Edu Online">
+  <meta name="twitter:description" content="Automatic arrangement, direction, spacing and padding, resizing behaviour and how Auto Layout maps onto CSS Flexbox.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/en/courses/design-grafic/09-auto-layout/#course",
+        "name": "09: Auto Layout - Ursoaia Edu Online",
+        "description": "Automatic arrangement, direction, spacing and padding, resizing behaviour and how Auto Layout maps onto CSS Flexbox.",
+        "url": "https://ursoaia-edu.online/en/courses/design-grafic/09-auto-layout/",
+        "inLanguage": "en",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ursoaia-edu.online/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://ursoaia-edu.online/en/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Graphic Design",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "09: Auto Layout",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/09-auto-layout/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../../assets/fonts.css">
+  <script src="../../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../../" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Courses</a>
+          
+            <a href="../../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">EN</a>
+            <a href="../../../../courses/design-grafic/09-auto-layout/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">EN</a>
+            <a href="../../../../courses/design-grafic/09-auto-layout/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../../" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Courses</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Graphic Design</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">09: Auto Layout</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">09: Auto Layout</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Automatic arrangement, direction, spacing and padding, resizing behaviour and how Auto Layout maps onto CSS Flexbox.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">figma</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">auto layout</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">flexbox</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">spacing</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">responsive</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lesson-09-auto-layout">Lesson 09 · Auto Layout<a class="headerlink" href="#lesson-09-auto-layout" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">What you will learn</p>
+<ul>
+<li>What <strong>Auto Layout</strong> is and which problem it solves</li>
+<li><strong>Direction</strong>, <strong>gap</strong> and <strong>padding</strong></li>
+<li><strong>Alignment</strong> inside the container and <code>Space between</code></li>
+<li><strong>Hug</strong>, <strong>Fill</strong> and <strong>Fixed</strong> — the three resizing behaviours</li>
+<li><strong>Nested</strong> Auto Layout, the most important concept of the lesson</li>
+<li>How all of it translates into <strong>CSS Flexbox</strong></li>
+</ul>
+</div>
+<hr />
+<h2 id="the-problem">The problem<a class="headerlink" href="#the-problem" title="Link to this section">&para;</a></h2>
+<p>You have a button labelled "Save". You make it look good: centred text, 16 px of space around it. Then you change the label to "Save all changes".</p>
+<p>Without Auto Layout: the text overflows the button. You resize the button by hand, recentre the text, check the spacing. Then you change the label once more.</p>
+<p>With Auto Layout: the button grows by itself. The space stays exactly 16 px.</p>
+<p>The same problem shows up in any list you add items to, any card with variable-length text, any menu. <strong>Auto Layout is what turns a static drawing into a structure.</strong></p>
+<hr />
+<h2 id="the-basics">The basics<a class="headerlink" href="#the-basics" title="Link to this section">&para;</a></h2>
+<h3 id="how-to-apply-it">How to apply it<a class="headerlink" href="#how-to-apply-it" title="Link to this section">&para;</a></h3>
+<p>Select one or more elements and press <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span>. A frame with Auto Layout is created around them.</p>
+<p>To remove it: <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-a">A</kbd></span>.</p>
+<h3 id="the-four-basic-settings">The four basic settings<a class="headerlink" href="#the-four-basic-settings" title="Link to this section">&para;</a></h3>
+<p>A new <strong>Auto layout</strong> section appears in the right panel:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Direction</strong></td>
+<td>The orientation</td>
+<td>Vertical ↓, Horizontal →, Wrap</td>
+</tr>
+<tr>
+<td><strong>Gap</strong></td>
+<td>The space between elements</td>
+<td>A number, or <code>Auto</code></td>
+</tr>
+<tr>
+<td><strong>Padding</strong></td>
+<td>The inner space, from the edges</td>
+<td>One number, or 4 separate</td>
+</tr>
+<tr>
+<td><strong>Alignment</strong></td>
+<td>How elements sit in the container</td>
+<td>A 9-point grid</td>
+</tr>
+</tbody>
+</table>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  padding-top                │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  ┌───────┐ gap ┌───────┐    │  padding-right
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  │  el 1 │─────│  el 2 │    │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  └───────┘     └───────┘    │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  padding-bottom             │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>└─────────────────────────────┘
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   padding-left
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Separate paddings</p>
+<p>Click the four-sided icon next to the padding field → it splits into four fields: top, right, bottom, left. A button usually has more horizontal than vertical padding (e.g. 24 horizontal, 12 vertical) — it looks better balanced.</p>
+</div>
+<h3 id="space-between">Space between<a class="headerlink" href="#space-between" title="Link to this section">&para;</a></h3>
+<p>If you set <strong>Gap</strong> to <code>Auto</code> (the opposing-arrows icon), the elements push to the edges of the container and the space is distributed between them. This is exactly what you need for a navigation bar: logo on the left, menu on the right.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌────────────────────────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│ [logo]                     [menu] [cta]│
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>└────────────────────────────────────────┘
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   gap = Auto
+</span></code></pre></div>
+<hr />
+<h2 id="resizing-behaviour">Resizing behaviour<a class="headerlink" href="#resizing-behaviour" title="Link to this section">&para;</a></h2>
+<p>This is the part that confuses everyone at first. Every element inside an Auto Layout has two independent settings — one for width, one for height.</p>
+<table>
+<thead>
+<tr>
+<th>Behaviour</th>
+<th>Icon</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hug contents</strong></td>
+<td>Arrows pointing inwards</td>
+<td>The container shrinks exactly onto its content</td>
+</tr>
+<tr>
+<td><strong>Fill container</strong></td>
+<td>Arrows pointing outwards</td>
+<td>The element stretches over all available space</td>
+</tr>
+<tr>
+<td><strong>Fixed</strong></td>
+<td>A number</td>
+<td>A fixed size, never changes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-practical-rules">The practical rules<a class="headerlink" href="#the-practical-rules" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Width</th>
+<th>Height</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Button</td>
+<td>Hug</td>
+<td>Hug</td>
+<td>Grows with the label</td>
+</tr>
+<tr>
+<td>Full-width button</td>
+<td>Fill</td>
+<td>Hug</td>
+<td>Takes the card's width, height follows the text</td>
+</tr>
+<tr>
+<td>Card in a grid</td>
+<td>Fill</td>
+<td>Hug</td>
+<td>Width comes from the grid, height from the content</td>
+</tr>
+<tr>
+<td>Text in a card</td>
+<td>Fill</td>
+<td>Hug</td>
+<td>It wraps and grows downwards</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>Fixed</td>
+<td>Fixed</td>
+<td>24 × 24, always</td>
+</tr>
+<tr>
+<td>Screen / page</td>
+<td>Fixed</td>
+<td>Fixed or Hug</td>
+<td>The format is given</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title"><code>Fill</code> only works inside an Auto Layout</p>
+<p>If the <code>Fill container</code> option is greyed out, the element is <strong>not</strong> inside an Auto Layout frame. Apply Auto Layout to the parent first.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Hug + text = the most useful pairing</p>
+<p>A card with <code>Fill</code> width and <code>Hug</code> height, containing a text with <code>Fill</code> width and <code>Hug</code> height: if the text is 2 lines, the card is short; if it is 6 lines, the card grows. You touch nothing.</p>
+</div>
+<hr />
+<h2 id="nested-auto-layout">Nested Auto Layout<a class="headerlink" href="#nested-auto-layout" title="Link to this section">&para;</a></h2>
+<p>This is where all the power lies. An Auto Layout frame can contain other Auto Layout frames.</p>
+<p>A real project card:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>card/project                    ← vertical Auto Layout, gap 16, padding 24
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── header                      ← horizontal Auto Layout, gap 12, Fill
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── ◇ icon (24×24)          ← Fixed
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   └── title                   ← Fill
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── description                 ← Fill / Hug
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>└── footer                      ← horizontal Auto Layout, gap Auto, Fill
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    ├── tags                    ← horizontal Auto Layout, gap 8, Hug
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    │   ├── badge
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    │   └── badge
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    └── button                  ← Hug
+</span></code></pre></div>
+<p>Four levels of Auto Layout. The result: you change the title, the description, the number of badges or the button label, and the card rearranges correctly every time, without you touching anything.</p>
+<div class="admonition tip">
+<p class="admonition-title">Build from the inside out</p>
+<p>Do not try to build the structure top-down. Make the small groups first (the badges, then the row of badges), apply Auto Layout to them, then group those into bigger rows, then into the card.</p>
+<p><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> on the small group, <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> on the bigger group, and so on.</p>
+</div>
+<h3 id="rename-the-frames">Rename the frames<a class="headerlink" href="#rename-the-frames" title="Link to this section">&para;</a></h3>
+<p>Nested Auto Layout with layers named <code>Frame 12</code>, <code>Frame 13</code>, <code>Frame 14</code> becomes impossible to maintain. Name them by role: <code>header</code>, <code>content</code>, <code>footer</code>, <code>tags</code>, <code>actions</code>.</p>
+<hr />
+<h2 id="advanced-settings">Advanced settings<a class="headerlink" href="#advanced-settings" title="Link to this section">&para;</a></h2>
+<h3 id="absolute-position">Absolute position<a class="headerlink" href="#absolute-position" title="Link to this section">&para;</a></h3>
+<p>Sometimes you want an element <strong>inside</strong> an Auto Layout that does not take part in the arrangement — for example a notification dot over an avatar, or a "New" tag in a card's corner.</p>
+<p>Select the element → the right panel shows an icon of a square with a dot in the corner → <strong>Absolute position</strong>. The element leaves the flow and you position it freely, while staying a child of the container.</p>
+<h3 id="canvas-stacking">Canvas stacking<a class="headerlink" href="#canvas-stacking" title="Link to this section">&para;</a></h3>
+<p>When elements overlap (for example cascading avatars with a negative gap), the <strong>Canvas stacking</strong> setting decides which one is on top: the first or the last.</p>
+<h3 id="strokes-included-excluded-in-layout">Strokes: included / excluded in layout<a class="headerlink" href="#strokes-included-excluded-in-layout" title="Link to this section">&para;</a></h3>
+<p>By default Figma does <strong>not</strong> count stroke weight in spacing calculations. If you work with outlined buttons and want them to align perfectly with unoutlined ones, switch to <code>Strokes: included in layout</code>.</p>
+<h3 id="wrap">Wrap<a class="headerlink" href="#wrap" title="Link to this section">&para;</a></h3>
+<p>The third direction, <strong>Wrap</strong>, makes elements move to the next line when they no longer fit. Useful for tag lists or galleries that have to adapt to different widths.</p>
+<hr />
+<h2 id="the-link-to-css">The link to CSS<a class="headerlink" href="#the-link-to-css" title="Link to this section">&para;</a></h2>
+<p>Auto Layout is essentially <strong>CSS Flexbox</strong> with a different interface. If you took the Web course, this is familiar.</p>
+<table>
+<thead>
+<tr>
+<th>Figma</th>
+<th>CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto layout</td>
+<td><code>display: flex</code></td>
+</tr>
+<tr>
+<td>Direction: Horizontal</td>
+<td><code>flex-direction: row</code></td>
+</tr>
+<tr>
+<td>Direction: Vertical</td>
+<td><code>flex-direction: column</code></td>
+</tr>
+<tr>
+<td>Direction: Wrap</td>
+<td><code>flex-wrap: wrap</code></td>
+</tr>
+<tr>
+<td>Gap</td>
+<td><code>gap</code></td>
+</tr>
+<tr>
+<td>Padding</td>
+<td><code>padding</code></td>
+</tr>
+<tr>
+<td>Gap: Auto</td>
+<td><code>justify-content: space-between</code></td>
+</tr>
+<tr>
+<td>Alignment (the 9-point grid)</td>
+<td><code>justify-content</code> + <code>align-items</code></td>
+</tr>
+<tr>
+<td>Fill container</td>
+<td><code>flex: 1</code></td>
+</tr>
+<tr>
+<td>Hug contents</td>
+<td><code>width: fit-content</code> / default size</td>
+</tr>
+<tr>
+<td>Fixed</td>
+<td><code>width: 320px</code></td>
+</tr>
+<tr>
+<td>Absolute position</td>
+<td><code>position: absolute</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Why it matters</p>
+<p>When you hand a design to a developer (or build it yourself, in lesson 14), a layout made with Auto Layout translates <strong>directly</strong> into CSS. A layout made from manually positioned elements has to be reinterpreted, and reinterpretation introduces differences.</p>
+<p>See <a href="../../web/08-css-flexbox-grid/">lesson 08 of the Web course</a> for the CSS side.</p>
+</div>
+<hr />
+<h2 id="common-mistakes">Common mistakes<a class="headerlink" href="#common-mistakes" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text overflows the button</td>
+<td>The button is <code>Fixed</code> in width</td>
+<td>Set width to <code>Hug</code></td>
+</tr>
+<tr>
+<td>The card does not grow with the text</td>
+<td>Height is <code>Fixed</code></td>
+<td>Set height to <code>Hug</code></td>
+</tr>
+<tr>
+<td><code>Fill</code> is greyed out</td>
+<td>The parent has no Auto Layout</td>
+<td><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> on the parent</td>
+</tr>
+<tr>
+<td>Spacing looks uneven</td>
+<td>Some elements have their own margins</td>
+<td>Delete the margins, use gap</td>
+</tr>
+<tr>
+<td>An element "jumps" when resizing</td>
+<td>It has <code>Absolute position</code> without constraints</td>
+<td>Set the constraints in the right panel</td>
+</tr>
+<tr>
+<td>Everything collapses into a thin column</td>
+<td>The container is <code>Hug</code> in width when it should be <code>Fixed</code></td>
+<td>Set the container width</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Do not mix Auto Layout with manual positioning</p>
+<p>If half a card is arranged with Auto Layout and half with elements nudged by hand, the manual half breaks at the first content change. <strong>All or nothing</strong>, at every level.</p>
+</div>
+<hr />
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-a-button-that-grows">Exercise 1 — A button that grows<a class="headerlink" href="#exercise-1-a-button-that-grows" title="Link to this section">&para;</a></h3>
+<p>Build a button with Auto Layout: 12 vertical / 24 horizontal padding, gap 8, with a 16 px icon and a label. Test it with the labels <code>OK</code>, <code>Save</code> and <code>Save all changes</code>.</p>
+<details class="success">
+<summary>Solution</summary>
+<ol>
+<li>Write the label, place the icon next to it.</li>
+<li>Select both → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span>.</li>
+<li>Direction: <strong>Horizontal</strong>, Gap: <strong>8</strong>, Padding: <strong>12 / 24</strong>.</li>
+<li>Alignment: <strong>centre-left</strong> (the middle-left point of the 9-point grid).</li>
+<li>Width and height: both on <strong>Hug</strong>.</li>
+<li>Add a <code>brand/primary</code> fill and an 8 radius.</li>
+</ol>
+<p>Now change the label three times. The button changes width, the icon stays 8 px from the text, the padding stays 24. You touched nothing.</p>
+<p><strong>The mistake to check for:</strong> if you left the icon on <code>Fill</code> instead of <code>Fixed</code>, it will stretch unpleasantly on short labels. Icons are always <code>Fixed</code>.</p>
+</details>
+<h3 id="exercise-2-a-navigation-bar">Exercise 2 — A navigation bar<a class="headerlink" href="#exercise-2-a-navigation-bar" title="Link to this section">&para;</a></h3>
+<p>Build a 1440 px wide navigation bar with: the logo on the left, four links towards the right and a button at the far right. It must work correctly at 1024 px too.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>The structure:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>navbar                  ← horizontal Auto Layout, gap Auto,
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│                          padding 0/32, width Fixed 1440, height Hug
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── logo                ← Hug
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>└── right               ← horizontal Auto Layout, gap 32, Hug
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    ├── links           ← horizontal Auto Layout, gap 24, Hug
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    │   ├── link × 4
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    └── ◇ button        ← Hug
+</span></code></pre></div>
+<p><strong>The steps:</strong>
+1. Make the 4 links, select them → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → horizontal, gap 24. Rename <code>links</code>.
+2. Select <code>links</code> + the button → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → horizontal, gap 32. Rename <code>right</code>.
+3. Select the logo + <code>right</code> → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → horizontal, <strong>gap Auto</strong>. Rename <code>navbar</code>.
+4. Set <code>navbar</code> width to 1440, horizontal padding 32, vertical alignment centred.</p>
+<p><strong>The test:</strong> change the <code>navbar</code> width to 1024. The logo stays pinned left, the right group stays right, and the space between them shrinks. Exactly as it should.</p>
+<p><strong>Without gap Auto:</strong> you would have had to move the right-hand group by hand at every width change.</p>
+</details>
+<h3 id="exercise-3-a-card-with-nested-auto-layout">Exercise 3 — A card with nested Auto Layout<a class="headerlink" href="#exercise-3-a-card-with-nested-auto-layout" title="Link to this section">&para;</a></h3>
+<p>Build the project card from the diagram above (four levels). Test it with a 2-word title and an 8-word title, with 1 badge and with 4 badges.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>Building it, from the inside out:</strong></p>
+<ol>
+<li><strong>Badge:</strong> text + Auto Layout, padding 4/10, radius 4, Hug/Hug.</li>
+<li><strong>Tags:</strong> select 2 badges → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → horizontal, gap 8, Hug.</li>
+<li><strong>Footer:</strong> select <code>tags</code> + the button → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → horizontal, <strong>gap Auto</strong>, width <strong>Fill</strong>.</li>
+<li><strong>Header:</strong> icon (Fixed 24×24) + title (Fill) → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → horizontal, gap 12, width Fill, alignment centred vertically.</li>
+<li><strong>Card:</strong> select <code>header</code> + description + <code>footer</code> → <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span> → vertical, gap 16, padding 24, width <strong>Fill</strong>, height <strong>Hug</strong>.</li>
+</ol>
+<p><strong>The tests:</strong>
+- An 8-word title → wraps onto 2 lines, the header grows, the card grows, the footer moves down. Correct.
+- 4 badges → the tags row widens; if it exceeds the space, switch <code>tags</code> to the <strong>Wrap</strong> direction.
+- The card placed in a 3-column grid with different widths → each card adjusts its height to its content.</p>
+<p><strong>Final check:</strong> put three cards in a horizontal Auto Layout with gap 24, each on <code>Fill</code>. All three get the same width automatically. Change the container width and the three adapt together.</p>
+</details>
+<hr />
+<h2 id="mini-project-a-complete-app-screen-with-auto-layout">Mini-project: a complete app screen with Auto Layout<a class="headerlink" href="#mini-project-a-complete-app-screen-with-auto-layout" title="Link to this section">&para;</a></h2>
+<p>Build a <strong>390 × 844 px</strong> screen (iPhone 14) for a computer science club app: a header with title and avatar, a list of 5 projects (cards), and a bottom navigation bar with 4 icons. <strong>Everything</strong> must be Auto Layout — zero manually positioned elements.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>The structure:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>screen                        ← Fixed 390 × 844, vertical Auto Layout, gap 0
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── header                    ← horizontal, gap Auto, padding 16/20, Fill
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   ├── title                 ← Hug
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│   └── ◇ avatar (40×40)      ← Fixed
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>├── content                   ← vertical, gap 12, padding 20, Fill / Fill
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│   └── ◇ card/project × 5    ← each Fill / Hug
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>└── tabbar                    ← horizontal, gap Auto, padding 12/24, Fill
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    └── ◇ tab-item × 4        ← each Hug
+</span></code></pre></div>
+<p><strong>The details that matter:</strong></p>
+<ul>
+<li><code>content</code> has its height on <strong>Fill</strong> — it takes all the space left between the header and the tab bar. That single setting is what keeps the bottom bar pinned to the screen edge no matter how many cards you have.</li>
+<li>Each <code>tab-item</code> is a vertical Auto Layout with a 24 px icon + a 10 px label, gap 4, centred alignment.</li>
+<li><code>tabbar</code> uses <strong>Auto</strong> gap — the 4 items distribute evenly across the width.</li>
+<li>The cards are instances of the component from exercise 3.</li>
+</ul>
+<p><strong>The final tests:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Correct result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delete 2 cards</td>
+<td>The remaining 3 move up; the tab bar stays at the bottom</td>
+</tr>
+<tr>
+<td>Add 3 cards</td>
+<td>The list grows; the content exceeds the screen (normal — it will scroll)</td>
+</tr>
+<tr>
+<td>Change the screen width to 320</td>
+<td>All cards narrow; nothing overflows</td>
+</tr>
+<tr>
+<td>Change a card's title to a long one</td>
+<td>The card grows taller, the ones below move down</td>
+</tr>
+<tr>
+<td>Change <code>content</code> padding from 20 to 24</td>
+<td>All cards narrow by 8 px, uniformly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The pass criterion:</strong> if in any of the five tests you had to move something by hand, somewhere in the structure there is an element that is not in Auto Layout or is <code>Fixed</code> where it should be <code>Fill</code>.</p>
+</details>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>Auto Layout</strong> (<span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-a">A</kbd></span>) turns a drawing into a structure that adapts to its content.</li>
+<li>Four basic settings: <strong>direction, gap, padding, alignment</strong>.</li>
+<li><strong>Gap: Auto</strong> = <code>space-between</code> — elements push to the edges.</li>
+<li>Three behaviours: <strong>Hug</strong> (shrink onto content), <strong>Fill</strong> (take the space), <strong>Fixed</strong> (a fixed size).</li>
+<li>Icons are <strong>always Fixed</strong>; texts are usually <strong>Fill / Hug</strong>.</li>
+<li><strong>Nested Auto Layout</strong> is what makes a real card work; build <strong>from the inside out</strong>.</li>
+<li><strong>Absolute position</strong> takes an element out of the flow without taking it out of the container.</li>
+<li>Auto Layout ≈ <strong>CSS Flexbox</strong>; a design built this way translates straight into code.</li>
+<li>Do not mix Auto Layout with manual positioning at the same level.</li>
+</ul>
+<hr />
+<p><strong>Next step:</strong> <a href="../10-imagini-masti-export/">→ Lesson 10: Images, masks and export</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../08-stiluri-si-componente/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">08: Stiluri și componente</span>
+              </a>
+            
+            
+              <a href="../10-imagini-masti-export/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">10: Imagini, măști și export</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lesson-09-auto-layout" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 09 · Auto Layout</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#the-problem" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The problem</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#the-basics" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The basics</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#resizing-behaviour" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Resizing behaviour</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#nested-auto-layout" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Nested Auto Layout</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#advanced-settings" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Advanced settings</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#the-link-to-css" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The link to CSS</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#common-mistakes" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Common mistakes</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-project-a-complete-app-screen-with-auto-layout" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: a complete app screen with Auto Layout</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../../" class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

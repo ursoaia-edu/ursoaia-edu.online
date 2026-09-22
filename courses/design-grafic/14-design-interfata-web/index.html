@@ -1,0 +1,1333 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14: Design de interfață web - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="De la wireframe la mockup, componente de interfață, design responsive și ce predai mai departe către HTML și CSS.">
+  <link rel="canonical" href="https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/design-grafic/14-design-interfata-web/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="14: Design de interfață web - Ursoaia Edu Online">
+  <meta property="og:description" content="De la wireframe la mockup, componente de interfață, design responsive și ce predai mai departe către HTML și CSS.">
+  <meta property="og:url" content="https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="14: Design de interfață web - Ursoaia Edu Online">
+  <meta name="twitter:description" content="De la wireframe la mockup, componente de interfață, design responsive și ce predai mai departe către HTML și CSS.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/#course",
+        "name": "14: Design de interfa\u021b\u0103 web - Ursoaia Edu Online",
+        "description": "De la wireframe la mockup, componente de interfa\u021b\u0103, design responsive \u0219i ce predai mai departe c\u0103tre HTML \u0219i CSS.",
+        "url": "https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/",
+        "inLanguage": "ro",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Acas\u0103",
+        "item": "https://ursoaia-edu.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cursuri",
+        "item": "https://ursoaia-edu.online/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Design Grafic",
+        "item": "https://ursoaia-edu.online/courses/design-grafic/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "14: Design de interfa\u021b\u0103 web",
+        "item": "https://ursoaia-edu.online/courses/design-grafic/14-design-interfata-web/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../assets/fonts.css">
+  <script src="../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../.." class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../.." class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Acasă</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Cursuri</a>
+          
+            <a href="../../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Proiecte</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Limbă">
+            <a href="../../../en/courses/design-grafic/14-design-interfata-web/" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">EN</a>
+            <a href="./" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../.." onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Acasă</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Cursuri</a>
+          
+            <a href="../../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Proiecte</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Limbă</span>
+            <a href="../../../en/courses/design-grafic/14-design-interfata-web/" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">EN</a>
+            <a href="./" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../.." class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Acasă
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Cursuri</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Design Grafic</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">14: Design de interfață web</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">14: Design de interfață web</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">De la wireframe la mockup, componente de interfață, design responsive și ce predai mai departe către HTML și CSS.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">ui</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">ux</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">wireframe</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">mockup</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">responsive</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">handoff</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lectia-14-design-de-interfata-web">Lecția 14 · Design de interfață web<a class="headerlink" href="#lectia-14-design-de-interfata-web" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Ce vei învăța</p>
+<ul>
+<li>Diferența dintre <strong>UX</strong> și <strong>UI</strong>, fără jargon</li>
+<li><strong>Wireframe</strong> → <strong>mockup</strong> → <strong>prototip</strong>: ce se face în fiecare etapă</li>
+<li>Componentele standard de interfață și <strong>stările</strong> lor</li>
+<li><strong>Design responsive</strong>: mobile-first, breakpoint-uri, ce se schimbă</li>
+<li>Accesibilitate în interfețe: contrast, zonă de atingere, focus</li>
+<li><strong>Handoff</strong>: ce primește programatorul de la tine</li>
+</ul>
+</div>
+<hr />
+<h2 id="ux-si-ui">UX și UI<a class="headerlink" href="#ux-si-ui" title="Link to this section">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>UX (User Experience)</th>
+<th>UI (User Interface)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Întrebarea</strong></td>
+<td>Ce trebuie să poată face utilizatorul și în ce ordine?</td>
+<td>Cum arată și cum se comportă fiecare element?</td>
+</tr>
+<tr>
+<td><strong>Livrabile</strong></td>
+<td>Fluxuri, hărți de ecrane, wireframe-uri</td>
+<td>Mockup-uri, componente, stiluri, prototip</td>
+</tr>
+<tr>
+<td><strong>Se greșește când</strong></td>
+<td>Fluxul are 7 pași în loc de 3</td>
+<td>Butonul e frumos, dar nu se vede</td>
+</tr>
+</tbody>
+</table>
+<p>Ambele contează. Un UI perfect pe un UX prost dă o aplicație frumoasă pe care nimeni nu o folosește.</p>
+<div class="admonition note">
+<p class="admonition-title">Regula de start</p>
+<p>Înainte să desenezi un singur ecran, scrie <strong>fluxul</strong> în cuvinte:</p>
+<blockquote>
+<p>Un elev vrea să se înscrie la cerc.
+1. Intră pe site → vede pagina principală
+2. Apasă „Înscrie-te” → vede formularul
+3. Completează nume, clasă, e-mail → apasă „Trimite”
+4. Vede confirmarea</p>
+</blockquote>
+<p>Patru pași, patru ecrane. Acum știi exact ce ai de desenat.</p>
+</div>
+<hr />
+<h2 id="wireframe-mockup-prototip">Wireframe, mockup, prototip<a class="headerlink" href="#wireframe-mockup-prototip" title="Link to this section">&para;</a></h2>
+<h3 id="wireframe-structura">Wireframe — structura<a class="headerlink" href="#wireframe-structura" title="Link to this section">&para;</a></h3>
+<p>Gri, fără culori, fără fotografii, fără fonturi definitive. Doar dreptunghiuri și text de poziționare.</p>
+<p><strong>Scopul:</strong> decizi <strong>ce</strong> e pe ecran și <strong>unde</strong>, fără să te distragă aspectul.</p>
+<table>
+<thead>
+<tr>
+<th>Convenție</th>
+<th>Ce înseamnă</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dreptunghi cu X în diagonală</td>
+<td>Imagine</td>
+</tr>
+<tr>
+<td>Linii orizontale gri</td>
+<td>Bloc de text</td>
+</tr>
+<tr>
+<td>Dreptunghi cu rază + text centrat</td>
+<td>Buton</td>
+</tr>
+<tr>
+<td>Dreptunghi cu contur + text gri</td>
+<td>Câmp de formular</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Wireframe-ul se face în 15 minute, nu în 2 ore</p>
+<p>Dacă petreci mult timp pe un wireframe, îl faci prea detaliat. Scopul lui e să fie <strong>aruncat</strong> — dacă structura nu funcționează, refaci wireframe-ul în 10 minute, nu mockup-ul în 3 ore.</p>
+</div>
+<h3 id="mockup-aspectul">Mockup — aspectul<a class="headerlink" href="#mockup-aspectul" title="Link to this section">&para;</a></h3>
+<p>Wireframe-ul + culori, tipografie, imagini, spațiere reală. Arată ca produsul final, dar nu face nimic.</p>
+<h3 id="prototip-comportamentul">Prototip — comportamentul<a class="headerlink" href="#prototip-comportamentul" title="Link to this section">&para;</a></h3>
+<p>Mockup-urile legate între ele, cu tranziții. Se poate apăsa și naviga. Îl construim în lecția 16.</p>
+<hr />
+<h2 id="grila-si-breakpoint-urile">Grila și breakpoint-urile<a class="headerlink" href="#grila-si-breakpoint-urile" title="Link to this section">&para;</a></h2>
+<h3 id="mobile-first">Mobile-first<a class="headerlink" href="#mobile-first" title="Link to this section">&para;</a></h3>
+<p>Desenezi <strong>întâi pentru telefon</strong>, apoi extinzi. Motivele:</p>
+<ol>
+<li>Peste 60% din traficul web e de pe telefon.</li>
+<li>Telefonul e constrângerea cea mai dură — dacă încape acolo, încape oriunde.</li>
+<li>Extinderea e mai ușoară decât comprimarea. Un design de desktop redus la telefon devine aproape întotdeauna aglomerat.</li>
+</ol>
+<h3 id="breakpoint-uri-standard">Breakpoint-uri standard<a class="headerlink" href="#breakpoint-uri-standard" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Dispozitiv</th>
+<th>Lățime frame</th>
+<th>Coloane</th>
+<th>Margine</th>
+<th>Gutter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Telefon</strong></td>
+<td>390 px</td>
+<td>4</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td><strong>Tabletă</strong></td>
+<td>768 px</td>
+<td>8</td>
+<td>32</td>
+<td>24</td>
+</tr>
+<tr>
+<td><strong>Desktop</strong></td>
+<td>1440 px</td>
+<td>12</td>
+<td>96</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Ce se schimbă la fiecare breakpoint</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Telefon</th>
+<th>Desktop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigația</td>
+<td>Meniu hamburger</td>
+<td>Link-uri orizontale vizibile</td>
+</tr>
+<tr>
+<td>Coloanele de conținut</td>
+<td>1</td>
+<td>2–3</td>
+</tr>
+<tr>
+<td>Carduri</td>
+<td>Una sub alta</td>
+<td>Grilă de 3</td>
+</tr>
+<tr>
+<td>Corpul textului</td>
+<td>16 px</td>
+<td>16–18 px</td>
+</tr>
+<tr>
+<td>Titlul principal</td>
+<td>32 px</td>
+<td>48–64 px</td>
+</tr>
+<tr>
+<td>Marginile</td>
+<td>16 px</td>
+<td>96 px</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h2 id="componentele-de-interfata-si-starile-lor">Componentele de interfață și stările lor<a class="headerlink" href="#componentele-de-interfata-si-starile-lor" title="Link to this section">&para;</a></h2>
+<p>Un element de interfață <strong>nu este o imagine</strong>. Are stări, și fiecare trebuie desenată.</p>
+<h3 id="starile-obligatorii">Stările obligatorii<a class="headerlink" href="#starile-obligatorii" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Stare</th>
+<th>Când apare</th>
+<th>Ce se schimbă tipic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Default</strong></td>
+<td>Normal</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Hover</strong></td>
+<td>Mouse-ul deasupra (doar pe desktop)</td>
+<td>Fundal mai închis / mai deschis</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Selectat cu <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+<td><strong>Contur vizibil</strong> de 2–3 px</td>
+</tr>
+<tr>
+<td><strong>Active / pressed</strong></td>
+<td>În timpul apăsării</td>
+<td>Puțin mai închis, uneori ușor micșorat</td>
+</tr>
+<tr>
+<td><strong>Disabled</strong></td>
+<td>Indisponibil</td>
+<td>Opacitate redusă, fără cursor de mână</td>
+</tr>
+<tr>
+<td><strong>Loading</strong></td>
+<td>Așteaptă răspuns</td>
+<td>Indicator, text schimbat</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Starea de focus nu este opțională</p>
+<p>Mulți oameni navighează cu tastatura — din obișnuință, din viteză, sau pentru că nu pot folosi un mouse. Dacă ștergi conturul de focus („arată urât”), aceste persoane nu mai pot folosi site-ul deloc.</p>
+<p>Conturul de focus se <strong>desenează deliberat</strong>, în culoarea de brand, cu 2–3 px grosime și 2 px offset. Nu se șterge.</p>
+</div>
+<h3 id="componentele-de-baza">Componentele de bază<a class="headerlink" href="#componentele-de-baza" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Componentă</th>
+<th>Ce trebuie desenat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Buton</strong></td>
+<td>3 tipuri (primar, secundar, ghost) × 5 stări</td>
+</tr>
+<tr>
+<td><strong>Câmp de text</strong></td>
+<td>default, focus, completat, eroare, dezactivat + etichetă + mesaj de eroare</td>
+</tr>
+<tr>
+<td><strong>Card</strong></td>
+<td>Cu și fără imagine, cu și fără acțiune</td>
+</tr>
+<tr>
+<td><strong>Navigație</strong></td>
+<td>Desktop și mobil, cu starea „pagina curentă”</td>
+</tr>
+<tr>
+<td><strong>Mesaj de sistem</strong></td>
+<td>Succes, avertisment, eroare, informație</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zona-de-atingere">Zona de atingere<a class="headerlink" href="#zona-de-atingere" title="Link to this section">&para;</a></h3>
+<p>Pe telefon, orice element pe care se apasă trebuie să aibă minimum <strong>44 × 44 px</strong> de zonă activă — indiferent cât de mică e pictograma din el.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    ┌──────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    │   ┌──────┐   │   ← zona activă: 44 × 44
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    │   │ icon │   │   ← pictograma: 24 × 24
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    │   │24×24 │   │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   └──────┘   │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    └──────────────┘
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Greșeala clasică</p>
+<p>Un buton de „închide” desenat ca un X de 16 px, fără padding. Pe telefon e aproape imposibil de apăsat. Adaugă padding până la 44 × 44, chiar dacă zona în plus e transparentă.</p>
+</div>
+<hr />
+<h2 id="accesibilitate-in-interfete">Accesibilitate în interfețe<a class="headerlink" href="#accesibilitate-in-interfete" title="Link to this section">&para;</a></h2>
+<p>Pe lângă contrastul din lecția 03:</p>
+<table>
+<thead>
+<tr>
+<th>Cerință</th>
+<th>Regula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contrast text</td>
+<td>4.5:1 normal, 3:1 pentru text ≥ 24 px</td>
+</tr>
+<tr>
+<td>Contrast elemente interactive</td>
+<td><strong>3:1</strong> pentru contururi de câmpuri, pictograme funcționale</td>
+</tr>
+<tr>
+<td>Zonă de atingere</td>
+<td>Minimum 44 × 44 px</td>
+</tr>
+<tr>
+<td>Focus vizibil</td>
+<td>Contur de minimum 2 px, contrast 3:1 față de fundal</td>
+</tr>
+<tr>
+<td>Etichete de formular</td>
+<td><strong>Deasupra</strong> câmpului, niciodată doar placeholder</td>
+</tr>
+<tr>
+<td>Erori</td>
+<td>Text explicit, nu doar contur roșu</td>
+</tr>
+<tr>
+<td>Corp text</td>
+<td>Minimum 16 px pe mobil (sub 16 px, iOS dă zoom automat)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">De ce placeholder-ul nu ține loc de etichetă</p>
+<p>Dacă singura indicație „Nume” e placeholder-ul din câmp, ea <strong>dispare</strong> când utilizatorul începe să scrie. Cine se întrerupe și revine nu mai știe ce completa. Eticheta stă deasupra și rămâne.</p>
+</div>
+<hr />
+<h2 id="handoff-ce-predai-programatorului">Handoff — ce predai programatorului<a class="headerlink" href="#handoff-ce-predai-programatorului" title="Link to this section">&para;</a></h2>
+<p>Un design predat prost costă mai mult timp decât ar fi durat să fie făcut bine.</p>
+<h3 id="ce-primeste-programatorul">Ce primește programatorul<a class="headerlink" href="#ce-primeste-programatorul" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Livrabil</th>
+<th>Conținut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Link-ul Figma</strong> cu drept de view</td>
+<td>Nu capturi de ecran</td>
+</tr>
+<tr>
+<td><strong>Pagina Foundations</strong></td>
+<td>Culori cu nume de stil, scara tipografică, sistemul de spațiere</td>
+</tr>
+<tr>
+<td><strong>Componentele</strong> cu toate stările</td>
+<td>Nu doar starea default</td>
+</tr>
+<tr>
+<td><strong>Ecranele</strong> la cele 3 breakpoint-uri</td>
+<td>Telefon, tabletă, desktop</td>
+</tr>
+<tr>
+<td><strong>Assets exportate</strong></td>
+<td>SVG-uri pentru pictograme și logo, imagini la 2×</td>
+</tr>
+<tr>
+<td><strong>Note</strong></td>
+<td>Ce se întâmplă la click, ce texte sunt dinamice, ce se întâmplă dacă lista e goală</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modul-dev-mode">Modul Dev Mode<a class="headerlink" href="#modul-dev-mode" title="Link to this section">&para;</a></h3>
+<p>Figma are un mod dedicat (comutatorul din dreapta-sus). Un dezvoltator cu acces vede:</p>
+<ul>
+<li>Dimensiuni, spațieri și culori în CSS, direct copiabile</li>
+<li>Numele stilurilor și componentelor</li>
+<li>Distanțele dintre elemente, măsurate automat</li>
+<li>Assets de descărcat</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Auto Layout face jumătate din handoff</p>
+<p>Un design construit cu Auto Layout (lecția 09) îi arată dezvoltatorului direct <code>display: flex; gap: 16px; padding: 24px</code>. Un design cu elemente poziționate manual îl obligă să măsoare și să ghicească.</p>
+</div>
+<h3 id="cazurile-pe-care-le-uita-toti">Cazurile pe care le uită toți<a class="headerlink" href="#cazurile-pe-care-le-uita-toti" title="Link to this section">&para;</a></h3>
+<p>Desenează-le, chiar dacă par plictisitoare:</p>
+<table>
+<thead>
+<tr>
+<th>Caz</th>
+<th>Întrebarea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stare goală</strong></td>
+<td>Ce se vede când nu există niciun proiect încă?</td>
+</tr>
+<tr>
+<td><strong>Text lung</strong></td>
+<td>Ce se întâmplă cu un titlu de 15 cuvinte? Se rupe pe rânduri sau se taie cu <code>…</code>?</td>
+</tr>
+<tr>
+<td><strong>Imagine lipsă</strong></td>
+<td>Ce apare în locul ei?</td>
+</tr>
+<tr>
+<td><strong>Eroare de rețea</strong></td>
+<td>Ce vede utilizatorul?</td>
+</tr>
+<tr>
+<td><strong>Încărcare</strong></td>
+<td>Skeleton, spinner, sau nimic?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="exercitii">Exerciții<a class="headerlink" href="#exercitii" title="Link to this section">&para;</a></h2>
+<h3 id="exercitiu-1-flux-si-wireframe">Exercițiu 1 — Flux și wireframe<a class="headerlink" href="#exercitiu-1-flux-si-wireframe" title="Link to this section">&para;</a></h3>
+<p>Scrie fluxul în cuvinte pentru „un vizitator vrea să vadă detaliile unui proiect al cercului”, apoi desenează wireframe-urile ecranelor, la 390 px lățime.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p><strong>Fluxul:</strong></p>
+<blockquote>
+<ol>
+<li>Intră pe pagina principală → vede o listă de proiecte</li>
+<li>Apasă pe un proiect → vede pagina proiectului</li>
+<li>Derulează → vede descrierea, schema, codul</li>
+<li>(opțional) Apasă „Vezi pe GitHub” → pleacă de pe site</li>
+</ol>
+</blockquote>
+<p>Trei ecrane de desenat (al patrulea e extern).</p>
+<p><strong>Wireframe ecran 1 — lista:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│ ☰   Logo        🔍 │  ← header, 56 px
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├────────────────────┤
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│ Proiecte           │  ← titlu pagină
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│                    │
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│ ┌────────────────┐ │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│ │ ╲╱  Titlu      │ │  ← card: imagine + titlu + tag
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│ │ ╱╲  ▬▬▬▬ ▬▬    │ │
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│ └────────────────┘ │
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│ ┌────────────────┐ │
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│ │ ╲╱  Titlu      │ │
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│ │ ╱╲  ▬▬▬▬ ▬▬    │ │
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│ └────────────────┘ │
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└────────────────────┘
+</span></code></pre></div></p>
+<p><strong>Ecran 2 — proiectul:</strong> header cu buton „înapoi”, imagine mare, titlu, taguri, descriere, secțiune de cod, buton „Vezi pe GitHub”.</p>
+<p><strong>Ecran 3 = ecranul 2 derulat.</strong> Nu e nevoie de un wireframe separat — notează doar „scroll”.</p>
+<p><strong>Verificarea:</strong> poate cineva să parcurgă fluxul privind doar wireframe-urile, fără explicații de la tine? Dacă întreabă „și de aici unde ajung?”, lipsește un ecran sau un buton.</p>
+</details>
+<h3 id="exercitiu-2-un-camp-de-formular-toate-starile">Exercițiu 2 — Un câmp de formular, toate stările<a class="headerlink" href="#exercitiu-2-un-camp-de-formular-toate-starile" title="Link to this section">&para;</a></h3>
+<p>Desenează un câmp de text cu etichetă, în toate cele șase stări obligatorii. Verifică contrastul la fiecare.</p>
+<details class="success">
+<summary>Soluție</summary>
+<p>Structura componentei (Auto Layout vertical, gap 6):
+- Etichetă: 13 px Medium, <code>text/base</code>
+- Câmp: înălțime 44 px, padding orizontal 16, rază 8, contur 1 px
+- Mesaj (opțional): 12 px Regular</p>
+<table>
+<thead>
+<tr>
+<th>Stare</th>
+<th>Contur</th>
+<th>Fundal</th>
+<th>Text</th>
+<th>Mesaj</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default</td>
+<td>1 px <code>#334155</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/muted</code> (placeholder)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Hover</td>
+<td>1 px <code>#475569</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/muted</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>2 px <code>brand/primary</code> + offset 2 px</td>
+<td><code>#0F172A</code></td>
+<td><code>text/strong</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Completat</td>
+<td>1 px <code>#334155</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/strong</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Eroare</td>
+<td>2 px <code>feedback/error</code></td>
+<td><code>#0F172A</code></td>
+<td><code>text/strong</code></td>
+<td><code>feedback/error</code>: „Adresa de e-mail nu este validă”</td>
+</tr>
+<tr>
+<td>Dezactivat</td>
+<td>1 px <code>#1E293B</code></td>
+<td><code>#111827</code></td>
+<td><code>text/muted</code> 50%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verificările:</strong>
+- Conturul în starea default: <code>#334155</code> pe <code>#0F172A</code> → 2.1:1. <strong>Cade</strong> cerința de 3:1 pentru elemente interactive. Corecție: <code>#475569</code> → 3.4:1. Trece.
+- Textul de eroare: <code>#F87171</code> pe <code>#0F172A</code> → 6.8:1. Trece.
+- Înălțimea 44 px respectă zona minimă de atingere.</p>
+<p><strong>Greșeala pe care ai evitat-o:</strong> starea de eroare marcată <strong>doar</strong> prin conturul roșu. Cu mesaj text, funcționează și pentru cine nu distinge roșul.</p>
+</details>
+<h3 id="exercitiu-3-acelasi-ecran-la-trei-latimi">Exercițiu 3 — Același ecran la trei lățimi<a class="headerlink" href="#exercitiu-3-acelasi-ecran-la-trei-latimi" title="Link to this section">&para;</a></h3>
+<p>Ia ecranul de listă din exercițiul 1 și desenează-l la 390, 768 și 1440 px. Notează exact ce se schimbă la fiecare prag.</p>
+<details class="success">
+<summary>Soluție</summary>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>390 px</th>
+<th>768 px</th>
+<th>1440 px</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigația</td>
+<td>Hamburger</td>
+<td>Hamburger</td>
+<td>4 link-uri orizontale + buton</td>
+</tr>
+<tr>
+<td>Marginea</td>
+<td>16</td>
+<td>32</td>
+<td>96</td>
+</tr>
+<tr>
+<td>Coloane grilă</td>
+<td>4</td>
+<td>8</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Carduri pe rând</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Lățime card</td>
+<td>Fill (358 px)</td>
+<td>4 coloane</td>
+<td>4 coloane</td>
+</tr>
+<tr>
+<td>Titlu pagină</td>
+<td>32 px</td>
+<td>40 px</td>
+<td>48 px</td>
+</tr>
+<tr>
+<td>Corp text</td>
+<td>16 px</td>
+<td>16 px</td>
+<td>16 px</td>
+</tr>
+<tr>
+<td>Imaginea din card</td>
+<td>16:9</td>
+<td>16:9</td>
+<td>16:9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ce NU se schimbă:</strong> paleta, fonturile, razele de colț, raportul imaginilor, înălțimea zonelor de atingere.</p>
+<p><strong>Observația importantă:</strong> corpul textului rămâne 16 px la toate lățimile. Un text de 20 px pe desktop pare „prea mare” pentru majoritatea cititorilor. Ce se schimbă e <strong>lungimea rândului</strong>, controlată prin lățimea coloanei, nu prin mărimea literei.</p>
+<p><strong>Verificarea cu Auto Layout:</strong> dacă ai construit cardurile pe <code>Fill</code> într-un container cu <code>Wrap</code>, trecerea de la 1 la 2 la 3 carduri pe rând se întâmplă <strong>singură</strong> când schimbi lățimea ecranului. Dacă a trebuit să le muți manual, structura nu e completă.</p>
+</details>
+<hr />
+<h2 id="mini-proiect-pagina-de-proiect-a-cercului">Mini-proiect: pagina de proiect a cercului<a class="headerlink" href="#mini-proiect-pagina-de-proiect-a-cercului" title="Link to this section">&para;</a></h2>
+<p>Proiectează <strong>trei ecrane</strong> ale unei pagini web pentru cercul de informatică — pagina principală, lista de proiecte și pagina unui proiect — la toate cele trei breakpoint-uri, folosind identitatea vizuală din lecția 12.</p>
+<details class="success">
+<summary>Livrabilele și criteriile</summary>
+<p><strong>Structura fișierului Figma:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pagina</th>
+<th>Conținut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Flows</code></td>
+<td>Fluxul scris + harta ecranelor</td>
+</tr>
+<tr>
+<td><code>Wireframes</code></td>
+<td>Cele 3 ecrane × 390 px, în gri</td>
+</tr>
+<tr>
+<td><code>Components</code></td>
+<td>Buton, câmp, card, navigație, badge — toate cu stările lor</td>
+</tr>
+<tr>
+<td><code>Screens</code></td>
+<td>3 ecrane × 3 breakpoint-uri = 9 frame-uri</td>
+</tr>
+<tr>
+<td><code>Handoff</code></td>
+<td>Note pentru dezvoltator, stări goale, cazuri limită</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Componentele minime, cu toate stările:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Componentă</th>
+<th>Stări / variante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>button</code></td>
+<td>3 tipuri × 5 stări</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td>6 stări</td>
+</tr>
+<tr>
+<td><code>card/project</code></td>
+<td>cu imagine / fără imagine</td>
+</tr>
+<tr>
+<td><code>nav</code></td>
+<td>mobil (închis / deschis) + desktop</td>
+</tr>
+<tr>
+<td><code>badge</code></td>
+<td>3 categorii</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cazurile limită de desenat:</strong>
+- Lista de proiecte <strong>goală</strong> („Niciun proiect încă. Revino în curând.”)
+- Un titlu de proiect de 12 cuvinte
+- Un card fără imagine
+- Ecranul de eroare 404</p>
+<p><strong>Criteriile de evaluare:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Criteriu</th>
+<th>Verificare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fluxul e scris înainte de desen</td>
+<td>Pagina <code>Flows</code> există</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mobile-first</td>
+<td>Wireframe-urile sunt la 390 px</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Toate stările desenate</td>
+<td>Inclusiv focus și disabled</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Zone de atingere ≥ 44 px</td>
+<td>Măsoară butoanele mici</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Contrast text ≥ 4.5:1, interactiv ≥ 3:1</td>
+<td>Plugin Contrast</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Etichete deasupra câmpurilor</td>
+<td>Nu doar placeholder</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tot e Auto Layout</td>
+<td>Schimbă lățimea unui ecran — se adaptează?</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Un singur buton primar pe ecran</td>
+<td>Numără</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Cazurile limită desenate</td>
+<td>Cele 4 de mai sus</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Doar stiluri, zero HEX scris de mână</td>
+<td>Verifică 10 elemente la întâmplare</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legătura cu cursul Web:</strong> ecranele pe care le-ai desenat aici se construiesc efectiv în HTML și CSS. Vezi <a href="../../web/08-css-flexbox-grid/">Flexbox și Grid</a> pentru structură și <a href="../../web/10-css-responsive/">Responsive design</a> pentru breakpoint-uri. Auto Layout-ul tău se traduce aproape rând cu rând.</p>
+</details>
+<hr />
+<h2 id="rezumat">Rezumat<a class="headerlink" href="#rezumat" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>UX</strong> = ce poate face utilizatorul; <strong>UI</strong> = cum arată și cum se comportă.</li>
+<li>Scrie <strong>fluxul în cuvinte</strong> înainte să desenezi un ecran.</li>
+<li><strong>Wireframe</strong> (structură, gri, 15 minute) → <strong>mockup</strong> (aspect) → <strong>prototip</strong> (comportament).</li>
+<li><strong>Mobile-first</strong>: 390 → 768 → 1440 px; 4 → 8 → 12 coloane.</li>
+<li>Fiecare componentă are <strong>6 stări</strong>: default, hover, focus, active, disabled, loading.</li>
+<li><strong>Conturul de focus nu se șterge niciodată.</strong></li>
+<li>Zona de atingere minimă: <strong>44 × 44 px</strong>.</li>
+<li>Contrast: <strong>4.5:1</strong> text, <strong>3:1</strong> elemente interactive.</li>
+<li>Eticheta stă <strong>deasupra</strong> câmpului; placeholder-ul nu ține loc de etichetă.</li>
+<li>Handoff = link Figma + componente cu stări + 3 breakpoint-uri + assets + <strong>cazurile limită</strong>.</li>
+</ul>
+<hr />
+<p><strong>Pasul următor:</strong> <a href="../15-proiect-identitate-vizuala/">→ Lecția 15: Identitate vizuală pentru cercul de informatică</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../13-proiect-social-media/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Anterior
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">13: Proiect Social Media</span>
+              </a>
+            
+            
+              <a href="../15-proiect-identitate-vizuala/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Următor <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">15: Proiect Identitate vizuală</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> În această pagină
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lectia-14-design-de-interfata-web" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lecția 14 · Design de interfață web</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#ux-si-ui" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">UX și UI</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#wireframe-mockup-prototip" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Wireframe, mockup, prototip</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#grila-si-breakpoint-urile" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Grila și breakpoint-urile</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#componentele-de-interfata-si-starile-lor" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Componentele de interfață și stările lor</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#accesibilitate-in-interfete" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Accesibilitate în interfețe</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#handoff-ce-predai-programatorului" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Handoff — ce predai programatorului</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercitii" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exerciții</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-proiect-pagina-de-proiect-a-cercului" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-proiect: pagina de proiect a cercului</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#rezumat" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Rezumat</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../.." class="hover:text-orange-500 transition-colors">Acasă</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Cursuri</a>
+          
+            <a href="../../../projects/" class="hover:text-orange-500 transition-colors">Proiecte</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source, construit cu fum de lipire.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>

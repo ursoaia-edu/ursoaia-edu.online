@@ -1,0 +1,1100 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WD9LXKB7');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08: Stiluri și componente - Ursoaia Edu Online</title>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <meta name="description" content="Colour and text styles, components and instances, properties and variants — how you build a reusable library.">
+  <link rel="canonical" href="https://ursoaia-edu.online/en/courses/design-grafic/08-stiluri-si-componente/">
+  <link rel="alternate" hreflang="ro" href="https://ursoaia-edu.online/courses/design-grafic/08-stiluri-si-componente/">
+  <link rel="alternate" hreflang="en" href="https://ursoaia-edu.online/en/courses/design-grafic/08-stiluri-si-componente/">
+  <link rel="alternate" hreflang="x-default" href="https://ursoaia-edu.online/courses/design-grafic/08-stiluri-si-componente/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ursoaia Edu Online">
+  <meta property="og:title" content="08: Stiluri și componente - Ursoaia Edu Online">
+  <meta property="og:description" content="Colour and text styles, components and instances, properties and variants — how you build a reusable library.">
+  <meta property="og:url" content="https://ursoaia-edu.online/en/courses/design-grafic/08-stiluri-si-componente/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="08: Stiluri și componente - Ursoaia Edu Online">
+  <meta name="twitter:description" content="Colour and text styles, components and instances, properties and variants — how you build a reusable library.">
+  <meta name="twitter:image" content="https://ursoaia-edu.online/assets/logo.png">
+
+  
+  
+  
+  
+  
+
+  <!-- JSON-LD: WebSite + Organization (+ Course/Article when applicable) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ursoaia-edu.online/#website",
+        "url": "https://ursoaia-edu.online/",
+        "name": "Ursoaia Edu Online",
+        "description": "Open-source electronics & IoT projects from the Ursoaia computer-science circle: Arduino, ESP32, LoPy, Raspberry Pi.",
+        "inLanguage": ["ro", "en"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ursoaia-edu.online/#org",
+        "name": "Ursoaia Edu Online",
+        "url": "https://ursoaia-edu.online/",
+        "logo": "https://ursoaia-edu.online/assets/logo.png",
+        "sameAs": ["https://github.com/ursoaia-edu"]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://ursoaia-edu.online/en/courses/design-grafic/08-stiluri-si-componente/#course",
+        "name": "08: Stiluri \u0219i componente - Ursoaia Edu Online",
+        "description": "Colour and text styles, components and instances, properties and variants \u2014 how you build a reusable library.",
+        "url": "https://ursoaia-edu.online/en/courses/design-grafic/08-stiluri-si-componente/",
+        "inLanguage": "en",
+        "educationalLevel": "beginner",
+        "isAccessibleForFree": true,
+        "provider": { "@id": "https://ursoaia-edu.online/#org" }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ursoaia-edu.online/en/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://ursoaia-edu.online/en/courses/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Graphic Design",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "08: Stiluri \u0219i componente",
+        "item": "https://ursoaia-edu.online/en/courses/design-grafic/08-stiluri-si-componente/"
+      }
+    ]
+  }
+  </script>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../../../assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../assets/apple-touch-icon.png">
+  
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../assets/fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2">
+  <link rel="stylesheet" href="../../../../assets/tailwind.css">
+  <link rel="stylesheet" href="../../../../assets/fonts.css">
+  <script src="../../../../assets/lucide.min.js"></script>
+  <script>
+    // Theme bootstrap — runs before <body> renders to avoid a flash.
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
+</head>
+<body class="dark:bg-[#0a0a0a] bg-[#fafafa] dark:text-white text-zinc-900 transition-colors duration-400">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD9LXKB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mt-4 rounded-full dark:glass-dark glass-light px-6 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="../../../" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center pulse-glow">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="font-semibold text-lg tracking-tight dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          
+            <a href="../../../" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Home</a>
+          
+            <a href="../../" class="nav-link active px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Courses</a>
+          
+            <a href="../../../projects/" class="nav-link  px-4 py-2 text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:text-white hover:text-zinc-900 transition-colors rounded-full">Projects</a>
+          
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Language switcher -->
+          <div class="hidden sm:flex items-center text-[11px] font-mono font-semibold rounded-full dark:bg-zinc-800 bg-zinc-200 p-0.5" aria-label="Language">
+            <a href="./" hreflang="en" class="px-2.5 py-1 rounded-full transition-colors bg-orange-700 text-white shadow-sm">EN</a>
+            <a href="../../../../courses/design-grafic/08-stiluri-si-componente/" hreflang="ro" class="px-2.5 py-1 rounded-full transition-colors dark:text-zinc-400 text-zinc-600 dark:hover:text-white hover:text-zinc-900">RO</a>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-toggle dark:bg-zinc-800 bg-zinc-200" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+            <div class="knob dark:bg-zinc-700 bg-white shadow-md">
+              <i data-lucide="sun" class="w-3.5 h-3.5 dark:hidden text-amber-500"></i>
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block text-orange-400"></i>
+            </div>
+          </div>
+
+          <!-- GitHub link -->
+          
+          <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="flex w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 items-center justify-center dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:text-white hover:text-zinc-900 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 dark:text-zinc-400 text-zinc-500" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-9 h-9 rounded-full dark:bg-zinc-800/60 bg-zinc-100 flex items-center justify-center" onclick="toggleMobile()">
+            <i data-lucide="menu" class="w-4 h-4 dark:text-zinc-400 text-zinc-600" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu md:hidden overflow-hidden max-h-0 opacity-0">
+        <div class="mt-2 rounded-2xl dark:glass-dark glass-light p-4 flex flex-col gap-1">
+          
+            <a href="../../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Home</a>
+          
+            <a href="../../" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" onclick="closeMobile()" class="px-4 py-3 rounded-xl text-sm font-medium dark:text-zinc-300 text-zinc-600 dark:hover:bg-white/5 hover:bg-zinc-100 transition-colors">Projects</a>
+          
+          <div class="mt-2 pt-3 border-t dark:border-white/[0.08] border-zinc-200 flex items-center gap-2 px-2">
+            <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex-1">Language</span>
+            <a href="./" hreflang="en" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors bg-orange-700 text-white">EN</a>
+            <a href="../../../../courses/design-grafic/08-stiluri-si-componente/" hreflang="ro" class="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold transition-colors dark:bg-zinc-800 bg-zinc-200 dark:text-zinc-400 text-zinc-600">RO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <!-- ==================== INNER PAGE ==================== -->
+  <main class="pt-28 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-6 text-xs flex flex-wrap items-center gap-1.5 dark:text-zinc-500 text-zinc-400 font-medium">
+        <a href="../../../" class="hover:text-orange-500 transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
+        </a>
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Courses</a>
+          
+        
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+          
+          
+            <a href="../" class="dark:text-zinc-400 text-zinc-500 hover:text-orange-500 transition-colors">Graphic Design</a>
+          
+        
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 dark:text-zinc-700 text-zinc-300"></i>
+        <span class="dark:text-white text-zinc-900 font-semibold">08: Stiluri și componente</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 xl:gap-14">
+        <!-- Article -->
+        <article class="reveal min-w-0">
+          <header class="mb-10 pb-8 border-b dark:border-white/[0.08] border-zinc-200">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight dark:text-white text-zinc-900 leading-tight">08: Stiluri și componente</h1>
+            
+              <p class="mt-4 text-base sm:text-lg dark:text-zinc-400 text-zinc-500 leading-relaxed font-light">Colour and text styles, components and instances, properties and variants — how you build a reusable library.</p>
+            
+            
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">figma</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">components</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">styles</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">variants</span>
+                
+                  <span class="px-2 py-0.5 rounded dark:bg-white/5 bg-zinc-100 dark:text-zinc-300 text-zinc-500 text-[10px] font-mono">design system</span>
+                
+              </div>
+            
+          </header>
+
+          <div class="prose dark:prose-invert prose-zinc max-w-none">
+            <h1 id="lesson-08-styles-and-components">Lesson 08 · Styles and components<a class="headerlink" href="#lesson-08-styles-and-components" title="Link to this section">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">What you will learn</p>
+<ul>
+<li>What <strong>styles</strong> are and why you never pick a colour "by hand" again</li>
+<li>The difference between a <strong>component</strong> and an <strong>instance</strong></li>
+<li>What can be overridden in an instance and what cannot</li>
+<li><strong>Properties</strong> and <strong>variants</strong> — one button in 12 states</li>
+<li><strong>Slots</strong> (instance swap) for flexible components</li>
+<li>How to organise a library you can still use six months from now</li>
+</ul>
+</div>
+<hr />
+<h2 id="the-problem-it-solves">The problem it solves<a class="headerlink" href="#the-problem-it-solves" title="Link to this section">&para;</a></h2>
+<p>You have a poster with 20 orange elements. Your teacher says: "change the orange to green".</p>
+<ul>
+<li><strong>Without styles:</strong> you select each element, change the colour, hunt for the ones you missed, find two more the next day. 15 minutes and one mistake.</li>
+<li><strong>With styles:</strong> you change the <code>brand/primary</code> style. All 20 update. 3 seconds, zero mistakes.</li>
+</ul>
+<p>The difference grows exponentially with project size. In an app design with 40 screens, working without styles is simply impossible.</p>
+<hr />
+<h2 id="styles">Styles<a class="headerlink" href="#styles" title="Link to this section">&para;</a></h2>
+<p>A <strong>style</strong> is a value saved under a name, which you apply in many places. Figma has four types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it saves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Color</strong></td>
+<td>A colour or a gradient</td>
+</tr>
+<tr>
+<td><strong>Text</strong></td>
+<td>Font + weight + size + line height + tracking</td>
+</tr>
+<tr>
+<td><strong>Effect</strong></td>
+<td>Shadows, blur</td>
+</tr>
+<tr>
+<td><strong>Grid</strong></td>
+<td>The layout grid configuration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-to-create-a-style">How to create a style<a class="headerlink" href="#how-to-create-a-style" title="Link to this section">&para;</a></h3>
+<ol>
+<li>Select an element that already has the value you want.</li>
+<li>In the right panel, in the relevant section (Fill / Text / Effects / Layout grid), click <strong>the four dots</strong>.</li>
+<li>Press <strong>+</strong> and give it a name.</li>
+</ol>
+<h3 id="how-to-name-styles">How to name styles<a class="headerlink" href="#how-to-name-styles" title="Link to this section">&para;</a></h3>
+<p>We settled the rule in lesson 03: <strong>by role, not by appearance</strong>. Now add a folder structure through <code>/</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>brand/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  primary
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  primary-hover
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  secondary
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>surface/
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  base
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  raised
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  overlay
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>text/
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  strong
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  base
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  muted
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  inverse
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>feedback/
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  success
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  warning
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  error
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>heading/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  h1
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  h2
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  h3
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>body/
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  large
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  base
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  small
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>label/
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  caps
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  mono
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Three levels maximum</p>
+<p><code>brand/primary</code> is good. <code>design/colors/brand/main/primary-500</code> is a structure you will hate within two weeks. Two levels are enough for a course project.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">An unapplied style helps nobody</p>
+<p>The classic mistake: you create 12 beautifully named styles, then keep drawing by picking colours from the picker. The check: select any element in your design — in the right panel, <strong>Fill</strong> must show a style name, not a HEX code.</p>
+</div>
+<hr />
+<h2 id="components">Components<a class="headerlink" href="#components" title="Link to this section">&para;</a></h2>
+<p>A <strong>style</strong> saves a value. A <strong>component</strong> saves a whole structure: shapes, text, spacing, all together.</p>
+<h3 id="component-vs-instance">Component vs. instance<a class="headerlink" href="#component-vs-instance" title="Link to this section">&para;</a></h3>
+<ul>
+<li><strong>The main component</strong> — the original. It has a purple diamond ◆ in the Layers panel.</li>
+<li><strong>The instance</strong> — a copy linked to the original. It has a hollow diamond ◇.</li>
+</ul>
+<p><strong>Changes in the main component propagate to every instance.</strong> Changes in an instance stay local.</p>
+<h3 id="how-to-create-a-component">How to create a component<a class="headerlink" href="#how-to-create-a-component" title="Link to this section">&para;</a></h3>
+<ol>
+<li>Select the elements (usually a frame with everything inside).</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-k">K</kbd></span> (Windows) / <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-option">Option</kbd><span>+</span><kbd class="key-k">K</kbd></span> (Mac), or the ◆ button in the top bar.</li>
+<li>Give it a descriptive name with a folder structure: <code>button/primary</code>, <code>card/project</code>, <code>icon/wifi</code>.</li>
+</ol>
+<p>Then you place it with <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span> or from the <strong>Assets</strong> panel (left), where all the file's components appear.</p>
+<h3 id="what-can-be-overridden-in-an-instance">What can be overridden in an instance<a class="headerlink" href="#what-can-be-overridden-in-an-instance" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>You can</th>
+<th>You cannot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The text</td>
+<td>Add new layers</td>
+</tr>
+<tr>
+<td>The colours (Fill, Stroke)</td>
+<td>Delete a layer (only hide it)</td>
+</tr>
+<tr>
+<td>The images</td>
+<td>Change structural spacing</td>
+</tr>
+<tr>
+<td>Layer visibility</td>
+<td>Reorder layers</td>
+</tr>
+<tr>
+<td>Nested instances (swap)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Resetting an instance</p>
+<p>If you have overridden too much in an instance, right-click → <strong>Reset all changes</strong>. It returns to the main component's state.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Where you keep the main components</p>
+<p>Do not leave them scattered across the file. Create a <strong>separate page</strong> called <code>Components</code> (left panel, Pages tab) and keep them all there, organised into sections. If you accidentally delete a main component, all its instances become "detached" and stop updating.</p>
+</div>
+<hr />
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Link to this section">&para;</a></h2>
+<p>A <strong>component property</strong> turns a manual override into a field you fill in from the right panel. Four types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it controls</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Text</strong></td>
+<td>The content of a text layer</td>
+<td>The button label</td>
+</tr>
+<tr>
+<td><strong>Boolean</strong></td>
+<td>The visibility of a layer</td>
+<td>Show / hide the icon</td>
+</tr>
+<tr>
+<td><strong>Instance swap</strong></td>
+<td>Which component sits in a slot</td>
+<td>Which specific icon</td>
+</tr>
+<tr>
+<td><strong>Variant</strong></td>
+<td>Which variant is active</td>
+<td>Size, state, type</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-to-add-a-property">How to add a property<a class="headerlink" href="#how-to-add-a-property" title="Link to this section">&para;</a></h3>
+<ol>
+<li>Enter the main component.</li>
+<li>Select the layer you want to make configurable.</li>
+<li>In the right panel, next to that property, click the small diamond icon.</li>
+<li><strong>Create property</strong> → name + default value.</li>
+</ol>
+<p>Now every instance shows a field with that name in the right panel. You never have to dig into layers to change the text again.</p>
+<hr />
+<h2 id="variants">Variants<a class="headerlink" href="#variants" title="Link to this section">&para;</a></h2>
+<p>A <strong>variant</strong> groups several versions of the same component into one, with a selector.</p>
+<h3 id="example-a-button">Example: a button<a class="headerlink" href="#example-a-button" title="Link to this section">&para;</a></h3>
+<p>Properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Values</th>
+<th>How many</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Type</code></td>
+<td>primary, secondary, ghost</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>Size</code></td>
+<td>small, medium, large</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>State</code></td>
+<td>default, hover, disabled</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>3 × 3 × 3 = <strong>27 variants</strong> from a single component. The right panel of any instance shows three dropdowns.</p>
+<h3 id="how-to-build-a-variant-set">How to build a variant set<a class="headerlink" href="#how-to-build-a-variant-set" title="Link to this section">&para;</a></h3>
+<ol>
+<li>Create the first component (<code>button</code>, type primary, size medium, state default).</li>
+<li>Select it and press <strong>Create component set</strong> (the four-squares button in the top bar).</li>
+<li>A dashed purple frame appears. Inside it, press <strong>+</strong> for each new variant.</li>
+<li>In the right panel, under <strong>Properties</strong>, rename the properties (<code>Property 1</code> → <code>Type</code>) and the values.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Do not build 27 variants at once</p>
+<p>Start with 2 properties and 4–6 variants. Add the third property only when you actually need it. A variant set that grows too large becomes hard to maintain: any spacing change has to be made in 27 places.</p>
+<p>The better alternative: use <strong>Auto Layout</strong> (lesson 09) so the size adapts by itself, and keep only the <code>Type</code> and <code>State</code> properties.</p>
+</div>
+<hr />
+<h2 id="instance-swap-slots">Instance swap — slots<a class="headerlink" href="#instance-swap-slots" title="Link to this section">&para;</a></h2>
+<p>The most useful property, and the one beginners know least.</p>
+<p><strong>The problem:</strong> you have a project card containing an icon. You have 8 different icons. Do you make 8 card components?</p>
+<p><strong>The solution:</strong> you make <strong>one</strong> card component in which the icon is itself an instance. Then you add an <strong>Instance swap</strong> property to it. In each card instance, you pick the icon you want from a menu.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>card/project  (component)
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── frame
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── ◇ icon/wifi        ← slot: Instance swap
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   ├── text: Title        ← Text property
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│   └── text: Description  ← Text property
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">The slot rule</p>
+<p>Any element that changes from one instance to another <strong>but stays the same kind of thing</strong> should be a slot. Icons, avatars, badges, the button inside a card.</p>
+</div>
+<hr />
+<h2 id="organising-the-library">Organising the library<a class="headerlink" href="#organising-the-library" title="Link to this section">&para;</a></h2>
+<p>A file with 60 components and no structure is worse than none. The minimum structure:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Page: Foundations
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  ├── The colour palette (all styles, visually)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  ├── The type scale
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  └── The spacing system
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Page: Components
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  ├── Section: Primitives     → button, input, badge, avatar
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  ├── Section: Icons          → the 24 × 24 set
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  └── Section: Composites     → card, header, nav, footer
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>Page: Screens / Designs
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  └── The actual work
+</span></code></pre></div>
+<h3 id="the-naming-convention">The naming convention<a class="headerlink" href="#the-naming-convention" title="Link to this section">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Example</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category/name</code></td>
+<td><code>button/primary</code></td>
+<td>Automatic grouping in Assets</td>
+</tr>
+<tr>
+<td><code>icon/name</code></td>
+<td><code>icon/wifi</code></td>
+<td>All icons together</td>
+</tr>
+<tr>
+<td><code>card/type</code></td>
+<td><code>card/project</code></td>
+<td>Easy to find when swapping</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">The six-months test</p>
+<p>Open the file six months from now and try to find the secondary button component in under 10 seconds. If you cannot, the organisation is too complicated or the names are too vague.</p>
+</div>
+<hr />
+<h2 id="when-not-to-use-components">When NOT to use components<a class="headerlink" href="#when-not-to-use-components" title="Link to this section">&para;</a></h2>
+<p>Components have a cost: build time and complexity. They are not worth it for:</p>
+<ul>
+<li>An element used <strong>once</strong>. A poster headline is not a component.</li>
+<li>A one-off poster that will never have variants.</li>
+<li>Decorative shapes that change every time.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">The rule of three</p>
+<p>If an element appears <strong>three times or more</strong>, or you know it will repeat, make it a component. Below three, it is not worth it.</p>
+</div>
+<hr />
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Link to this section">&para;</a></h2>
+<h3 id="exercise-1-a-complete-style-system">Exercise 1 — A complete style system<a class="headerlink" href="#exercise-1-a-complete-style-system" title="Link to this section">&para;</a></h3>
+<p>In a new file, create the full set of colour and text styles from lessons 03 and 04. Then build a project card that uses <strong>only</strong> styles — no hand-typed HEX.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>Colour styles (9):</strong>
+<code>brand/primary</code>, <code>brand/primary-hover</code>, <code>surface/base</code>, <code>surface/raised</code>, <code>text/strong</code>, <code>text/base</code>, <code>text/muted</code>, <code>feedback/success</code>, <code>feedback/error</code>.</p>
+<p><strong>Text styles (6):</strong>
+<code>heading/h1</code> (31/1.2 Semi Bold), <code>heading/h2</code> (25/1.3 Semi Bold), <code>body/base</code> (16/1.6 Regular), <code>body/small</code> (13/1.4 Regular), <code>label/caps</code> (13/1.4 Medium, all caps, +10% tracking), <code>label/mono</code> (13/1.4 Regular, JetBrains Mono).</p>
+<p><strong>The card:</strong> a 360 × 280 frame, <code>surface/raised</code>, 16 radius, 32 padding.
+- Label: <code>label/caps</code> + <code>brand/primary</code>
+- Title: <code>heading/h2</code> + <code>text/strong</code>
+- Description: <code>body/base</code> + <code>text/muted</code>
+- Button: <code>brand/primary</code> fill, <code>body/small</code> + <code>text/inverse</code> text</p>
+<p><strong>The check:</strong> select each element in turn. In the right panel, Fill and Text must show a <strong>style name</strong>, not a code. If a code appears, you missed one.</p>
+</details>
+<h3 id="exercise-2-a-button-with-variants">Exercise 2 — A button with variants<a class="headerlink" href="#exercise-2-a-button-with-variants" title="Link to this section">&para;</a></h3>
+<p>Build a variant set for a button with the properties <code>Type</code> (primary, secondary, ghost) and <code>State</code> (default, hover, disabled). Nine variants.</p>
+<details class="success">
+<summary>Solution</summary>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>State</th>
+<th>Fill</th>
+<th>Text</th>
+<th>Border</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>primary</td>
+<td>default</td>
+<td><code>brand/primary</code></td>
+<td><code>text/inverse</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>hover</td>
+<td><code>brand/primary-hover</code></td>
+<td><code>text/inverse</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>disabled</td>
+<td><code>surface/raised</code></td>
+<td><code>text/muted</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>secondary</td>
+<td>default</td>
+<td>transparent</td>
+<td><code>text/strong</code></td>
+<td>1 px <code>text/muted</code></td>
+</tr>
+<tr>
+<td>secondary</td>
+<td>hover</td>
+<td><code>surface/raised</code></td>
+<td><code>text/strong</code></td>
+<td>1 px <code>text/base</code></td>
+</tr>
+<tr>
+<td>secondary</td>
+<td>disabled</td>
+<td>transparent</td>
+<td><code>text/muted</code></td>
+<td>1 px <code>surface/raised</code></td>
+</tr>
+<tr>
+<td>ghost</td>
+<td>default</td>
+<td>transparent</td>
+<td><code>brand/primary</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>ghost</td>
+<td>hover</td>
+<td><code>surface/raised</code></td>
+<td><code>brand/primary</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>ghost</td>
+<td>disabled</td>
+<td>transparent</td>
+<td><code>text/muted</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Also add a Text property</strong> on the button label, with the default value <code>Button</code>. Now every instance is configured entirely from the right panel: you pick the type, the state and type the text.</p>
+<p><strong>Check:</strong> place 3 instances and change their type from the menu. If the button keeps a correct size across labels of different lengths, you used Auto Layout — good. If the text overflows the button, come back after lesson 09.</p>
+</details>
+<h3 id="exercise-3-a-card-with-an-icon-slot">Exercise 3 — A card with an icon slot<a class="headerlink" href="#exercise-3-a-card-with-an-icon-slot" title="Link to this section">&para;</a></h3>
+<p>Build a <code>card/feature</code> component with: an icon (slot), a title (Text property) and a description (Text property). Place 4 instances with different icons from the set you made in lesson 07.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>Building the component:</strong>
+1. A 280 × 200 frame, <code>surface/raised</code>, 16 radius, 24 padding.
+2. Inside it, place an instance of the <code>icon/wifi</code> component — it <strong>must</strong> be an instance, not a redrawn copy.
+3. Below it, a <code>heading/h3</code> text and a <code>body/small</code> text.
+4. Select everything → <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-k">K</kbd></span> → name it <code>card/feature</code>.</p>
+<p><strong>The properties:</strong>
+- Select the icon → the right panel shows <code>Instance</code> → click the small diamond → <strong>Create property</strong> → type <code>Instance swap</code>, name <code>Icon</code>.
+- Select the title → the diamond next to the content → <strong>Create property</strong> → type <code>Text</code>, name <code>Title</code>.
+- Same for the description → <code>Description</code>.</p>
+<p><strong>Using it:</strong> place 4 instances. The right panel of each shows three fields: a menu with all your icons and two text boxes. You never dig into layers again.</p>
+<p><strong>The real test:</strong> now change the main component's padding from 24 to 32. All 4 instances update. That is the whole point of the exercise.</p>
+</details>
+<hr />
+<h2 id="mini-project-a-base-library-for-the-computer-science-club">Mini-project: a base library for the computer science club<a class="headerlink" href="#mini-project-a-base-library-for-the-computer-science-club" title="Link to this section">&para;</a></h2>
+<p>Build a <code>Design System</code> file with three pages (<code>Foundations</code>, <code>Components</code>, <code>Playground</code>) containing: the full style set, the 8-icon set from lesson 07, and four components — <code>button</code> (with variants), <code>badge</code>, <code>card/project</code> and <code>input</code>.</p>
+<details class="success">
+<summary>Solution</summary>
+<p><strong>The Foundations page</strong> — visual documentation, not just invisible styles:
+- A row of 80 × 80 px squares, one per colour style, with the style name and HEX code underneath.
+- A column with the 6 text styles, each applied to the text "Ursoaia computer science club", with the spec (size / line height / weight) alongside.
+- A visual spacing scale: 8 rectangles of height 4, 8, 16, 24, 32, 48, 64, 96 px, labelled.</p>
+<p><strong>The Components page:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Properties</th>
+<th>Variants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>button</code></td>
+<td>Type, State, Label (Text)</td>
+<td>9</td>
+</tr>
+<tr>
+<td><code>badge</code></td>
+<td>Type (info/success/warning/error), Label</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>card/project</code></td>
+<td>Icon (swap), Title, Description, Tag</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td>State (default/focus/error), Placeholder, Label</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>Plus an <code>Icons</code> section with the 8 icons as instances.</p>
+<p><strong>The Playground page:</strong> build a simple screen using <strong>only</strong> instances and styles from the library — a header with logo and navigation, three project cards, a sign-up form with two fields and a button.</p>
+<p><strong>The success criterion:</strong> change <code>brand/primary</code> from orange to blue, in one single place. If the entire Playground screen updates coherently — buttons, badges, focus states and icons included — the library is built correctly.</p>
+<p><strong>If something did not change:</strong> that element uses a hand-typed colour. Find it and replace it with the style.</p>
+</details>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
+<ul>
+<li><strong>Styles</strong> save values (colour, text, effect, grid); you name them <strong>by role</strong>, with <code>/</code> for folders.</li>
+<li>A correctly built element shows a <strong>style name</strong> in the right panel, not a HEX code.</li>
+<li>The <strong>component</strong> ◆ is the original, the <strong>instance</strong> ◇ is the linked copy. Changes flow top-down.</li>
+<li>In an instance you can change text, colours, images and visibility — <strong>not</strong> the structure.</li>
+<li><strong>Properties</strong> (Text, Boolean, Instance swap, Variant) turn overrides into fields.</li>
+<li><strong>Variants</strong> group versions; do not build 27 at once.</li>
+<li><strong>Instance swap</strong> = slot; any element that varies but stays the same kind of thing is a slot.</li>
+<li>Keep main components on a <strong>separate page</strong>.</li>
+<li><strong>The rule of three:</strong> below three uses, a component is not worth it.</li>
+</ul>
+<hr />
+<p><strong>Next step:</strong> <a href="../09-auto-layout/">→ Lesson 09: Auto Layout</a></p>
+          </div>
+
+          <!-- Prev / Next nav -->
+          
+          <nav class="mt-16 pt-8 border-t dark:border-white/[0.08] border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+              <a href="../07-vectori-pen-tool/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Previous
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">07: Vectori și Pen Tool</span>
+              </a>
+            
+            
+              <a href="../09-auto-layout/" class="group rounded-2xl dark:bg-zinc-900/60 bg-white border dark:border-white/[0.08] border-zinc-200 p-5 hover:border-orange-500/40 transition-all flex flex-col gap-1 text-right sm:items-end">
+                <span class="text-[10px] uppercase tracking-wider dark:text-zinc-500 text-zinc-400 font-semibold flex items-center gap-1.5">
+                  Next <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-0.5 transition-transform"></i>
+                </span>
+                <span class="text-sm font-medium dark:text-white text-zinc-900 group-hover:text-orange-500 transition-colors">09: Auto Layout</span>
+              </a>
+            
+          </nav>
+          
+        </article>
+
+        <!-- TOC sidebar (only when toc has items) -->
+        
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <div class="text-[10px] uppercase tracking-[0.15em] font-semibold dark:text-zinc-500 text-zinc-400 mb-4 flex items-center gap-2">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i> On this page
+            </div>
+            <ul class="space-y-1.5 text-sm border-l dark:border-white/[0.08] border-zinc-200">
+              
+                <li>
+                  <a href="#lesson-08-styles-and-components" class="toc-link block pl-4 -ml-px border-l border-transparent dark:text-zinc-400 text-zinc-500 hover:text-orange-500 hover:border-orange-500 py-1 transition-colors">Lesson 08 · Styles and components</a>
+                  
+                  <ul class="space-y-1 mt-1">
+                    
+                      <li>
+                        <a href="#the-problem-it-solves" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">The problem it solves</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#styles" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Styles</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#components" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Components</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#properties" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Properties</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#variants" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Variants</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#instance-swap-slots" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Instance swap — slots</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#organising-the-library" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Organising the library</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#when-not-to-use-components" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">When NOT to use components</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#exercises" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Exercises</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#mini-project-a-base-library-for-the-computer-science-club" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Mini-project: a base library for the computer science club</a>
+                      </li>
+                    
+                      <li>
+                        <a href="#summary" class="toc-link block pl-7 -ml-px border-l border-transparent dark:text-zinc-500 text-zinc-400 hover:text-orange-500 hover:border-orange-500 py-1 text-xs transition-colors">Summary</a>
+                      </li>
+                    
+                  </ul>
+                  
+                </li>
+              
+            </ul>
+          </div>
+        </aside>
+        
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="dark:border-t border-zinc-800 border-zinc-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-medium dark:text-white text-zinc-900">Ursoaia Edu Online</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex items-center gap-6 text-sm dark:text-zinc-500 text-zinc-600">
+          
+            <a href="../../../" class="hover:text-orange-500 transition-colors">Home</a>
+          
+            <a href="../../" class="hover:text-orange-500 transition-colors">Courses</a>
+          
+            <a href="../../../projects/" class="hover:text-orange-500 transition-colors">Projects</a>
+          
+          
+            <a href="https://github.com/ursoaia-edu/ursoaia-edu.online.git" target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          
+        </div>
+
+        <!-- Copyright -->
+        <p class="text-xs dark:text-zinc-600 text-zinc-600">
+          © 2025 Ursoaia Edu Online · Open-source and built with solder fumes.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div id="toast" class="toast">
+    <div class="dark:glass-dark glass-light rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+      <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+      </div>
+      <div>
+        <p class="text-sm font-medium dark:text-white text-zinc-900" id="toastTitle">Subscribed!</p>
+        <p class="text-xs dark:text-zinc-400 text-zinc-500" id="toastMsg">You'll hear from me soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      // Re-render icons for theme toggle visibility
+      lucide.createIcons();
+    }
+
+    // Load saved theme (default = light)
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    // ========== MOBILE MENU ==========
+    let mobileOpen = false;
+    function toggleMobile() {
+      mobileOpen = !mobileOpen;
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('menuIcon');
+      if (mobileOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+    function closeMobile() {
+      if (mobileOpen) toggleMobile();
+    }
+
+    // ========== NEWSLETTER ==========
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        document.getElementById('emailInput').value = '';
+        showToast('Subscribed!', `${email} is now on the list.`);
+      }
+    }
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ========== CODE COPY BUTTONS ==========
+    (function() {
+      const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      function getCodeText(highlight) {
+        // pymdownx layout: with linenos uses <table class="highlighttable">; without, plain <pre><code>.
+        const codeCell = highlight.querySelector('td.code code') || highlight.querySelector('pre code') || highlight.querySelector('pre');
+        if (!codeCell) return '';
+        // Strip trailing newline that pygments often adds.
+        return codeCell.innerText.replace(/\n$/, '');
+      }
+
+      function addCopyButton(highlight) {
+        if (highlight.querySelector(':scope > .code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+        btn.addEventListener('click', async () => {
+          const text = getCodeText(highlight);
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // Fallback for older browsers / non-HTTPS contexts.
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          btn.innerHTML = CHECK_SVG + '<span>Copied</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = COPY_SVG + '<span>Copy</span>';
+          }, 1600);
+        });
+        highlight.appendChild(btn);
+      }
+
+      document.querySelectorAll('article .highlight').forEach(addCopyButton);
+    })();
+
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('backdrop-blur-xl');
+      } else {
+        navbar.classList.remove('backdrop-blur-xl');
+      }
+    });
+
+    // Re-initialize Lucide icons after content might have changed
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+  
+
+<script>
+    // ========== TOC SCROLL SPY ==========
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      if (!tocLinks.length) return;
+      const headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+      if (!headings.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 140;
+        let active = headings[0];
+        for (const h of headings) {
+          if (h.offsetTop <= scrollY) active = h;
+        }
+        tocLinks.forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + active.id;
+          l.classList.toggle('text-orange-500', isActive);
+          l.classList.toggle('border-orange-500', isActive);
+          l.classList.toggle('font-medium', isActive);
+        });
+      }
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+</script>
+
+
+</body>
+</html>
