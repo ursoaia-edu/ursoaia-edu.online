@@ -35,6 +35,8 @@ plugins:
           nav_translations:
             Home: Acasă
             Courses: Cursuri
+            "Graphic Design": Design Grafic
+            "Course overview": Prezentare curs
             Projects: Proiecte
             "Windows setup": Pregătire Windows
             Arduino: Arduino
@@ -133,6 +135,25 @@ nav:
           - "09: Fișiere": courses/python/09-fisiere.md
           - "10: Proiect Joc Aventură": courses/python/10-proiect-joc-aventura.md
           - "11: Proiect Grafice Turtle": courses/python/11-proiect-turtle.md
+      - Graphic Design:
+          - "Course overview": courses/design-grafic/index.md
+          - "00: Ce este designul grafic": courses/design-grafic/00-ce-este-designul.md
+          - "01: Figma și Canva": courses/design-grafic/01-figma-si-canva.md
+          - "02: Formă, linie, spațiu": courses/design-grafic/02-forma-linie-spatiu.md
+          - "03: Culoarea": courses/design-grafic/03-culoarea.md
+          - "04: Tipografia": courses/design-grafic/04-tipografia.md
+          - "05: Compoziție și grilă": courses/design-grafic/05-compozitie-si-grila.md
+          - "06: Ierarhie vizuală": courses/design-grafic/06-ierarhie-vizuala.md
+          - "07: Vectori și Pen Tool": courses/design-grafic/07-vectori-pen-tool.md
+          - "08: Stiluri și componente": courses/design-grafic/08-stiluri-si-componente.md
+          - "09: Auto Layout": courses/design-grafic/09-auto-layout.md
+          - "10: Imagini, măști și export": courses/design-grafic/10-imagini-masti-export.md
+          - "11: Proiect Afiș": courses/design-grafic/11-proiect-afis.md
+          - "12: Proiect Logo": courses/design-grafic/12-proiect-logo.md
+          - "13: Proiect Social Media": courses/design-grafic/13-proiect-social-media.md
+          - "14: Design de interfață web": courses/design-grafic/14-design-interfata-web.md
+          - "15: Proiect Identitate vizuală": courses/design-grafic/15-proiect-identitate-vizuala.md
+          - "16: Proiect Prototip Figma": courses/design-grafic/16-proiect-prototip-figma.md
   - Projects:
       - Overview: projects/index.md
       - Windows setup: projects/windows_setup.md

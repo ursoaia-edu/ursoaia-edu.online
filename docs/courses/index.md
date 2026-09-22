@@ -1,6 +1,6 @@
 ---
 tags: [ghid, cursuri]
-summary: Cursurile disponibile pentru elevii cercului de informatică — Web și Python.
+summary: Cursurile disponibile pentru elevii cercului de informatică — Web, Python și Design Grafic.
 ---
 
 ## Cum alegi între ele?
@@ -11,10 +11,12 @@ summary: Cursurile disponibile pentru elevii cercului de informatică — Web ș
 | Înveți bazele logicii algoritmice | **Python** |
 | Lucrezi cu date și automatizări | **Python** |
 | Faci interfețe vizuale imediat | **Web** |
+| Desenezi afișe, logo-uri și postări | **Design Grafic** |
+| Înveți culoare, tipografie și compoziție | **Design Grafic** |
 | Te pregătești pentru proiecte cu microcontrollere | **Python** (sintaxa se transferă la MicroPython pe ESP32) |
 
-!!! tip "Poți învăța și ambele"
-    Web și Python nu se exclud — mulți programatori profesioniști folosesc ambele. Începe cu cel care te motivează mai mult, apoi adaugă-l pe al doilea.
+!!! tip "Cursurile nu se exclud"
+    Web, Python și Design Grafic se completează — mulți programatori profesioniști le folosesc pe toate. Începe cu cel care te motivează mai mult, apoi adaugă-le pe celelalte. Combinația **Design Grafic + Web** este cea mai directă: desenezi interfața, apoi o construiești în HTML și CSS.
 
 ## De ce aceste cursuri?
 

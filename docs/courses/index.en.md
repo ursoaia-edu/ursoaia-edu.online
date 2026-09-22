@@ -1,6 +1,6 @@
 ---
 tags: [guide, courses]
-summary: Available courses for computer science club students — Web and Python.
+summary: Available courses for computer science club students — Web, Python and Graphic Design.
 ---
 
 ## How to choose?
@@ -11,10 +11,12 @@ summary: Available courses for computer science club students — Web and Python
 | Learn algorithmic thinking fundamentals | **Python** |
 | Work with data and automations | **Python** |
 | See visual results immediately | **Web** |
+| Design posters, logos and social posts | **Graphic Design** |
+| Learn colour, typography and composition | **Graphic Design** |
 | Prepare for microcontroller projects | **Python** (syntax carries over to MicroPython on ESP32) |
 
-!!! tip "You can learn both"
-    Web and Python don't exclude each other — most professional developers use both. Start with whichever motivates you more, then add the other later.
+!!! tip "The courses don't exclude each other"
+    Web, Python and Graphic Design complement one another — most professional developers use all three. Start with whichever motivates you most, then add the others. The **Graphic Design + Web** combination is the most direct one: you design the interface, then build it in HTML and CSS.
 
 ## Why these courses?
 

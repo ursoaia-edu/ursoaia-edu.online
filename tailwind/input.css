@@ -231,6 +231,29 @@
 }
 .prose img { border-radius: 0.75rem; box-shadow: 0 4px 16px -4px rgba(0,0,0,0.2); }
 
+/* Keyboard keys (pymdownx.keys) */
+.prose .keys { white-space: nowrap; }
+.prose .keys kbd {
+  display: inline-block;
+  background: theme('colors.zinc.100');
+  border: 1px solid theme('colors.zinc.300');
+  border-bottom-width: 2px;
+  border-radius: 0.35em;
+  padding: 0.1em 0.45em;
+  font-family: theme('fontFamily.mono');
+  font-size: 0.8em;
+  font-weight: 500;
+  line-height: 1.4;
+  color: theme('colors.zinc.700');
+}
+.prose .keys span { padding: 0 0.15em; opacity: 0.5; font-size: 0.8em; }
+.dark .prose .keys kbd {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  border-bottom-color: rgba(255,255,255,0.2);
+  color: theme('colors.zinc.200');
+}
+
 /* Pygments — light + dark */
 .highlight pre, pre.highlight { background: #fafafa; color: #383a42; }
 .dark .highlight pre, .dark pre.highlight { background: #0d0d10; color: #e5e5e5; }
